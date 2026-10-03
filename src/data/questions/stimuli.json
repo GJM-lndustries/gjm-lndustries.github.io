@@ -1,0 +1,68 @@
+[
+  {
+    "id": "mat-st-tienda",
+    "area": "matematicas",
+    "title": "Precios en la tienda de don Jorge",
+    "text": "En la tienda de barrio de don Jorge, los precios de algunos productos son:\n\n| Producto | Precio por unidad |\n|---|---|\n| Arroz (libra) | $2.800 |\n| Huevo (unidad) | $600 |\n| Leche (bolsa de 1 L) | $4.200 |\n| Pan (unidad) | $500 |"
+  },
+  {
+    "id": "mat-st-pasajes",
+    "area": "matematicas",
+    "title": "Viajes de Camila en bus",
+    "text": "Camila usa el bus urbano para ir al colegio y a sus clases de fútbol. Cada pasaje cuesta **$3.200**. Esta es la cantidad de viajes que hizo en una semana:\n\n| Día | Viajes |\n|---|---|\n| Lunes | 2 |\n| Martes | 2 |\n| Miércoles | 4 |\n| Jueves | 2 |\n| Viernes | 3 |\n| Sábado | 1 |"
+  },
+  {
+    "id": "mat-st-encuesta",
+    "area": "matematicas",
+    "title": "Encuesta de transporte escolar",
+    "text": "En un colegio de Bucaramanga se preguntó a los 40 estudiantes de grado 11 cómo llegan al colegio. Los resultados fueron:\n\n| Medio de transporte | Número de estudiantes |\n|---|---|\n| A pie | 14 |\n| Bus | 12 |\n| Bicicleta | 6 |\n| Moto (como acompañante) | 8 |"
+  },
+  {
+    "id": "mat-st-agua",
+    "area": "matematicas",
+    "title": "Consumo de agua de una familia",
+    "text": "La familia Rodríguez registró su consumo de agua durante cinco meses, según los recibos del acueducto:\n\n| Mes | Consumo (m³) |\n|---|---|\n| Enero | 18 |\n| Febrero | 15 |\n| Marzo | 21 |\n| Abril | 12 |\n| Mayo | 24 |"
+  },
+  {
+    "id": "mat-st-ventas",
+    "area": "matematicas",
+    "title": "Ventas de dos tiendas",
+    "text": "Las ventas diarias (en miles de pesos) de dos tiendas del mismo barrio durante una semana laboral fueron:\n\n| Día | Tienda A | Tienda B |\n|---|---|---|\n| Lunes | 200 | 100 |\n| Martes | 210 | 350 |\n| Miércoles | 190 | 150 |\n| Jueves | 205 | 300 |\n| Viernes | 195 | 100 |"
+  },
+  {
+    "id": "mat-st-parqueadero",
+    "area": "matematicas",
+    "title": "Tarifas de un parqueadero",
+    "text": "Un parqueadero del centro cobra según el número de horas completas que el carro permanece allí:\n\n| Tiempo (horas) | Costo |\n|---|---|\n| 1 | $2.500 |\n| 2 | $4.000 |\n| 3 | $5.500 |\n| 4 | $7.000 |"
+  },
+  {
+    "id": "lc-st-read-1",
+    "area": "lectura-critica",
+    "text": "Lee el siguiente fragmento: \"La aporofobia, como señala Cortina, es lo que alimenta el rechazo a inmigrantes y refugiados. No se les rechaza por extranjeros, sino por pobres. Nadie pone reparos a que un jeque árabe se instale en un país europeo, ni a facilitar la residencia a un futbolista famoso.\""
+  },
+  {
+    "id": "lc-st-read-2",
+    "area": "lectura-critica",
+    "text": "Fragmento 1: \"La aporofobia es lo que alimenta el rechazo a inmigrantes y refugiados. No se les rechaza por extranjeros, sino por pobres.\" Fragmento 2: \"Los yates atracan sin problemas en la costa rica del Mediterráneo mientras las embarcaciones pequeñas se hunden tratando de alcanzarlas.\""
+  },
+  {
+    "id": "lc-st-read-3",
+    "area": "lectura-critica",
+    "text": "Un texto sobre aporofobia comienza describiendo la experiencia de una filósofa que nombró un fenómeno social, luego explica el concepto con ejemplos de inmigrantes ricos vs pobres, y concluye con estadísticas sobre crímenes de odio."
+  },
+  {
+    "id": "ing-st-eng-1",
+    "area": "ingles",
+    "text": "Read the text: \"The education system in Colombia has improved significantly in recent years. More students now have access to technology and quality teachers. However, there are still important challenges in rural areas.\""
+  },
+  {
+    "id": "ing-st-eng-2",
+    "area": "ingles",
+    "text": "Complete the sentence: \"Yesterday, the students _____ (study) for the ICFES exam for three hours.\""
+  },
+  {
+    "id": "lc-st-sim-3",
+    "area": "lectura-critica",
+    "text": "\"Los jóvenes que pasan tiempo en redes sociales aprenden habilidades digitales que no se enseñan en la escuela. Sin embargo, esto puede generar una brecha entre las prácticas escolares y las prácticas digitales de los jóvenes.\""
+  }
+]

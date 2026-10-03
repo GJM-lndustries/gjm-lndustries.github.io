@@ -1,4 +1,4 @@
-const CACHE_NAME = 'proicfes-v1';
+const CACHE_NAME = 'proicfes-v2';
 const urlsToCache = [
   '/',
   '/index.html',

@@ -1,0 +1,95 @@
+[
+  {
+    "id": "sci-1-q1",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 1,
+    "enunciado": "Un científico observa que una célula tiene cloroplastos, pared celular y una vacuola grande. ¿De qué tipo de organismo proviene esta célula?",
+    "options": [
+      {
+        "id": "a",
+        "text": "De un animal, porque tiene vacuola"
+      },
+      {
+        "id": "b",
+        "text": "De una planta, porque tiene cloroplastos y pared celular"
+      },
+      {
+        "id": "c",
+        "text": "De un hongo, porque tiene pared celular"
+      },
+      {
+        "id": "d",
+        "text": "De una bacteria, porque es muy simple"
+      }
+    ],
+    "answer": "b",
+    "explanation": "Los cloroplastos (para fotosíntesis) y la pared celular son características exclusivas de las células vegetales. Los animales no tienen ninguna de estas dos estructuras.",
+    "tip": "Cloroplastos = solo plantas. Pared celular = plantas (y hongos, pero los hongos no tienen cloroplastos).",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "sci-2-q1",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, modelos y argumentos.",
+    "difficulty": 2,
+    "enunciado": "Un pasajero va en un bus que frena bruscamente. El pasajero siente que su cuerpo se lanza hacia adelante. ¿Cuál ley de Newton explica mejor este fenómeno?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La tercera ley: el bus ejerce una fuerza sobre el pasajero"
+      },
+      {
+        "id": "b",
+        "text": "La segunda ley: la aceleración del pasajero es proporcional a la fuerza"
+      },
+      {
+        "id": "c",
+        "text": "La primera ley: el cuerpo del pasajero tiende a seguir en movimiento"
+      },
+      {
+        "id": "d",
+        "text": "La ley de gravitación: la gravedad jala al pasajero hacia adelante"
+      }
+    ],
+    "answer": "c",
+    "explanation": "La primera ley (inercia): el cuerpo del pasajero estaba en movimiento y tiende a seguir moviéndose hacia adelante aunque el bus haya frenado. Por eso los cinturones de seguridad son obligatorios.",
+    "tip": "Inercia = resistencia al cambio de movimiento. Si algo sigue moviéndose cuando debería parar (o viceversa) → primera ley.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "sim-4",
+    "area": "ciencias-naturales",
+    "competencia": "Indagación",
+    "afirmacion": "Deriva conclusiones a partir de los resultados de un experimento o de un conjunto de datos.",
+    "difficulty": 2,
+    "enunciado": "Un experimento muestra que las plantas colocadas en la oscuridad total pierden su color verde y mueren. ¿Cuál es la conclusión más adecuada?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Las plantas necesitan agua para producir clorofila"
+      },
+      {
+        "id": "b",
+        "text": "Las plantas necesitan luz para realizar fotosíntesis y sobrevivir"
+      },
+      {
+        "id": "c",
+        "text": "Las plantas mueren porque el suelo no tiene nutrientes"
+      },
+      {
+        "id": "d",
+        "text": "La oscuridad produce una sustancia tóxica para las plantas"
+      }
+    ],
+    "answer": "b",
+    "explanation": "La clorofila (pigmento verde) se produce en los cloroplastos durante la fotosíntesis, que requiere luz. Sin luz → no hay fotosíntesis → no hay energía → la planta muere y pierde su color verde.",
+    "tip": "Una buena conclusión se apoya solo en lo que muestra el experimento: aquí lo único que cambió fue la luz.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  }
+]

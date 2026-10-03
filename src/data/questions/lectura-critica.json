@@ -1,0 +1,130 @@
+[
+  {
+    "id": "read-1-q1",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales que componen un texto.",
+    "difficulty": 1,
+    "stimulusId": "lc-st-read-1",
+    "enunciado": "¿Por qué, según el texto, se rechaza a los inmigrantes y refugiados?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Por ser extranjeros de otros países"
+      },
+      {
+        "id": "b",
+        "text": "Por ser pobres"
+      },
+      {
+        "id": "c",
+        "text": "Por no hablar el idioma local"
+      },
+      {
+        "id": "d",
+        "text": "Por ser demasiados en número"
+      }
+    ],
+    "answer": "b",
+    "explanation": "El texto dice claramente: \"No se les rechaza por extranjeros, sino por pobres.\" La respuesta está escrita directamente en el texto.",
+    "tip": "En preguntas literales, la respuesta siempre está en el texto. Busca las palabras clave de la pregunta.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "read-2-q1",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Reflexiona sobre un texto, lo relaciona con otros textos y reconoce sus estrategias discursivas.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-read-2",
+    "enunciado": "¿Qué relación existe entre los dos fragmentos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El fragmento 2 es un contraejemplo de lo que se afirma en el 1"
+      },
+      {
+        "id": "b",
+        "text": "El fragmento 1 es un contraejemplo de lo que se afirma en el 2"
+      },
+      {
+        "id": "c",
+        "text": "El fragmento 2 es un ejemplo a favor de lo que se afirma en el 1"
+      },
+      {
+        "id": "d",
+        "text": "El fragmento 1 es un ejemplo a favor de lo que se afirma en el 2"
+      }
+    ],
+    "answer": "c",
+    "explanation": "El fragmento 1 dice que se rechaza a los pobres, no a los extranjeros. El fragmento 2 ilustra esto: los ricos (yates) son bienvenidos, los pobres (embarcaciones pequeñas) no. Por eso el 2 es un EJEMPLO que apoya lo del 1.",
+    "tip": "Para identificar la relación: ¿el segundo fragmento muestra algo que confirma lo del primero? → ejemplo a favor. ¿Lo contradice? → contraejemplo.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "read-3-q1",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Reflexiona sobre un texto, lo relaciona con otros textos y reconoce sus estrategias discursivas.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-read-3",
+    "enunciado": "¿Cuál es la estrategia argumentativa principal del autor del texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Presentar una tesis controversial y luego contradecirla con datos"
+      },
+      {
+        "id": "b",
+        "text": "Citar a autores y explicar por qué está de acuerdo solo con algunos"
+      },
+      {
+        "id": "c",
+        "text": "Presentar su tesis y defenderla con ejemplos, citas y estadísticas"
+      },
+      {
+        "id": "d",
+        "text": "Narrar una historia personal para llegar a una conclusión filosófica"
+      }
+    ],
+    "answer": "c",
+    "explanation": "El autor presenta una tesis (la aporofobia existe y es un problema), luego la defiende usando: el trabajo de una experta (Cortina), ejemplos concretos (yates vs embarcaciones), y estadísticas (47% de personas en calle víctimas de odio). Esta es la estrategia de \"tesis + argumentos\".",
+    "tip": "Para identificar la estrategia: ¿Qué hace el autor? ¿Defiende una idea? ¿La contradice? ¿Solo informa? Luego mira con qué recursos la defiende.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "sim-3",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Comprende cómo se relacionan las partes de un texto (conectores, estructura) para darle un sentido global.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-sim-3",
+    "enunciado": "¿Cuál es la función de la palabra \"Sin embargo\" en el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Introduce una causa de lo anterior"
+      },
+      {
+        "id": "b",
+        "text": "Introduce una restricción o contraste con lo anterior"
+      },
+      {
+        "id": "c",
+        "text": "Introduce un ejemplo de lo anterior"
+      },
+      {
+        "id": "d",
+        "text": "Introduce una conclusión de lo anterior"
+      }
+    ],
+    "answer": "b",
+    "explanation": "\"Sin embargo\" es un conector de contraste o restricción. Introduce una idea que limita o contradice lo dicho antes. Antes: las redes enseñan cosas buenas. Después: pero esto puede crear problemas.",
+    "tip": "Conectores como «sin embargo», «pero» o «no obstante» anuncian un contraste con lo anterior.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  }
+]

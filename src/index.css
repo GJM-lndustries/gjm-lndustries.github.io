@@ -1,0 +1,242 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ProICFES - Design System "Saber es Poder"
+ * Design Movement: Colombian Academic Warmth
+ * Core Principles: Accessibility, Clarity, Warmth, Progress
+ * Color Philosophy: Deep navy (trust/authority) + lime green (growth/success) + warm amber (energy/Colombia)
+ * Typography: Lexend (headings, max readability) + DM Sans (body, friendly)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Primary: Deep Navy Blue */
+  --primary: oklch(0.32 0.12 250);
+  --primary-foreground: oklch(0.98 0.005 250);
+
+  /* Background: Warm off-white */
+  --background: oklch(0.985 0.003 80);
+  --foreground: oklch(0.18 0.02 250);
+
+  /* Card: Pure white */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 250);
+
+  /* Popover */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 250);
+
+  /* Secondary */
+  --secondary: oklch(0.94 0.01 250);
+  --secondary-foreground: oklch(0.3 0.08 250);
+
+  /* Muted */
+  --muted: oklch(0.94 0.005 80);
+  --muted-foreground: oklch(0.52 0.02 250);
+
+  /* Accent: Warm amber */
+  --accent: oklch(0.92 0.04 80);
+  --accent-foreground: oklch(0.25 0.08 50);
+
+  /* Destructive */
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  /* Border & Input */
+  --border: oklch(0.88 0.008 250);
+  --input: oklch(0.88 0.008 250);
+  --ring: oklch(0.32 0.12 250);
+
+  /* Charts */
+  --chart-1: oklch(0.55 0.18 250);
+  --chart-2: oklch(0.65 0.15 150);
+  --chart-3: oklch(0.72 0.18 80);
+  --chart-4: oklch(0.58 0.2 30);
+  --chart-5: oklch(0.62 0.17 300);
+
+  /* Sidebar: Deep navy */
+  --sidebar: oklch(0.16 0.06 250);
+  --sidebar-foreground: oklch(0.92 0.01 250);
+  --sidebar-primary: oklch(0.72 0.18 150);
+  --sidebar-primary-foreground: oklch(0.12 0.04 250);
+  --sidebar-accent: oklch(0.22 0.06 250);
+  --sidebar-accent-foreground: oklch(0.92 0.01 250);
+  --sidebar-border: oklch(0.25 0.05 250);
+  --sidebar-ring: oklch(0.55 0.18 250);
+}
+
+.dark {
+  --primary: oklch(0.65 0.18 250);
+  --primary-foreground: oklch(0.1 0.02 250);
+  --background: oklch(0.13 0.02 250);
+  --foreground: oklch(0.92 0.01 250);
+  --card: oklch(0.18 0.03 250);
+  --card-foreground: oklch(0.92 0.01 250);
+  --popover: oklch(0.18 0.03 250);
+  --popover-foreground: oklch(0.92 0.01 250);
+  --secondary: oklch(0.22 0.04 250);
+  --secondary-foreground: oklch(0.75 0.02 250);
+  --muted: oklch(0.22 0.03 250);
+  --muted-foreground: oklch(0.6 0.02 250);
+  --accent: oklch(0.25 0.05 80);
+  --accent-foreground: oklch(0.92 0.01 80);
+  --destructive: oklch(0.65 0.2 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.65 0.18 250);
+  --sidebar: oklch(0.11 0.03 250);
+  --sidebar-foreground: oklch(0.88 0.01 250);
+  --sidebar-primary: oklch(0.72 0.18 150);
+  --sidebar-primary-foreground: oklch(0.1 0.02 250);
+  --sidebar-accent: oklch(0.18 0.04 250);
+  --sidebar-accent-foreground: oklch(0.92 0.01 250);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.65 0.18 250);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lexend', system-ui, sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Navigation item */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sidebar-foreground/70 
+           hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-150
+           font-medium text-sm;
+  }
+  .nav-item.active {
+    @apply bg-sidebar-primary text-sidebar-primary-foreground font-semibold;
+  }
+
+  /* Answer option button */
+  .answer-option {
+    @apply flex items-center gap-3 p-4 rounded-xl border-2 border-border bg-card 
+           text-foreground hover:border-primary/50 hover:bg-primary/5 
+           transition-all duration-150 font-medium;
+  }
+  .answer-option.selected {
+    @apply border-primary bg-primary/10;
+  }
+  .answer-option.correct {
+    @apply border-green-500 bg-green-50 text-green-800;
+  }
+  .answer-option.incorrect {
+    @apply border-red-500 bg-red-50 text-red-800;
+  }
+
+  /* Score badge */
+  .score-badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  /* Difficulty badges */
+  .difficulty-easy {
+    @apply bg-green-50 text-green-700 border-green-200;
+  }
+  .difficulty-medium {
+    @apply bg-yellow-50 text-yellow-700 border-yellow-200;
+  }
+  .difficulty-hard {
+    @apply bg-red-50 text-red-700 border-red-200;
+  }
+
+  /* Glossary term - underlined with dots */
+  .glossary-term {
+    @apply text-primary font-semibold cursor-pointer border-b-2 border-dotted border-primary/50
+           hover:border-primary transition-colors;
+  }
+}

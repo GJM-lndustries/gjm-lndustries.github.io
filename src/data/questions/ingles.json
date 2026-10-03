@@ -1,0 +1,66 @@
+[
+  {
+    "id": "eng-1-q1",
+    "area": "ingles",
+    "competencia": "Comprensión de lectura",
+    "afirmacion": "Comprende la idea general de un texto corto en inglés.",
+    "difficulty": 1,
+    "stimulusId": "ing-st-eng-1",
+    "enunciado": "¿De qué trata principalmente el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "De los problemas de tecnología en Colombia"
+      },
+      {
+        "id": "b",
+        "text": "De las mejoras y desafíos del sistema educativo colombiano"
+      },
+      {
+        "id": "c",
+        "text": "De la calidad de los profesores rurales"
+      },
+      {
+        "id": "d",
+        "text": "Del acceso a internet en las ciudades"
+      }
+    ],
+    "answer": "b",
+    "explanation": "El texto habla de mejoras en educación (\"has improved\", \"more students have access\") pero también de desafíos (\"challenges in rural areas\"). La opción B captura ambas ideas. Palabras clave: education system, improved, challenges.",
+    "tip": "En inglés, \"however\" (sin embargo) introduce una idea contraria. Antes del \"however\" hay algo positivo, después algo negativo.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "eng-2-q1",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Usa correctamente estructuras gramaticales básicas (por ejemplo, el pasado simple) en contexto.",
+    "difficulty": 2,
+    "stimulusId": "ing-st-eng-2",
+    "enunciado": "¿Cuál es la forma correcta del verbo \"study\" para completar la oración?",
+    "options": [
+      {
+        "id": "a",
+        "text": "study"
+      },
+      {
+        "id": "b",
+        "text": "studies"
+      },
+      {
+        "id": "c",
+        "text": "studied"
+      },
+      {
+        "id": "d",
+        "text": "have studied"
+      }
+    ],
+    "answer": "c",
+    "explanation": "La palabra \"Yesterday\" indica que la acción ocurrió en el pasado y ya terminó. Por eso se usa Simple Past: \"studied\" (study + ed). Recuerda: palabras como yesterday, last week, ago → Simple Past.",
+    "tip": "Si ves \"yesterday\", \"last...\", \"...ago\" en la oración → Simple Past (verbo + ed o forma irregular).",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  }
+]
