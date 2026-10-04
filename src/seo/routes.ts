@@ -44,7 +44,7 @@ export const ROUTES: RouteMeta[] = [
     name: "Simulacro",
     title: "Simulacro ICFES gratis en línea | ProICFES",
     description:
-      "Haz un mini simulacro tipo ICFES gratis con preguntas de varias áreas del Saber 11. Resultado inmediato y explicación de cada respuesta para saber qué repasar.",
+      "Simulacro ICFES gratis: corto (25 preguntas, 40 min) o completo por sesiones, con reloj, puntaje por prueba, global estimado y explicación de cada respuesta.",
     kind: "quiz",
   },
   {
@@ -169,6 +169,14 @@ export const ROUTES: RouteMeta[] = [
     name: "Ranking",
     title: "Ranking (próximamente) · ProICFES",
     description: "El ranking entre estudiantes llegará pronto. Mientras tanto, revisa tus marcas personales.",
+    kind: "page",
+    noindex: true,
+  },
+  {
+    path: "/cuenta",
+    name: "Tu cuenta",
+    title: "Tu cuenta · ProICFES",
+    description: "Crea tu cuenta para guardar tu progreso en la nube y seguir desde cualquier dispositivo.",
     kind: "page",
     noindex: true,
   },

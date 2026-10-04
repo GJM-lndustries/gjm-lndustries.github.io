@@ -9,6 +9,8 @@ interface Fila { nombre: string; proveedor: string; finalidad: string; duracion:
 const necesarias: Fila[] = [
   { nombre: 'proicfes_progress (almacenamiento local)', proveedor: SITE.name, finalidad: 'Guardar tu progreso, respuestas, meta y preguntas por repasar en tu dispositivo.', duracion: 'Hasta que borres los datos del sitio' },
   { nombre: `${CONSENT_STORAGE_KEY} (almacenamiento local)`, proveedor: SITE.name, finalidad: 'Recordar tu elección sobre cookies (con versión y fecha).', duracion: 'Hasta que la cambies o borres los datos del sitio' },
+  { nombre: 'proicfes_simulacro_v1 (almacenamiento local)', proveedor: SITE.name, finalidad: 'Guardar el simulacro en curso (preguntas, respuestas y hora de inicio) para que puedas retomarlo.', duracion: 'Hasta que empieces otro simulacro o borres los datos del sitio' },
+  { nombre: 'proicfes_auth y proicfes_sync (almacenamiento local, solo si inicias sesión)', proveedor: `${SITE.name} (con Supabase)`, finalidad: 'Mantener tu sesión iniciada y saber qué parte de tu progreso ya se sincronizó con tu cuenta.', duracion: 'Hasta que cierres sesión o borres los datos del sitio' },
   { nombre: 'Caché del service worker (proicfes-v…)', proveedor: SITE.name, finalidad: 'Permitir que el sitio cargue más rápido y funcione sin conexión.', duracion: 'Hasta la siguiente actualización del sitio' },
   { nombre: '__cf_bm u otras cookies técnicas', proveedor: 'Cloudflare', finalidad: 'Seguridad y protección contra tráfico automatizado, si el proveedor las activa.', duracion: 'Hasta 30 minutos' },
 ];

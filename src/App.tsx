@@ -5,6 +5,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import AppLayout from "./components/AppLayout";
 import InitialMotionGate from "./components/InitialMotionGate";
 import { ProgressProvider } from "./contexts/ProgressContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import { usePWA } from "./hooks/usePWA";
 import { modules } from "./lib/appData";
 import Home from "./pages/Home";
@@ -18,6 +19,7 @@ import Leaderboard from "./pages/Leaderboard";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
+import Cuenta from "./pages/Cuenta";
 import CookieConsent from "./components/CookieConsent";
 import { ConsentProvider } from "./contexts/ConsentContext";
 import { useSeo } from "./seo/useSeo";
@@ -62,6 +64,7 @@ function AppContent() {
             <Route path="/terminos" component={Terminos} />
             <Route path="/cookies" component={Cookies} />
             <Route path="/leaderboard" component={Leaderboard} />
+            <Route path="/cuenta" component={Cuenta} />
             <Route path="/analytics">
               <Suspense fallback={<PageLoading />}>
                 <Analytics />
@@ -87,9 +90,11 @@ export default function App({ hydrating = false }: { hydrating?: boolean }) {
       <InitialMotionGate active={hydrating}>
         <ConsentProvider>
           <ProgressProvider deferLoad={hydrating}>
-            <Toaster />
-            <AppContent />
-            <CookieConsent />
+            <AuthProvider>
+              <Toaster />
+              <AppContent />
+              <CookieConsent />
+            </AuthProvider>
           </ProgressProvider>
         </ConsentProvider>
       </InitialMotionGate>

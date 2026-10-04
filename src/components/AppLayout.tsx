@@ -3,8 +3,9 @@ import { Link, useLocation } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
 import {
   Home, BookOpen, FlaskConical, Globe, Map,
-  Calculator, Trophy, BarChart3, Menu, X, Star, Library, Lightbulb, TrendingUp, PenLine, Target
+  Calculator, Trophy, BarChart3, Menu, X, Star, Library, Lightbulb, TrendingUp, PenLine, Target, UserCircle
 } from 'lucide-react';
+import { ACCOUNTS_ENABLED } from '@/lib/accounts';
 import { SITE } from '@/config/site';
 import { useConsent } from '@/contexts/ConsentContext';
 
@@ -21,6 +22,8 @@ const navItems = [
   { path: '/logros', label: 'Logros', icon: Trophy },
   { path: '/glosario', label: 'Glosario', icon: Library },
   { path: '/tips', label: 'Estrategias', icon: Lightbulb },
+  // «Mi cuenta» solo aparece cuando hay cuentas configuradas (SITE.integrations.supabase*).
+  ...(ACCOUNTS_ENABLED ? [{ path: '/cuenta', label: 'Mi cuenta', icon: UserCircle }] : []),
 ];
 
 const bottomNavItems = [

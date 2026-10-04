@@ -24,6 +24,8 @@ export default defineConfig(({ isSsrBuild }) => ({
             manualChunks(id: string) {
               if (/[\\/]node_modules[\\/](react|react-dom|scheduler|wouter)[\\/]/.test(id)) return "react";
               if (/[\\/]node_modules[\\/](framer-motion|motion-dom|motion-utils)[\\/]/.test(id)) return "motion";
+              // Solo se descarga si hay cuentas configuradas (src/lib/accounts.ts).
+              if (/[\\/]node_modules[\\/](@supabase|tslib)[\\/]/.test(id)) return "supabase";
             },
           },
     },

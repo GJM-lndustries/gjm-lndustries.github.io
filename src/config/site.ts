@@ -29,6 +29,13 @@ export const SITE = {
     gaMeasurementId: "",
     /** Google AdSense, p. ej. "ca-pub-0000000000000000" (categoría «publicidad»). */
     adsenseClientId: "",
+    /**
+     * Cuentas (Supabase): URL del proyecto, p. ej. "https://abcdefgh.supabase.co", y su clave pública
+     * «anon» / «publishable». Vacías = sin cuentas: la app funciona solo con el progreso local y
+     * /cuenta muestra «Próximamente». Ver README → «Cuentas con Supabase».
+     */
+    supabaseUrl: "" as string,
+    supabaseAnonKey: "" as string,
   },
 } as const;
 

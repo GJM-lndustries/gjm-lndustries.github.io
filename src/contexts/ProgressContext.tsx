@@ -70,6 +70,8 @@ export interface UserProgress {
 
 interface ProgressContextType {
   progress: UserProgress;
+  /** true cuando ya se leyó el progreso guardado en este navegador. */
+  loaded: boolean;
   estimate: ScoreEstimate;
   completeLesson: (lessonId: string, score: number, xp: number) => void;
   addSimulacroScore: (score: number) => void;
@@ -389,6 +391,7 @@ export function ProgressProvider({
     <ProgressContext.Provider
       value={{
         progress,
+        loaded,
         estimate,
         completeLesson,
         addSimulacroScore,

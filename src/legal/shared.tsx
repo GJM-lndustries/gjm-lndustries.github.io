@@ -41,6 +41,7 @@ export const LinkSIC = () => (
 export const TERCEROS = [
   { nombre: 'Cloudflare, Inc.', rol: 'Encargado', pais: 'Estados Unidos (red global)', para: 'Alojamiento y entrega del sitio, seguridad y protección contra ataques. Puede tratar datos técnicos como la dirección IP y el navegador.' },
   { nombre: 'Supabase, Inc.', rol: 'Encargado (cuando existan cuentas)', pais: 'Estados Unidos u otra región de servidores elegida', para: 'Base de datos y autenticación de las cuentas de usuario y del progreso sincronizado.' },
+  { nombre: 'Google LLC – Inicio de sesión con Google', rol: 'Tercero (cuando existan cuentas, solo si eliges «Continuar con Google»)', pais: 'Estados Unidos', para: 'Confirmar tu identidad y entregarnos tu correo y nombre básicos para crear o abrir tu cuenta.' },
   { nombre: 'Google LLC – Google Analytics', rol: 'Encargado (solo si aceptas cookies analíticas)', pais: 'Estados Unidos', para: 'Estadísticas agregadas de uso del sitio.' },
   { nombre: 'Google LLC – Google AdSense', rol: 'Tercero (solo si aceptas cookies de publicidad)', pais: 'Estados Unidos', para: 'Mostrar anuncios y medir su rendimiento; puede usar cookies propias según sus políticas.' },
 ];
