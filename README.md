@@ -3,11 +3,12 @@
 App web interactiva y gratuita para preparar el examen **Saber 11 (ICFES)**: lecciones cortas, modo práctica con
 retroalimentación inmediata, mini simulacro y puntaje global estimado por áreas.
 
-Sitio: <https://gjm-lndustries.github.io/>
+Sitio: <https://proicfes.com.co> · Hecho por GJM lndustries
 
 ## Tecnología
 
 React 19 + TypeScript + Vite + Tailwind CSS 4, con `wouter` (rutas), `framer-motion` y `recharts`.
+Fuentes Lexend y DM Sans autoalojadas (`src/assets/fonts`, licencia SIL OFL).
 Es una app 100 % estática: no tiene servidor, cuentas ni pagos. El progreso se guarda en el navegador
 (`localStorage`, clave `proicfes_progress`).
 
@@ -23,18 +24,41 @@ pnpm build               # compila a dist/ (incluye el paso postbuild)
 pnpm preview             # sirve dist/ localmente
 ```
 
+## Dominio y configuración del sitio
+
+La URL pública vive en **un solo lugar**: `src/config/site.ts` (`SITE.url`, hoy `https://proicfes.com.co`).
+De ahí salen el canonical, `hreflang`, Open Graph, JSON-LD, `sitemap.xml` y `robots.txt`. Para cambiar de dominio
+basta con editar esa constante y volver a compilar.
+
 ## Despliegue
 
-Cada push a `main` ejecuta `.github/workflows/deploy.yml`, que compila y publica `dist/` en GitHub Pages con las
-acciones oficiales (`configure-pages`, `upload-pages-artifact`, `deploy-pages`). En **Settings → Pages → Build and
-deployment → Source** debe estar seleccionado **GitHub Actions**.
+`pnpm build` deja en `dist/` un sitio 100 % estático que funciona en cualquier hosting estático.
 
-### Rutas y recargas
+- **Cloudflare Pages** (recomendado con el dominio propio): conectar el repositorio de GitHub, *Framework preset*
+  «None», *Build command* `pnpm build`, *Build output directory* `dist`, variable `NODE_VERSION=22`. Agregar el
+  dominio `proicfes.com.co` en *Custom domains*. `public/_headers` define la caché de los archivos con hash.
+- **GitHub Pages**: cada push a `main` ejecuta `.github/workflows/deploy.yml`, que valida, compila y publica `dist/`
+  con las acciones oficiales (`configure-pages`, `upload-pages-artifact`, `deploy-pages`). En **Settings → Pages →
+  Build and deployment → Source** debe estar seleccionado **GitHub Actions**. Si el sitio pasa a Cloudflare Pages,
+  se puede desactivar el job `deploy` (el job `build` sigue sirviendo como verificación de cada PR).
 
-GitHub Pages no sabe nada de las rutas de React. Después de `vite build`, `scripts/postbuild.mjs` copia
-`index.html` a cada ruta estática (`dist/practica/index.html`, `dist/practica.html`, …) con su propio título y
-descripción, genera `404.html` (para rutas desconocidas) y `sitemap.xml`. Si agregas una página nueva, añádela
-también en `scripts/routes.mjs`.
+### Prerender, rutas y SEO
+
+`pnpm build` hace tres pasos: `vite build` (la app), `vite build --ssr src/entry-server.tsx` (versión para Node) y
+`scripts/postbuild.mjs`, que:
+
+- prerenderiza cada ruta con React y escribe `dist/<ruta>/index.html` y `dist/<ruta>.html` con el **contenido real
+  visible sin JavaScript**, más su `<title>`, descripción, canonical, `hreflang`, Open Graph y JSON-LD
+  (`src/seo/head.ts`, `src/seo/jsonld.ts`). Así los enlaces directos y recargas responden 200;
+- genera `404.html` (noindex), `sitemap.xml` y `robots.txt`;
+- precarga las fuentes principales.
+
+En el navegador, `src/main.tsx` **hidrata** ese HTML (sin animaciones de entrada en el primer cuadro) y carga el
+progreso guardado justo después. Por eso el primer render debe ser determinista: nada de `localStorage`,
+`Date.now()` o `Math.random()` durante el render inicial (usar `useEffect`).
+
+Las rutas y sus metadatos están en `src/seo/routes.ts`. **Si agregas una página**, añádela ahí y en `src/App.tsx`.
+Las páginas personales (Mi progreso, Logros, Ranking, Meta) llevan `noindex` y no van al sitemap.
 
 ## Banco de preguntas
 
