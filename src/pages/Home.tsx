@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
 import { modules } from '@/lib/appData';
@@ -5,6 +6,8 @@ import { AREA_INFO, allQuestions } from '@/data/questions';
 import { AREA_IDS } from '@/data/questions/types';
 import { ChevronRight, Star, Zap, Target, BookOpen, Trophy, Flame, PenLine, RotateCcw } from 'lucide-react';
 import { motion } from 'framer-motion';
+import FaqList from '@/components/FaqList';
+import { FAQ } from '@/data/faq';
 
 function ScoreGauge() {
   const { estimate, progress } = useProgress();
@@ -79,7 +82,15 @@ function ModuleCard({ module }: { module: typeof modules[0] }) {
         className="block bg-card rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-shadow"
       >
         <div className="relative h-32 overflow-hidden">
-          <img src={module.image} alt="" loading="lazy" className="w-full h-full object-cover" />
+          <img
+            src={module.image}
+            alt=""
+            width={module.imageSize[0]}
+            height={module.imageSize[1]}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="absolute bottom-3 left-3 right-3">
             <div className="flex items-center justify-between">
@@ -128,17 +139,19 @@ export default function Home() {
     '🗺️ En Sociales, conecta los eventos históricos con la situación actual de Colombia.',
     '🌎 En Inglés, usa los cognados (palabras parecidas al español) a tu favor.',
   ];
-  const dailyTip = tips[Math.floor(Date.now() / 86400000) % tips.length];
+  // El consejo cambia cada día; se elige después de montar para que el HTML prerenderizado coincida.
+  const [dailyTip, setDailyTip] = useState(tips[0]);
+  useEffect(() => setDailyTip(tips[Math.floor(Date.now() / 86400000) % tips.length]), []);
 
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">
-          {isNew ? '¡Bienvenido a ProICFES!' : '¡Qué bueno verte de nuevo!'}
+          {isNew ? 'Prepárate gratis para el ICFES Saber 11' : '¡Qué bueno verte de nuevo!'}
         </h1>
         <p className="text-muted-foreground mt-1">
           {isNew
-            ? 'Prepárate para el Saber 11 con lecciones cortas, práctica con explicaciones y simulacros.'
+            ? 'ProICFES es un preicfes gratis y en línea: lecciones cortas, preguntas tipo ICFES con explicación y simulacros para que llegues con confianza al examen.'
             : `Llevas ${completedCount} de ${totalLessons} lecciones completadas. ¡Sigue así!`}
         </p>
       </div>
@@ -147,9 +160,13 @@ export default function Home() {
         <div className="relative rounded-2xl overflow-hidden min-h-48">
           <img
             src="/images/hero-icfes.webp"
+            srcSet="/images/hero-icfes-640.webp 640w, /images/hero-icfes-800.webp 800w, /images/hero-icfes.webp 1200w"
+            sizes="(min-width: 1024px) 960px, 100vw"
             alt="Estudiante colombiano preparándose para el ICFES"
             width={1200}
             height={800}
+            fetchPriority="high"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="relative bg-gradient-to-r from-[#1e3a5f]/95 via-[#1e3a5f]/75 to-transparent min-h-48 flex items-center">
@@ -319,6 +336,15 @@ export default function Home() {
         <p className="text-[11px] text-muted-foreground">
           Fuente: Guía de orientación Saber 11.° del ICFES. Consulta siempre la guía vigente en icfes.gov.co.
         </p>
+      </section>
+      <section aria-labelledby="faq-titulo" className="space-y-3">
+        <div className="flex items-center justify-between gap-3">
+          <h2 id="faq-titulo" className="text-lg font-bold font-['Lexend'] text-foreground">Preguntas frecuentes</h2>
+          <Link href="/preguntas-frecuentes" className="text-sm text-primary font-semibold hover:underline">
+            Ver todas
+          </Link>
+        </div>
+        <FaqList items={FAQ.filter(f => ['que-es-saber-11', 'como-se-calcula-el-puntaje', 'como-usar-proicfes'].includes(f.id))} headingLevel="h3" />
       </section>
     </div>
   );

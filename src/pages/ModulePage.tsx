@@ -62,7 +62,8 @@ export default function ModulePage({ module }: ModulePageProps) {
         </Link>
         <div>
           <h1 className="text-xl font-bold font-['Lexend'] text-foreground">
-            {module.icon} {module.title}
+            <span aria-hidden="true">{module.icon} </span>
+            {module.title} <span className="text-muted-foreground font-semibold">para el ICFES</span>
           </h1>
           <p className="text-sm text-muted-foreground">{module.subtitle}</p>
         </div>
@@ -70,7 +71,15 @@ export default function ModulePage({ module }: ModulePageProps) {
 
       {/* Module Hero */}
       <div className="relative rounded-2xl overflow-hidden h-40">
-        <img src={module.image} alt="" className="w-full h-full object-cover" />
+        <img
+          src={module.image}
+          alt=""
+          width={module.imageSize[0]}
+          height={module.imageSize[1]}
+          fetchPriority="high"
+          decoding="async"
+          className="w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 flex items-end p-4">
           <div className="flex-1">
             <p className="text-white/80 text-sm">{module.description}</p>

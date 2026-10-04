@@ -42,6 +42,8 @@ export interface Module {
   bgColor: string;
   icon: string;
   image: string;
+  /** Tamaño real de la imagen (ancho, alto) para reservar espacio y evitar saltos. */
+  imageSize: [number, number];
   lessons: Lesson[];
   totalXp: number;
 }
@@ -786,6 +788,7 @@ export const modules: Module[] = [
     bgColor: 'bg-blue-50',
     icon: '📐',
     image: '/images/modulo-matematicas.webp',
+    imageSize: [640, 640],
     lessons: mathLessons,
     totalXp: mathLessons.reduce((sum, l) => sum + l.xp, 0)
   },
@@ -799,6 +802,7 @@ export const modules: Module[] = [
     bgColor: 'bg-amber-50',
     icon: '📖',
     image: '/images/modulo-lectura.webp',
+    imageSize: [640, 640],
     lessons: readingLessons,
     totalXp: readingLessons.reduce((sum, l) => sum + l.xp, 0)
   },
@@ -812,6 +816,7 @@ export const modules: Module[] = [
     bgColor: 'bg-teal-50',
     icon: '🔬',
     image: '/images/modulo-ciencias.webp',
+    imageSize: [640, 640],
     lessons: scienceLessons,
     totalXp: scienceLessons.reduce((sum, l) => sum + l.xp, 0)
   },
@@ -825,6 +830,7 @@ export const modules: Module[] = [
     bgColor: 'bg-orange-50',
     icon: '🗺️',
     image: '/images/modulo-sociales.webp',
+    imageSize: [640, 640],
     lessons: socialLessons,
     totalXp: socialLessons.reduce((sum, l) => sum + l.xp, 0)
   },
@@ -838,6 +844,7 @@ export const modules: Module[] = [
     bgColor: 'bg-purple-50',
     icon: '🌎',
     image: '/images/modulo-ingles.webp',
+    imageSize: [400, 267],
     lessons: englishLessons,
     totalXp: englishLessons.reduce((sum, l) => sum + l.xp, 0)
   }
@@ -881,3 +888,12 @@ export const generalGlossary: GlossaryTerm[] = [
 ];
 
 export default modules;
+
+/** Todos los términos del glosario (generales + de cada lección), sin repetidos. */
+export function allGlossaryTerms(): (GlossaryTerm & { module: string })[] {
+  const all = [
+    ...generalGlossary.map(t => ({ ...t, module: 'General' })),
+    ...modules.flatMap(m => m.lessons.flatMap(l => l.glossary.map(t => ({ ...t, module: m.title })))),
+  ];
+  return all.filter((t, idx, arr) => arr.findIndex(x => x.term.toLowerCase() === t.term.toLowerCase()) === idx);
+}

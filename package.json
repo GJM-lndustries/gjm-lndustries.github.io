@@ -7,7 +7,7 @@
   "description": "ProICFES: app web interactiva para preparar el examen Saber 11 (ICFES).",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build && node scripts/postbuild.mjs",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/postbuild.mjs",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "validate:questions": "tsx scripts/validate-questions.ts",

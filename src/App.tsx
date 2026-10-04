@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from "wouter";
 import { Toaster } from "@/components/ui/sonner";
 import ErrorBoundary from "./components/ErrorBoundary";
 import AppLayout from "./components/AppLayout";
+import InitialMotionGate from "./components/InitialMotionGate";
 import { ProgressProvider } from "./contexts/ProgressContext";
 import { usePWA } from "./hooks/usePWA";
 import { modules } from "./lib/appData";
@@ -16,6 +17,8 @@ import Tips from "./pages/Tips";
 import Leaderboard from "./pages/Leaderboard";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
+import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
+import { useSeo } from "./seo/useSeo";
 
 // Las gráficas (recharts) pesan bastante: se cargan solo al abrir «Mi progreso».
 const Analytics = lazy(() => import("./pages/Analytics"));
@@ -37,6 +40,7 @@ function useTrailingSlashFix() {
 function AppContent() {
   usePWA();
   useTrailingSlashFix();
+  useSeo();
 
   return (
     <Switch>
@@ -51,6 +55,7 @@ function AppContent() {
             <Route path="/logros" component={Logros} />
             <Route path="/glosario" component={Glosario} />
             <Route path="/tips" component={Tips} />
+            <Route path="/preguntas-frecuentes" component={PreguntasFrecuentes} />
             <Route path="/leaderboard" component={Leaderboard} />
             <Route path="/analytics">
               <Suspense fallback={<PageLoading />}>
@@ -70,13 +75,16 @@ function AppContent() {
   );
 }
 
-export default function App() {
+/** `hydrating`: la app arranca sobre HTML prerenderizado (ver main.tsx y entry-server.tsx). */
+export default function App({ hydrating = false }: { hydrating?: boolean }) {
   return (
     <ErrorBoundary>
-      <ProgressProvider>
-        <Toaster />
-        <AppContent />
-      </ProgressProvider>
+      <InitialMotionGate active={hydrating}>
+        <ProgressProvider deferLoad={hydrating}>
+          <Toaster />
+          <AppContent />
+        </ProgressProvider>
+      </InitialMotionGate>
     </ErrorBoundary>
   );
 }

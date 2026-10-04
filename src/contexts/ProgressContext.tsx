@@ -72,6 +72,7 @@ const defaultProgress = (): UserProgress => ({
 /** Carga el progreso guardado y completa campos que no existían en versiones anteriores. */
 function loadProgress(): UserProgress {
   const base = defaultProgress();
+  if (typeof window === "undefined") return base; // prerender en Node: sin progreso guardado
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (!saved) return base;
@@ -104,16 +105,28 @@ function addBadge(badges: string[], id: string, condition: boolean) {
 
 const ProgressContext = createContext<ProgressContextType | null>(null);
 
-export function ProgressProvider({ children }: { children: React.ReactNode }) {
-  const [progress, setProgress] = useState<UserProgress>(loadProgress);
+/**
+ * `deferLoad`: al hidratar HTML prerenderizado, el primer render debe coincidir con el HTML
+ * estático (progreso vacío); el progreso guardado se carga justo después de montar.
+ */
+export function ProgressProvider({ children, deferLoad = false }: { children: React.ReactNode; deferLoad?: boolean }) {
+  const [progress, setProgress] = useState<UserProgress>(() => (deferLoad ? defaultProgress() : loadProgress()));
+  const [loaded, setLoaded] = useState(!deferLoad);
 
   useEffect(() => {
+    if (loaded) return;
+    setProgress(loadProgress());
+    setLoaded(true);
+  }, [loaded]);
+
+  useEffect(() => {
+    if (!loaded) return; // no sobrescribir lo guardado antes de cargarlo
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
     } catch {
       /* almacenamiento lleno o bloqueado: seguimos sin guardar */
     }
-  }, [progress]);
+  }, [progress, loaded]);
 
   const estimate = useMemo(() => estimateScore(progress.areaStats), [progress.areaStats]);
 

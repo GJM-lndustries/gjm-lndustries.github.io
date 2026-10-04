@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
@@ -9,6 +10,9 @@ import { MIN_ANSWERS_PER_AREA } from '@/lib/score';
 
 export default function Analytics() {
   const { progress, estimate, getModuleProgress } = useProgress();
+  // Las gráficas miden el contenedor: se dibujan solo en el navegador (no en el prerender).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const accuracyData = AREA_IDS.map(a => ({
     name: AREA_INFO[a].short,
@@ -93,8 +97,9 @@ export default function Analytics() {
       <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-card rounded-2xl border border-border p-6">
         <h2 className="font-bold font-['Lexend'] text-foreground mb-1">Aciertos por área</h2>
         <p className="text-xs text-muted-foreground mb-4">Incluye lecciones, modo práctica y simulacros.</p>
-        <ResponsiveContainer width="100%" height={260}>
-          <BarChart data={accuracyData}>
+        {mounted ? (
+          <ResponsiveContainer width="100%" height={260}>
+            <BarChart data={accuracyData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis dataKey="name" stroke="#6b7280" fontSize={12} />
             <YAxis stroke="#6b7280" domain={[0, 100]} unit="%" fontSize={12} />
@@ -102,8 +107,11 @@ export default function Analytics() {
             <Bar dataKey="aciertos" radius={[8, 8, 0, 0]}>
               {accuracyData.map(d => <Cell key={d.name} fill={d.sinDatos ? '#cbd5e1' : '#4ade80'} />)}
             </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+            </BarChart>
+          </ResponsiveContainer>
+        ) : (
+          <div className="h-[260px]" aria-hidden="true" />
+        )}
         <ul className="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-xs text-muted-foreground">
           {accuracyData.map(d => (
             <li key={d.name}>{d.name}: {d.respondidas} {d.respondidas === 1 ? 'respuesta' : 'respuestas'}</li>
@@ -114,15 +122,17 @@ export default function Analytics() {
       {simulacroData.length > 0 && (
         <section className="bg-card rounded-2xl border border-border p-6">
           <h2 className="font-bold font-['Lexend'] text-foreground mb-4">Tus simulacros (% de aciertos)</h2>
-          <ResponsiveContainer width="100%" height={240}>
-            <LineChart data={simulacroData}>
+          {mounted && (
+            <ResponsiveContainer width="100%" height={240}>
+              <LineChart data={simulacroData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis dataKey="simulacro" stroke="#6b7280" fontSize={12} />
               <YAxis stroke="#6b7280" domain={[0, 100]} unit="%" fontSize={12} />
               <Tooltip formatter={(v: number) => `${v}%`} />
               <Line type="monotone" dataKey="aciertos" stroke="#16a34a" strokeWidth={2} dot={{ fill: '#16a34a' }} />
-            </LineChart>
-          </ResponsiveContainer>
+              </LineChart>
+            </ResponsiveContainer>
+          )}
         </section>
       )}
 

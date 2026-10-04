@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { modules, generalGlossary } from '@/lib/appData';
+import { modules, allGlossaryTerms } from '@/lib/appData';
 import { Search, BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -64,20 +64,7 @@ export default function Glosario() {
   const [search, setSearch] = useState('');
   const [activeModule, setActiveModule] = useState<string | null>(null);
 
-  // Collect all terms
-  const allTerms = [
-    ...generalGlossary.map(t => ({ ...t, module: 'General' })),
-    ...modules.flatMap(m => 
-      m.lessons.flatMap(l => 
-        l.glossary.map(t => ({ ...t, module: m.title }))
-      )
-    )
-  ];
-
-  // Deduplicate by term
-  const uniqueTerms = allTerms.filter((t, idx, arr) => 
-    arr.findIndex(x => x.term.toLowerCase() === t.term.toLowerCase()) === idx
-  );
+  const uniqueTerms = allGlossaryTerms();
 
   const filtered = uniqueTerms.filter(t => {
     const matchesSearch = !search || 

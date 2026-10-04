@@ -5,6 +5,7 @@ import {
   Home, BookOpen, FlaskConical, Globe, Map,
   Calculator, Trophy, BarChart3, Menu, X, Star, Library, Lightbulb, TrendingUp, PenLine, Target
 } from 'lucide-react';
+import { SITE } from '@/config/site';
 
 const navItems = [
   { path: '/', label: 'Inicio', icon: Home },
@@ -28,6 +29,38 @@ const bottomNavItems = [
   { path: '/analytics', label: 'Progreso', icon: TrendingUp },
   { path: '/logros', label: 'Logros', icon: Trophy },
 ];
+
+const footerLinks = [
+  { path: '/practica', label: 'Preguntas tipo ICFES' },
+  { path: '/simulacro', label: 'Simulacro gratis' },
+  { path: '/preguntas-frecuentes', label: 'Preguntas frecuentes' },
+  { path: '/glosario', label: 'Glosario' },
+  { path: '/tips', label: 'Estrategias' },
+];
+
+function SiteFooter() {
+  return (
+    <footer className="mt-12 border-t border-border pt-5 pb-2 text-xs text-muted-foreground space-y-3">
+      <nav aria-label="Enlaces del sitio" className="flex flex-wrap gap-x-4 gap-y-2">
+        {footerLinks.map(({ path, label }) => (
+          <Link key={path} href={path} className="hover:text-foreground hover:underline underline-offset-2">
+            {label}
+          </Link>
+        ))}
+      </nav>
+      <p>
+        {SITE.name} es un proyecto independiente y gratuito; no está afiliado al ICFES. Para información oficial
+        consulta{' '}
+        <a href="https://www.icfes.gov.co/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground">
+          icfes.gov.co
+        </a>.
+      </p>
+      <p>
+        Hecho por <span className="font-semibold text-foreground">{SITE.author.name}</span>
+      </p>
+    </footer>
+  );
+}
 
 function ScoreMeter() {
   const { estimate } = useProgress();
@@ -184,6 +217,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main id="contenido" className="flex-1 lg:ml-64 min-h-screen pb-24 lg:pb-0 pt-16 lg:pt-0">
         <div className="max-w-5xl mx-auto px-4 py-6">
           {children}
+          <SiteFooter />
         </div>
       </main>
 

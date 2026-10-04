@@ -64,7 +64,7 @@ export default function Onboarding() {
           </div>
         </div>
 
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           {/* Welcome */}
           {step === 'welcome' && (
             <motion.div
