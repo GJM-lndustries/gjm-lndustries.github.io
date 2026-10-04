@@ -26,7 +26,7 @@
       }
     ],
     "answer": "b",
-    "explanation": "El texto habla de mejoras en educación (\"has improved\", \"more students have access\") pero también de desafíos (\"challenges in rural areas\"). La opción B captura ambas ideas. Palabras clave: education system, improved, challenges.",
+    "explanation": "El texto habla de mejoras en la educación («has improved», «more students now have access») y también de desafíos («challenges in rural areas»). La única opción que recoge las dos ideas es la de las mejoras y los desafíos del sistema educativo. Palabras clave: education system, improved, challenges.",
     "tip": "En inglés, \"however\" (sin embargo) introduce una idea contraria. Antes del \"however\" hay algo positivo, después algo negativo.",
     "source": "proicfes-lecciones",
     "reviewed": false
@@ -61,6 +61,934 @@
     "explanation": "La palabra \"Yesterday\" indica que la acción ocurrió en el pasado y ya terminó. Por eso se usa Simple Past: \"studied\" (study + ed). Recuerda: palabras como yesterday, last week, ago → Simple Past.",
     "tip": "Si ves \"yesterday\", \"last...\", \"...ago\" en la oración → Simple Past (verbo + ed o forma irregular).",
     "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "ing-001",
+    "area": "ingles",
+    "competencia": "Vocabulario",
+    "afirmacion": "Parte 1. Relaciona descripciones sencillas con las palabras que nombran objetos de uso cotidiano (A1).",
+    "difficulty": 1,
+    "parte": 1,
+    "stimulusId": "ing-st-p1-palabras",
+    "enunciado": "«This small book shows your nationality, and you need it to travel to other countries.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "a passport"
+      },
+      {
+        "id": "b",
+        "text": "an umbrella"
+      },
+      {
+        "id": "c",
+        "text": "a ticket"
+      },
+      {
+        "id": "d",
+        "text": "a wallet"
+      },
+      {
+        "id": "e",
+        "text": "a map"
+      },
+      {
+        "id": "f",
+        "text": "a backpack"
+      },
+      {
+        "id": "g",
+        "text": "a toothbrush"
+      },
+      {
+        "id": "h",
+        "text": "sunglasses"
+      }
+    ],
+    "answer": "a",
+    "explanation": "«A passport» (pasaporte) es el documento que muestra tu nacionalidad y que necesitas para viajar al exterior. «A ticket» también se usa para viajar, pero no muestra tu nacionalidad.",
+    "tip": "Primero descarta la palabra del ejemplo; luego busca en la descripción la palabra clave (rains, teeth, eyes…).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-002",
+    "area": "ingles",
+    "competencia": "Vocabulario",
+    "afirmacion": "Parte 1. Relaciona descripciones sencillas con las palabras que nombran objetos de uso cotidiano (A1).",
+    "difficulty": 1,
+    "parte": 1,
+    "stimulusId": "ing-st-p1-palabras",
+    "enunciado": "«You open it when it rains.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "a passport"
+      },
+      {
+        "id": "b",
+        "text": "an umbrella"
+      },
+      {
+        "id": "c",
+        "text": "a ticket"
+      },
+      {
+        "id": "d",
+        "text": "a wallet"
+      },
+      {
+        "id": "e",
+        "text": "a map"
+      },
+      {
+        "id": "f",
+        "text": "a backpack"
+      },
+      {
+        "id": "g",
+        "text": "a toothbrush"
+      },
+      {
+        "id": "h",
+        "text": "sunglasses"
+      }
+    ],
+    "answer": "b",
+    "explanation": "«An umbrella» es un paraguas: se abre cuando llueve (rains).",
+    "tip": "Primero descarta la palabra del ejemplo; luego busca en la descripción la palabra clave (rains, teeth, eyes…).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-003",
+    "area": "ingles",
+    "competencia": "Vocabulario",
+    "afirmacion": "Parte 1. Relaciona descripciones sencillas con las palabras que nombran objetos de uso cotidiano (A1).",
+    "difficulty": 1,
+    "parte": 1,
+    "stimulusId": "ing-st-p1-palabras",
+    "enunciado": "«You carry your books in it on your back.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "a passport"
+      },
+      {
+        "id": "b",
+        "text": "an umbrella"
+      },
+      {
+        "id": "c",
+        "text": "a ticket"
+      },
+      {
+        "id": "d",
+        "text": "a wallet"
+      },
+      {
+        "id": "e",
+        "text": "a map"
+      },
+      {
+        "id": "f",
+        "text": "a backpack"
+      },
+      {
+        "id": "g",
+        "text": "a toothbrush"
+      },
+      {
+        "id": "h",
+        "text": "sunglasses"
+      }
+    ],
+    "answer": "f",
+    "explanation": "«A backpack» es un morral: se lleva en la espalda (on your back).",
+    "tip": "Primero descarta la palabra del ejemplo; luego busca en la descripción la palabra clave (rains, teeth, eyes…).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-004",
+    "area": "ingles",
+    "competencia": "Vocabulario",
+    "afirmacion": "Parte 1. Relaciona descripciones sencillas con las palabras que nombran objetos de uso cotidiano (A1).",
+    "difficulty": 1,
+    "parte": 1,
+    "stimulusId": "ing-st-p1-palabras",
+    "enunciado": "«You use it to clean your teeth.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "a passport"
+      },
+      {
+        "id": "b",
+        "text": "an umbrella"
+      },
+      {
+        "id": "c",
+        "text": "a ticket"
+      },
+      {
+        "id": "d",
+        "text": "a wallet"
+      },
+      {
+        "id": "e",
+        "text": "a map"
+      },
+      {
+        "id": "f",
+        "text": "a backpack"
+      },
+      {
+        "id": "g",
+        "text": "a toothbrush"
+      },
+      {
+        "id": "h",
+        "text": "sunglasses"
+      }
+    ],
+    "answer": "g",
+    "explanation": "«A toothbrush» es un cepillo de dientes (tooth = diente, brush = cepillo).",
+    "tip": "Primero descarta la palabra del ejemplo; luego busca en la descripción la palabra clave (rains, teeth, eyes…).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-005",
+    "area": "ingles",
+    "competencia": "Vocabulario",
+    "afirmacion": "Parte 1. Relaciona descripciones sencillas con las palabras que nombran objetos de uso cotidiano (A1).",
+    "difficulty": 1,
+    "parte": 1,
+    "stimulusId": "ing-st-p1-palabras",
+    "enunciado": "«You wear them to protect your eyes from the sun.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "a passport"
+      },
+      {
+        "id": "b",
+        "text": "an umbrella"
+      },
+      {
+        "id": "c",
+        "text": "a ticket"
+      },
+      {
+        "id": "d",
+        "text": "a wallet"
+      },
+      {
+        "id": "e",
+        "text": "a map"
+      },
+      {
+        "id": "f",
+        "text": "a backpack"
+      },
+      {
+        "id": "g",
+        "text": "a toothbrush"
+      },
+      {
+        "id": "h",
+        "text": "sunglasses"
+      }
+    ],
+    "answer": "h",
+    "explanation": "«Sunglasses» son gafas de sol: protegen los ojos (eyes) del sol (sun). Sobran «a ticket» y «a map».",
+    "tip": "Primero descarta la palabra del ejemplo; luego busca en la descripción la palabra clave (rains, teeth, eyes…).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-006",
+    "area": "ingles",
+    "competencia": "Uso pragmático del lenguaje",
+    "afirmacion": "Parte 2. Comprende el propósito de avisos y letreros e identifica el lugar donde podrían aparecer (A1–A2).",
+    "difficulty": 1,
+    "parte": 2,
+    "enunciado": "¿Dónde puedes ver este aviso? «PLEASE KEEP YOUR SEATBELT FASTENED WHILE THE SIGN IS ON»",
+    "options": [
+      {
+        "id": "a",
+        "text": "In a library."
+      },
+      {
+        "id": "b",
+        "text": "In a supermarket."
+      },
+      {
+        "id": "c",
+        "text": "On a plane."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El aviso pide mantener el cinturón de seguridad (seatbelt) abrochado mientras la señal esté encendida. Es típico de un avión.",
+    "tip": "Busca la palabra clave del aviso (seatbelt) y piensa en qué lugar tiene sentido.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-007",
+    "area": "ingles",
+    "competencia": "Uso pragmático del lenguaje",
+    "afirmacion": "Parte 2. Comprende el propósito de avisos y letreros e identifica el lugar donde podrían aparecer (A1–A2).",
+    "difficulty": 1,
+    "parte": 2,
+    "enunciado": "¿Dónde puedes ver este aviso? «Books must be returned within 15 days. Late returns: no new loans for a week.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "At a bank."
+      },
+      {
+        "id": "b",
+        "text": "In a library."
+      },
+      {
+        "id": "c",
+        "text": "In a bookshop."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Habla de devolver libros (returned) y de préstamos (loans): es un aviso de biblioteca. En una librería (bookshop) los libros se compran, no se devuelven a los 15 días.",
+    "tip": "Cuidado con los falsos amigos: library = biblioteca; bookshop o bookstore = librería.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-008",
+    "area": "ingles",
+    "competencia": "Uso pragmático del lenguaje",
+    "afirmacion": "Parte 2. Comprende el propósito de avisos y letreros e identifica el lugar donde podrían aparecer (A1–A2).",
+    "difficulty": 1,
+    "parte": 2,
+    "enunciado": "¿Dónde puedes ver este aviso? «Do not feed the animals. Stay behind the fence.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "At a zoo."
+      },
+      {
+        "id": "b",
+        "text": "In a restaurant."
+      },
+      {
+        "id": "c",
+        "text": "At a hospital."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Pide no alimentar a los animales (do not feed the animals) y quedarse detrás de la cerca (fence). Es un aviso de zoológico.",
+    "tip": "Los avisos usan imperativos cortos (Do not…, Stay…, Please…): identifica la acción que piden.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-009",
+    "area": "ingles",
+    "competencia": "Uso pragmático del lenguaje",
+    "afirmacion": "Parte 2. Comprende el propósito de avisos y letreros e identifica el lugar donde podrían aparecer (A1–A2).",
+    "difficulty": 2,
+    "parte": 2,
+    "enunciado": "¿Dónde puedes ver este aviso? «Route 12 to Downtown – every 15 minutes. Please have your card ready.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "At a cinema."
+      },
+      {
+        "id": "b",
+        "text": "At a bus stop."
+      },
+      {
+        "id": "c",
+        "text": "In a classroom."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Informa sobre una ruta (route), su destino (downtown, el centro) y la frecuencia (every 15 minutes), y pide tener lista la tarjeta. Corresponde a un paradero de bus.",
+    "tip": "Palabras como route, every… minutes o platform indican transporte.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-010",
+    "area": "ingles",
+    "competencia": "Uso pragmático del lenguaje",
+    "afirmacion": "Parte 3. Elige la respuesta adecuada en conversaciones cortas de la vida cotidiana (A1–A2).",
+    "difficulty": 1,
+    "parte": 3,
+    "enunciado": "Completa la conversación. — «Can I borrow your pen?»",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sure, here you are."
+      },
+      {
+        "id": "b",
+        "text": "Yes, I can."
+      },
+      {
+        "id": "c",
+        "text": "I'm fine, thanks."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Pedir prestado (Can I borrow…?) se responde aceptando y entregando el objeto: «Sure, here you are». «Yes, I can» habla de la capacidad de quien responde, no de prestar el lápiz.",
+    "tip": "En la parte 3, piensa en lo que respondería un hablante real, no solo en si la frase es gramatical.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-011",
+    "area": "ingles",
+    "competencia": "Uso pragmático del lenguaje",
+    "afirmacion": "Parte 3. Elige la respuesta adecuada en conversaciones cortas de la vida cotidiana (A1–A2).",
+    "difficulty": 1,
+    "parte": 3,
+    "enunciado": "Completa la conversación. — «What time does the class start?»",
+    "options": [
+      {
+        "id": "a",
+        "text": "For two hours."
+      },
+      {
+        "id": "b",
+        "text": "In room 204."
+      },
+      {
+        "id": "c",
+        "text": "At eight o'clock."
+      }
+    ],
+    "answer": "c",
+    "explanation": "«What time…?» pregunta por la hora: «At eight o'clock». «For two hours» responde cuánto dura y «In room 204» dice dónde es.",
+    "tip": "Fíjate en la palabra interrogativa: what time (hora), how long (duración), where (lugar).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-012",
+    "area": "ingles",
+    "competencia": "Uso pragmático del lenguaje",
+    "afirmacion": "Parte 3. Elige la respuesta adecuada en conversaciones cortas de la vida cotidiana (A1–A2).",
+    "difficulty": 2,
+    "parte": 3,
+    "enunciado": "Completa la conversación. — «I'm sorry I'm late.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "Don't worry, we haven't started yet."
+      },
+      {
+        "id": "b",
+        "text": "You're welcome."
+      },
+      {
+        "id": "c",
+        "text": "Nice to meet you too."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Ante una disculpa, una respuesta natural es tranquilizar a la otra persona: «Don't worry…». «You're welcome» responde a un agradecimiento, no a una disculpa.",
+    "tip": "Thank you → You're welcome. Sorry → Don't worry / That's OK.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-013",
+    "area": "ingles",
+    "competencia": "Uso pragmático del lenguaje",
+    "afirmacion": "Parte 3. Elige la respuesta adecuada en conversaciones cortas de la vida cotidiana (A1–A2).",
+    "difficulty": 2,
+    "parte": 3,
+    "enunciado": "Completa la conversación. — «Would you like some more coffee?»",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, I do."
+      },
+      {
+        "id": "b",
+        "text": "It's very hot today."
+      },
+      {
+        "id": "c",
+        "text": "No, thanks. I've had enough."
+      }
+    ],
+    "answer": "c",
+    "explanation": "«Would you like…?» es un ofrecimiento; se responde «Yes, please» o «No, thanks». «Yes, I do» no corresponde, porque la pregunta no se hizo con «do».",
+    "tip": "Para responder Yes/No con el auxiliar, usa el mismo de la pregunta: Would you…? → Yes, I would.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-014",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 4. Selecciona la forma gramatical correcta para completar un texto (A2).",
+    "difficulty": 1,
+    "parte": 4,
+    "stimulusId": "ing-st-p4-salento",
+    "enunciado": "Espacio (1): «Last month, our class ___ a trip…»",
+    "options": [
+      {
+        "id": "a",
+        "text": "take"
+      },
+      {
+        "id": "b",
+        "text": "took"
+      },
+      {
+        "id": "c",
+        "text": "taking"
+      }
+    ],
+    "answer": "b",
+    "explanation": "«Last month» indica pasado terminado, así que se usa el pasado simple de take: took.",
+    "tip": "Marcadores como yesterday, last month o ago piden pasado simple.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-015",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 4. Selecciona la forma gramatical correcta para completar un texto (A2).",
+    "difficulty": 1,
+    "parte": 4,
+    "stimulusId": "ing-st-p4-salento",
+    "enunciado": "Espacio (2): «We ___ in Salento for three days.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "staying"
+      },
+      {
+        "id": "b",
+        "text": "stay"
+      },
+      {
+        "id": "c",
+        "text": "stayed"
+      }
+    ],
+    "answer": "c",
+    "explanation": "El relato está en pasado (el viaje fue el mes pasado): «We stayed» (nos quedamos).",
+    "tip": "Mantén el mismo tiempo verbal a lo largo de un relato, salvo que el texto indique un cambio.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-016",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 4. Selecciona la forma gramatical correcta para completar un texto (A2).",
+    "difficulty": 2,
+    "parte": 4,
+    "stimulusId": "ing-st-p4-salento",
+    "enunciado": "Espacio (3): «…showed us how coffee ___ grown and processed.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "is"
+      },
+      {
+        "id": "b",
+        "text": "are"
+      },
+      {
+        "id": "c",
+        "text": "be"
+      }
+    ],
+    "answer": "a",
+    "explanation": "Es voz pasiva (is grown = se cultiva) y el sujeto «coffee» es singular e incontable, por eso va con «is». Se usa presente porque describe cómo se hace el café en general.",
+    "tip": "Voz pasiva = to be + participio (is grown, was built). El verbo «be» concuerda con el sujeto.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-017",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 4. Selecciona la forma gramatical correcta para completar un texto (A2).",
+    "difficulty": 1,
+    "parte": 4,
+    "stimulusId": "ing-st-p4-salento",
+    "enunciado": "Espacio (4): «…so it was ___ interesting experience.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "an"
+      },
+      {
+        "id": "b",
+        "text": "a"
+      },
+      {
+        "id": "c",
+        "text": "the"
+      }
+    ],
+    "answer": "a",
+    "explanation": "«Interesting» empieza con sonido vocal, así que el artículo indefinido es «an». «The» no encaja porque es la primera vez que se menciona esa experiencia.",
+    "tip": "A + sonido consonante (a book); an + sonido vocal (an apple, an hour).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-018",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 4. Selecciona la forma gramatical correcta para completar un texto (A2).",
+    "difficulty": 2,
+    "parte": 4,
+    "stimulusId": "ing-st-p4-salento",
+    "enunciado": "Espacio (5): «…because there ___ many places we didn't have time to visit.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "is"
+      },
+      {
+        "id": "b",
+        "text": "be"
+      },
+      {
+        "id": "c",
+        "text": "are"
+      }
+    ],
+    "answer": "c",
+    "explanation": "«Many places» es plural, así que se usa «there are». Va en presente porque los lugares todavía existen y el narrador quiere volver.",
+    "tip": "There is + singular; there are + plural.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-019",
+    "area": "ingles",
+    "competencia": "Comprensión de lectura",
+    "afirmacion": "Parte 5. Comprende información explícita de un texto sencillo (A2).",
+    "difficulty": 1,
+    "parte": 5,
+    "stimulusId": "ing-st-p5-wayuu",
+    "enunciado": "Where do the Wayuu live?",
+    "options": [
+      {
+        "id": "a",
+        "text": "In the south of Colombia."
+      },
+      {
+        "id": "b",
+        "text": "In La Guajira and in part of Venezuela."
+      },
+      {
+        "id": "c",
+        "text": "Only in Venezuela."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El texto dice: «live in La Guajira, in the north of Colombia, and in part of Venezuela».",
+    "tip": "En la parte 5, la respuesta está escrita en el texto: busca las palabras de la pregunta (live).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-020",
+    "area": "ingles",
+    "competencia": "Comprensión de lectura",
+    "afirmacion": "Parte 5. Comprende información explícita de un texto sencillo (A2).",
+    "difficulty": 1,
+    "parte": 5,
+    "stimulusId": "ing-st-p5-wayuu",
+    "enunciado": "Who traditionally weaves the mochilas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The visitors."
+      },
+      {
+        "id": "b",
+        "text": "Wayuu women."
+      },
+      {
+        "id": "c",
+        "text": "Factory workers."
+      }
+    ],
+    "answer": "b",
+    "explanation": "«Wayuu women traditionally weave them». Las fábricas hacen copias, no las mochilas tradicionales.",
+    "tip": "«Who» pregunta por una persona o un grupo: ubica el sujeto del verbo de la pregunta (weave).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-021",
+    "area": "ingles",
+    "competencia": "Comprensión de lectura",
+    "afirmacion": "Parte 5. Comprende información explícita de un texto sencillo (A2).",
+    "difficulty": 2,
+    "parte": 5,
+    "stimulusId": "ing-st-p5-wayuu",
+    "enunciado": "According to the text, the designs of the mochilas…",
+    "options": [
+      {
+        "id": "a",
+        "text": "often represent nature or daily life."
+      },
+      {
+        "id": "b",
+        "text": "are all the same."
+      },
+      {
+        "id": "c",
+        "text": "are chosen by the visitors."
+      }
+    ],
+    "answer": "a",
+    "explanation": "«Each design has a meaning, and many designs represent elements of nature or of daily life».",
+    "tip": "«According to the text» significa «según el texto»: no respondas con lo que tú sabes, sino con lo que dice.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-022",
+    "area": "ingles",
+    "competencia": "Comprensión de lectura",
+    "afirmacion": "Parte 5. Comprende información explícita de un texto sencillo (A2).",
+    "difficulty": 2,
+    "parte": 5,
+    "stimulusId": "ing-st-p5-wayuu",
+    "enunciado": "Why are factory copies a problem, according to some artisans?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The copies are more expensive."
+      },
+      {
+        "id": "b",
+        "text": "The copies take weeks to make."
+      },
+      {
+        "id": "c",
+        "text": "Buyers may not know if a bag is authentic."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El texto dice que son un problema «because buyers do not always know if a bag is authentic». Además, las copias son baratas (cheap) y las que tardan semanas son las mochilas tejidas a mano.",
+    "tip": "La palabra «because» suele introducir la respuesta a una pregunta con «why».",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-023",
+    "area": "ingles",
+    "competencia": "Comprensión de lectura",
+    "afirmacion": "Parte 6. Comprende las ideas implícitas, las intenciones y las opiniones de un texto (B1).",
+    "difficulty": 2,
+    "parte": 6,
+    "stimulusId": "ing-st-p6-andres",
+    "enunciado": "What can we infer about Andrés at the beginning of the story?",
+    "options": [
+      {
+        "id": "a",
+        "text": "He did not like English at all."
+      },
+      {
+        "id": "b",
+        "text": "He felt that his daily trip was not useful."
+      },
+      {
+        "id": "c",
+        "text": "He wanted to move to the city."
+      },
+      {
+        "id": "d",
+        "text": "He did not enjoy music or football."
+      }
+    ],
+    "answer": "b",
+    "explanation": "«At first, he thought those hours were wasted»: al principio sentía que el viaje era tiempo perdido. Nada indica que odiara el inglés ni que quisiera mudarse, y la música y el fútbol eran sus pasiones.",
+    "tip": "Inferir es deducir algo que el texto no dice con esas palabras, pero que se apoya en una frase concreta.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-024",
+    "area": "ingles",
+    "competencia": "Comprensión de lectura",
+    "afirmacion": "Parte 6. Comprende las ideas implícitas, las intenciones y las opiniones de un texto (B1).",
+    "difficulty": 3,
+    "parte": 6,
+    "stimulusId": "ing-st-p6-andres",
+    "enunciado": "Why did Andrés probably choose podcasts about music and football?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Because his teacher did not allow other topics."
+      },
+      {
+        "id": "b",
+        "text": "Because they were the only podcasts in English."
+      },
+      {
+        "id": "c",
+        "text": "Because they did not have any difficult words."
+      },
+      {
+        "id": "d",
+        "text": "Because they were about topics he loved, which made listening easier."
+      }
+    ],
+    "answer": "d",
+    "explanation": "El texto dice que eran «his two passions». Se infiere que eligió temas que le interesaban para mantener la motivación. Sí tenían palabras difíciles: las revisaba en casa con las transcripciones.",
+    "tip": "Descarta las opciones que contradicen un detalle del texto (aquí: sí había palabras que no entendía).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-025",
+    "area": "ingles",
+    "competencia": "Comprensión de lectura",
+    "afirmacion": "Parte 6. Comprende las ideas implícitas, las intenciones y las opiniones de un texto (B1).",
+    "difficulty": 3,
+    "parte": 6,
+    "stimulusId": "ing-st-p6-andres",
+    "enunciado": "What does Andrés mean when he says \"now the trip feels shorter\"?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The bus started to go faster."
+      },
+      {
+        "id": "b",
+        "text": "He moved to a town closer to the city."
+      },
+      {
+        "id": "c",
+        "text": "Using the time to learn made the trip more enjoyable."
+      },
+      {
+        "id": "d",
+        "text": "He stopped taking the bus to study."
+      }
+    ],
+    "answer": "c",
+    "explanation": "Él mismo dice que el bus no va más rápido («The bus didn't get any faster»). El viaje dura lo mismo, pero se le hace más corto porque lo aprovecha aprendiendo.",
+    "tip": "Cuando alguien habla de forma figurada, compara su frase con los hechos del texto.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-026",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 7. Completa un texto con la palabra de significado o estructura correcta (B1).",
+    "difficulty": 2,
+    "parte": 7,
+    "stimulusId": "ing-st-p7-ciclovia",
+    "enunciado": "Espacio (1): «___ Sunday and on public holidays…»",
+    "options": [
+      {
+        "id": "a",
+        "text": "All"
+      },
+      {
+        "id": "b",
+        "text": "Many"
+      },
+      {
+        "id": "c",
+        "text": "Some"
+      },
+      {
+        "id": "d",
+        "text": "Every"
+      }
+    ],
+    "answer": "d",
+    "explanation": "«Every» va con un sustantivo contable en singular y significa «cada»: every Sunday (todos los domingos). «Many» exigiría plural (many Sundays) y «all Sunday» significaría «todo el domingo».",
+    "tip": "Every + singular (every day); many + plural (many days); all day = todo el día.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-027",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 7. Completa un texto con la palabra de significado o estructura correcta (B1).",
+    "difficulty": 2,
+    "parte": 7,
+    "stimulusId": "ing-st-p7-ciclovia",
+    "enunciado": "Espacio (2): «…and since then ___ cities in other countries have copied the idea.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "much"
+      },
+      {
+        "id": "b",
+        "text": "a lot"
+      },
+      {
+        "id": "c",
+        "text": "many"
+      },
+      {
+        "id": "d",
+        "text": "any"
+      }
+    ],
+    "answer": "c",
+    "explanation": "«Cities» es un sustantivo contable en plural, así que va con «many». «Much» es para incontables; «a lot» necesitaría «of» (a lot of cities) y «any» no se usa así en oraciones afirmativas.",
+    "tip": "Many + contables (many cities); much + incontables (much water); a lot of + ambos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-028",
+    "area": "ingles",
+    "competencia": "Vocabulario",
+    "afirmacion": "Parte 7. Completa un texto con la palabra de significado o estructura correcta (B1).",
+    "difficulty": 3,
+    "parte": 7,
+    "stimulusId": "ing-st-p7-ciclovia",
+    "enunciado": "Espacio (3): «…it is a free way to do exercise and ___ time together outdoors.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "spend"
+      },
+      {
+        "id": "b",
+        "text": "pass"
+      },
+      {
+        "id": "c",
+        "text": "waste"
+      },
+      {
+        "id": "d",
+        "text": "take"
+      }
+    ],
+    "answer": "a",
+    "explanation": "La combinación natural en inglés es «spend time» (pasar tiempo). «Waste time» significa perder el tiempo, lo contrario de lo que dice el texto, y «pass time» o «take time together» no se usan con este sentido.",
+    "tip": "Aprende colocaciones (palabras que van juntas): spend time, make a decision, do exercise, take a photo.",
+    "source": "original",
     "reviewed": false
   }
 ]

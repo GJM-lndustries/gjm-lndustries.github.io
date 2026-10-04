@@ -1,101 +1,5 @@
 [
   {
-    "id": "read-1-q1",
-    "area": "lectura-critica",
-    "competencia": "Identificar y entender los contenidos locales",
-    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales que componen un texto.",
-    "difficulty": 1,
-    "stimulusId": "lc-st-read-1",
-    "enunciado": "¿Por qué, según el texto, se rechaza a los inmigrantes y refugiados?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Por ser extranjeros de otros países"
-      },
-      {
-        "id": "b",
-        "text": "Por ser pobres"
-      },
-      {
-        "id": "c",
-        "text": "Por no hablar el idioma local"
-      },
-      {
-        "id": "d",
-        "text": "Por ser demasiados en número"
-      }
-    ],
-    "answer": "b",
-    "explanation": "El texto dice claramente: \"No se les rechaza por extranjeros, sino por pobres.\" La respuesta está escrita directamente en el texto.",
-    "tip": "En preguntas literales, la respuesta siempre está en el texto. Busca las palabras clave de la pregunta.",
-    "source": "proicfes-lecciones",
-    "reviewed": false
-  },
-  {
-    "id": "read-2-q1",
-    "area": "lectura-critica",
-    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
-    "afirmacion": "Reflexiona sobre un texto, lo relaciona con otros textos y reconoce sus estrategias discursivas.",
-    "difficulty": 2,
-    "stimulusId": "lc-st-read-2",
-    "enunciado": "¿Qué relación existe entre los dos fragmentos?",
-    "options": [
-      {
-        "id": "a",
-        "text": "El fragmento 2 es un contraejemplo de lo que se afirma en el 1"
-      },
-      {
-        "id": "b",
-        "text": "El fragmento 1 es un contraejemplo de lo que se afirma en el 2"
-      },
-      {
-        "id": "c",
-        "text": "El fragmento 2 es un ejemplo a favor de lo que se afirma en el 1"
-      },
-      {
-        "id": "d",
-        "text": "El fragmento 1 es un ejemplo a favor de lo que se afirma en el 2"
-      }
-    ],
-    "answer": "c",
-    "explanation": "El fragmento 1 dice que se rechaza a los pobres, no a los extranjeros. El fragmento 2 ilustra esto: los ricos (yates) son bienvenidos, los pobres (embarcaciones pequeñas) no. Por eso el 2 es un EJEMPLO que apoya lo del 1.",
-    "tip": "Para identificar la relación: ¿el segundo fragmento muestra algo que confirma lo del primero? → ejemplo a favor. ¿Lo contradice? → contraejemplo.",
-    "source": "proicfes-lecciones",
-    "reviewed": false
-  },
-  {
-    "id": "read-3-q1",
-    "area": "lectura-critica",
-    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
-    "afirmacion": "Reflexiona sobre un texto, lo relaciona con otros textos y reconoce sus estrategias discursivas.",
-    "difficulty": 3,
-    "stimulusId": "lc-st-read-3",
-    "enunciado": "¿Cuál es la estrategia argumentativa principal del autor del texto?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Presentar una tesis controversial y luego contradecirla con datos"
-      },
-      {
-        "id": "b",
-        "text": "Citar a autores y explicar por qué está de acuerdo solo con algunos"
-      },
-      {
-        "id": "c",
-        "text": "Presentar su tesis y defenderla con ejemplos, citas y estadísticas"
-      },
-      {
-        "id": "d",
-        "text": "Narrar una historia personal para llegar a una conclusión filosófica"
-      }
-    ],
-    "answer": "c",
-    "explanation": "El autor presenta una tesis (la aporofobia existe y es un problema), luego la defiende usando: el trabajo de una experta (Cortina), ejemplos concretos (yates vs embarcaciones), y estadísticas (47% de personas en calle víctimas de odio). Esta es la estrategia de \"tesis + argumentos\".",
-    "tip": "Para identificar la estrategia: ¿Qué hace el autor? ¿Defiende una idea? ¿La contradice? ¿Solo informa? Luego mira con qué recursos la defiende.",
-    "source": "proicfes-lecciones",
-    "reviewed": false
-  },
-  {
     "id": "sim-3",
     "area": "lectura-critica",
     "competencia": "Comprender cómo se articulan las partes de un texto",
@@ -125,6 +29,934 @@
     "explanation": "\"Sin embargo\" es un conector de contraste o restricción. Introduce una idea que limita o contradice lo dicho antes. Antes: las redes enseñan cosas buenas. Después: pero esto puede crear problemas.",
     "tip": "Conectores como «sin embargo», «pero» o «no obstante» anuncian un contraste con lo anterior.",
     "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "lc-001",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "stimulusId": "lc-st-cuento-linea",
+    "enunciado": "Según el fragmento, ¿por qué se separaron los abuelos del narrador hace cincuenta años?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque él se fue a trabajar al Tolima y ella se quedó en la finca."
+      },
+      {
+        "id": "b",
+        "text": "Porque la familia de ella no aprobaba la relación."
+      },
+      {
+        "id": "c",
+        "text": "Porque el bus en el que viajaban se varó en el alto de La Línea."
+      },
+      {
+        "id": "d",
+        "text": "Porque ella se fue a estudiar a Ibagué y él se quedó con la finca en Calarcá."
+      }
+    ],
+    "answer": "d",
+    "explanation": "El abuelo lo dice de forma explícita: «Ella iba para Ibagué a estudiar y yo me quedaba en Calarcá con la finca». Las demás opciones invierten los papeles o agregan información que no aparece en el texto.",
+    "tip": "En preguntas literales, ubica en el texto la frase que responde y compárala palabra por palabra con cada opción.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-002",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-cuento-linea",
+    "enunciado": "En el fragmento, la frase «La gente que se despide bien casi siempre vuelve» es",
+    "options": [
+      {
+        "id": "a",
+        "text": "una advertencia del conductor a los pasajeros del bus."
+      },
+      {
+        "id": "b",
+        "text": "una crítica del narrador a la actitud de su abuelo."
+      },
+      {
+        "id": "c",
+        "text": "una idea general que el abuelo saca de su propia experiencia."
+      },
+      {
+        "id": "d",
+        "text": "una cita de un libro que el abuelo había leído."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La dice el abuelo justo después de contar que la abuela volvió. Pasa de un hecho personal («volvió») a una afirmación sobre «la gente» en general: es una enseñanza que extrae de lo que vivió.",
+    "tip": "Para identificar voces, pregúntate quién dice cada frase y desde qué experiencia la dice.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-003",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-cuento-linea",
+    "enunciado": "Al final, el narrador mira la niebla «tratando de ver lo que él veía». Esto sugiere que el narrador",
+    "options": [
+      {
+        "id": "a",
+        "text": "quiere comprobar si desde allí se ve realmente el Tolima."
+      },
+      {
+        "id": "b",
+        "text": "intenta comprender el significado que ese lugar tiene para su abuelo."
+      },
+      {
+        "id": "c",
+        "text": "está preocupado porque la niebla hace peligrosa la carretera."
+      },
+      {
+        "id": "d",
+        "text": "busca un lugar donde el celular tenga señal."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Nadie puede ver el Tolima por la niebla, así que el abuelo «ve» un recuerdo, no un paisaje. Cuando el nieto intenta ver «lo que él veía», busca entender esa historia que el abuelo no terminó de contar.",
+    "tip": "Cuando una expresión no puede entenderse de forma literal, busca qué sentido le da el resto del texto.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-004",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Reconoce las estrategias discursivas en un texto.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-cuento-linea",
+    "enunciado": "¿Qué función cumple en el relato el detalle de la moneda vieja?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sugiere, sin explicarlo, que el abuelo guarda un objeto ligado a ese recuerdo y deja parte de la historia sin contar."
+      },
+      {
+        "id": "b",
+        "text": "Demuestra que el abuelo tenía dificultades económicas."
+      },
+      {
+        "id": "c",
+        "text": "Explica por qué el conductor pitó dos veces."
+      },
+      {
+        "id": "d",
+        "text": "Indica que el abuelo pagaba el pasaje con monedas antiguas."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El narrador esperaba «la historia completa», pero el abuelo solo saca la moneda y la guarda. El objeto reemplaza la explicación: insinúa un vínculo con la despedida sin decirlo, una estrategia común en los textos literarios.",
+    "tip": "En textos literarios, los objetos y gestos pequeños suelen decir lo que los personajes callan.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-005",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "stimulusId": "lc-st-columna-celular",
+    "enunciado": "¿Qué propone el autor de la columna?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Prohibir por completo el celular en el colegio."
+      },
+      {
+        "id": "b",
+        "text": "Guardar los celulares durante las clases y usarlos en espacios dedicados a aprender."
+      },
+      {
+        "id": "c",
+        "text": "Permitir el celular libremente en todas las clases."
+      },
+      {
+        "id": "d",
+        "text": "Dejar que cada estudiante decida cuándo usar el celular."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El segundo párrafo lo dice: «guardar los celulares durante las clases, pero dedicar espacios a usarlos con un propósito». No es prohibición total ni uso libre.",
+    "tip": "La propuesta de un texto argumentativo suele aparecer después de expresiones como «por eso propongo» o «la solución es».",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-006",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-columna-celular",
+    "enunciado": "En la columna, la oración «Sin embargo, prohibir no es lo mismo que educar» sirve para",
+    "options": [
+      {
+        "id": "a",
+        "text": "introducir la objeción del autor al argumento de quienes defienden la prohibición."
+      },
+      {
+        "id": "b",
+        "text": "resumir la conclusión de quienes defienden la prohibición."
+      },
+      {
+        "id": "c",
+        "text": "dar un ejemplo de cómo se aplica la prohibición."
+      },
+      {
+        "id": "d",
+        "text": "presentar un dato que confirma lo dicho antes."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Antes de esa oración el autor expone el argumento a favor de prohibir. «Sin embargo» marca el giro: a partir de ahí plantea su objeción y prepara su propia propuesta.",
+    "tip": "Los conectores de contraste («sin embargo», «no obstante», «pero») suelen señalar dónde empieza la postura del autor.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-007",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Reconoce las estrategias discursivas en un texto.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-columna-celular",
+    "enunciado": "Cuando el autor reconoce que su propuesta «es más difícil de aplicar que una prohibición total», lo que hace es",
+    "options": [
+      {
+        "id": "a",
+        "text": "abandonar su propuesta y aceptar la prohibición."
+      },
+      {
+        "id": "b",
+        "text": "demostrar con datos que su propuesta es más eficaz."
+      },
+      {
+        "id": "c",
+        "text": "criticar a los docentes por no querer esforzarse."
+      },
+      {
+        "id": "d",
+        "text": "admitir una debilidad de su propuesta para luego defender que vale la pena."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Es una concesión: el autor acepta una objeción posible («es cierto») y enseguida la responde («pero los colegios no existen para lo fácil»). Así su argumento parece más honesto y sólido.",
+    "tip": "Una concesión reconoce algo del punto contrario para fortalecer la propia tesis; suele ir seguida de «pero».",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-008",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-columna-celular",
+    "enunciado": "¿Cuál de los siguientes enunciados, de ser cierto, debilitaría más el argumento del autor?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Muchos colegios del país ya han discutido si deben prohibir el celular."
+      },
+      {
+        "id": "b",
+        "text": "En la universidad los estudiantes también usan el celular para estudiar."
+      },
+      {
+        "id": "c",
+        "text": "Los estudiantes que usan el celular con fines académicos en clase se distraen igual que antes y su autocontrol no mejora con el tiempo."
+      },
+      {
+        "id": "d",
+        "text": "Algunas notificaciones que reciben los estudiantes son mensajes de sus padres."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El autor supone que usar el celular con acompañamiento enseña a administrarlo. Si ese uso no mejora el autocontrol, su razón principal pierde fuerza. Las demás opciones no lo afectan o incluso lo apoyan.",
+    "tip": "Para debilitar un argumento, busca la opción que ataque la idea de la que depende la conclusión.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-009",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "stimulusId": "lc-st-paramos",
+    "enunciado": "Según el texto, ¿por qué los páramos son importantes para el abastecimiento de agua?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque allí llueve más que en cualquier otro lugar del país."
+      },
+      {
+        "id": "b",
+        "text": "Porque sus nieves permanentes se derriten durante las temporadas secas."
+      },
+      {
+        "id": "c",
+        "text": "Porque los frailejones producen agua a partir de la radiación solar."
+      },
+      {
+        "id": "d",
+        "text": "Porque retienen el agua de la lluvia y de la neblina y la liberan poco a poco a los ríos."
+      }
+    ],
+    "answer": "d",
+    "explanation": "El texto compara el páramo con una esponja que retiene el agua y la libera lentamente. Además, aclara que los páramos están «por debajo de las nieves», así que no dependen del deshielo.",
+    "tip": "Desconfía de las opciones que agregan datos que el texto no menciona, como «más que en cualquier otro lugar».",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-010",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-paramos",
+    "enunciado": "¿Qué función cumple el último párrafo dentro del texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Presentar las amenazas de los páramos y concluir por qué protegerlos afecta a la población."
+      },
+      {
+        "id": "b",
+        "text": "Describir las características físicas de los frailejones."
+      },
+      {
+        "id": "c",
+        "text": "Narrar cómo se formaron los páramos hace millones de años."
+      },
+      {
+        "id": "d",
+        "text": "Contradecir la idea de que los páramos almacenan agua."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El primer párrafo explica qué hace el páramo, el segundo describe los frailejones y el tercero presenta las amenazas y cierra con la conclusión: protegerlos garantiza el agua de millones de hogares.",
+    "tip": "Para reconocer la estructura, resume cada párrafo en una frase y mira qué papel cumple en el conjunto.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-011",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "stimulusId": "lc-st-paramos",
+    "enunciado": "En el texto, la palabra «caudal» se refiere a",
+    "options": [
+      {
+        "id": "a",
+        "text": "la riqueza económica de una ciudad."
+      },
+      {
+        "id": "b",
+        "text": "la cantidad de agua que lleva un río."
+      },
+      {
+        "id": "c",
+        "text": "la velocidad del viento en la montaña."
+      },
+      {
+        "id": "d",
+        "text": "la altura a la que nace un río."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La frase es «muchos ríos [...] mantienen su caudal incluso en las temporadas secas». En ese contexto, caudal es el volumen de agua del río. «Caudal» también puede significar riqueza, pero ese sentido no encaja aquí.",
+    "tip": "Si una palabra tiene varios significados, elige el que tenga sentido en la oración donde aparece.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-012",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Contextualiza adecuadamente un texto o la información contenida en él.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-paramos",
+    "enunciado": "¿Cuál de las siguientes situaciones ilustra mejor la idea de que proteger los páramos «no es solo un asunto ambiental»?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Un turista fotografía frailejones durante una caminata."
+      },
+      {
+        "id": "b",
+        "text": "Un grupo de científicos clasifica nuevas especies de musgo."
+      },
+      {
+        "id": "c",
+        "text": "Un municipio que cuida el páramo donde nace su río evita racionamientos de agua en la temporada seca."
+      },
+      {
+        "id": "d",
+        "text": "Un estudiante dibuja un páramo para una exposición."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La idea del texto es que proteger el páramo también garantiza el agua de las personas. La única situación que muestra un efecto directo sobre la vida de la población es la del municipio que evita racionamientos.",
+    "tip": "Para aplicar una idea a un caso nuevo, identifica primero qué relación plantea el texto (aquí: páramo → agua para la gente).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-013",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "stimulusId": "lc-st-encuesta-preparacion",
+    "enunciado": "Según la tabla, ¿qué porcentaje de los estudiantes encuestados se prepara principalmente con plataformas o videos en internet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "20 %"
+      },
+      {
+        "id": "b",
+        "text": "25 %"
+      },
+      {
+        "id": "c",
+        "text": "40 %"
+      },
+      {
+        "id": "d",
+        "text": "80 %"
+      }
+    ],
+    "answer": "c",
+    "explanation": "Son 80 de 200 estudiantes: 80 ÷ 200 = 0,4, es decir, el 40 %. El 80 es el número de estudiantes, no el porcentaje.",
+    "tip": "En tablas, revisa siempre si te piden una cantidad o una proporción del total.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-014",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-encuesta-preparacion",
+    "enunciado": "¿Para qué sirve la nota que aparece debajo de la tabla?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Para aclarar que cada estudiante está en un solo grupo y que por eso la suma da 200."
+      },
+      {
+        "id": "b",
+        "text": "Para indicar que los datos se tomaron en todo el país."
+      },
+      {
+        "id": "c",
+        "text": "Para explicar por qué el preicfes presencial es la mejor opción."
+      },
+      {
+        "id": "d",
+        "text": "Para mostrar que todos los grupos estudian las mismas horas."
+      }
+    ],
+    "answer": "a",
+    "explanation": "La nota dice que cada estudiante eligió una sola forma de preparación. Eso significa que los grupos no se repiten: 50 + 80 + 40 + 30 = 200 estudiantes.",
+    "tip": "En los textos discontinuos, las notas, títulos y aclaraciones cambian cómo se interpretan los datos: léelos siempre.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-015",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-encuesta-preparacion",
+    "enunciado": "Un estudiante concluye: «Los que van a preicfes presencial sacarán mejor puntaje porque estudian más horas». ¿Es válida esta conclusión a partir de la tabla?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sí, porque el preicfes presencial tiene el mayor promedio de horas semanales."
+      },
+      {
+        "id": "b",
+        "text": "No, porque la tabla muestra horas de preparación, pero no muestra resultados del examen."
+      },
+      {
+        "id": "c",
+        "text": "Sí, porque los estudiantes de preicfes presencial son la mayoría."
+      },
+      {
+        "id": "d",
+        "text": "No, porque los estudiantes que usan internet estudian más horas."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La tabla no incluye puntajes, así que no permite concluir quién obtendrá mejores resultados. Además, el grupo más grande es el de internet (80), y su promedio de horas (4) es menor que el del preicfes (6).",
+    "tip": "Una conclusión es válida solo si los datos la sustentan. Pregúntate: ¿qué mide realmente la tabla?",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-016",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-encuesta-preparacion",
+    "enunciado": "¿Cuál de las siguientes afirmaciones se puede sacar directamente de la tabla?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La mitad de los estudiantes no se prepara para el examen."
+      },
+      {
+        "id": "b",
+        "text": "El grupo de internet es el que más horas estudia por semana."
+      },
+      {
+        "id": "c",
+        "text": "El grupo de libros y guías es el más numeroso."
+      },
+      {
+        "id": "d",
+        "text": "Uno de cada cuatro estudiantes se prepara principalmente en un preicfes presencial."
+      }
+    ],
+    "answer": "d",
+    "explanation": "50 de 200 es 1/4, o sea, uno de cada cuatro. No se preparan 30 (no 100); el grupo de internet estudia 4 horas, menos que los demás grupos que se preparan; y el grupo más numeroso es el de internet.",
+    "tip": "Comprueba cada opción con una operación sencilla antes de elegir.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-017",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece relaciones entre un texto y otros textos o enunciados.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-jornada-unica",
+    "enunciado": "¿En qué coinciden los autores de los dos textos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "En que es deseable que los estudiantes tengan más tiempo de aprendizaje."
+      },
+      {
+        "id": "b",
+        "text": "En que la jornada única debe aplicarse de inmediato en todos los colegios."
+      },
+      {
+        "id": "c",
+        "text": "En que los colegios ya tienen la infraestructura necesaria."
+      },
+      {
+        "id": "d",
+        "text": "En que el deporte y el arte deberían salir del horario."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El texto A defiende más tiempo para actividades formativas, y el B dice que «nadie se opone a que los estudiantes pasen más tiempo aprendiendo». Coinciden en ese objetivo; difieren en cuándo y cómo aplicar la jornada única.",
+    "tip": "Para comparar textos, separa en qué están de acuerdo (el fin) y en qué no (los medios o los tiempos).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-018",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece relaciones entre un texto y otros textos o enunciados.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-jornada-unica",
+    "enunciado": "¿Cuál es la principal diferencia entre los dos textos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El texto A rechaza la jornada única y el B la defiende."
+      },
+      {
+        "id": "b",
+        "text": "El texto A propone extender ya la jornada única; el B pide garantizar primero la infraestructura."
+      },
+      {
+        "id": "c",
+        "text": "El texto A habla de colegios privados y el B de colegios públicos."
+      },
+      {
+        "id": "d",
+        "text": "El texto B considera que los estudiantes deben pasar menos tiempo en el colegio."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El A concluye que «debería extenderse a todos los colegios públicos». El B no la rechaza, pero la condiciona: «antes de extender la jornada única, hay que garantizar la infraestructura».",
+    "tip": "Fíjate en las conclusiones de cada texto: suelen estar al final y muestran la diferencia de posturas.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-019",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-jornada-unica",
+    "enunciado": "¿Qué información sería más útil para evaluar el argumento del texto B?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cuántas horas de deporte tienen los colegios privados."
+      },
+      {
+        "id": "b",
+        "text": "Qué opinan los estudiantes sobre el color de los uniformes."
+      },
+      {
+        "id": "c",
+        "text": "Cuántos colegios públicos tienen comedor, salones y docentes suficientes para una jornada más larga."
+      },
+      {
+        "id": "d",
+        "text": "Cuántos años lleva funcionando el colegio del autor."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El texto B afirma que faltan comedores, salones y docentes. Para saber si tiene razón, hay que verificar justamente esa condición en los colegios públicos.",
+    "tip": "Para evaluar un argumento, busca el dato que permitiría comprobar o refutar su premisa principal.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-020",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-jornada-unica",
+    "enunciado": "En el texto B, la oración «Nadie se opone a que los estudiantes pasen más tiempo aprendiendo» sirve para",
+    "options": [
+      {
+        "id": "a",
+        "text": "demostrar que la jornada única ya se aplica en todo el país."
+      },
+      {
+        "id": "b",
+        "text": "resumir la propuesta del texto A sin criticarla."
+      },
+      {
+        "id": "c",
+        "text": "presentar la conclusión final del autor."
+      },
+      {
+        "id": "d",
+        "text": "aceptar un punto de quienes defienden la jornada única antes de plantear una objeción."
+      }
+    ],
+    "answer": "d",
+    "explanation": "El autor concede algo que comparte con la otra postura y luego, con «pero», introduce su objeción: alargar la jornada sin infraestructura no mejora la educación.",
+    "tip": "La estructura «nadie niega que…, pero…» es una concesión seguida de la verdadera postura del autor.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-021",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "stimulusId": "lc-st-poema-cilantro",
+    "enunciado": "En el poema, la expresión «la ventana se vuelve una huerta pequeñita» significa que",
+    "options": [
+      {
+        "id": "a",
+        "text": "las plantas sembradas en los tarros convierten la ventana en un pequeño cultivo."
+      },
+      {
+        "id": "b",
+        "text": "la madre construyó una huerta en el patio de la casa."
+      },
+      {
+        "id": "c",
+        "text": "la ventana está rota y por ella entra tierra."
+      },
+      {
+        "id": "d",
+        "text": "la familia vende cilantro desde la ventana."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Los primeros versos dicen que la madre siembra cilantro en tarros de galleta. Puestos en la ventana, esos tarros la transforman en una «huerta» en miniatura.",
+    "tip": "En poesía, interpreta las imágenes a partir de lo que dicen los versos cercanos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-022",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-poema-cilantro",
+    "enunciado": "¿Qué actitud tiene la voz poética frente a lo que dice la madre sobre la tierra?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Lo rechaza por completo por considerarlo una superstición."
+      },
+      {
+        "id": "b",
+        "text": "Lo acepta sin dudar porque la madre siempre tiene razón."
+      },
+      {
+        "id": "c",
+        "text": "Lo ignora y solo se dedica a describir la ventana."
+      },
+      {
+        "id": "d",
+        "text": "Duda de que sea cierto, pero reconoce un hecho que parece darle la razón."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Los versos «yo no sé si sea cierto, / pero el cilantro no se le muere nunca» muestran duda («no sé») y, a la vez, una observación que apoya lo que dice la madre («pero…»).",
+    "tip": "Para reconocer actitudes, fíjate en expresiones de duda, certeza o valoración, y en los conectores que las unen.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-023",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Reconoce contenidos valorativos presentes en un texto.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-poema-cilantro",
+    "enunciado": "¿Qué idea sobre la relación con la naturaleza se puede inferir del poema?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que solo en el campo es posible cultivar alimentos."
+      },
+      {
+        "id": "b",
+        "text": "Que el cuidado y el afecto con que se tratan las plantas influyen en cómo crecen."
+      },
+      {
+        "id": "c",
+        "text": "Que el cilantro es la planta más resistente que existe."
+      },
+      {
+        "id": "d",
+        "text": "Que los tarros de galleta son mejores que las materas."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La madre dice que la tierra sabe «quién la quiere y quién la usa», y su cilantro nunca se muere. El poema sugiere que tratar a la naturaleza con cariño marca la diferencia. Las demás opciones generalizan o comparan cosas que el poema no compara.",
+    "tip": "Las inferencias válidas se apoyan en el texto. Descarta las opciones con superlativos («la más…») que el texto no respalda.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-024",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "stimulusId": "lc-st-aristoteles-amistad",
+    "enunciado": "Según el texto, ¿por qué las amistades basadas en la utilidad o en el placer suelen ser frágiles?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque solo se dan entre socios de un negocio."
+      },
+      {
+        "id": "b",
+        "text": "Porque Aristóteles consideraba que estaban prohibidas."
+      },
+      {
+        "id": "c",
+        "text": "Porque terminan cuando desaparece el beneficio o el placer que las unía."
+      },
+      {
+        "id": "d",
+        "text": "Porque exigen mucho tiempo y trato."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El texto lo afirma: «cuando desaparece el beneficio o el placer, desaparece también la amistad». El tiempo y el trato son, en cambio, lo que exige la amistad perfecta.",
+    "tip": "Cuidado con las opciones que toman una idea del texto y la aplican a otra parte: aquí, «tiempo y trato» se refiere a la amistad perfecta.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-025",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-aristoteles-amistad",
+    "enunciado": "¿Cómo está organizado el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Presenta una clasificación y describe cada tipo con su característica principal."
+      },
+      {
+        "id": "b",
+        "text": "Narra en orden cronológico la vida de Aristóteles."
+      },
+      {
+        "id": "c",
+        "text": "Compara las ideas de Aristóteles con las de otros filósofos."
+      },
+      {
+        "id": "d",
+        "text": "Plantea un problema y propone varias soluciones prácticas."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El texto anuncia «tres clases de amistad» y luego explica cada una (utilidad, placer y amistad perfecta) con sus rasgos. Es una estructura de clasificación.",
+    "tip": "Palabras como «distingue tres clases», «la primera», «la segunda» indican una estructura de clasificación.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-026",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Contextualiza adecuadamente un texto o la información contenida en él.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-aristoteles-amistad",
+    "enunciado": "Dos compañeros se hacen amigos para preparar juntos el Saber 11 y dejan de hablarse cuando termina el examen. Según el texto, su relación corresponde a",
+    "options": [
+      {
+        "id": "a",
+        "text": "una amistad perfecta, porque compartieron mucho tiempo."
+      },
+      {
+        "id": "b",
+        "text": "una amistad por utilidad, porque duró mientras existió el beneficio."
+      },
+      {
+        "id": "c",
+        "text": "una amistad por placer, porque les gustaba estudiar juntos."
+      },
+      {
+        "id": "d",
+        "text": "un tipo de amistad que Aristóteles no contempla."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Se unieron por un beneficio (prepararse para el examen) y la relación terminó cuando ese beneficio desapareció. Eso coincide con la amistad por utilidad. Nada indica que se quisieran «por lo que cada uno es».",
+    "tip": "Para aplicar una clasificación, compara el caso con el criterio que define cada tipo, no con detalles secundarios.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-027",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-aristoteles-amistad",
+    "enunciado": "La expresión «desean el bien del otro por el otro mismo» indica que, en la amistad perfecta,",
+    "options": [
+      {
+        "id": "a",
+        "text": "los amigos deben parecerse físicamente."
+      },
+      {
+        "id": "b",
+        "text": "cada persona se quiere más a sí misma que al amigo."
+      },
+      {
+        "id": "c",
+        "text": "se quiere el bien del amigo sin buscar un provecho propio."
+      },
+      {
+        "id": "d",
+        "text": "el amigo está obligado a devolver los favores recibidos."
+      }
+    ],
+    "answer": "c",
+    "explanation": "«Por el otro mismo» significa que la razón para desear su bien es el amigo, no lo que uno gana con él. Eso la diferencia de las amistades por utilidad o por placer.",
+    "tip": "Para entender una expresión, contrástala con lo que el texto dice de los otros casos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-028",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece relaciones entre un texto y otros textos o enunciados.",
+    "difficulty": 2,
+    "stimulusId": "lc-st-mercados-campesinos",
+    "enunciado": "¿Qué relación hay entre los dos fragmentos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El fragmento 2 es un contraejemplo que refuta lo que afirma el fragmento 1."
+      },
+      {
+        "id": "b",
+        "text": "El fragmento 1 es un caso particular de lo que cuenta el fragmento 2."
+      },
+      {
+        "id": "c",
+        "text": "Los fragmentos tratan temas que no tienen relación."
+      },
+      {
+        "id": "d",
+        "text": "El fragmento 2 es un ejemplo que ilustra lo que afirma el fragmento 1."
+      }
+    ],
+    "answer": "d",
+    "explanation": "El fragmento 1 hace una afirmación general (sin intermediarios, el productor gana más y el comprador paga menos). El 2 cuenta un caso concreto, el de doña Rosa, en el que ocurre justo eso: es un ejemplo a favor.",
+    "tip": "General → particular: si el segundo texto muestra un caso que cumple la idea del primero, es un ejemplo; si la incumple, es un contraejemplo.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-029",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
+    "difficulty": 3,
+    "stimulusId": "lc-st-mercados-campesinos",
+    "enunciado": "¿Cuál de las siguientes situaciones sería un contraejemplo de lo que afirma el fragmento 1?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Un campesino vende sus fresas directamente en la plaza y gana más que antes."
+      },
+      {
+        "id": "b",
+        "text": "En un mercado campesino los productos cuestan más que en la tienda del barrio, y el campesino gana lo mismo que con el intermediario."
+      },
+      {
+        "id": "c",
+        "text": "Una familia compra en el mercado campesino porque los precios son bajos."
+      },
+      {
+        "id": "d",
+        "text": "Un mercado campesino se realiza los domingos en lugar de los sábados."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Un contraejemplo es un caso en el que no se cumple la afirmación general. Si sin intermediarios el comprador paga más y el productor no gana más, falla lo que dice el fragmento 1. Las dos primeras opciones lo confirman y la última no tiene que ver con la afirmación.",
+    "tip": "Un contraejemplo debe tratar el mismo asunto de la afirmación y mostrar que, en ese caso, no se cumple.",
+    "source": "original",
     "reviewed": false
   }
 ]

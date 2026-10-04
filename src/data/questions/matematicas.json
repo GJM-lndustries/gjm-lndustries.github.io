@@ -186,37 +186,6 @@
     "reviewed": false
   },
   {
-    "id": "math-5-q1",
-    "area": "matematicas",
-    "competencia": "Formulación y ejecución",
-    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
-    "difficulty": 3,
-    "enunciado": "Una biblioteca identifica libros con placas de 3 dígitos usando los dígitos 1, 2, 3, 4 sin repetir ninguno. ¿Cuántas placas diferentes se pueden formar?",
-    "options": [
-      {
-        "id": "a",
-        "text": "4 placas (solo se elige cuántos dígitos usar)"
-      },
-      {
-        "id": "b",
-        "text": "12 placas"
-      },
-      {
-        "id": "c",
-        "text": "24 placas (4 × 3 × 2)"
-      },
-      {
-        "id": "d",
-        "text": "64 placas"
-      }
-    ],
-    "answer": "c",
-    "explanation": "Es una permutación porque el orden importa (123 y 321 son placas diferentes). Para el primer dígito hay 4 opciones, para el segundo 3 (ya usamos uno), para el tercero 2. Total: 4 × 3 × 2 = 24 placas.",
-    "tip": "Cuando el orden importa (como en contraseñas, placas, códigos), multiplica las opciones disponibles en cada posición.",
-    "source": "proicfes-lecciones",
-    "reviewed": false
-  },
-  {
     "id": "sim-1",
     "area": "matematicas",
     "competencia": "Formulación y ejecución",
@@ -1220,6 +1189,37 @@
     "answer": "b",
     "explanation": "Precio por litro de la grande: $4.500 ÷ 1,5 = $3.000. De la pequeña: $1.600 ÷ 0,4 = $4.000. La grande es más económica por litro. Comparar con tres gaseosas pequeñas no sirve: 3 × 400 mL = 1.200 mL, que no es la misma cantidad que la grande (1.500 mL).",
     "tip": "Para saber cuál «rinde» más, compara el precio por la misma unidad (por litro o por mL).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-031",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Plantea y ejecuta estrategias de conteo para resolver problemas en contextos cotidianos.",
+    "difficulty": 3,
+    "enunciado": "Un colegio de Tunja asigna a cada estudiante un código de acceso a la biblioteca formado por 3 letras distintas, escogidas entre A, B, C, D y E, en un orden determinado (por ejemplo, BEA). ¿Cuántos códigos diferentes se pueden formar?",
+    "options": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "15"
+      },
+      {
+        "id": "c",
+        "text": "60"
+      },
+      {
+        "id": "d",
+        "text": "125"
+      }
+    ],
+    "answer": "c",
+    "explanation": "El orden importa (BEA y ABE son códigos distintos) y no se pueden repetir letras. Hay 5 opciones para la primera letra, 4 para la segunda y 3 para la tercera: 5 × 4 × 3 = 60. Con 125 = 5³ se estarían permitiendo letras repetidas, y con 10 se contarían grupos sin importar el orden (combinaciones).",
+    "tip": "Antes de calcular, pregúntate dos cosas: ¿importa el orden? y ¿se puede repetir? Las respuestas te dicen si multiplicas, divides o elevas a una potencia.",
     "source": "original",
     "reviewed": false
   }

@@ -1,4 +1,4 @@
-import { AREA_IDS, COMPETENCIAS, type AreaId } from "./types";
+import { AREA_IDS, CIENCIAS_COMPONENTES, COMPETENCIAS, INGLES_PARTES, type AreaId, type InglesParte } from "./types";
 
 export interface BankFile {
   /** Área esperada según el nombre del archivo */
@@ -72,6 +72,20 @@ export function validateBank(files: BankFile[], stimuli: unknown[]): string[] {
         if (!nonEmpty(q.stimulusId) || !stimulusIds.has(q.stimulusId)) {
           errors.push(`${where}: stimulusId "${String(q.stimulusId)}" no existe en stimuli.json`);
         } else usedStimuli.add(q.stimulusId);
+      }
+
+      if (q.componente !== undefined && (area !== "ciencias-naturales" || !CIENCIAS_COMPONENTES.includes(q.componente as never))) {
+        errors.push(`${where}: "componente" inválido (${String(q.componente)})`);
+      }
+      if (q.parte !== undefined) {
+        const parte = INGLES_PARTES[q.parte as InglesParte];
+        if (area !== "ingles" || !parte) errors.push(`${where}: "parte" inválida (${String(q.parte)})`);
+        else if (Array.isArray(q.options) && q.options.length !== parte.opciones) {
+          errors.push(`${where}: la parte ${String(q.parte)} de Inglés lleva ${parte.opciones} opciones (tiene ${q.options.length})`);
+        }
+      }
+      if (nonEmpty(q.answer) && nonEmpty(q.explanation) && /\b(opci[oó]n|respuesta)\s+(correcta\s+)?(es\s+)?(la\s+)?[A-H]\b/.test(q.explanation)) {
+        errors.push(`${where}: la explicación no debe nombrar la letra de la respuesta (las opciones se pueden reordenar)`);
       }
 
       if (!Array.isArray(q.options) || q.options.length < 2) {

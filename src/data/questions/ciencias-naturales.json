@@ -25,7 +25,7 @@
       }
     ],
     "answer": "b",
-    "explanation": "Los cloroplastos (para fotosíntesis) y la pared celular son características exclusivas de las células vegetales. Los animales no tienen ninguna de estas dos estructuras.",
+    "explanation": "Los cloroplastos, que permiten la fotosíntesis, son propios de las plantas y las algas. La pared celular también existe en hongos y bacterias, pero estos no tienen cloroplastos, y las células animales no tienen ninguna de las dos estructuras. Por eso la combinación de cloroplastos, pared y una vacuola grande indica una célula vegetal.",
     "tip": "Cloroplastos = solo plantas. Pared celular = plantas (y hongos, pero los hongos no tienen cloroplastos).",
     "source": "proicfes-lecciones",
     "reviewed": false
@@ -87,9 +87,909 @@
       }
     ],
     "answer": "b",
-    "explanation": "La clorofila (pigmento verde) se produce en los cloroplastos durante la fotosíntesis, que requiere luz. Sin luz → no hay fotosíntesis → no hay energía → la planta muere y pierde su color verde.",
+    "explanation": "Sin luz la planta no puede hacer fotosíntesis, así que no produce el alimento que necesita. Además, en las plantas con flor la fabricación de clorofila (el pigmento verde) requiere luz. Por eso la planta pierde el color verde y muere cuando agota sus reservas. El experimento solo varió la luz, así que no permite concluir nada sobre el agua o el suelo.",
     "tip": "Una buena conclusión se apoya solo en lo que muestra el experimento: aquí lo único que cambió fue la luz.",
     "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "cn-001",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 1,
+    "componente": "Biológico",
+    "enunciado": "¿Cuál es la función principal de los glóbulos rojos en la sangre?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Defender al cuerpo de las infecciones."
+      },
+      {
+        "id": "b",
+        "text": "Transportar oxígeno desde los pulmones hacia los tejidos."
+      },
+      {
+        "id": "c",
+        "text": "Formar coágulos para detener las hemorragias."
+      },
+      {
+        "id": "d",
+        "text": "Producir las hormonas que regulan el crecimiento."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Los glóbulos rojos (eritrocitos) contienen hemoglobina, una proteína que se une al oxígeno en los pulmones y lo lleva a los tejidos. La defensa la hacen los glóbulos blancos y la coagulación, las plaquetas.",
+    "tip": "Asocia cada componente de la sangre con una función: glóbulos rojos → oxígeno, glóbulos blancos → defensa, plaquetas → coagulación.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-002",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Modela fenómenos de la naturaleza a partir del análisis de variables y de la relación entre conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Biológico",
+    "enunciado": "En las plantas de arveja, el color morado de la flor (A) es dominante sobre el blanco (a). Si se cruzan dos plantas heterocigotas (Aa × Aa), ¿qué proporción de la descendencia se espera con flores blancas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0"
+      },
+      {
+        "id": "b",
+        "text": "1/4"
+      },
+      {
+        "id": "c",
+        "text": "1/2"
+      },
+      {
+        "id": "d",
+        "text": "3/4"
+      }
+    ],
+    "answer": "b",
+    "explanation": "El cuadro de Punnett de Aa × Aa da AA, Aa, Aa y aa. Solo aa (1 de 4) tiene flores blancas, porque el color blanco necesita dos alelos recesivos. Los otros 3/4 son morados.",
+    "tip": "Para cruces de un gen, dibuja el cuadro de Punnett de 2 × 2: es rápido y evita errores.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-003",
+    "area": "ciencias-naturales",
+    "competencia": "Indagación",
+    "afirmacion": "Utiliza habilidades de pensamiento y procedimiento para diseñar experimentos y evaluar predicciones.",
+    "difficulty": 2,
+    "componente": "Biológico",
+    "stimulusId": "cn-st-germinacion",
+    "enunciado": "En este experimento, ¿cuál es la variable independiente?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La temperatura de cada recipiente."
+      },
+      {
+        "id": "b",
+        "text": "El número de semillas germinadas."
+      },
+      {
+        "id": "c",
+        "text": "La cantidad de agua de cada recipiente."
+      },
+      {
+        "id": "d",
+        "text": "El tipo de tierra utilizada."
+      }
+    ],
+    "answer": "a",
+    "explanation": "La variable independiente es la que el investigador cambia a propósito: la temperatura. Las semillas germinadas son la variable dependiente (lo que se mide). El agua, la luz y la tierra se mantienen iguales: son variables controladas.",
+    "tip": "Independiente = lo que yo cambio; dependiente = lo que mido; controladas = lo que dejo igual.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-004",
+    "area": "ciencias-naturales",
+    "competencia": "Indagación",
+    "afirmacion": "Deriva conclusiones a partir de los resultados de un experimento o de un conjunto de datos.",
+    "difficulty": 3,
+    "componente": "Biológico",
+    "stimulusId": "cn-st-germinacion",
+    "enunciado": "¿Qué conclusión se puede sacar de los resultados?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A mayor temperatura siempre germinan más semillas."
+      },
+      {
+        "id": "b",
+        "text": "La temperatura no influye en la germinación del fríjol."
+      },
+      {
+        "id": "c",
+        "text": "Las semillas germinan mejor cuando reciben más agua."
+      },
+      {
+        "id": "d",
+        "text": "En estas condiciones, la germinación aumentó de 10 °C a 30 °C y disminuyó mucho a 40 °C."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Los datos suben de 3 a 15 y a 18 semillas, pero bajan a 2 a 40 °C. Por eso «siempre» es falso. El agua no se varió, así que el experimento no permite concluir nada sobre ella.",
+    "tip": "Desconfía de las conclusiones con «siempre» o «nunca» y de las que hablan de variables que no se cambiaron.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-005",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Biológico",
+    "enunciado": "En una sabana de los Llanos Orientales, los chigüiros se alimentan de pastos y son presa de animales como el jaguar. Si desaparecieran los depredadores de la zona, ¿qué es lo más probable que ocurra a corto plazo?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que disminuya la población de chigüiros y aumenten los pastos."
+      },
+      {
+        "id": "b",
+        "text": "Que las poblaciones de chigüiros y de pastos no cambien."
+      },
+      {
+        "id": "c",
+        "text": "Que aumente la población de chigüiros y disminuyan los pastos de los que se alimentan."
+      },
+      {
+        "id": "d",
+        "text": "Que los chigüiros empiecen a cazar a otros animales para alimentarse."
+      }
+    ],
+    "answer": "c",
+    "explanation": "Sin depredadores, mueren menos chigüiros y su población crece. Más chigüiros consumen más pasto, que disminuye. Los efectos se transmiten a lo largo de la cadena alimentaria.",
+    "tip": "En redes tróficas, sigue la flecha: si cambia un eslabón, piensa qué le pasa a quien se lo come y a lo que él come.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-006",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 1,
+    "componente": "Biológico",
+    "enunciado": "En la fotosíntesis, las plantas usan dióxido de carbono, agua y energía de la luz para producir",
+    "options": [
+      {
+        "id": "a",
+        "text": "dióxido de carbono y agua."
+      },
+      {
+        "id": "b",
+        "text": "proteínas y nitrógeno."
+      },
+      {
+        "id": "c",
+        "text": "oxígeno y dióxido de carbono."
+      },
+      {
+        "id": "d",
+        "text": "glucosa y oxígeno."
+      }
+    ],
+    "answer": "d",
+    "explanation": "La ecuación general es 6 CO₂ + 6 H₂O + luz → C₆H₁₂O₆ (glucosa) + 6 O₂. El dióxido de carbono y el agua son los reactivos, no los productos.",
+    "tip": "Fotosíntesis y respiración son procesos «opuestos»: lo que una produce, la otra lo consume.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-007",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 3,
+    "componente": "Biológico",
+    "enunciado": "Una persona deja el tratamiento con antibióticos a la mitad porque ya se siente mejor. ¿Por qué esto puede favorecer la resistencia bacteriana?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque pueden sobrevivir las bacterias menos sensibles al antibiótico, que se reproducen y transmiten esa característica."
+      },
+      {
+        "id": "b",
+        "text": "Porque el antibiótico se transforma en nuevas bacterias dentro del cuerpo."
+      },
+      {
+        "id": "c",
+        "text": "Porque las bacterias aprenden a reconocer el medicamento, como lo haría una persona."
+      },
+      {
+        "id": "d",
+        "text": "Porque los antibióticos destruyen los glóbulos blancos que combaten la infección."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Al suspender el tratamiento, quedan vivas las bacterias que mejor resisten el antibiótico. Al multiplicarse, la nueva población es más resistente. Es selección natural: las bacterias no «aprenden» y el antibiótico no se convierte en bacterias.",
+    "tip": "La resistencia se explica por selección: sobreviven y se reproducen los individuos con la variación que les da ventaja.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-008",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Identifica las características de algunos fenómenos de la naturaleza a partir del análisis de información y de conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Biológico",
+    "enunciado": "¿Cómo protege una vacuna contra una enfermedad infecciosa?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Destruye directamente todos los virus y bacterias que hay en el cuerpo."
+      },
+      {
+        "id": "b",
+        "text": "Reemplaza los glóbulos rojos que el microorganismo daña."
+      },
+      {
+        "id": "c",
+        "text": "Estimula al sistema inmunitario para que produzca defensas y memoria contra el agente, sin causar la enfermedad grave."
+      },
+      {
+        "id": "d",
+        "text": "Actúa como un antibiótico que elimina los virus."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La vacuna presenta al cuerpo un antígeno (el microorganismo debilitado o inactivo, o una parte de él) para que el sistema inmunitario lo reconozca y genere anticuerpos y células de memoria. Si después llega el agente real, el cuerpo responde más rápido.",
+    "tip": "Vacuna = entrenamiento del sistema inmunitario. Antibiótico = medicamento contra bacterias (no sirve contra virus).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-009",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Biológico",
+    "enunciado": "Si se ponen hojas de lechuga en agua con mucha sal, al rato se ven marchitas. ¿Por qué ocurre esto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque el agua sale de las células hacia el medio con más sal, por ósmosis."
+      },
+      {
+        "id": "b",
+        "text": "Porque la sal entra a las células y las hace crecer."
+      },
+      {
+        "id": "c",
+        "text": "Porque el agua salada le aporta más nutrientes a la lechuga."
+      },
+      {
+        "id": "d",
+        "text": "Porque la sal acelera la fotosíntesis de las hojas."
+      }
+    ],
+    "answer": "a",
+    "explanation": "En la ósmosis, el agua atraviesa la membrana desde donde hay menos solutos hacia donde hay más. El agua salada tiene más solutos que el interior de las células, así que estas pierden agua y la hoja se marchita.",
+    "tip": "En ósmosis, el agua «va» hacia donde hay más concentración de solutos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-010",
+    "area": "ciencias-naturales",
+    "competencia": "Indagación",
+    "afirmacion": "Utiliza habilidades de pensamiento y procedimiento para diseñar experimentos y evaluar predicciones.",
+    "difficulty": 2,
+    "componente": "Biológico",
+    "enunciado": "Un estudiante quiere saber si la luz influye en el crecimiento de las plantas de fríjol. ¿Cuál es el diseño experimental más adecuado?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sembrar una planta con luz y otra en oscuridad, y regar más la que está en oscuridad."
+      },
+      {
+        "id": "b",
+        "text": "Sembrar plantas iguales con la misma agua y tierra, unas con luz y otras en oscuridad, y medir su crecimiento."
+      },
+      {
+        "id": "c",
+        "text": "Sembrar una sola planta con luz y medir su crecimiento durante un mes."
+      },
+      {
+        "id": "d",
+        "text": "Sembrar plantas de diferentes especies en lugares distintos de la casa."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Un buen experimento cambia una sola variable (la luz) y mantiene iguales las demás (agua, tierra, especie). Además necesita comparar grupos, y varias plantas por grupo hacen el resultado más confiable.",
+    "tip": "Un diseño válido compara grupos que solo difieren en la variable que se quiere estudiar.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-011",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 1,
+    "componente": "Químico",
+    "enunciado": "¿Cuál de las siguientes situaciones es un cambio químico?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Un cubo de hielo que se derrite."
+      },
+      {
+        "id": "b",
+        "text": "El azúcar que se disuelve en el tinto."
+      },
+      {
+        "id": "c",
+        "text": "Un vaso de vidrio que se rompe."
+      },
+      {
+        "id": "d",
+        "text": "Una puntilla de hierro que se oxida a la intemperie."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Al oxidarse, el hierro reacciona con el oxígeno y el agua y forma una sustancia nueva (óxido de hierro). Derretir, disolver o romper cambian el estado, la mezcla o la forma, pero no producen sustancias nuevas.",
+    "tip": "Hay cambio químico cuando aparece una sustancia nueva; señales: cambio de color, gas, olor o luz que no se revierten fácilmente.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-012",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Identifica las características de algunos fenómenos de la naturaleza a partir del análisis de información y de conceptos científicos.",
+    "difficulty": 1,
+    "componente": "Químico",
+    "enunciado": "Una sustancia tiene pH 3 y otra tiene pH 9. ¿Qué se puede afirmar?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La de pH 3 es básica y la de pH 9 es ácida."
+      },
+      {
+        "id": "b",
+        "text": "Las dos son ácidas, porque su pH es diferente de 0."
+      },
+      {
+        "id": "c",
+        "text": "La de pH 3 es ácida y la de pH 9 es básica."
+      },
+      {
+        "id": "d",
+        "text": "Las dos son neutras, porque su pH es menor que 14."
+      }
+    ],
+    "answer": "c",
+    "explanation": "En la escala de pH (de 0 a 14 en soluciones acuosas comunes), menos de 7 es ácido, 7 es neutro y más de 7 es básico (alcalino).",
+    "tip": "pH 7 es el centro: por debajo, ácido; por encima, básico.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-013",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 2,
+    "componente": "Químico",
+    "enunciado": "¿Qué método permite recuperar la sal que está disuelta en el agua de mar?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La filtración."
+      },
+      {
+        "id": "b",
+        "text": "La evaporación del agua."
+      },
+      {
+        "id": "c",
+        "text": "La imantación."
+      },
+      {
+        "id": "d",
+        "text": "La decantación."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Cuando la sal está disuelta, sus partículas están mezcladas con las del agua: pasan por el filtro y no se depositan en el fondo. Al evaporar el agua, la sal queda como residuo sólido; así funcionan las salinas.",
+    "tip": "Filtrar y decantar sirven para sólidos no disueltos; para recuperar un sólido disuelto, se evapora el líquido.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-014",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Modela fenómenos de la naturaleza a partir del análisis de variables y de la relación entre conceptos científicos.",
+    "difficulty": 3,
+    "componente": "Químico",
+    "enunciado": "Un globo inflado se deja dentro de un carro al sol y aumenta de tamaño. ¿Qué explica este fenómeno?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Al aumentar la temperatura, las partículas del gas se mueven más rápido y el gas ocupa más volumen."
+      },
+      {
+        "id": "b",
+        "text": "El calor crea nuevas partículas de gas dentro del globo."
+      },
+      {
+        "id": "c",
+        "text": "La luz del sol convierte en gas el material del globo."
+      },
+      {
+        "id": "d",
+        "text": "Cada partícula del gas aumenta de tamaño con el calor."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Según la teoría cinética, al calentar un gas sus partículas ganan energía y se mueven más rápido. Chocan con más fuerza contra la pared elástica del globo y este se expande. El número de partículas y su tamaño no cambian.",
+    "tip": "Error frecuente: pensar que las partículas «se agrandan». Lo que cambia es su movimiento y la distancia entre ellas.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-015",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Identifica las características de algunos fenómenos de la naturaleza a partir del análisis de información y de conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Químico",
+    "enunciado": "En general, los elementos de un mismo grupo (columna) de la tabla periódica tienen propiedades químicas parecidas porque",
+    "options": [
+      {
+        "id": "a",
+        "text": "tienen la misma masa atómica."
+      },
+      {
+        "id": "b",
+        "text": "tienen el mismo número de protones en el núcleo."
+      },
+      {
+        "id": "c",
+        "text": "se descubrieron en la misma época."
+      },
+      {
+        "id": "d",
+        "text": "tienen el mismo número de electrones en su último nivel de energía."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Las propiedades químicas dependen sobre todo de los electrones de valencia (los del último nivel). Los elementos de un mismo grupo tienen igual número de electrones de valencia; por ejemplo, el litio, el sodio y el potasio tienen uno. Cada elemento tiene un número de protones distinto.",
+    "tip": "Grupo (columna) → mismos electrones de valencia → comportamiento químico parecido.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-016",
+    "area": "ciencias-naturales",
+    "competencia": "Indagación",
+    "afirmacion": "Deriva conclusiones a partir de los resultados de un experimento o de un conjunto de datos.",
+    "difficulty": 2,
+    "componente": "Químico",
+    "stimulusId": "cn-st-efervescente",
+    "enunciado": "¿Qué conclusión apoyan los datos de la tabla?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A mayor temperatura del agua, la reacción tarda más tiempo."
+      },
+      {
+        "id": "b",
+        "text": "La temperatura del agua no afecta el tiempo de reacción."
+      },
+      {
+        "id": "c",
+        "text": "A mayor temperatura del agua, la tableta reacciona más rápido."
+      },
+      {
+        "id": "d",
+        "text": "El tiempo de reacción depende solo del tamaño de la tableta."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El tiempo baja de 90 s a 18 s cuando la temperatura sube de 10 °C a 60 °C: la reacción es más rápida. A mayor temperatura, las partículas chocan con más frecuencia y energía. El tamaño de la tableta no se varió, así que no se puede concluir nada sobre él.",
+    "tip": "Si el tiempo de reacción disminuye, la velocidad de reacción aumenta: no confundas las dos magnitudes.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-017",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Químico",
+    "enunciado": "Al tapar una vela encendida con un vaso de vidrio, la llama se apaga al poco tiempo. ¿Por qué?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque el vidrio enfría la vela hasta congelar la cera."
+      },
+      {
+        "id": "b",
+        "text": "Porque se acaba toda la cera de la vela."
+      },
+      {
+        "id": "c",
+        "text": "Porque dentro del vaso disminuye el oxígeno, que es necesario para la combustión."
+      },
+      {
+        "id": "d",
+        "text": "Porque el dióxido de carbono se transforma en agua y moja la mecha."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La combustión necesita combustible (la cera), un comburente (el oxígeno) y calor. Al tapar la vela, el oxígeno del vaso se consume y no se renueva; cuando ya no alcanza, la llama se apaga aunque quede cera.",
+    "tip": "Recuerda el triángulo del fuego: combustible, oxígeno y calor. Si falta uno, no hay combustión.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-018",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Identifica las características de algunos fenómenos de la naturaleza a partir del análisis de información y de conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Químico",
+    "enunciado": "Se disuelven 20 g de azúcar en agua hasta completar 200 mL de solución. ¿Cuál es la concentración de la solución en gramos por litro?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0,1 g/L"
+      },
+      {
+        "id": "b",
+        "text": "10 g/L"
+      },
+      {
+        "id": "c",
+        "text": "100 g/L"
+      },
+      {
+        "id": "d",
+        "text": "4.000 g/L"
+      }
+    ],
+    "answer": "c",
+    "explanation": "200 mL = 0,2 L. Concentración = masa de soluto ÷ volumen de solución = 20 g ÷ 0,2 L = 100 g/L.",
+    "tip": "Convierte siempre los mililitros a litros (÷ 1.000) antes de calcular una concentración en g/L.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-019",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Identifica las características de algunos fenómenos de la naturaleza a partir del análisis de información y de conceptos científicos.",
+    "difficulty": 1,
+    "componente": "Físico",
+    "enunciado": "Una ciclista recorre 30 km en 1,5 horas por una vía del Valle del Cauca. ¿Cuál fue su rapidez media?",
+    "options": [
+      {
+        "id": "a",
+        "text": "15 km/h"
+      },
+      {
+        "id": "b",
+        "text": "20 km/h"
+      },
+      {
+        "id": "c",
+        "text": "31,5 km/h"
+      },
+      {
+        "id": "d",
+        "text": "45 km/h"
+      }
+    ],
+    "answer": "b",
+    "explanation": "Rapidez media = distancia ÷ tiempo = 30 km ÷ 1,5 h = 20 km/h. Multiplicar (30 × 1,5 = 45) o sumar (30 + 1,5 = 31,5) no tiene sentido físico.",
+    "tip": "Revisa las unidades: km ÷ h da km/h. Si la unidad no tiene sentido, la operación tampoco.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-020",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Físico",
+    "enunciado": "Una patinadora, quieta sobre sus patines, empuja una pared con las manos y sale desplazándose hacia atrás. ¿Qué explica este movimiento?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La pared ejerce sobre ella una fuerza de igual magnitud y sentido contrario al de su empujón."
+      },
+      {
+        "id": "b",
+        "text": "La pared se mueve hacia adelante y la empuja con su movimiento."
+      },
+      {
+        "id": "c",
+        "text": "La fuerza que ella hace desaparece al tocar la pared."
+      },
+      {
+        "id": "d",
+        "text": "La gravedad la empuja hacia atrás cuando deja de tocar la pared."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Es la tercera ley de Newton (acción y reacción): si ella empuja la pared, la pared la empuja a ella con una fuerza igual y opuesta. Como los patines casi no tienen fricción, esa fuerza la pone en movimiento.",
+    "tip": "En acción y reacción, las dos fuerzas actúan sobre cuerpos distintos; por eso no se anulan.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-021",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Modela fenómenos de la naturaleza a partir del análisis de variables y de la relación entre conceptos científicos.",
+    "difficulty": 3,
+    "componente": "Físico",
+    "enunciado": "En una cámara de vacío se sueltan al mismo tiempo, desde la misma altura, una pluma y un martillo. ¿Qué ocurre?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El martillo llega primero, porque los objetos más pesados caen más rápido."
+      },
+      {
+        "id": "b",
+        "text": "La pluma queda flotando, porque en el vacío no hay gravedad."
+      },
+      {
+        "id": "c",
+        "text": "La pluma llega primero, porque tiene menos masa."
+      },
+      {
+        "id": "d",
+        "text": "Llegan al suelo al mismo tiempo, porque sin aire ambos caen con la misma aceleración."
+      }
+    ],
+    "answer": "d",
+    "explanation": "En la Tierra, la pluma cae despacio por la resistencia del aire. En el vacío no hay aire y todos los cuerpos caen con la aceleración de la gravedad (cerca de 9,8 m/s²), sin importar su masa. La gravedad sigue actuando dentro de la cámara.",
+    "tip": "La masa no cambia la aceleración de caída libre; lo que diferencia la caída en el aire es la resistencia del aire.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-022",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Identifica las características de algunos fenómenos de la naturaleza a partir del análisis de información y de conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Físico",
+    "enunciado": "Una resistencia de 10 Ω se conecta a una pila de 5 V. Según la ley de Ohm, ¿qué corriente circula por el circuito?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0,5 A"
+      },
+      {
+        "id": "b",
+        "text": "2 A"
+      },
+      {
+        "id": "c",
+        "text": "15 A"
+      },
+      {
+        "id": "d",
+        "text": "50 A"
+      }
+    ],
+    "answer": "a",
+    "explanation": "Ley de Ohm: V = I × R, así que I = V ÷ R = 5 V ÷ 10 Ω = 0,5 A.",
+    "tip": "Despeja antes de reemplazar: I = V ÷ R. Si la resistencia es mayor que el voltaje, la corriente es menor que 1 A.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-023",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 1,
+    "componente": "Físico",
+    "enunciado": "¿Por qué las ollas suelen tener mangos de plástico o de madera?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque conducen el calor mejor que el metal."
+      },
+      {
+        "id": "b",
+        "text": "Porque esos materiales conducen mal el calor y así evitan quemaduras."
+      },
+      {
+        "id": "c",
+        "text": "Porque hacen que la comida se cocine más rápido."
+      },
+      {
+        "id": "d",
+        "text": "Porque reflejan el calor del fogón hacia la comida."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El metal es buen conductor térmico: transmite rápido el calor del fogón. La madera y el plástico son aislantes; el calor pasa muy lentamente por ellos y el mango se mantiene a una temperatura que se puede tocar.",
+    "tip": "Conductores térmicos: metales. Aislantes: madera, plástico, aire, icopor.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-024",
+    "area": "ciencias-naturales",
+    "competencia": "Indagación",
+    "afirmacion": "Deriva conclusiones a partir de los resultados de un experimento o de un conjunto de datos.",
+    "difficulty": 3,
+    "componente": "Físico",
+    "stimulusId": "cn-st-pendulo",
+    "enunciado": "¿Qué conclusión es correcta según los datos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El período depende de la masa y no de la longitud."
+      },
+      {
+        "id": "b",
+        "text": "El período depende tanto de la masa como de la longitud."
+      },
+      {
+        "id": "c",
+        "text": "El período no depende ni de la masa ni de la longitud."
+      },
+      {
+        "id": "d",
+        "text": "El período depende de la longitud de la cuerda y no de la masa."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Con la misma longitud, cambiar la masa no cambia el período (1,0 s en ambos casos con 25 cm). Con la misma masa, cuadruplicar la longitud lo duplica (de 1,0 s a 2,0 s). Esto coincide con el modelo del péndulo simple, en el que el período depende de la raíz cuadrada de la longitud.",
+    "tip": "Para aislar el efecto de una variable, compara filas en las que solo cambie esa variable.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-025",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 2,
+    "componente": "Físico",
+    "enunciado": "¿Por qué en el espacio exterior no se escucharía el sonido de una explosión?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque en el espacio el sonido viaja más rápido que la luz."
+      },
+      {
+        "id": "b",
+        "text": "Porque el sonido necesita un medio material para propagarse y el espacio está casi vacío."
+      },
+      {
+        "id": "c",
+        "text": "Porque el frío del espacio congela las ondas sonoras."
+      },
+      {
+        "id": "d",
+        "text": "Porque en el espacio no existe la gravedad."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El sonido es una onda mecánica: se transmite por la vibración de las partículas de un medio (aire, agua, sólidos). En el espacio casi no hay partículas, así que el sonido no puede propagarse. La luz sí viaja en el vacío porque es una onda electromagnética.",
+    "tip": "Ondas mecánicas (sonido) necesitan medio; ondas electromagnéticas (luz, radio) no.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-026",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Físico",
+    "enunciado": "En una central hidroeléctrica, ¿qué transformación de energía ocurre principalmente?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La energía química del agua se transforma en energía nuclear."
+      },
+      {
+        "id": "b",
+        "text": "La energía eléctrica se transforma en energía potencial del agua."
+      },
+      {
+        "id": "c",
+        "text": "La energía térmica del sol se transforma directamente en electricidad."
+      },
+      {
+        "id": "d",
+        "text": "La energía potencial del agua almacenada se transforma en energía cinética y luego en energía eléctrica."
+      }
+    ],
+    "answer": "d",
+    "explanation": "El agua del embalse está en altura (energía potencial). Al bajar, gana velocidad (energía cinética) y mueve las turbinas, que hacen girar un generador que produce electricidad.",
+    "tip": "Sigue el recorrido de la energía paso a paso: altura → movimiento → giro de la turbina → electricidad.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-027",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Analiza el uso de recursos naturales o artefactos y sus efectos sobre el entorno y la salud.",
+    "difficulty": 2,
+    "componente": "Ciencia, tecnología y sociedad",
+    "enunciado": "Un municipio empieza a separar los residuos en la fuente y a convertir los residuos orgánicos en compost. ¿Qué beneficio ambiental se espera principalmente?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que llegue menos basura al relleno sanitario y que los residuos orgánicos se aprovechen como abono."
+      },
+      {
+        "id": "b",
+        "text": "Que ya no sea necesario tener ningún relleno sanitario."
+      },
+      {
+        "id": "c",
+        "text": "Que aumente la cantidad de plástico que se puede producir."
+      },
+      {
+        "id": "d",
+        "text": "Que deje de llover sobre el relleno sanitario."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Los residuos orgánicos son una parte grande de la basura doméstica. Al compostarlos, se reduce lo que llega al relleno, y con ello los malos olores y los lixiviados, y se obtiene abono. Aun así, siguen existiendo residuos que necesitan disposición final.",
+    "tip": "En preguntas de ciencia y sociedad, descarta las opciones absolutas («ya no será necesario…») y busca el efecto más directo.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-028",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Analiza el uso de recursos naturales o artefactos y sus efectos sobre el entorno y la salud.",
+    "difficulty": 3,
+    "componente": "Ciencia, tecnología y sociedad",
+    "enunciado": "En algunas zonas de minería de oro se usa mercurio. ¿Por qué esto es un riesgo para las comunidades que comen pescado de los ríos cercanos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque el mercurio se evapora por completo y contamina solo el aire."
+      },
+      {
+        "id": "b",
+        "text": "Porque los peces transforman el mercurio en oro."
+      },
+      {
+        "id": "c",
+        "text": "Porque el mercurio se acumula en los organismos y su concentración aumenta a lo largo de la cadena alimentaria."
+      },
+      {
+        "id": "d",
+        "text": "Porque el mercurio afecta solo a las plantas acuáticas."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El mercurio que llega al agua puede transformarse en metilmercurio, que los organismos acumulan. Al pasar de presa a depredador, su concentración aumenta (biomagnificación). Los peces grandes y las personas que los comen reciben las dosis más altas, que dañan el sistema nervioso.",
+    "tip": "Bioacumulación: una sustancia se acumula en un organismo. Biomagnificación: su concentración aumenta en cada nivel de la cadena.",
+    "source": "original",
     "reviewed": false
   }
 ]

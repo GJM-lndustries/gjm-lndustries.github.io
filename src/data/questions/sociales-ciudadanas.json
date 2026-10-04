@@ -91,5 +91,937 @@
     "tip": "Estado de Derecho = nadie está por encima de la ley. Social = el Estado debe garantizar derechos como salud y educación.",
     "source": "proicfes-lecciones",
     "reviewed": false
+  },
+  {
+    "id": "soc-001",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce los mecanismos que los ciudadanos tienen a su disposición para participar en la democracia y garantizar sus derechos.",
+    "difficulty": 1,
+    "enunciado": "Los habitantes de un barrio denuncian que una fábrica vierte residuos al río del que sacan agua y que la contaminación afecta a toda la comunidad. ¿Cuál es el mecanismo previsto en la Constitución para proteger este tipo de derechos colectivos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El hábeas corpus."
+      },
+      {
+        "id": "b",
+        "text": "La acción de cumplimiento."
+      },
+      {
+        "id": "c",
+        "text": "La acción popular."
+      },
+      {
+        "id": "d",
+        "text": "El derecho al voto."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El artículo 88 de la Constitución establece las acciones populares para proteger derechos e intereses colectivos, como el ambiente sano, el espacio público y la salubridad pública. El hábeas corpus protege la libertad personal y la acción de cumplimiento exige que se cumpla una ley o un acto administrativo.",
+    "tip": "Si el derecho afectado es de toda una comunidad (ambiente, espacio público), piensa en la acción popular; si es un derecho fundamental de una persona, en la tutela.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-002",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce los mecanismos que los ciudadanos tienen a su disposición para participar en la democracia y garantizar sus derechos.",
+    "difficulty": 1,
+    "enunciado": "Una persona es detenida sin orden judicial y cree que su privación de la libertad es ilegal. ¿Qué mecanismo puede invocar ante cualquier autoridad judicial?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La acción popular."
+      },
+      {
+        "id": "b",
+        "text": "La revocatoria del mandato."
+      },
+      {
+        "id": "c",
+        "text": "El cabildo abierto."
+      },
+      {
+        "id": "d",
+        "text": "El hábeas corpus."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Según el artículo 30 de la Constitución, quien esté privado de la libertad y crea estarlo ilegalmente puede invocar el hábeas corpus, por sí mismo o por medio de otra persona. Debe resolverse en un término de treinta y seis horas.",
+    "tip": "Hábeas corpus = protección de la libertad personal frente a detenciones ilegales.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-003",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce los mecanismos que los ciudadanos tienen a su disposición para participar en la democracia y garantizar sus derechos.",
+    "difficulty": 2,
+    "enunciado": "El consejo estudiantil de un colegio público quiere saber cuánto dinero destinó la alcaldía para reparar los baños del colegio. ¿Qué mecanismo le permite solicitar esa información a la alcaldía y obtener respuesta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El derecho de petición."
+      },
+      {
+        "id": "b",
+        "text": "La acción de tutela."
+      },
+      {
+        "id": "c",
+        "text": "El hábeas corpus."
+      },
+      {
+        "id": "d",
+        "text": "El plebiscito."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El artículo 23 de la Constitución da a toda persona el derecho a presentar peticiones respetuosas a las autoridades, por motivos de interés general o particular, y a obtener una pronta respuesta. Es el mecanismo para pedir información pública.",
+    "tip": "Para pedir información o que una autoridad actúe, el primer paso suele ser un derecho de petición.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-004",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce los mecanismos que los ciudadanos tienen a su disposición para participar en la democracia y garantizar sus derechos.",
+    "difficulty": 2,
+    "enunciado": "Un año después de posesionado, muchos ciudadanos de un municipio consideran que el alcalde no ha cumplido el programa que presentó cuando era candidato. ¿Qué mecanismo de participación les permite intentar terminar su mandato?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El plebiscito."
+      },
+      {
+        "id": "b",
+        "text": "La revocatoria del mandato."
+      },
+      {
+        "id": "c",
+        "text": "El cabildo abierto."
+      },
+      {
+        "id": "d",
+        "text": "La acción de tutela."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La revocatoria del mandato es uno de los mecanismos de participación del artículo 103 de la Constitución. Permite a los ciudadanos dar por terminado el mandato de un alcalde o un gobernador, según los requisitos que fija la ley. El cabildo abierto sirve para discutir asuntos locales, pero no revoca a nadie.",
+    "tip": "Repasa los mecanismos del artículo 103: voto, plebiscito, referendo, consulta popular, cabildo abierto, iniciativa legislativa y revocatoria del mandato.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-005",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce la organización del Estado de acuerdo con la Constitución de 1991.",
+    "difficulty": 1,
+    "enunciado": "Según la Constitución de 1991, ¿qué institución tiene como función principal hacer las leyes en Colombia?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La Corte Constitucional."
+      },
+      {
+        "id": "b",
+        "text": "El Congreso de la República."
+      },
+      {
+        "id": "c",
+        "text": "La Presidencia de la República."
+      },
+      {
+        "id": "d",
+        "text": "La Procuraduría General de la Nación."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El Congreso, formado por el Senado y la Cámara de Representantes, es la rama legislativa: hace las leyes, reforma la Constitución y ejerce control político. La Presidencia hace parte de la rama ejecutiva y la Corte Constitucional, de la judicial.",
+    "tip": "Ramas del poder: legislativa (hace leyes), ejecutiva (gobierna y administra) y judicial (administra justicia).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-006",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce la organización del Estado de acuerdo con la Constitución de 1991.",
+    "difficulty": 2,
+    "enunciado": "Un ciudadano considera que una ley aprobada por el Congreso viola derechos que garantiza la Constitución. ¿Qué institución puede decidir si esa ley es contraria a la Constitución?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La Registraduría Nacional."
+      },
+      {
+        "id": "b",
+        "text": "La Contraloría General de la República."
+      },
+      {
+        "id": "c",
+        "text": "La Defensoría del Pueblo."
+      },
+      {
+        "id": "d",
+        "text": "La Corte Constitucional."
+      }
+    ],
+    "answer": "d",
+    "explanation": "El artículo 241 confía a la Corte Constitucional la guarda de la integridad y supremacía de la Constitución. Cualquier ciudadano puede presentar una demanda de inconstitucionalidad contra una ley, y la Corte decide si es exequible o inexequible.",
+    "tip": "Corte Constitucional = guardiana de la Constitución. Contraloría = control fiscal. Registraduría = identificación y elecciones.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-007",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende modelos conceptuales, sus características y contextos de aplicación.",
+    "difficulty": 2,
+    "enunciado": "El artículo 1 de la Constitución define a Colombia como una república unitaria, descentralizada y con autonomía de sus entidades territoriales. ¿Qué significa que sea descentralizada?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que departamentos y municipios tienen competencias y recursos propios para manejar asuntos de su territorio."
+      },
+      {
+        "id": "b",
+        "text": "Que cada departamento puede expedir su propia Constitución."
+      },
+      {
+        "id": "c",
+        "text": "Que el presidente nombra directamente a todos los alcaldes."
+      },
+      {
+        "id": "d",
+        "text": "Que no existe un gobierno nacional."
+      }
+    ],
+    "answer": "a",
+    "explanation": "En una república unitaria hay una sola Constitución y un solo ordenamiento legal. La descentralización reparte funciones y recursos entre la Nación y las entidades territoriales: por ejemplo, los ciudadanos eligen a sus alcaldes y gobernadores y los municipios administran servicios locales.",
+    "tip": "Unitario ≠ centralizado: Colombia tiene una sola Constitución, pero delega competencias en sus territorios.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-008",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce los derechos y deberes que la Constitución consagra.",
+    "difficulty": 2,
+    "enunciado": "En una escuela de un resguardo indígena del Cauca se enseña en nasa yuwe y en español. ¿Qué principio constitucional respalda esta práctica?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La prohibición de enseñar en lenguas distintas al español."
+      },
+      {
+        "id": "b",
+        "text": "La libertad de empresa y de iniciativa privada."
+      },
+      {
+        "id": "c",
+        "text": "El reconocimiento y la protección de la diversidad étnica y cultural de la Nación."
+      },
+      {
+        "id": "d",
+        "text": "La obligación de que todos los colombianos aprendan inglés."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El artículo 7 dice que el Estado reconoce y protege la diversidad étnica y cultural. El artículo 10 añade que las lenguas de los grupos étnicos son también oficiales en sus territorios y que la enseñanza en las comunidades con tradiciones lingüísticas propias será bilingüe.",
+    "tip": "La Constitución de 1991 define a Colombia como un país pluriétnico y multicultural: recuerda los artículos 7 y 10.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-009",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.",
+    "difficulty": 2,
+    "enunciado": "Entre 1958 y 1974, los partidos Liberal y Conservador acordaron turnarse la Presidencia y repartirse por partes iguales los cargos públicos. ¿Qué consecuencia se le atribuye con frecuencia a este acuerdo, conocido como Frente Nacional?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Redujo la violencia entre los dos partidos, pero limitó la participación de otras fuerzas políticas."
+      },
+      {
+        "id": "b",
+        "text": "Permitió que muchos partidos accedieran al poder en igualdad de condiciones."
+      },
+      {
+        "id": "c",
+        "text": "Puso fin de manera definitiva a todos los conflictos armados del país."
+      },
+      {
+        "id": "d",
+        "text": "Reemplazó la república por una monarquía constitucional."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El Frente Nacional buscó terminar la violencia bipartidista de mediados del siglo XX. Al reservar el poder a los dos partidos tradicionales, dejó por fuera a otros movimientos; muchos historiadores lo relacionan con la exclusión política de la época.",
+    "tip": "En historia, las preguntas suelen pedir causas y consecuencias: piensa qué problema resolvía una medida y qué problemas nuevos generó.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-010",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.",
+    "difficulty": 2,
+    "enunciado": "En las elecciones de marzo de 1990, un movimiento estudiantil promovió depositar una «séptima papeleta» en las urnas. ¿Qué buscaba esa iniciativa?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Elegir por primera vez a los alcaldes por voto popular."
+      },
+      {
+        "id": "b",
+        "text": "Aprobar la separación de Panamá del territorio colombiano."
+      },
+      {
+        "id": "c",
+        "text": "Autorizar la reelección presidencial inmediata."
+      },
+      {
+        "id": "d",
+        "text": "Convocar una Asamblea Nacional Constituyente que reformara la Constitución de 1886."
+      }
+    ],
+    "answer": "d",
+    "explanation": "La séptima papeleta pedía una Asamblea Constituyente. El apoyo ciudadano llevó a convocarla, y la Asamblea expidió la Constitución Política de 1991, que reemplazó a la de 1886. La elección popular de alcaldes ya existía desde 1988.",
+    "tip": "Ubica en una línea de tiempo: 1886 (Constitución anterior), 1990 (séptima papeleta), 1991 (nueva Constitución).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-011",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.",
+    "difficulty": 3,
+    "enunciado": "Panamá se separó de Colombia en 1903, poco después de la Guerra de los Mil Días. ¿Qué factor internacional influyó de manera decisiva en esa separación?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La invasión de Panamá por parte de tropas venezolanas."
+      },
+      {
+        "id": "b",
+        "text": "El interés de Estados Unidos en construir y controlar un canal interoceánico en el istmo."
+      },
+      {
+        "id": "c",
+        "text": "La decisión de España de recuperar sus antiguas colonias."
+      },
+      {
+        "id": "d",
+        "text": "La firma de un acuerdo de paz con las FARC."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Estados Unidos quería construir un canal entre el Atlántico y el Pacífico. Cuando el Congreso colombiano no aprobó el tratado para el canal, Estados Unidos apoyó la independencia de Panamá y luego firmó con el nuevo país el acuerdo para construirlo.",
+    "tip": "Para explicar un hecho histórico, combina factores internos (crisis tras la guerra) con externos (intereses de otras potencias).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-012",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.",
+    "difficulty": 1,
+    "enunciado": "¿Cuál es el río que nace en el Macizo Colombiano, recorre el país de sur a norte entre las cordilleras Central y Oriental y desemboca en el mar Caribe?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El río Cauca."
+      },
+      {
+        "id": "b",
+        "text": "El río Atrato."
+      },
+      {
+        "id": "c",
+        "text": "El río Magdalena."
+      },
+      {
+        "id": "d",
+        "text": "El río Meta."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El Magdalena nace en el Macizo Colombiano y desemboca en el Caribe, en Bocas de Ceniza. El Cauca también nace en el Macizo, pero desemboca en el Magdalena; el Atrato nace en el Chocó y el Meta pertenece a la cuenca del Orinoco.",
+    "tip": "Aprende la geografía con pares: Magdalena–Cauca (andinos), Atrato (Pacífico biogeográfico, desemboca en el golfo de Urabá) y Meta (Orinoquía).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-013",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Comprende que los problemas sociales y sus soluciones involucran distintas dimensiones y reconoce relaciones entre ellas.",
+    "difficulty": 2,
+    "enunciado": "Una fuerte helada daña gran parte de los cultivos de papa de Boyacá y Cundinamarca. ¿Qué es lo más probable que ocurra a corto plazo con el precio de la papa en las plazas de mercado de Bogotá?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que suba, porque disminuye la oferta mientras la demanda se mantiene."
+      },
+      {
+        "id": "b",
+        "text": "Que baje, porque los compradores tendrán menos dinero."
+      },
+      {
+        "id": "c",
+        "text": "Que se mantenga igual, porque el precio no depende de las cosechas."
+      },
+      {
+        "id": "d",
+        "text": "Que baje, porque habrá más papa disponible."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Si llega menos papa a los mercados (menor oferta) y las personas siguen queriendo comprar la misma cantidad (demanda estable), el precio tiende a subir. Es la ley de la oferta y la demanda.",
+    "tip": "Oferta baja con demanda igual → precio sube; oferta alta con demanda igual → precio baja.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-014",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende modelos conceptuales, sus características y contextos de aplicación.",
+    "difficulty": 2,
+    "enunciado": "Si en un año la inflación fue del 10 % y el salario de una persona subió 5 %, ¿qué pasó con su poder adquisitivo?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Aumentó, porque su salario subió."
+      },
+      {
+        "id": "b",
+        "text": "Se mantuvo igual, porque ambos subieron."
+      },
+      {
+        "id": "c",
+        "text": "Aumentó al doble, porque la inflación fue el doble del aumento."
+      },
+      {
+        "id": "d",
+        "text": "Disminuyó, porque los precios subieron más que su salario."
+      }
+    ],
+    "answer": "d",
+    "explanation": "La inflación mide cuánto suben los precios en general. Si los precios suben 10 % y el ingreso solo 5 %, con el mismo salario se pueden comprar menos bienes y servicios que antes: el poder adquisitivo cae.",
+    "tip": "Para saber si alguien gana o pierde poder de compra, compara el aumento de su ingreso con la inflación.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-015",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Reconoce y compara perspectivas de actores y grupos sociales frente a una problemática.",
+    "difficulty": 2,
+    "stimulusId": "soc-st-carretera",
+    "enunciado": "¿Qué interés defiende principalmente cada grupo?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Los campesinos, la conservación del bosque; la asociación ambiental, el comercio de productos."
+      },
+      {
+        "id": "b",
+        "text": "Los campesinos, el acceso a los mercados; la asociación ambiental, la conservación de las fuentes de agua."
+      },
+      {
+        "id": "c",
+        "text": "Los dos grupos defienden únicamente intereses económicos."
+      },
+      {
+        "id": "d",
+        "text": "Los campesinos buscan turismo y la asociación ambiental busca empleo."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Los campesinos piden la carretera para sacar sus productos (interés económico y de acceso). La asociación se opone porque el trazado afectaría el bosque donde nacen las quebradas (interés ambiental y de abastecimiento de agua).",
+    "tip": "Para analizar perspectivas, pregúntate qué gana o qué pierde cada actor con la decisión.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-016",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Evalúa decisiones, acciones u omisiones en relación con sus efectos sobre distintos actores y dimensiones.",
+    "difficulty": 3,
+    "stimulusId": "soc-st-carretera",
+    "enunciado": "¿Cuál de las siguientes propuestas tiene en cuenta los intereses de los dos grupos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Construir la carretera por el trazado propuesto, porque los campesinos son más."
+      },
+      {
+        "id": "b",
+        "text": "Prohibir para siempre cualquier vía en la vereda."
+      },
+      {
+        "id": "c",
+        "text": "Estudiar un trazado alternativo que no cruce el bosque y, mientras tanto, mejorar los caminos existentes."
+      },
+      {
+        "id": "d",
+        "text": "Dejar que cada grupo actúe por su cuenta sin dialogar."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La propuesta del trazado alternativo responde a la necesidad de los campesinos (sacar sus productos) y protege el bosque y el agua. Las demás opciones favorecen solo a un grupo o evitan resolver el conflicto.",
+    "tip": "La mejor solución en preguntas de conflicto suele ser la que equilibra intereses mediante el diálogo, no la que impone una sola postura.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-017",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce los mecanismos que los ciudadanos tienen a su disposición para participar en la democracia y garantizar sus derechos.",
+    "difficulty": 1,
+    "enunciado": "En un colegio se elige personero estudiantil. ¿Cuál es su función principal?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Imponer las sanciones disciplinarias a los estudiantes."
+      },
+      {
+        "id": "b",
+        "text": "Administrar el presupuesto del colegio."
+      },
+      {
+        "id": "c",
+        "text": "Promover que se respeten los derechos y deberes de los estudiantes."
+      },
+      {
+        "id": "d",
+        "text": "Nombrar a los profesores de cada área."
+      }
+    ],
+    "answer": "c",
+    "explanation": "Según la Ley General de Educación y sus normas reglamentarias, el personero es un estudiante del último grado, elegido por sus compañeros, encargado de promover el ejercicio de los derechos y deberes de los estudiantes. Puede recibir quejas y presentarlas ante las autoridades del colegio.",
+    "tip": "El gobierno escolar es una práctica de democracia: el personero representa y defiende a los estudiantes, no los sanciona.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-018",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Contextualiza y evalúa usos de fuentes y argumentos.",
+    "difficulty": 2,
+    "enunciado": "Un comerciante afirma: «Los migrantes nos quitan el trabajo a todos». Una investigadora afirma: «La llegada de migrantes puede aumentar la competencia por empleo en algunos sectores, pero también puede aumentar el consumo y la creación de negocios». ¿Qué diferencia hay entre los dos enunciados?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El primero se basa en datos estadísticos; el segundo es solo una opinión."
+      },
+      {
+        "id": "b",
+        "text": "Los dos dicen lo mismo con palabras diferentes."
+      },
+      {
+        "id": "c",
+        "text": "El segundo niega que la migración tenga algún efecto en el empleo."
+      },
+      {
+        "id": "d",
+        "text": "El primero generaliza sin presentar evidencia; el segundo considera varios efectos posibles."
+      }
+    ],
+    "answer": "d",
+    "explanation": "«Nos quitan el trabajo a todos» es una generalización absoluta que no muestra datos. La investigadora matiza: reconoce un posible efecto negativo en algunos sectores y otros efectos positivos. Por eso su enunciado es más preciso.",
+    "tip": "Palabras como «todos», «siempre» o «nunca» suelen indicar generalizaciones; un análisis riguroso matiza y distingue casos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-019",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce los derechos y deberes que la Constitución consagra.",
+    "difficulty": 2,
+    "enunciado": "A una paciente con una enfermedad grave, su EPS le niega un medicamento formulado por su médico tratante. Ella presenta una acción de tutela. ¿Qué derecho busca proteger principalmente?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El derecho fundamental a la salud, relacionado con su vida y su dignidad."
+      },
+      {
+        "id": "b",
+        "text": "El derecho a la libre competencia entre empresas."
+      },
+      {
+        "id": "c",
+        "text": "El derecho de propiedad sobre el medicamento."
+      },
+      {
+        "id": "d",
+        "text": "El derecho al voto en las elecciones de salud."
+      }
+    ],
+    "answer": "a",
+    "explanation": "La Corte Constitucional ha reconocido la salud como derecho fundamental, y la Ley Estatutaria 1751 de 2015 lo consagra así. La tutela (artículo 86) es el mecanismo para pedir protección inmediata de los derechos fundamentales.",
+    "tip": "Tutela = protección rápida de derechos fundamentales de una persona (el juez tiene diez días para decidir).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-020",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Comprende que los problemas sociales y sus soluciones involucran distintas dimensiones y reconoce relaciones entre ellas.",
+    "difficulty": 3,
+    "enunciado": "En algunas zonas de la Amazonía colombiana se tala el bosque para convertirlo en potreros. ¿Cuál es el efecto en cadena más probable?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Aumento de la biodiversidad, porque llegan nuevas especies de ganado."
+      },
+      {
+        "id": "b",
+        "text": "Pérdida de biodiversidad, cambios en el ciclo del agua de la región y más emisiones de gases de efecto invernadero."
+      },
+      {
+        "id": "c",
+        "text": "Más lluvias, porque los potreros retienen más agua que el bosque."
+      },
+      {
+        "id": "d",
+        "text": "Ningún efecto fuera de la zona talada, porque el bosque es muy grande."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Talar el bosque destruye hábitats y libera el carbono almacenado en los árboles. Además, la selva aporta humedad a la atmósfera mediante la transpiración; al eliminarla se alteran las lluvias, incluso en regiones lejanas. Las dimensiones ambiental, económica y social están conectadas.",
+    "tip": "En preguntas sistémicas, busca la opción que reconoce relaciones entre varias dimensiones, no un solo efecto aislado.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-021",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Comprende que los problemas sociales y sus soluciones involucran distintas dimensiones y reconoce relaciones entre ellas.",
+    "difficulty": 2,
+    "enunciado": "Durante décadas, muchas familias del campo colombiano llegaron a las ciudades huyendo de la violencia o buscando oportunidades. ¿Qué consecuencia tuvo este proceso en muchas ciudades?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El crecimiento de barrios en las periferias, a menudo sin servicios públicos suficientes al principio."
+      },
+      {
+        "id": "b",
+        "text": "La disminución de la población urbana."
+      },
+      {
+        "id": "c",
+        "text": "La desaparición del trabajo informal."
+      },
+      {
+        "id": "d",
+        "text": "El abandono de las zonas periféricas de las ciudades."
+      }
+    ],
+    "answer": "a",
+    "explanation": "La migración del campo a la ciudad y el desplazamiento forzado aumentaron rápidamente la población urbana. Muchas familias se asentaron en zonas periféricas que crecieron más rápido que la capacidad de las ciudades para dotarlas de servicios, vivienda y empleo formal.",
+    "tip": "Relaciona procesos: violencia y falta de oportunidades en el campo → migración → crecimiento urbano desordenado.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-022",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.",
+    "difficulty": 3,
+    "enunciado": "En 2016, el Gobierno colombiano y las FARC-EP firmaron un acuerdo de paz y lo sometieron a un plebiscito. ¿Qué ocurrió con ese plebiscito?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Ganó el «Sí» con amplia mayoría y el acuerdo no tuvo cambios."
+      },
+      {
+        "id": "b",
+        "text": "No se realizó, porque la Constitución prohíbe los plebiscitos."
+      },
+      {
+        "id": "c",
+        "text": "Ganó el «No» por un margen estrecho; se renegociaron algunos puntos y luego se firmó un nuevo acuerdo."
+      },
+      {
+        "id": "d",
+        "text": "Ganó el «No» y el proceso de paz terminó definitivamente."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El 2 de octubre de 2016 el «No» ganó con algo más del 50 % de los votos. Después se renegoció el texto con propuestas de distintos sectores y en noviembre de 2016 se firmó un nuevo acuerdo, que fue refrendado por el Congreso.",
+    "tip": "Distingue los mecanismos: el plebiscito consulta al pueblo sobre una decisión del presidente; el referendo, sobre un texto normativo.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-023",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Contextualiza y evalúa usos de fuentes y argumentos.",
+    "difficulty": 2,
+    "enunciado": "Una estudiante investiga cómo vivieron los bogotanos el 9 de abril de 1948, el día del asesinato de Jorge Eliécer Gaitán. ¿Cuál de las siguientes es una fuente primaria?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Un libro de historia escrito en 2010."
+      },
+      {
+        "id": "b",
+        "text": "Una fotografía o un periódico publicados en esos días."
+      },
+      {
+        "id": "c",
+        "text": "Un artículo de una enciclopedia en internet."
+      },
+      {
+        "id": "d",
+        "text": "Un video de resumen hecho por un creador de contenido."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Una fuente primaria se produjo en la época de los hechos o por testigos directos: fotografías, periódicos, cartas o testimonios de 1948. Los libros posteriores, las enciclopedias y los resúmenes son fuentes secundarias, porque interpretan otras fuentes.",
+    "tip": "Primaria = de la época o de un testigo. Secundaria = análisis o resumen hecho después.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-024",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.",
+    "difficulty": 1,
+    "enunciado": "¿Qué hecho de 1819 se considera decisivo para la independencia de la Nueva Granada?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El Grito de Independencia del 20 de julio."
+      },
+      {
+        "id": "b",
+        "text": "La Guerra de los Mil Días."
+      },
+      {
+        "id": "c",
+        "text": "La firma de la Constitución de 1886."
+      },
+      {
+        "id": "d",
+        "text": "La Batalla de Boyacá."
+      }
+    ],
+    "answer": "d",
+    "explanation": "El 7 de agosto de 1819, el ejército patriota venció a las tropas realistas en el puente de Boyacá, lo que abrió el camino a Santafé y aseguró la independencia. El 20 de julio de 1810 fue el inicio del proceso, la Guerra de los Mil Días fue entre 1899 y 1902, y la Constitución de 1886 es posterior.",
+    "tip": "Fechas clave: 20 de julio de 1810 (inicio) y 7 de agosto de 1819 (Batalla de Boyacá).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-025",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Evalúa decisiones, acciones u omisiones en relación con sus efectos sobre distintos actores y dimensiones.",
+    "difficulty": 3,
+    "enunciado": "Un municipio prohíbe las bolsas plásticas de un solo uso en el comercio. ¿Cuál de los siguientes es un efecto no deseado que la alcaldía debería prever?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que disminuya el plástico que llega a los ríos."
+      },
+      {
+        "id": "b",
+        "text": "Que más personas usen bolsas reutilizables."
+      },
+      {
+        "id": "c",
+        "text": "Que llegue menos plástico al relleno sanitario."
+      },
+      {
+        "id": "d",
+        "text": "Que algunos pequeños comerciantes tengan costos más altos mientras consiguen alternativas."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Las demás opciones son precisamente los efectos que busca la medida. Una política pública también puede tener costos para algunos actores, como los tenderos, que deben comprar alternativas más costosas; preverlo permite acompañarlos.",
+    "tip": "Al evaluar una decisión, separa los efectos buscados de los efectos secundarios sobre otros actores.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-026",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Conoce los derechos y deberes que la Constitución consagra.",
+    "difficulty": 2,
+    "enunciado": "El artículo 44 de la Constitución establece que los derechos de los niños prevalecen sobre los derechos de los demás. Si en un caso entran en conflicto el interés económico de una empresa y el derecho a la educación de un niño, ¿qué debe considerar primero la autoridad?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El interés superior del niño."
+      },
+      {
+        "id": "b",
+        "text": "Las ganancias de la empresa."
+      },
+      {
+        "id": "c",
+        "text": "La opinión de la mayoría de los vecinos."
+      },
+      {
+        "id": "d",
+        "text": "El número de empleados de la empresa."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Que los derechos de los niños «prevalecen» significa que, cuando hay tensión, las autoridades deben dar prioridad a su protección. Este principio también se conoce como interés superior del niño.",
+    "tip": "En la Constitución, «prevalecen» significa que tienen prioridad cuando hay conflicto con otros derechos o intereses.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-027",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Reconoce y compara perspectivas de actores y grupos sociales frente a una problemática.",
+    "difficulty": 2,
+    "enunciado": "Una alcaldía propone ampliar el pico y placa. ¿Cuál de las siguientes opiniones expresa una preocupación principalmente económica?",
+    "options": [
+      {
+        "id": "a",
+        "text": "«Con menos carros en la calle habrá menos contaminación del aire»."
+      },
+      {
+        "id": "b",
+        "text": "«El transporte público ya va muy lleno en las horas pico»."
+      },
+      {
+        "id": "c",
+        "text": "«Si no puedo usar mi carro dos días a la semana, perderé clientes en mi trabajo de domicilios»."
+      },
+      {
+        "id": "d",
+        "text": "«Las medidas de movilidad deben respetar el derecho a circular libremente»."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La primera opinión se centra en el ingreso: la medida afectaría el trabajo de quien hace domicilios. Las otras expresan preocupaciones ambientales, de movilidad y jurídicas.",
+    "tip": "Clasifica los argumentos por dimensión: económica, ambiental, social, política o jurídica.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-028",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Contextualiza y evalúa usos de fuentes y argumentos.",
+    "difficulty": 3,
+    "enunciado": "Un artículo que defiende un proyecto minero en un municipio fue escrito por el gerente de la empresa minera. ¿Qué debería tener en cuenta un lector al evaluar el artículo?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que todo lo que dice es falso, porque lo escribió el gerente."
+      },
+      {
+        "id": "b",
+        "text": "Que el autor tiene un interés directo en el tema, así que conviene contrastar lo que dice con otras fuentes."
+      },
+      {
+        "id": "c",
+        "text": "Que es la fuente más confiable, porque el autor conoce la empresa por dentro."
+      },
+      {
+        "id": "d",
+        "text": "Que quién escribió el artículo no importa; solo cuenta su extensión."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Conocer al autor ayuda a identificar posibles sesgos: un gerente tiene interés en que el proyecto se apruebe. Eso no hace falso lo que dice, pero sí obliga a contrastarlo con otras fuentes, como estudios independientes, autoridades ambientales o la comunidad.",
+    "tip": "Al evaluar una fuente, pregunta: ¿quién la produjo, con qué interés y cómo puedo contrastarla?",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-029",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Reconoce y compara perspectivas de actores y grupos sociales frente a una problemática.",
+    "difficulty": 3,
+    "enunciado": "Una empresa quiere construir una obra en el territorio colectivo de una comunidad afrocolombiana del Pacífico. La comunidad exige que se le consulte antes de tomar la decisión; un funcionario responde que la obra traerá empleo a la región. ¿Qué diferencia hay entre las dos posturas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Las dos posturas defienden únicamente los beneficios económicos de la obra."
+      },
+      {
+        "id": "b",
+        "text": "La comunidad rechaza cualquier forma de empleo y el funcionario rechaza la obra."
+      },
+      {
+        "id": "c",
+        "text": "El funcionario defiende la consulta previa y la comunidad defiende el empleo."
+      },
+      {
+        "id": "d",
+        "text": "La comunidad prioriza su derecho a decidir sobre su territorio y su cultura; el funcionario, los beneficios económicos de la obra."
+      }
+    ],
+    "answer": "d",
+    "explanation": "La comunidad invoca la consulta previa, un derecho de los pueblos étnicos a ser consultados sobre las medidas que los afecten directamente. El funcionario argumenta desde los beneficios económicos. Reconocer de qué valor parte cada actor es la base para analizar el conflicto.",
+    "tip": "Para comparar perspectivas, identifica el valor que prioriza cada actor: territorio y cultura, economía, ambiente, seguridad…",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-030",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Reconoce y compara perspectivas de actores y grupos sociales frente a una problemática.",
+    "difficulty": 2,
+    "enunciado": "En plena sequía se discute cómo repartir el agua de un río del Tolima entre un cultivador de arroz, un pescador y la empresa de acueducto del municipio. ¿Cuál de las siguientes afirmaciones expresa el punto de vista del pescador?",
+    "options": [
+      {
+        "id": "a",
+        "text": "«Si el río baja demasiado, los peces desaparecen y me quedo sin sustento»."
+      },
+      {
+        "id": "b",
+        "text": "«Sin agua para regar, perderé la cosecha de este semestre»."
+      },
+      {
+        "id": "c",
+        "text": "«Primero hay que garantizar el agua potable de las casas»."
+      },
+      {
+        "id": "d",
+        "text": "«El precio del arroz debe subir para compensar la sequía»."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El pescador depende de que el río conserve suficiente caudal para que haya peces. La pérdida de la cosecha y el precio del arroz expresan el interés del cultivador, y el agua potable de las casas es la prioridad de la empresa de acueducto.",
+    "tip": "Relaciona cada opinión con la actividad de quien habla: ¿qué necesita del recurso en disputa?",
+    "source": "original",
+    "reviewed": false
   }
 ]

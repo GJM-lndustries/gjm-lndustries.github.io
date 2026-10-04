@@ -301,10 +301,10 @@ const mathLessons: Lesson[] = [
       {
         type: 'example',
         title: 'Ejemplo tipo ICFES',
-        text: 'Una biblioteca identifica libros con placas de 3 dígitos usando los dígitos 1, 2, 3, 4 sin repetir. El asistente 1 dice que hay 4 posibilidades. El asistente 2 dice que hay 4×3×2=24. El asistente 2 tiene razón: es una permutación porque el orden importa (123 ≠ 321 son libros diferentes).'
+        text: 'Un equipo de microfútbol de 8 jugadores debe elegir capitán y subcapitán. Un estudiante dice que hay 8 + 7 = 15 formas; otro dice que hay 8 × 7 = 56. El segundo tiene razón: hay 8 opciones para capitán y, para cada una, 7 para subcapitán. Como los cargos son distintos, el orden importa (Ana capitana y Luis subcapitán no es lo mismo que al revés), así que es una permutación.'
       }
     ],
-    questionIds: ['math-5-q1']
+    questionIds: ['mat-031']
   }
 ];
 
@@ -356,7 +356,7 @@ const readingLessons: Lesson[] = [
         text: 'Las preguntas literales usan frases como: "Según el texto...", "De acuerdo con el texto...", "El autor afirma que...". La respuesta siempre está escrita directamente en el texto. Busca las palabras clave de la pregunta en el texto.'
       }
     ],
-    questionIds: ['read-1-q1']
+    questionIds: ['lc-001', 'lc-009', 'lc-024']
   },
   {
     id: 'read-2',
@@ -397,8 +397,8 @@ const readingLessons: Lesson[] = [
       },
       {
         type: 'example',
-        title: 'Ejemplo del ICFES',
-        text: 'Fragmento 1: "La aporofobia alimenta el rechazo a inmigrantes por ser pobres." Fragmento 2: "Los yates atracan sin problemas en el Mediterráneo mientras las embarcaciones pequeñas se hunden." Pregunta: ¿Qué relación hay? El fragmento 2 es un EJEMPLO de lo que dice el 1: los ricos (yates) son bienvenidos, los pobres (embarcaciones pequeñas) no.'
+        title: 'Ejemplo tipo ICFES',
+        text: 'Fragmento 1: "Leer en voz alta a los niños pequeños amplía su vocabulario." Fragmento 2: "Desde que su abuela le lee cuentos cada noche, Mateo, de cuatro años, usa palabras nuevas como «enorme» y «tímido»." Pregunta: ¿Qué relación hay? El fragmento 2 es un EJEMPLO de lo que afirma el 1: muestra un caso concreto en el que se cumple la idea general. Si contara que un niño al que le leen todos los días no aprendió palabras nuevas, sería un CONTRAEJEMPLO.'
       },
       {
         type: 'tip',
@@ -406,7 +406,7 @@ const readingLessons: Lesson[] = [
         text: 'Elimina las opciones que: (1) contradigan el texto, (2) no tengan relación con el texto, (3) sean demasiado extremas o absolutas. La respuesta correcta siempre es moderada y se puede justificar.'
       }
     ],
-    questionIds: ['read-2-q1']
+    questionIds: ['lc-028', 'lc-003', 'lc-029']
   },
   {
     id: 'read-3',
@@ -457,7 +457,7 @@ const readingLessons: Lesson[] = [
         highlight: 'El ICFES pregunta: "¿Qué estrategia usa el autor para..." → Identifica cuál de estas está usando.'
       }
     ],
-    questionIds: ['read-3-q1']
+    questionIds: ['lc-007', 'lc-008', 'lc-015']
   }
 ];
 

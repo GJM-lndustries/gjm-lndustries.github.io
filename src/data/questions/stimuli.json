@@ -36,21 +36,6 @@
     "text": "Un parqueadero del centro cobra según el número de horas completas que el carro permanece allí:\n\n| Tiempo (horas) | Costo |\n|---|---|\n| 1 | $2.500 |\n| 2 | $4.000 |\n| 3 | $5.500 |\n| 4 | $7.000 |"
   },
   {
-    "id": "lc-st-read-1",
-    "area": "lectura-critica",
-    "text": "Lee el siguiente fragmento: \"La aporofobia, como señala Cortina, es lo que alimenta el rechazo a inmigrantes y refugiados. No se les rechaza por extranjeros, sino por pobres. Nadie pone reparos a que un jeque árabe se instale en un país europeo, ni a facilitar la residencia a un futbolista famoso.\""
-  },
-  {
-    "id": "lc-st-read-2",
-    "area": "lectura-critica",
-    "text": "Fragmento 1: \"La aporofobia es lo que alimenta el rechazo a inmigrantes y refugiados. No se les rechaza por extranjeros, sino por pobres.\" Fragmento 2: \"Los yates atracan sin problemas en la costa rica del Mediterráneo mientras las embarcaciones pequeñas se hunden tratando de alcanzarlas.\""
-  },
-  {
-    "id": "lc-st-read-3",
-    "area": "lectura-critica",
-    "text": "Un texto sobre aporofobia comienza describiendo la experiencia de una filósofa que nombró un fenómeno social, luego explica el concepto con ejemplos de inmigrantes ricos vs pobres, y concluye con estadísticas sobre crímenes de odio."
-  },
-  {
     "id": "ing-st-eng-1",
     "area": "ingles",
     "text": "Read the text: \"The education system in Colombia has improved significantly in recent years. More students now have access to technology and quality teachers. However, there are still important challenges in rural areas.\""
@@ -64,5 +49,107 @@
     "id": "lc-st-sim-3",
     "area": "lectura-critica",
     "text": "\"Los jóvenes que pasan tiempo en redes sociales aprenden habilidades digitales que no se enseñan en la escuela. Sin embargo, esto puede generar una brecha entre las prácticas escolares y las prácticas digitales de los jóvenes.\""
+  },
+  {
+    "id": "lc-st-cuento-linea",
+    "title": "Texto literario (fragmento de un cuento)",
+    "text": "Cuando el bus se detuvo en el alto de La Línea, la niebla ya había borrado la carretera. Mi abuelo se bajó primero, como siempre, y se quedó mirando hacia el oriente, donde según él empezaba el Tolima aunque nadie pudiera verlo.\n\n—Aquí me despedí de tu abuela hace cincuenta años —dijo, sin volverse—. Ella iba para Ibagué a estudiar y yo me quedaba en Calarcá con la finca.\n\nYo tenía diecisiete años y el celular sin señal. Pensé que me iba a contar la historia completa, pero solo sacó del bolsillo una moneda vieja, la frotó con el pulgar y la guardó otra vez.\n\n—¿Y qué pasó? —le pregunté.\n\n—Que volvió —respondió—. La gente que se despide bien casi siempre vuelve.\n\nEl conductor pitó dos veces. Subimos. Durante el resto del viaje el abuelo durmió con la boca abierta y yo miré la niebla, tratando de ver lo que él veía.",
+    "area": "lectura-critica"
+  },
+  {
+    "id": "lc-st-columna-celular",
+    "title": "Texto argumentativo (columna de opinión)",
+    "text": "**¿Celulares fuera del salón?**\n\nCada vez más colegios del país discuten si deben prohibir el celular durante la jornada. Quienes defienden la prohibición tienen un argumento fuerte: el aparato compite por la atención, y una notificación basta para que un estudiante pierda el hilo de una explicación. Sin embargo, prohibir no es lo mismo que educar. Un joven que nunca aprende a administrar su celular dentro del colegio tendrá que aprender solo, y sin acompañamiento, cuando llegue a la universidad o al trabajo, donde nadie se lo va a guardar en un locker.\n\nPor eso propongo una alternativa: guardar los celulares durante las clases, pero dedicar espacios a usarlos con un propósito, como buscar fuentes confiables, verificar una noticia o grabar una entrevista para un proyecto. La norma, así, no sería «el celular está prohibido», sino «el celular se usa cuando sirve para aprender». Es más difícil de aplicar que una prohibición total, es cierto; pero los colegios no existen para lo fácil, sino para formar personas capaces de decidir.",
+    "area": "lectura-critica"
+  },
+  {
+    "id": "lc-st-paramos",
+    "title": "Texto informativo",
+    "text": "**Los páramos, fábricas de agua**\n\nEn las montañas de los Andes, por encima de los bosques y por debajo de las nieves, se encuentran los páramos: ecosistemas fríos, cubiertos de pajonales, musgos y frailejones. Aunque parecen paisajes vacíos, cumplen una función vital. Su suelo, rico en materia orgánica, y su vegetación retienen el agua de la lluvia y de la neblina como si fueran una esponja, y la liberan poco a poco. Gracias a ese proceso, muchos ríos que abastecen a ciudades colombianas mantienen su caudal incluso en las temporadas secas.\n\nLos frailejones son quizá el símbolo de este ecosistema. Sus hojas, cubiertas de una vellosidad parecida al terciopelo, los protegen del frío y de la intensa radiación solar de la alta montaña. Crecen muy despacio, por lo que un frailejón de gran tamaño puede tener décadas de vida.\n\nLos páramos enfrentan amenazas como la expansión de cultivos y de la ganadería, la minería y el cambio climático. Cuando el suelo se ara o se compacta por el paso del ganado, pierde su capacidad de retener agua, y recuperarla puede tardar muchos años. Por eso, proteger los páramos no es solo un asunto ambiental: es también una forma de garantizar el agua que llega a millones de hogares.",
+    "area": "lectura-critica"
+  },
+  {
+    "id": "lc-st-encuesta-preparacion",
+    "title": "Texto discontinuo (resultados de una encuesta)",
+    "text": "**¿Cómo se preparan para el Saber 11?** Encuesta a 200 estudiantes de grado 11 de un colegio de Pereira (datos ficticios, con fines de práctica).\n\n| Forma de preparación principal | Estudiantes | Promedio de horas semanales |\n|---|---|---|\n| Preicfes presencial | 50 | 6 |\n| Plataformas o videos en internet | 80 | 4 |\n| Estudio individual con libros y guías | 40 | 5 |\n| No se prepara | 30 | 0 |\n\n*Nota: cada estudiante eligió una sola forma de preparación principal.*",
+    "area": "lectura-critica"
+  },
+  {
+    "id": "lc-st-jornada-unica",
+    "title": "Dos textos sobre la jornada única",
+    "text": "**Texto A.** La jornada única le da al colegio tiempo para lo que hoy casi nunca cabe en el horario: el deporte, el arte, el refuerzo en matemáticas y en lectura. Además, mientras los estudiantes están en el colegio, están protegidos y alimentados. Por eso debería extenderse a todos los colegios públicos.\n\n**Texto B.** Nadie se opone a que los estudiantes pasen más tiempo aprendiendo, pero alargar la jornada sin comedores, sin salones suficientes y sin más docentes solo significa más horas en las mismas condiciones. Antes de extender la jornada única, hay que garantizar la infraestructura que la hace posible.",
+    "area": "lectura-critica"
+  },
+  {
+    "id": "lc-st-poema-cilantro",
+    "title": "Texto literario (poema)",
+    "text": "Mi madre siembra cilantro\nen tarros de galleta,\ny la ventana se vuelve\nuna huerta pequeñita.\n\nDice que la tierra sabe\nquién la quiere y quién la usa;\nyo no sé si sea cierto,\npero el cilantro no se le muere nunca.",
+    "area": "lectura-critica"
+  },
+  {
+    "id": "lc-st-aristoteles-amistad",
+    "title": "Texto filosófico",
+    "text": "En la *Ética a Nicómaco*, Aristóteles distingue tres clases de amistad. La primera se basa en la utilidad: dos personas son amigas porque obtienen algún beneficio la una de la otra, como sucede entre socios de un negocio. La segunda se basa en el placer: se buscan porque disfrutan de la compañía, como ocurre con quienes comparten una diversión. Según Aristóteles, estas dos formas suelen ser frágiles, pues cuando desaparece el beneficio o el placer, desaparece también la amistad.\n\nLa tercera, la amistad perfecta, es la que existe entre personas buenas que se quieren por lo que cada una es y que desean el bien del otro por el otro mismo. Esta amistad es duradera, aunque también escasa, porque requiere tiempo y trato.",
+    "area": "lectura-critica"
+  },
+  {
+    "id": "lc-st-mercados-campesinos",
+    "title": "Dos fragmentos",
+    "text": "**Fragmento 1.** «En Colombia, los mercados campesinos acercan a quienes cultivan y a quienes consumen: el productor recibe un mejor precio y el comprador paga menos, porque desaparecen los intermediarios.»\n\n**Fragmento 2.** «Cada sábado, en la plaza de un municipio de Boyacá, doña Rosa vende directamente sus papas y sus habas; gana más que cuando se las vendía a un comerciante, y sus clientes pagan menos que en el supermercado.»",
+    "area": "lectura-critica"
+  },
+  {
+    "id": "cn-st-germinacion",
+    "title": "Experimento: temperatura y germinación",
+    "text": "Un grupo de estudiantes sembró 20 semillas de fríjol en cada uno de cuatro recipientes. Todos tenían la misma tierra, la misma cantidad de agua y la misma luz; solo cambiaron la temperatura. Al séptimo día contaron las semillas germinadas.\n\n| Recipiente | Temperatura (°C) | Semillas germinadas (de 20) |\n|---|---|---|\n| 1 | 10 | 3 |\n| 2 | 20 | 15 |\n| 3 | 30 | 18 |\n| 4 | 40 | 2 |",
+    "area": "ciencias-naturales"
+  },
+  {
+    "id": "cn-st-efervescente",
+    "title": "Experimento: tabletas efervescentes",
+    "text": "Se echó una tableta efervescente igual en cuatro vasos con la misma cantidad de agua, a distintas temperaturas, y se midió cuánto tardó en dejar de burbujear.\n\n| Temperatura del agua (°C) | Tiempo de reacción (s) |\n|---|---|\n| 10 | 90 |\n| 25 | 50 |\n| 40 | 30 |\n| 60 | 18 |",
+    "area": "ciencias-naturales"
+  },
+  {
+    "id": "cn-st-pendulo",
+    "title": "Experimento: el péndulo",
+    "text": "Una estudiante midió el tiempo que tarda un péndulo en hacer una oscilación completa (período), cambiando la longitud de la cuerda y la masa colgada. Soltó el péndulo siempre desde el mismo ángulo pequeño.\n\n| Longitud (cm) | Masa (g) | Período (s) |\n|---|---|---|\n| 25 | 50 | 1,0 |\n| 25 | 100 | 1,0 |\n| 100 | 50 | 2,0 |\n| 100 | 100 | 2,0 |",
+    "area": "ciencias-naturales"
+  },
+  {
+    "id": "soc-st-carretera",
+    "title": "Un conflicto en la vereda",
+    "text": "En una vereda de montaña, un grupo de campesinos pide construir una carretera para sacar más rápido sus productos al mercado del pueblo. Una asociación ambiental se opone, porque el trazado propuesto atravesaría un bosque donde nacen las quebradas que abastecen de agua a la vereda y al casco urbano.",
+    "area": "sociales-ciudadanas"
+  },
+  {
+    "id": "ing-st-p1-palabras",
+    "title": "Parte 1 · Instrucciones",
+    "text": "Lee la descripción y elige la palabra que le corresponde. Hay ocho palabras para cinco descripciones, así que sobran palabras.\n\n**Ejemplo:** *You keep your money and your cards in it.* → **a wallet**",
+    "area": "ingles"
+  },
+  {
+    "id": "ing-st-p4-salento",
+    "title": "Parte 4 · A school trip",
+    "text": "Lee el texto y elige la palabra correcta para cada espacio.\n\n**A school trip to the coffee region**\n\nLast month, our class **(1)** ___ a trip to the Coffee Cultural Landscape. We **(2)** ___ in Salento for three days. On the first day, a farmer showed us how coffee **(3)** ___ grown and processed. I had never seen a coffee plant before, so it was **(4)** ___ interesting experience. Now I want to go back with my family, because there **(5)** ___ many places we didn't have time to visit.",
+    "area": "ingles"
+  },
+  {
+    "id": "ing-st-p5-wayuu",
+    "title": "Parte 5 · The Wayuu and their bags",
+    "text": "The Wayuu are an Indigenous people who live in La Guajira, in the north of Colombia, and in part of Venezuela. They are famous for their colorful bags, called *mochilas*. Wayuu women traditionally weave them, and one bag can take weeks to finish.\n\nEach design has a meaning, and many designs represent elements of nature or of daily life. Today, many visitors buy mochilas, and selling them is an important source of income for many families. However, some artisans say that cheap copies made in factories are a problem, because buyers do not always know if a bag is authentic.",
+    "area": "ingles"
+  },
+  {
+    "id": "ing-st-p6-andres",
+    "title": "Parte 6 · Learning on the move",
+    "text": "Every morning, Andrés travels for almost an hour by bus from his town to the city where he studies. At first, he thought those hours were wasted. Then a teacher suggested that he download podcasts in English and listen to them during the trip.\n\nAndrés started with short episodes about music and football, his two passions, and at home he used the transcripts to check the words he did not understand. Six months later, he noticed that he could follow conversations in movies without reading the subtitles all the time. \"The bus didn't get any faster,\" he says, \"but now the trip feels shorter.\"",
+    "area": "ingles"
+  },
+  {
+    "id": "ing-st-p7-ciclovia",
+    "title": "Parte 7 · Bogotá by bike",
+    "text": "Lee el texto y elige la palabra correcta para cada espacio.\n\n**Bogotá by bike**\n\n**(1)** ___ Sunday and on public holidays, many main roads in Bogotá are closed to cars for several hours during the Ciclovía. Thousands of people use this time to ride, walk or skate. The Ciclovía started in the 1970s, and since then **(2)** ___ cities in other countries have copied the idea. For many families, it is a free way to do exercise and **(3)** ___ time together outdoors.",
+    "area": "ingles"
   }
 ]

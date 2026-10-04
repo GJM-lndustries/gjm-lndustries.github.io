@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, XCircle, Lightbulb } from "lucide-react";
-import { AREA_INFO, DIFFICULTY_LABEL, getStimulus, type Question } from "@/data/questions";
+import { AREA_INFO, DIFFICULTY_LABEL, INGLES_PARTES, getStimulus, type Question } from "@/data/questions";
 import RichText from "./RichText";
 
 interface QuestionViewProps {
@@ -24,6 +24,14 @@ export default function QuestionView({ question, selected, answered, onSelect, s
             {AREA_INFO[question.area].icon} {AREA_INFO[question.area].label}
           </span>
           <span className="score-badge bg-muted text-muted-foreground border border-border">{question.competencia}</span>
+          {question.componente && (
+            <span className="score-badge bg-muted text-muted-foreground border border-border">Componente {question.componente.toLowerCase()}</span>
+          )}
+          {question.parte && (
+            <span className="score-badge bg-muted text-muted-foreground border border-border">
+              Parte {question.parte}: {INGLES_PARTES[question.parte].nombre.toLowerCase()}
+            </span>
+          )}
           <span className="score-badge bg-yellow-50 text-yellow-800 border border-yellow-200">
             Nivel {DIFFICULTY_LABEL[question.difficulty]}
           </span>
