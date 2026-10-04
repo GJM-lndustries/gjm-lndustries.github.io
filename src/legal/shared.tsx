@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { Dato } from '@/components/LegalPage';
-import { LEGAL } from '@/config/legal';
+import { LEGAL, PLACEHOLDER_RE } from '@/config/legal';
 import { SITE } from '@/config/site';
 
 const R = LEGAL.responsable;
@@ -9,18 +9,24 @@ const R = LEGAL.responsable;
 export function FichaResponsable() {
   return (
     <ul>
-      <li><strong>Responsable:</strong> <Dato>{R.nombre}</Dato>, identificado(a) con <Dato>{R.documento}</Dato>, quien desarrolla {SITE.name} bajo el nombre comercial {SITE.author.name}.</li>
+      <li><strong>Responsable:</strong> <Dato>{R.nombre}</Dato>, identificado con <Dato>{R.documento}</Dato>, quien desarrolla {SITE.name} bajo el nombre comercial {SITE.author.name}.</li>
       <li><strong>Domicilio:</strong> <Dato>{R.ciudad}</Dato>, Colombia.</li>
       <li><strong>Dirección:</strong> <Dato>{R.direccion}</Dato>.</li>
-      <li><strong>Correo electrónico:</strong> <Dato>{R.correo}</Dato>.</li>
-      <li><strong>Teléfono:</strong> <Dato>{R.telefono}</Dato>.</li>
+      <li><strong>Correo electrónico:</strong> <Correo />.</li>
+      <li><strong>Teléfono:</strong> <Telefono />.</li>
       <li><strong>Sitio web:</strong> {SITE.url.replace('https://', '')}.</li>
     </ul>
   );
 }
 
 export function Correo() {
-  return <Dato>{R.correo}</Dato>;
+  if (PLACEHOLDER_RE.test(R.correo)) return <Dato>{R.correo}</Dato>;
+  return <a href={`mailto:${R.correo}`}>{R.correo}</a>;
+}
+
+export function Telefono() {
+  if (PLACEHOLDER_RE.test(R.telefono)) return <Dato>{R.telefono}</Dato>;
+  return <a href={`tel:+57${R.telefono.replace(/\D/g, '')}`}>{R.telefono}</a>;
 }
 
 export const LinkTratamiento = () => <Link href="/tratamiento-de-datos">Política de Tratamiento de Datos Personales</Link>;

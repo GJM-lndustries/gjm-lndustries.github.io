@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { renderToString } from "react-dom/server";
 import { Router } from "wouter";
 import DataAuthorization from "@/components/DataAuthorization";
-import { LEGAL, pendingLegalPlaceholders } from "@/config/legal";
+import { FECHA_LANZAMIENTO, LEGAL, fechaLarga, pendingLegalPlaceholders } from "@/config/legal";
 import { ageOn, buildAuthorizationRecord, isAuthorizationComplete, variantForBirthDate } from "./authorization";
 
 describe("autorización de tratamiento de datos", () => {
@@ -50,8 +50,10 @@ describe("autorización de tratamiento de datos", () => {
     expect(menor).toContain("tuve en cuenta su opinión");
   });
 
-  it("lista los datos legales pendientes por llenar", () => {
-    const pending = pendingLegalPlaceholders();
-    for (const p of pending) expect(p).toMatch(/^\[.+\]$/);
+  it("los datos legales están completos y la vigencia sale de la fecha de lanzamiento", () => {
+    expect(pendingLegalPlaceholders()).toEqual([]);
+    expect(fechaLarga("2026-10-04")).toBe("4 de octubre de 2026");
+    expect(fechaLarga("2027-01-15")).toBe("15 de enero de 2027");
+    expect(LEGAL.fechaVigencia).toBe(fechaLarga(FECHA_LANZAMIENTO));
   });
 });

@@ -1,27 +1,40 @@
 /**
  * Datos del Responsable del Tratamiento y de las políticas legales.
  *
- * ⚠️ LLENAR ANTES DE PUBLICAR: reemplaza cada valor entre [CORCHETES]. Se usan en
- * /tratamiento-de-datos, /politica-de-privacidad, /terminos y /cookies. Mientras quede alguno
- * sin llenar, el sitio lo muestra resaltado y `pnpm build` muestra una advertencia.
+ * Se usan en /tratamiento-de-datos, /politica-de-privacidad, /terminos y /cookies. Si algún valor
+ * vuelve a quedar como [MARCADOR], el sitio lo resalta y `pnpm build` muestra una advertencia.
  * (Decreto 1377 de 2013, compilado en el Decreto 1074 de 2015, art. 2.2.2.25.3.1: la política debe
  * indicar nombre o razón social, domicilio, dirección, correo electrónico y teléfono del Responsable.)
  */
+/**
+ * 📅 FECHA DE LANZAMIENTO (AAAA-MM-DD): es la fecha de entrada en vigencia de todas las políticas.
+ * ⚠️ Provisional: ACTUALÍZALA a la fecha real en que el sitio se publique en proicfes.com.co.
+ */
+export const FECHA_LANZAMIENTO = "2026-10-04";
+
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+/** «2026-10-04» → «4 de octubre de 2026» (sin zona horaria: no depende del reloj ni del navegador). */
+export function fechaLarga(iso: string): string {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (!m) return iso;
+  return `${Number(m[3])} de ${MESES[Number(m[2]) - 1]} de ${m[1]}`;
+}
+
 export const LEGAL = {
   responsable: {
-    /** Persona natural o jurídica responsable (puede ser el titular de la marca GJM lndustries). */
-    nombre: "[NOMBRE COMPLETO DEL RESPONSABLE]",
-    /** Tipo y número: «C.C. 1.234.567.890» o «NIT 900.123.456-7». */
-    documento: "[CÉDULA/NIT]",
+    /** Persona natural responsable del tratamiento (titular de la marca GJM lndustries). */
+    nombre: "Gelmis Julian Muñoz Chacón",
+    documento: "cédula de ciudadanía 1.112.045.927",
     /** Ciudad de domicilio (también define la jurisdicción de los Términos). */
-    ciudad: "[CIUDAD]",
-    direccion: "[DIRECCIÓN FÍSICA]",
-    telefono: "[TELÉFONO DE CONTACTO]",
+    ciudad: "Cali, Valle del Cauca",
+    direccion: "Calle 3 Oeste #70-34, Cali, Valle del Cauca",
+    telefono: "311 411 3632",
     /** Correo para consultas, reclamos y solicitudes de datos personales. */
-    correo: "[CORREO DE CONTACTO]",
+    correo: "shaconjulian@gmail.com",
   },
-  /** Fecha desde la que rigen las políticas, p. ej. «1 de noviembre de 2026». */
-  fechaVigencia: "[FECHA DE ENTRADA EN VIGENCIA]",
+  /** Texto de la fecha de vigencia; sale de FECHA_LANZAMIENTO (no editar aquí). */
+  fechaVigencia: fechaLarga(FECHA_LANZAMIENTO),
   /** Súbela (1.1, 2.0…) cada vez que cambies las políticas de forma relevante. */
   version: "1.0",
 } as const;
