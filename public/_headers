@@ -15,3 +15,11 @@
 /*
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+# Las URLs *.pages.dev (producción del proyecto y vistas previas por rama/versión) no se indexan.
+# El dominio propio (proicfes.com.co) no coincide con estas reglas y sí se indexa.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
