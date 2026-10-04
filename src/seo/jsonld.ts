@@ -4,7 +4,7 @@
  */
 import { SITE, absoluteUrl } from "@/config/site";
 import { FAQ } from "@/data/faq";
-import { AREA_INFO, allQuestions } from "@/data/questions";
+import { AREA_INFO, BANK_TOTAL } from "@/data/questions/meta";
 import { modules, allGlossaryTerms } from "@/lib/appData";
 import type { RouteMeta } from "./routes";
 
@@ -93,13 +93,13 @@ function mainEntity(route: RouteMeta): Node | null {
         educationalLevel: EDUCATIONAL_LEVEL,
         about: Object.values(AREA_INFO).map(a => ({ "@type": "Thing", name: `${a.label} (Saber 11)` })),
         author: { "@id": ORG_ID },
-        hasPart: { "@type": "Quiz", name: `${allQuestions.length} preguntas con explicación`, educationalLevel: EDUCATIONAL_LEVEL },
+        hasPart: { "@type": "Quiz", name: `${BANK_TOTAL} preguntas con explicación`, educationalLevel: EDUCATIONAL_LEVEL },
       };
     case "quiz":
       return {
         "@type": "Quiz",
         "@id": `${url}#simulacro`,
-        name: "Mini simulacro tipo ICFES Saber 11",
+        name: "Simulacro tipo ICFES Saber 11",
         description: route.description,
         url,
         inLanguage: SITE.lang,

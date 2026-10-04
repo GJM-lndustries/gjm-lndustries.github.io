@@ -3,7 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { AREA_IDS, COMPETENCIAS, INGLES_PARTES, type InglesParte } from "./types";
 import { validateBank } from "./validate";
-import { allQuestions, getQuestions } from "./index";
+import { BANK_COUNTS, allQuestions, getQuestions, questionsByArea } from "./index";
 import { modules } from "@/lib/appData";
 
 const dir = path.resolve(import.meta.dirname);
@@ -61,5 +61,8 @@ describe("banco de preguntas", () => {
     expect(text).not.toContain("aporofobia");
     expect(text).not.toMatch(/placas de 3 d[ií]gitos/);
   });
-});
 
+  it("BANK_COUNTS (meta.ts) coincide con el banco", () => {
+    for (const a of AREA_IDS) expect(BANK_COUNTS[a], a).toBe(questionsByArea[a].length);
+  });
+});

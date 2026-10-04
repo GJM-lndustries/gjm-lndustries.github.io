@@ -5,7 +5,8 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, R
 import { AlertCircle, Zap, Target, TrendingUp, PenLine } from 'lucide-react';
 import { useProgress } from '@/contexts/ProgressContext';
 import { modules } from '@/lib/appData';
-import { AREA_IDS, AREA_INFO } from '@/data/questions';
+import { AREA_INFO } from '@/data/questions/meta';
+import { AREA_IDS } from '@/data/questions/types';
 import { MIN_ANSWERS_PER_AREA } from '@/lib/score';
 
 export default function Analytics() {

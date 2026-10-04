@@ -6,7 +6,7 @@
 import { prerenderToNodeStream } from "react-dom/static";
 import { Router } from "wouter";
 import App from "./App";
-import { preloadAllLazyRoutes } from "./pages/legal";
+import { preloadAllLazyRoutes } from "./pages/lazyRoutes";
 import { findRoute } from "./seo/routes";
 
 export { SITE, absoluteUrl } from "./config/site";

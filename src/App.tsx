@@ -9,9 +9,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { usePWA } from "./hooks/usePWA";
 import { modules } from "./lib/appData";
 import Home from "./pages/Home";
-import ModulePage from "./pages/ModulePage";
-import Practica from "./pages/Practica";
-import Simulacro from "./pages/Simulacro";
 import Logros from "./pages/Logros";
 import Glosario from "./pages/Glosario";
 import Tips from "./pages/Tips";
@@ -25,6 +22,7 @@ import { ConsentProvider } from "./contexts/ConsentContext";
 import { useSeo } from "./seo/useSeo";
 import { PageLoading } from "./lib/lazyPage";
 import { Cookies, PoliticaPrivacidad, Terminos, TratamientoDatos } from "./pages/legal";
+import { ModulePage, Practica, Simulacro } from "./pages/lazyRoutes";
 
 // Las gráficas (recharts) pesan bastante: se cargan solo al abrir «Mi progreso».
 const Analytics = lazy(() => import("./pages/Analytics"));

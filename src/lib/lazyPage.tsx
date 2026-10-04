@@ -4,8 +4,8 @@ export function PageLoading() {
   return <p className="text-sm text-muted-foreground py-10 text-center">Cargando…</p>;
 }
 
-export interface LazyPage {
-  (): React.JSX.Element;
+export interface LazyPage<P extends object = object> {
+  (props: P): React.JSX.Element;
   /** Carga el módulo; después, la página se renderiza sin <Suspense>. */
   preload: () => Promise<void>;
 }
@@ -20,19 +20,21 @@ export interface LazyPage {
  *   (mismo árbol que el HTML);
  * - al navegar dentro de la app se usa `lazy()` con «Cargando…» mientras baja el archivo.
  */
-export function lazyPage(loader: () => Promise<{ default: ComponentType }>): LazyPage {
-  let Loaded: ComponentType | null = null;
+export function lazyPage<P extends object = object>(
+  loader: () => Promise<{ default: ComponentType<P> }>
+): LazyPage<P> {
+  let Loaded: ComponentType<P> | null = null;
   let pending: Promise<void> | null = null;
   const preload = () => (pending ??= loader().then(m => { Loaded = m.default; }));
   const Lazy = lazy(() => preload().then(() => ({ default: Loaded! })));
 
-  function Page() {
+  function Page(props: P) {
     // Se decide al montar, para no cambiar de árbol (y remontar) cuando termina de cargar.
     const [Ready] = useState(() => Loaded);
-    if (Ready) return <Ready />;
+    if (Ready) return <Ready {...props} />;
     return (
       <Suspense fallback={<PageLoading />}>
-        <Lazy />
+        <Lazy {...props} />
       </Suspense>
     );
   }

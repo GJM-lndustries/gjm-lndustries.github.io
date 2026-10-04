@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
 import { modules } from '@/lib/appData';
-import { AREA_INFO, allQuestions } from '@/data/questions';
+import { AREA_INFO, BANK_TOTAL } from '@/data/questions/meta';
 import { AREA_IDS } from '@/data/questions/types';
 import { ChevronRight, Star, Zap, Target, BookOpen, Trophy, Flame, PenLine, RotateCcw } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -236,7 +236,7 @@ export default function Home() {
             <PenLine className="w-8 h-8 flex-shrink-0" aria-hidden="true" />
             <div>
               <p className="font-bold text-sm font-['Lexend']">Modo práctica</p>
-              <p className="text-xs opacity-90">{allQuestions.length} preguntas con explicación</p>
+              <p className="text-xs opacity-90">{BANK_TOTAL} preguntas con explicación</p>
             </div>
           </Link>
           <Link
