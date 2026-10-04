@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import type { AreaId } from "@/data/questions/types";
 import { emptyAreaStats, estimateScore, type AreaStats, type ScoreEstimate } from "@/lib/score";
 
@@ -119,8 +119,15 @@ export function ProgressProvider({ children, deferLoad = false }: { children: Re
     setLoaded(true);
   }, [loaded]);
 
+  // Lo recién cargado no se vuelve a escribir: así una pestaña que cargó antes que otra
+  // (o que no encontró nada) no pisa el progreso guardado sin que el usuario haya hecho nada.
+  const skipFirstSave = useRef(true);
   useEffect(() => {
     if (!loaded) return; // no sobrescribir lo guardado antes de cargarlo
+    if (skipFirstSave.current) {
+      skipFirstSave.current = false;
+      return;
+    }
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
     } catch {
