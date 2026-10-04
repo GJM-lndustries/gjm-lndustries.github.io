@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://gjm-lndustries.github.io/sitemap.xml
