@@ -1,7 +1,7 @@
 # ProICFES
 
 App web interactiva y gratuita para preparar el examen **Saber 11 (ICFES)**: lecciones cortas, modo práctica con
-retroalimentación inmediata, mini simulacro y puntaje global estimado por áreas.
+retroalimentación inmediata, simulacros con reloj (corto y completo por sesiones) y puntaje global estimado por áreas.
 
 Sitio: <https://proicfes.com.co> · Hecho por GJM lndustries
 
@@ -9,8 +9,9 @@ Sitio: <https://proicfes.com.co> · Hecho por GJM lndustries
 
 React 19 + TypeScript + Vite + Tailwind CSS 4, con `wouter` (rutas), `framer-motion` y `recharts`.
 Fuentes Lexend y DM Sans autoalojadas (`src/assets/fonts`, licencia SIL OFL).
-Es una app 100 % estática: no tiene servidor, cuentas ni pagos. El progreso se guarda en el navegador
-(`localStorage`, clave `proicfes_progress`).
+Es una app 100 % estática, sin servidor propio ni pagos. El progreso se guarda en el navegador
+(`localStorage`, clave `proicfes_progress`). Las cuentas (Supabase) son **opcionales** y hoy están apagadas: ver
+[Cuentas con Supabase](#cuentas-con-supabase).
 
 ## Desarrollo
 
@@ -44,6 +45,20 @@ basta con editar esa constante y volver a compilar.
   - `_redirects`: redirecciones 301 de URLs alternativas (`/privacidad`, `/habeas-data`, `/terminos-y-condiciones`,
     `/politica-de-cookies`, `/faq`…) a la ruta real. Cloudflare Pages ya sirve `/ruta` desde `ruta/index.html` y
     usa `404.html` para lo que no exista, así que no hace falta una regla «catch-all».
+- **Vista previa en Cloudflare Pages** (proyecto `proicfes`, rama de producción `main`): se publica sin conectar
+  el repositorio, con *direct upload*:
+
+  ```bash
+  pnpm build
+  CLOUDFLARE_ACCOUNT_ID=<id de la cuenta> CLOUDFLARE_API_TOKEN=<token con permiso Pages:Edit> \
+    npx wrangler pages deploy dist --project-name proicfes --branch preview
+  ```
+
+  `--branch preview` crea un despliegue de **vista previa** en <https://preview.proicfes.pages.dev> (cada despliegue
+  tiene además su URL `https://<hash>.proicfes.pages.dev`). Las reglas `https://:project.pages.dev/*` y
+  `https://:version.:project.pages.dev/*` de `public/_headers` agregan `X-Robots-Tag: noindex` a **todas** las URLs
+  `*.pages.dev`, así que las vistas previas no se indexan. El dominio propio no coincide con esas reglas y se indexa
+  normalmente (el dominio `proicfes.com.co` todavía no está conectado al proyecto).
 - **GitHub Pages**: cada push a `main` ejecuta `.github/workflows/deploy.yml`, que valida, compila y publica `dist/`
   con las acciones oficiales (`configure-pages`, `upload-pages-artifact`, `deploy-pages`). En **Settings → Pages →
   Build and deployment → Source** debe estar seleccionado **GitHub Actions**.
@@ -59,18 +74,15 @@ Personales, Ley 1581 de 2012 y Decreto 1074 de 2015), `/terminos` (Términos y c
 derecho de retracto) y `/cookies`. Están prerenderizadas, en el sitemap y enlazadas en el pie de página. El texto
 está en `src/pages/legal/`; lo común (ficha del responsable, tabla de proveedores) en `src/legal/shared.tsx`.
 
-**Datos que debes llenar una sola vez** en `src/config/legal.ts` (mientras falten, se ven resaltados en amarillo en
-las páginas y `pnpm build` los lista como advertencia):
+**Datos del responsable** en `src/config/legal.ts` (ya están llenos; si falta alguno, se ve resaltado en amarillo
+en las páginas y `pnpm build` lo lista como advertencia). La fecha de entrada en vigencia sale de una sola constante:
 
-| Marcador | Qué poner |
-| --- | --- |
-| `[NOMBRE COMPLETO DEL RESPONSABLE]` | Persona natural o empresa responsable del tratamiento |
-| `[CÉDULA/NIT]` | Cédula (persona natural) o NIT (empresa) |
-| `[CIUDAD]` | Ciudad de domicilio (también fija la jurisdicción en los Términos) |
-| `[DIRECCIÓN FÍSICA]` | Dirección para notificaciones |
-| `[TELÉFONO DE CONTACTO]` | Teléfono de atención |
-| `[CORREO DE CONTACTO]` | Correo para consultas y reclamos de habeas data |
-| `[FECHA DE ENTRADA EN VIGENCIA]` | Fecha de publicación de las políticas (p. ej. «15 de octubre de 2026») |
+```ts
+// src/config/legal.ts
+export const FECHA_LANZAMIENTO = "2026-10-04"; // ⚠️ cambiar por la fecha real de publicación al lanzar
+```
+
+Se muestra como «4 de octubre de 2026» en las cuatro páginas legales. **Al lanzar, cámbiala por la fecha real.**
 
 Si cambias el contenido de las políticas, sube `LEGAL.version`. Los textos son una base redactada según la norma
 citada; conviene que los revise un abogado antes de lanzar cuentas o pagos.
@@ -88,7 +100,7 @@ nada hasta que pongas los IDs en `SITE.integrations` (`src/config/site.ts`):
 Aun con el ID puesto, cada script solo se carga si la persona aceptó esa categoría.
 
 **Registro con autorización.** `src/components/DataAuthorization.tsx` es la casilla de «Autorización de tratamiento de
-datos» para el futuro formulario de cuenta, con variante para menores de 18 años (datos del padre, madre o
+datos» del registro de cuentas (`/cuenta`), con variante para menores de 18 años (datos del padre, madre o
 representante y constancia de haber escuchado al menor). `src/lib/authorization.ts` decide la variante por fecha de
 nacimiento y arma el registro (versión de la política y fecha) que debe guardarse como prueba de la autorización.
 
@@ -110,7 +122,89 @@ progreso guardado justo después. Por eso el primer render debe ser determinista
 Las rutas y sus metadatos están en `src/seo/routes.ts`. **Si agregas una página**, añádela ahí y en `src/App.tsx`.
 Las páginas largas que casi nadie abre (las legales) van en su propio archivo con `lazyPage()` (`src/lib/lazyPage.tsx`):
 se cargan antes del prerender y antes de hidratar, así que el HTML igual trae todo el texto.
-Las páginas personales (Mi progreso, Logros, Ranking, Meta) llevan `noindex` y no van al sitemap.
+Las páginas personales (Mi progreso, Logros, Ranking, Meta, Cuenta) llevan `noindex` y no van al sitemap.
+
+## Simulacro
+
+`/simulacro` arma cada intento desde el banco (`src/lib/simulacro.ts`, motor puro con pruebas en
+`simulacro.test.ts`; la pantalla está en `src/pages/Simulacro.tsx`):
+
+- **Simulacro corto:** 1 sesión, 25 preguntas en 40 minutos (Lectura 5, Matemáticas 6, Sociales 5, Ciencias 5,
+  Inglés 4).
+- **Simulacro completo por sesiones:** la misma estructura del cuadernillo oficial (sesión 1: Matemáticas,
+  Lectura Crítica, Sociales y Ciencias; sesión 2: Matemáticas, Ciencias, Sociales e Inglés), escalada al tamaño del
+  banco con el mismo ritmo del examen real (4 h 30 min por sesión oficial ≈ 2 min por pregunta). Con el banco
+  actual: sesión 1 = 62 preguntas / 2 h 20 min y sesión 2 = 70 preguntas / 2 h 21 min. Crece solo cuando el banco
+  crece (tope: el tamaño oficial).
+- **Reglas como en el examen:** el reloj no se detiene (se calcula con la hora real, aunque se cierre la página);
+  dentro de una sesión se puede ir y volver, cambiar respuestas y marcar para revisar; al terminar una sesión (o
+  agotarse el tiempo) ya no se vuelve a ella; receso entre sesiones; sin retroalimentación hasta el final.
+- **Resultados:** puntaje 0–100 por prueba y global 0–500 **estimado** con la ponderación oficial
+  (`(3·LC + 3·M + 3·SC + 3·CN + 1·Inglés) / 13 × 5`), revisión con filtros (todas, incorrectas, sin responder,
+  marcadas) y explicación de cada pregunta. El resultado entra al historial (`simulacroHistory`) y a las
+  estadísticas por área. El intento en curso se guarda en `localStorage` (`proicfes_simulacro_v1`).
+- Las preguntas de un mismo texto salen juntas y las de Inglés siguen el orden de las partes 1 a 7.
+
+## Cuentas con Supabase
+
+Las cuentas son opcionales. Con `SITE.integrations.supabaseUrl` y `supabaseAnonKey` **vacíos** (como ahora) la app
+funciona exactamente igual que sin cuentas: no se descarga `@supabase/supabase-js`, no hay peticiones, «Mi cuenta» no
+aparece en el menú y `/cuenta` muestra «Próximamente».
+
+Con los dos valores puestos:
+
+- `/cuenta` ofrece **Crear cuenta** (fecha de nacimiento → `DataAuthorization` en variante adulto o menor; la de
+  menor exige nombre, documento y correo del representante y la constancia de haber escuchado al menor) y luego
+  **Google** o **enlace mágico al correo**; y **Ya tengo cuenta** (Google o enlace, sin crear cuentas nuevas).
+  Si alguien entra con Google sin haber pasado por el registro, se le pide completarlo antes de guardar nada.
+- Solo se guarda el **año** de nacimiento, `is_minor`, los datos del representante (si aplica) y la prueba de la
+  autorización (versión de la política y fecha) más la versión y fecha de la elección de cookies.
+- **Sincronización** (`src/lib/progressMerge.ts`, pruebas en `progressMerge.test.ts`): en el primer inicio de sesión
+  en un navegador, el progreso local se **fusiona** con el de la cuenta (lecciones por id con el mejor puntaje,
+  respuestas por área sumadas, preguntas falladas unidas, simulacros unidos por id, insignias unidas, la racha más
+  reciente, la meta de la cuenta). Después se sincroniza el documento completo con «gana el último que escribió»
+  (`updated_at`). Si el progreso local era de otra cuenta, no se mezcla. Los simulacros también se suben a
+  `attempts`. «Cerrar sesión y borrar el progreso de este navegador» sirve para computadores compartidos.
+- Esquema y seguridad: `supabase/migrations/0001_init.sql` (tablas `profiles`, `progress`, `attempts`; Row Level
+  Security para que cada usuario solo vea y modifique sus filas; `anon` sin acceso; los intentos no se editan; un
+  menor no puede registrarse como adulto). `scripts/supabase-schema.test.ts` ejecuta la migración en Postgres
+  (PGlite) y prueba esas reglas.
+
+### Pasos para crear el proyecto (los hace el dueño de la cuenta)
+
+1. Entra a <https://supabase.com>, crea una cuenta y luego **New project**: nombre `proicfes`, una contraseña de base
+   de datos fuerte (guárdala tú; no hace falta enviarla), región **East US (North Virginia)** (suele dar la menor
+   latencia desde Colombia) y plan Free.
+2. **SQL Editor → New query**: pega todo el contenido de `supabase/migrations/0001_init.sql` y pulsa **Run**. En
+   **Table Editor** deben aparecer `profiles`, `progress` y `attempts`, las tres con RLS activado.
+3. **Authentication → URL Configuration**:
+   - *Site URL*: `https://preview.proicfes.pages.dev` por ahora (al lanzar: `https://proicfes.com.co`).
+   - *Redirect URLs*: `https://preview.proicfes.pages.dev/cuenta`, `https://*.proicfes.pages.dev/cuenta`,
+     `https://proicfes.com.co/cuenta` y `http://localhost:3000/cuenta`.
+4. **Authentication → Sign In / Providers → Email**: déjalo activado (el enlace mágico viene incluido). Opcional:
+   traduce la plantilla «Magic link» en **Authentication → Emails**. Para el lanzamiento configura un SMTP propio
+   (Resend, Brevo, etc.) en **Authentication → Emails → SMTP Settings**: el correo de prueba de Supabase solo envía
+   unos pocos mensajes por hora.
+5. **Google** (para «Continuar con Google»):
+   1. En <https://console.cloud.google.com> crea un proyecto y configura la pantalla de consentimiento (**Google Auth
+      Platform → Branding**): nombre ProICFES, correo de soporte y dominios autorizados `supabase.co` y
+      `proicfes.com.co`. Permisos: `openid`, `email` y `profile` (no requieren verificación).
+   2. **Clients → Create client → Web application**. *Authorized JavaScript origins*:
+      `https://preview.proicfes.pages.dev` y `https://proicfes.com.co`. *Authorized redirect URIs*: la *Callback URL*
+      que muestra Supabase en **Authentication → Sign In / Providers → Google** (es
+      `https://<id-del-proyecto>.supabase.co/auth/v1/callback`).
+   3. Copia el *Client ID* y el *Client secret* en ese panel de Supabase, activa Google y guarda.
+   4. En **Audience**, pasa la app de *Testing* a *In production* para que cualquiera pueda entrar.
+6. **Project Settings → API Keys** (o **Data API**): copia la **Project URL** (`https://<id>.supabase.co`) y la clave
+   pública **anon** (o la nueva *publishable*, `sb_publishable_…`).
+
+**Envíame solo esos dos valores** (Project URL y clave anon/publishable). Son públicos por diseño: la seguridad la
+da RLS. **Nunca** envíes ni pongas en el código la clave `service_role`/*secret* ni la contraseña de la base de
+datos. Con esos valores: se llenan en `SITE.integrations`, se revisan los textos legales (hoy dicen que no hay
+cuentas; Supabase ya figura como Encargado y Google como proveedor de inicio de sesión) y se publica.
+
+Para pedir la eliminación de una cuenta, el usuario escribe al correo del responsable; se borra desde
+**Authentication → Users** (al borrar el usuario se borran en cascada su perfil, progreso e intentos).
 
 ## Banco de preguntas
 
@@ -134,9 +228,13 @@ Cada pregunta tiene:
 | `stimulusId` | Opcional: id de un texto/tabla en `stimuli.json` (Markdown sencillo, tablas con `\|`) |
 | `enunciado`, `options` (`[{id, text}]`), `answer` | Pregunta, opciones y id de la opción correcta |
 | `explanation`, `tip` | Explicación de la respuesta y consejo corto |
+| `componente` | Solo Ciencias: `Biológico`, `Químico`, `Físico` o `CTS` (ciencia, tecnología y sociedad) |
+| `parte` | Solo Inglés: parte 1 a 7 del formato Saber 11 (avisos, emparejar palabras, conversaciones, gramática, lectura literal, lectura inferencial y texto con espacios); el validador revisa el número de opciones de cada parte |
 | `source` | `original` (escrita para ProICFES) o `proicfes-lecciones` (migrada de las lecciones) |
 | `reviewed` | `true` solo cuando un docente la revisó |
 
-Las lecciones (`src/lib/appData.ts`, campo `questionIds`) y el simulacro (`src/data/simulacro.ts`) leen sus preguntas
-de este banco. **No agregues preguntas copiadas de cuadernillos oficiales u otras fuentes con derechos de autor**:
+Hoy hay 163 preguntas: Matemáticas 39, Lectura Crítica 30, Ciencias Naturales 31, Sociales y Ciudadanas 33 e
+Inglés 30, todas con `reviewed: false`. Las lecciones (`src/lib/appData.ts`, campo `questionIds`), el modo práctica y
+el simulacro leen sus preguntas de este banco. `pnpm validate:questions` revisa ids, competencias, componentes,
+partes de Inglés, opciones, textos asociados y que la explicación no nombre la letra de la opción. **No agregues preguntas copiadas de cuadernillos oficiales u otras fuentes con derechos de autor**:
 escribe preguntas originales y márcalas con `reviewed: false` hasta que un docente las revise.
