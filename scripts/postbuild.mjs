@@ -16,7 +16,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const dist = path.join(root, "dist");
 const ssrDir = path.join(root, "dist-ssr");
 const ssrEntry = fs.readdirSync(ssrDir).find(f => /^entry-server\.m?js$/.test(f));
-const { renderRoute, renderHeadTags, ROUTES, NOT_FOUND_META, SITE, absoluteUrl } = await import(
+const { renderRoute, renderHeadTags, ROUTES, NOT_FOUND_META, SITE, absoluteUrl, pendingLegalPlaceholders } = await import(
   pathToFileURL(path.join(ssrDir, ssrEntry)).href
 );
 
@@ -67,5 +67,12 @@ fs.writeFileSync(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSite
 // GitHub Pages: no procesar con Jekyll
 fs.writeFileSync(path.join(dist, ".nojekyll"), "");
 fs.rmSync(ssrDir, { recursive: true, force: true });
+
+const pending = pendingLegalPlaceholders();
+if (pending.length) {
+  console.warn(
+    `\n⚠️  Páginas legales con datos sin llenar en src/config/legal.ts (${pending.length}):\n   ${pending.join("\n   ")}\n`
+  );
+}
 
 console.log(`postbuild: ${written + 1} rutas prerenderizadas, 404.html, sitemap.xml y robots.txt para ${SITE.url}`);

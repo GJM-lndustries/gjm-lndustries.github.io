@@ -1,6 +1,7 @@
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { Router } from "wouter";
 import App from "./App";
+import { preloadRoute } from "./pages/legal";
 import "./index.css";
 
 const container = document.getElementById("root")!;
@@ -22,9 +23,13 @@ const hydrate = () =>
   );
 
 if (container.firstElementChild && location.search === "") {
+  // Si la ruta es una página en archivo aparte (legales), se carga antes de hidratar.
   // Cede un cuadro para que el navegador pinte primero el HTML estático (mejor LCP en celulares).
-  if (document.visibilityState === "visible") requestAnimationFrame(() => setTimeout(hydrate, 0));
-  else hydrate();
+  const start = () => {
+    if (document.visibilityState === "visible") requestAnimationFrame(() => setTimeout(hydrate, 0));
+    else hydrate();
+  };
+  preloadRoute(location.pathname).then(start, start);
 } else {
   container.textContent = "";
   createRoot(container).render(

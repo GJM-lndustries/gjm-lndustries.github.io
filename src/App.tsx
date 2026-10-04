@@ -18,14 +18,15 @@ import Leaderboard from "./pages/Leaderboard";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
+import CookieConsent from "./components/CookieConsent";
+import { ConsentProvider } from "./contexts/ConsentContext";
 import { useSeo } from "./seo/useSeo";
+import { PageLoading } from "./lib/lazyPage";
+import { Cookies, PoliticaPrivacidad, Terminos, TratamientoDatos } from "./pages/legal";
 
 // Las gráficas (recharts) pesan bastante: se cargan solo al abrir «Mi progreso».
 const Analytics = lazy(() => import("./pages/Analytics"));
 
-function PageLoading() {
-  return <p className="text-sm text-muted-foreground py-10 text-center">Cargando…</p>;
-}
 
 /** GitHub Pages puede servir /ruta/ con barra final: la normalizamos a /ruta. */
 function useTrailingSlashFix() {
@@ -56,6 +57,10 @@ function AppContent() {
             <Route path="/glosario" component={Glosario} />
             <Route path="/tips" component={Tips} />
             <Route path="/preguntas-frecuentes" component={PreguntasFrecuentes} />
+            <Route path="/politica-de-privacidad" component={PoliticaPrivacidad} />
+            <Route path="/tratamiento-de-datos" component={TratamientoDatos} />
+            <Route path="/terminos" component={Terminos} />
+            <Route path="/cookies" component={Cookies} />
             <Route path="/leaderboard" component={Leaderboard} />
             <Route path="/analytics">
               <Suspense fallback={<PageLoading />}>
@@ -80,10 +85,13 @@ export default function App({ hydrating = false }: { hydrating?: boolean }) {
   return (
     <ErrorBoundary>
       <InitialMotionGate active={hydrating}>
-        <ProgressProvider deferLoad={hydrating}>
-          <Toaster />
-          <AppContent />
-        </ProgressProvider>
+        <ConsentProvider>
+          <ProgressProvider deferLoad={hydrating}>
+            <Toaster />
+            <AppContent />
+            <CookieConsent />
+          </ProgressProvider>
+        </ConsentProvider>
       </InitialMotionGate>
     </ErrorBoundary>
   );

@@ -19,6 +19,17 @@ export const SITE = {
   author: {
     name: "GJM lndustries",
   },
+  /**
+   * Servicios de terceros. Vacíos = desactivados: no se carga ningún script.
+   * Aunque se llenen, solo se cargan después de que la persona acepte la categoría
+   * de cookies correspondiente (ver src/lib/consent.ts y src/lib/thirdParty.ts).
+   */
+  integrations: {
+    /** Google Analytics 4, p. ej. "G-XXXXXXXXXX" (categoría «analíticas»). */
+    gaMeasurementId: "",
+    /** Google AdSense, p. ej. "ca-pub-0000000000000000" (categoría «publicidad»). */
+    adsenseClientId: "",
+  },
 } as const;
 
 /** Convierte una ruta interna (/practica) en URL absoluta (https://…/practica). */

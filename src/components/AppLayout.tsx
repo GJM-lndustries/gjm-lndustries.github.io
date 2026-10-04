@@ -6,6 +6,7 @@ import {
   Calculator, Trophy, BarChart3, Menu, X, Star, Library, Lightbulb, TrendingUp, PenLine, Target
 } from 'lucide-react';
 import { SITE } from '@/config/site';
+import { useConsent } from '@/contexts/ConsentContext';
 
 const navItems = [
   { path: '/', label: 'Inicio', icon: Home },
@@ -38,7 +39,15 @@ const footerLinks = [
   { path: '/tips', label: 'Estrategias' },
 ];
 
+const legalLinks = [
+  { path: '/politica-de-privacidad', label: 'Privacidad' },
+  { path: '/tratamiento-de-datos', label: 'Tratamiento de datos' },
+  { path: '/terminos', label: 'Términos' },
+  { path: '/cookies', label: 'Cookies' },
+];
+
 function SiteFooter() {
+  const { openSettings } = useConsent();
   return (
     <footer className="mt-12 border-t border-border pt-5 pb-2 text-xs text-muted-foreground space-y-3">
       <nav aria-label="Enlaces del sitio" className="flex flex-wrap gap-x-4 gap-y-2">
@@ -47,6 +56,16 @@ function SiteFooter() {
             {label}
           </Link>
         ))}
+      </nav>
+      <nav aria-label="Información legal" className="flex flex-wrap gap-x-4 gap-y-2">
+        {legalLinks.map(({ path, label }) => (
+          <Link key={path} href={path} className="hover:text-foreground hover:underline underline-offset-2">
+            {label}
+          </Link>
+        ))}
+        <button type="button" onClick={openSettings} className="hover:text-foreground hover:underline underline-offset-2">
+          Configurar cookies
+        </button>
       </nav>
       <p>
         {SITE.name} es un proyecto independiente y gratuito; no está afiliado al ICFES. Para información oficial

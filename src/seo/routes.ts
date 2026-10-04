@@ -117,6 +117,38 @@ export const ROUTES: RouteMeta[] = [
     kind: "page",
   },
   {
+    path: "/politica-de-privacidad",
+    name: "Política de privacidad",
+    title: "Política de privacidad | ProICFES",
+    description:
+      "Qué datos usa ProICFES, para qué y con quién se comparten, y cómo ejercer tus derechos de habeas data según la Ley 1581 de 2012 de protección de datos.",
+    kind: "page",
+  },
+  {
+    path: "/tratamiento-de-datos",
+    name: "Tratamiento de datos personales",
+    title: "Política de Tratamiento de Datos Personales | ProICFES",
+    description:
+      "Política de Tratamiento de Datos Personales de ProICFES: finalidades, derechos, consultas en 10 días hábiles, reclamos en 15, menores de edad y transferencias.",
+    kind: "page",
+  },
+  {
+    path: "/terminos",
+    name: "Términos y condiciones",
+    title: "Términos y condiciones de uso | ProICFES",
+    description:
+      "Condiciones de uso de ProICFES: fin educativo, sin afiliación con el ICFES, sin garantía de resultados, propiedad intelectual y derechos del consumidor.",
+    kind: "page",
+  },
+  {
+    path: "/cookies",
+    name: "Política de cookies",
+    title: "Política de cookies | ProICFES",
+    description:
+      "Qué cookies y almacenamiento usa ProICFES (necesarias, analíticas y de publicidad), para qué sirven y cómo aceptarlas, rechazarlas o cambiar tu elección.",
+    kind: "page",
+  },
+  {
     path: "/analytics",
     name: "Mi progreso",
     title: "Mi progreso · ProICFES",

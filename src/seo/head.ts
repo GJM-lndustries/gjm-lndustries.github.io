@@ -1,5 +1,6 @@
 /** Etiquetas SEO del <head> para el HTML prerenderizado de cada ruta. */
 import { SITE, absoluteUrl } from "@/config/site";
+import { consentDefaultsScript } from "@/lib/consent";
 import { buildJsonLd } from "./jsonld";
 import type { RouteMeta } from "./routes";
 
@@ -13,6 +14,8 @@ export function renderHeadTags(route: RouteMeta): string {
   const url = absoluteUrl(route.path);
   const image = absoluteUrl(SITE.ogImage);
   const tags = [
+    // Google Consent Mode v2: todo lo no necesario en «denied» antes de cargar cualquier etiqueta.
+    `<script>${consentDefaultsScript()}</script>`,
     `<title>${esc(route.title)}</title>`,
     `<meta name="description" content="${esc(route.description)}" />`,
     route.noindex
