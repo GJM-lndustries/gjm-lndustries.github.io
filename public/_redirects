@@ -1,0 +1,10 @@
+# Redirecciones para Cloudflare Pages (GitHub Pages ignora este archivo).
+# Formato: origen destino código. Las rutas reales viven en src/seo/routes.ts.
+/privacidad               /politica-de-privacidad   301
+/politica-privacidad      /politica-de-privacidad   301
+/habeas-data              /tratamiento-de-datos     301
+/datos-personales         /tratamiento-de-datos     301
+/terminos-y-condiciones   /terminos                 301
+/politica-de-cookies      /cookies                  301
+/faq                      /preguntas-frecuentes     301
+/simulacro-icfes          /simulacro                301

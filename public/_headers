@@ -1,11 +1,17 @@
 # Cabeceras para Cloudflare Pages (GitHub Pages ignora este archivo).
+# Cloudflare ya agrega X-Content-Type-Options y Referrer-Policy por defecto.
+
+# Archivos con hash en el nombre: nunca cambian.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
 /images/*
   Cache-Control: public, max-age=604800
 
+# El service worker debe revalidarse siempre para recibir actualizaciones.
+/sw.js
+  Cache-Control: no-cache
+
 /*
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
