@@ -1,6 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, XCircle, Lightbulb } from "lucide-react";
-import { AREA_INFO, DIFFICULTY_LABEL, INGLES_PARTES, getStimulus, type Question } from "@/data/questions";
+import {
+  AREA_INFO,
+  DIFFICULTY_LABEL,
+  INGLES_PARTES,
+  getStimulus,
+  type Question,
+} from "@/data/questions";
 import RichText from "./RichText";
 
 interface QuestionViewProps {
@@ -12,7 +18,13 @@ interface QuestionViewProps {
   showMeta?: boolean;
 }
 
-export default function QuestionView({ question, selected, answered, onSelect, showMeta = false }: QuestionViewProps) {
+export default function QuestionView({
+  question,
+  selected,
+  answered,
+  onSelect,
+  showMeta = false,
+}: QuestionViewProps) {
   const stimulus = getStimulus(question.stimulusId);
   const isCorrect = selected === question.answer;
 
@@ -23,13 +35,18 @@ export default function QuestionView({ question, selected, answered, onSelect, s
           <span className="score-badge bg-primary/10 text-primary border border-primary/20">
             {AREA_INFO[question.area].icon} {AREA_INFO[question.area].label}
           </span>
-          <span className="score-badge bg-muted text-muted-foreground border border-border">{question.competencia}</span>
+          <span className="score-badge bg-muted text-muted-foreground border border-border">
+            {question.competencia}
+          </span>
           {question.componente && (
-            <span className="score-badge bg-muted text-muted-foreground border border-border">Componente {question.componente.toLowerCase()}</span>
+            <span className="score-badge bg-muted text-muted-foreground border border-border">
+              Componente {question.componente.toLowerCase()}
+            </span>
           )}
           {question.parte && (
             <span className="score-badge bg-muted text-muted-foreground border border-border">
-              Parte {question.parte}: {INGLES_PARTES[question.parte].nombre.toLowerCase()}
+              Parte {question.parte}:{" "}
+              {INGLES_PARTES[question.parte].nombre.toLowerCase()}
             </span>
           )}
           <span className="score-badge bg-yellow-50 text-yellow-800 border border-yellow-200">
@@ -39,7 +56,10 @@ export default function QuestionView({ question, selected, answered, onSelect, s
       )}
 
       {stimulus && (
-        <section aria-label="Texto de la pregunta" className="bg-muted/50 rounded-xl p-4 border border-border">
+        <section
+          aria-label="Texto de la pregunta"
+          className="bg-muted/50 rounded-xl p-4 border border-border"
+        >
           <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">
             {stimulus.title ?? "Lee este texto:"}
           </p>
@@ -48,10 +68,16 @@ export default function QuestionView({ question, selected, answered, onSelect, s
       )}
 
       <div className="bg-primary/5 rounded-xl p-4 border border-primary/20">
-        <p className="text-sm font-semibold text-foreground leading-relaxed">{question.enunciado}</p>
+        <p className="text-sm font-semibold text-foreground leading-relaxed">
+          {question.enunciado}
+        </p>
       </div>
 
-      <div className="space-y-2" role="group" aria-label="Opciones de respuesta">
+      <div
+        className="space-y-2"
+        role="group"
+        aria-label="Opciones de respuesta"
+      >
         {question.options.map(option => {
           let className = "answer-option";
           if (answered) {
@@ -61,7 +87,8 @@ export default function QuestionView({ question, selected, answered, onSelect, s
             className += " selected";
           }
           const markCorrect = answered && option.id === question.answer;
-          const markWrong = answered && option.id === selected && option.id !== question.answer;
+          const markWrong =
+            answered && option.id === selected && option.id !== question.answer;
           return (
             <motion.button
               key={option.id}
@@ -84,8 +111,18 @@ export default function QuestionView({ question, selected, answered, onSelect, s
                 {option.id.toUpperCase()}
               </span>
               <span className="text-sm">{option.text}</span>
-              {markCorrect && <CheckCircle2 className="w-5 h-5 text-green-500 ml-auto flex-shrink-0" aria-label="Respuesta correcta" />}
-              {markWrong && <XCircle className="w-5 h-5 text-red-500 ml-auto flex-shrink-0" aria-label="Tu respuesta (incorrecta)" />}
+              {markCorrect && (
+                <CheckCircle2
+                  className="w-5 h-5 text-green-500 ml-auto flex-shrink-0"
+                  aria-label="Respuesta correcta"
+                />
+              )}
+              {markWrong && (
+                <XCircle
+                  className="w-5 h-5 text-red-500 ml-auto flex-shrink-0"
+                  aria-label="Tu respuesta (incorrecta)"
+                />
+              )}
             </motion.button>
           );
         })}
@@ -100,9 +137,19 @@ export default function QuestionView({ question, selected, answered, onSelect, s
             className={`rounded-xl p-4 border ${isCorrect ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}
           >
             <div className="flex items-center gap-2 mb-2">
-              {isCorrect ? <CheckCircle2 className="w-5 h-5 text-green-600" /> : <XCircle className="w-5 h-5 text-red-600" />}
-              <span className={`font-bold text-sm ${isCorrect ? "text-green-800" : "text-red-800"}`}>
-                {isCorrect ? "¡Correcto!" : `Respuesta incorrecta. La correcta es la ${question.answer.toUpperCase()}.`}
+              {isCorrect ? (
+                <CheckCircle2 className="w-5 h-5 text-green-600" />
+              ) : (
+                <XCircle className="w-5 h-5 text-red-600" />
+              )}
+              <span
+                className={`font-bold text-sm ${isCorrect ? "text-green-800" : "text-red-800"}`}
+              >
+                {isCorrect
+                  ? "¡Correcto!"
+                  : selected == null
+                    ? `No respondiste esta pregunta. La correcta es la ${question.answer.toUpperCase()}.`
+                    : `Respuesta incorrecta. La correcta es la ${question.answer.toUpperCase()}.`}
               </span>
             </div>
             <p className="text-sm text-foreground">{question.explanation}</p>

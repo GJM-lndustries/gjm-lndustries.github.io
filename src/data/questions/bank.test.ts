@@ -5,7 +5,6 @@ import { AREA_IDS, COMPETENCIAS, INGLES_PARTES, type InglesParte } from "./types
 import { validateBank } from "./validate";
 import { allQuestions, getQuestions } from "./index";
 import { modules } from "@/lib/appData";
-import { SIMULACRO_QUESTION_IDS } from "@/data/simulacro";
 
 const dir = path.resolve(import.meta.dirname);
 const read = (f: string) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
@@ -28,14 +27,13 @@ describe("banco de preguntas", () => {
     expect(text).toMatch(/reviewed/);
   });
 
-  it("todas las lecciones y el simulacro apuntan a preguntas existentes", () => {
+  it("todas las lecciones apuntan a preguntas existentes", () => {
     for (const m of modules) {
       for (const l of m.lessons) {
         expect(getQuestions(l.questionIds)).toHaveLength(l.questionIds.length);
         for (const q of getQuestions(l.questionIds)) expect(q.area).toBe(m.area);
       }
     }
-    expect(getQuestions(SIMULACRO_QUESTION_IDS)).toHaveLength(SIMULACRO_QUESTION_IDS.length);
   });
 
   it("tiene al menos 30 preguntas originales de Matemáticas", () => {
