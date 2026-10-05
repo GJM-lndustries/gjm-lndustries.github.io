@@ -3,10 +3,15 @@ import { SITE } from "@/config/site";
 import { buildAuthorizationRecord } from "./authorization";
 import {
   ACCOUNTS_ENABLED,
+  PASSWORD_MIN_LENGTH,
   PENDING_SIGNUP_KEY,
+  accountInitial,
   authErrorMessage,
+  classifyAuthError,
   profileRowFrom,
   readPendingSignup,
+  resetCallbackUrl,
+  validatePassword,
   type PendingSignup,
 } from "./accounts";
 
@@ -113,7 +118,7 @@ describe("cuentas", () => {
 
   it("errores en español", () => {
     expect(authErrorMessage("Signups not allowed for otp")).toMatch(
-      /Crear cuenta/
+      /crea una cuenta/i
     );
     expect(
       authErrorMessage(
@@ -121,5 +126,18 @@ describe("cuentas", () => {
       )
     ).toMatch(/minuto/);
     expect(authErrorMessage(undefined)).toMatch(/Intenta de nuevo/);
+    expect(classifyAuthError("Invalid login credentials").kind).toBe("invalid-credentials");
+    expect(classifyAuthError("Email not confirmed").kind).toBe("unconfirmed");
+    expect(classifyAuthError("Password should contain at least 8 characters").kind).toBe("weak-password");
+    expect(classifyAuthError("User not found").kind).toBe("no-account");
+  });
+
+  it("valida contraseña y avatar", () => {
+    expect(PASSWORD_MIN_LENGTH).toBe(8);
+    expect(validatePassword("corta")).toMatch(/8/);
+    expect(validatePassword("segura123")).toBeNull();
+    expect(accountInitial("shaconjulian@gmail.com")).toBe("S");
+    expect(accountInitial("")).toBe("?");
+    expect(resetCallbackUrl("https://proicfes.com.co")).toBe("https://proicfes.com.co/cuenta?reset=1");
   });
 });

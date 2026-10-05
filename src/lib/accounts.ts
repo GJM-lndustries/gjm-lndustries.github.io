@@ -1,58 +1,49 @@
 /**
- * Cuentas opcionales con Supabase (Google y enlace mágico por correo).
+ * Cuentas opcionales con Supabase (correo+contraseña, enlace mágico, Google).
  * Menores: casilla de permiso del acudiente (sin datos del representante).
- * Si SITE.integrations.supabaseUrl / supabaseAnonKey están vacíos, ACCOUNTS_ENABLED es false:
- * no se descarga @supabase/supabase-js, no se hace ninguna petición y la app funciona solo con
- * el progreso local, como siempre.
+ * Si SITE.integrations.supabaseUrl / supabaseAnonKey están vacíos, ACCOUNTS_ENABLED es false.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { SITE } from "@/config/site";
-import type {
-  AuthorizationRecord,
-  AuthorizationVariant,
-} from "./authorization";
+import type { AuthorizationRecord, AuthorizationVariant } from "./authorization";
 import type { StoredConsent } from "./consent";
 
-export const ACCOUNTS_ENABLED = Boolean(
-  SITE.integrations.supabaseUrl && SITE.integrations.supabaseAnonKey
-);
+export const ACCOUNTS_ENABLED = Boolean(SITE.integrations.supabaseUrl && SITE.integrations.supabaseAnonKey);
 
-/** Ruta a la que vuelven Google y el enlace del correo (debe estar en «Redirect URLs» de Supabase). */
+/** Ruta de retorno de OAuth / magic link / reset (debe estar en Redirect URLs de Supabase). */
 export const AUTH_CALLBACK_PATH = "/cuenta";
 export const AUTH_STORAGE_KEY = "proicfes_auth";
 export const PENDING_SIGNUP_KEY = "proicfes_pending_signup";
 
+/** Mínimo alineado con Supabase (password_min_length = 8). */
+export const PASSWORD_MIN_LENGTH = 8;
+
 let client: Promise<SupabaseClient> | null = null;
 
-/** Cliente de Supabase (se descarga solo la primera vez que se pide). null si no hay cuentas. */
 export function getSupabase(): Promise<SupabaseClient> | null {
   if (!ACCOUNTS_ENABLED || typeof window === "undefined") return null;
   client ??= import("@supabase/supabase-js").then(({ createClient }) =>
-    createClient(
-      SITE.integrations.supabaseUrl,
-      SITE.integrations.supabaseAnonKey,
-      {
-        auth: {
-          flowType: "pkce",
-          persistSession: true,
-          autoRefreshToken: true,
-          detectSessionInUrl: true,
-          storageKey: AUTH_STORAGE_KEY,
-        },
-      }
-    )
+    createClient(SITE.integrations.supabaseUrl, SITE.integrations.supabaseAnonKey, {
+      auth: {
+        flowType: "pkce",
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true,
+        storageKey: AUTH_STORAGE_KEY,
+      },
+    })
   );
   return client;
 }
 
-export function callbackUrl(origin: string = window.location.origin): string {
-  return origin + AUTH_CALLBACK_PATH;
+export function callbackUrl(origin: string = window.location.origin, path = AUTH_CALLBACK_PATH): string {
+  return origin + path;
 }
 
-/**
- * Datos del registro que se guardan ANTES de ir a Google o de enviar el enlace por correo,
- * para crear el perfil cuando la persona vuelve con la sesión iniciada.
- */
+export function resetCallbackUrl(origin: string = window.location.origin): string {
+  return `${origin}${AUTH_CALLBACK_PATH}?reset=1`;
+}
+
 export interface PendingSignup {
   birthYear: number;
   variant: AuthorizationVariant;
@@ -61,47 +52,28 @@ export interface PendingSignup {
   createdAt: string;
 }
 
-/** El registro pendiente caduca a las 24 horas (el enlace del correo dura menos). */
 const PENDING_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 
-export function savePendingSignup(
-  p: PendingSignup,
-  storage: Pick<Storage, "setItem"> = localStorage
-): void {
+export function savePendingSignup(p: PendingSignup, storage: Pick<Storage, "setItem"> = localStorage): void {
   storage.setItem(PENDING_SIGNUP_KEY, JSON.stringify(p));
 }
 
-export function readPendingSignup(
-  storage: Pick<Storage, "getItem"> = localStorage,
-  now: number = Date.now()
-): PendingSignup | null {
+export function readPendingSignup(storage: Pick<Storage, "getItem"> = localStorage, now: number = Date.now()): PendingSignup | null {
   try {
-    const p = JSON.parse(
-      storage.getItem(PENDING_SIGNUP_KEY) ?? "null"
-    ) as PendingSignup | null;
-    if (
-      !p ||
-      typeof p.birthYear !== "number" ||
-      !p.authorization ||
-      (p.variant !== "adulto" && p.variant !== "menor")
-    )
-      return null;
+    const p = JSON.parse(storage.getItem(PENDING_SIGNUP_KEY) ?? "null") as PendingSignup | null;
+    if (!p || typeof p.birthYear !== "number" || !p.authorization || (p.variant !== "adulto" && p.variant !== "menor")) return null;
     if (now - Date.parse(p.createdAt) > PENDING_MAX_AGE_MS) return null;
-    if (p.variant === "menor" && !p.authorization.guardianPermissionConfirmed)
-      return null;
+    if (p.variant === "menor" && !p.authorization.guardianPermissionConfirmed) return null;
     return p;
   } catch {
     return null;
   }
 }
 
-export function clearPendingSignup(
-  storage: Pick<Storage, "removeItem"> = localStorage
-): void {
+export function clearPendingSignup(storage: Pick<Storage, "removeItem"> = localStorage): void {
   storage.removeItem(PENDING_SIGNUP_KEY);
 }
 
-/** Fila de public.profiles (supabase/migrations/0001_init.sql). */
 export interface ProfileRow {
   id: string;
   display_name: string | null;
@@ -117,26 +89,18 @@ export interface ProfileRow {
   consent_at: string | null;
 }
 
-/** Arma la fila del perfil a partir del registro pendiente y de la elección de cookies vigente. */
-export function profileRowFrom(
-  userId: string,
-  p: PendingSignup,
-  consent: StoredConsent | null
-): ProfileRow {
+export function profileRowFrom(userId: string, p: PendingSignup, consent: StoredConsent | null): ProfileRow {
   const minor = p.variant === "menor";
-  if (minor && !p.authorization.guardianPermissionConfirmed)
-    throw new Error("Falta la confirmación del permiso del acudiente");
+  if (minor && !p.authorization.guardianPermissionConfirmed) throw new Error("Falta la confirmación del permiso del acudiente");
   const name = p.displayName?.trim();
   return {
     id: userId,
     display_name: name ? name.slice(0, 80) : null,
     birth_year: p.birthYear,
     is_minor: minor,
-    // Ya no pedimos datos del acudiente; columnas legacy quedan en null.
     guardian_name: null,
     guardian_document: null,
     guardian_email: null,
-    // minor_heard = el menor marcó la casilla de permiso del acudiente.
     minor_heard: minor,
     data_policy_version: p.authorization.policyVersion,
     data_authorization_at: p.authorization.acceptedAt,
@@ -145,25 +109,63 @@ export function profileRowFrom(
   };
 }
 
-/** Mensajes de error de Supabase en español claro. */
-export function authErrorMessage(message: string | undefined): string {
+export type AuthErrorKind =
+  | "no-account"
+  | "unconfirmed"
+  | "rate-limit"
+  | "invalid-credentials"
+  | "weak-password"
+  | "invalid-email"
+  | "generic";
+
+export interface AuthErrorInfo {
+  kind: AuthErrorKind;
+  message: string;
+}
+
+/** Clasifica errores de Supabase Auth para la UI. */
+export function classifyAuthError(message: string | undefined): AuthErrorInfo {
   const m = (message ?? "").toLowerCase();
-  if (m.includes("signups not allowed") || m.includes("user not found"))
-    return "No encontramos una cuenta con ese correo. Si es tu primera vez, usa «Crear cuenta».";
-  if (m.includes("rate limit") || m.includes("security purposes"))
-    return "Espera un minuto antes de pedir otro enlace.";
-  if (m.includes("invalid") && m.includes("email"))
-    return "Revisa el correo: parece que no es válido.";
-  if (m.includes("expired") || m.includes("otp"))
-    return "El enlace venció o ya se usó. Pide uno nuevo.";
-  if (
-    m.includes("provider is not enabled") ||
-    m.includes("unsupported provider")
-  )
-    return "Ese método de inicio de sesión aún no está disponible. Usa el enlace al correo.";
-  if (m.includes("representante"))
-    return "Un menor de 18 años debe confirmar el permiso de su acudiente.";
+  if (m.includes("signups not allowed") || m.includes("otp_disabled") || m.includes("user not found"))
+    return { kind: "no-account", message: "No encontramos una cuenta con ese correo. Si es tu primera vez, crea una cuenta." };
+  if (m.includes("email not confirmed") || m.includes("not confirmed"))
+    return {
+      kind: "unconfirmed",
+      message: "Todavía no confirmaste tu correo. Revisa tu bandeja (y spam) o pide que te reenviemos el enlace.",
+    };
+  if (m.includes("rate limit") || m.includes("security purposes") || m.includes("over_email") || m.includes("429"))
+    return { kind: "rate-limit", message: "Demasiados intentos. Espera un minuto y vuelve a probar." };
+  if (m.includes("invalid login") || m.includes("invalid credentials") || m.includes("wrong password") || m.includes("invalid_credentials"))
+    return { kind: "invalid-credentials", message: "Correo o contraseña incorrectos. Revísalos, usa «Olvidé mi contraseña» o crea una cuenta si es tu primera vez." };
+  if (m.includes("password") && (m.includes("least") || m.includes("weak") || m.includes("short") || m.includes("characters")))
+    return { kind: "weak-password", message: `La contraseña debe tener al menos ${PASSWORD_MIN_LENGTH} caracteres.` };
+  if ((m.includes("invalid") && m.includes("email")) || m.includes("email_address_invalid"))
+    return { kind: "invalid-email", message: "Revisa el correo: parece que no es válido." };
+  if (m.includes("expired") || (m.includes("otp") && !m.includes("otp_disabled")))
+    return { kind: "generic", message: "El enlace venció o ya se usó. Pide uno nuevo." };
+  if (m.includes("provider is not enabled") || m.includes("unsupported provider"))
+    return { kind: "generic", message: "Ese método aún no está disponible. Usa correo y contraseña." };
+  if (m.includes("acudiente") || m.includes("representante"))
+    return { kind: "generic", message: "Un menor de 18 años debe confirmar el permiso de su acudiente." };
   if (m.includes("fetch") || m.includes("network"))
-    return "No hay conexión con el servidor. Revisa tu internet e intenta de nuevo.";
-  return "Algo salió mal. Intenta de nuevo en unos minutos.";
+    return { kind: "generic", message: "No hay conexión con el servidor. Revisa tu internet e intenta de nuevo." };
+  if (m.includes("user already registered") || m.includes("already been registered"))
+    return { kind: "generic", message: "Ese correo ya tiene cuenta. Usa «Iniciar sesión» o «Olvidé mi contraseña»." };
+  return { kind: "generic", message: "Algo salió mal. Intenta de nuevo en unos minutos." };
+}
+
+export function authErrorMessage(message: string | undefined): string {
+  return classifyAuthError(message).message;
+}
+
+export function validatePassword(password: string): string | null {
+  if (password.length < PASSWORD_MIN_LENGTH) return `La contraseña debe tener al menos ${PASSWORD_MIN_LENGTH} caracteres.`;
+  return null;
+}
+
+/** Inicial del correo o nombre para el avatar del menú. */
+export function accountInitial(emailOrName: string | null | undefined): string {
+  const s = (emailOrName ?? "").trim();
+  if (!s) return "?";
+  return s[0]!.toUpperCase();
 }
