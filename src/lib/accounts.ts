@@ -154,6 +154,11 @@ export function authErrorMessage(message: string | undefined): string {
     return "Revisa el correo: parece que no es válido.";
   if (m.includes("expired") || m.includes("otp"))
     return "El enlace venció o ya se usó. Pide uno nuevo.";
+  if (
+    m.includes("provider is not enabled") ||
+    m.includes("unsupported provider")
+  )
+    return "Ese método de inicio de sesión aún no está disponible. Usa el enlace al correo.";
   if (m.includes("representante"))
     return "Un menor de 18 años necesita la autorización de su representante legal.";
   if (m.includes("fetch") || m.includes("network"))

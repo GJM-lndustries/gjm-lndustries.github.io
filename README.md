@@ -147,9 +147,14 @@ Las páginas personales (Mi progreso, Logros, Ranking, Meta, Cuenta) llevan `noi
 
 ## Cuentas con Supabase
 
-Las cuentas son opcionales. Con `SITE.integrations.supabaseUrl` y `supabaseAnonKey` **vacíos** (como ahora) la app
-funciona exactamente igual que sin cuentas: no se descarga `@supabase/supabase-js`, no hay peticiones, «Mi cuenta» no
-aparece en el menú y `/cuenta` muestra «Próximamente».
+Las cuentas son opcionales. Con `SITE.integrations.supabaseUrl` y `supabaseAnonKey` **vacíos** la app funciona
+exactamente igual que sin cuentas: no se descarga `@supabase/supabase-js`, no hay peticiones, «Mi cuenta» no aparece en
+el menú y `/cuenta` muestra «Próximamente».
+
+**Estado actual:** el proyecto Supabase `proicfes` (`ycvsbjfwolnkyhvautyc`, región us-east-1) ya está conectado: URL y
+clave **anon** (pública) están en `SITE.integrations`, la migración `0001_init.sql` está aplicada con RLS, el correo
+(enlace mágico) está activo y Site URL / Redirect URLs apuntan a la vista previa. `googleSignIn` sigue en `false` hasta
+configurar Google OAuth. La clave `service_role` **nunca** va en el código.
 
 Con los dos valores puestos:
 
@@ -170,7 +175,7 @@ Con los dos valores puestos:
   menor no puede registrarse como adulto). `scripts/supabase-schema.test.ts` ejecuta la migración en Postgres
   (PGlite) y prueba esas reglas.
 
-### Pasos para crear el proyecto (los hace el dueño de la cuenta)
+### Proyecto ya creado · pasos que quedan (dueño de la cuenta)
 
 1. Entra a <https://supabase.com>, crea una cuenta y luego **New project**: nombre `proicfes`, una contraseña de base
    de datos fuerte (guárdala tú; no hace falta enviarla), región **East US (North Virginia)** (suele dar la menor

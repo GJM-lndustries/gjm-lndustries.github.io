@@ -44,9 +44,13 @@ const minor: PendingSignup = {
 };
 
 describe("cuentas", () => {
-  it("sin URL ni clave de Supabase las cuentas están apagadas", () => {
-    expect(SITE.integrations.supabaseUrl).toBe("");
-    expect(ACCOUNTS_ENABLED).toBe(false);
+  it("con URL y clave anon de Supabase las cuentas están activas", () => {
+    expect(SITE.integrations.supabaseUrl).toMatch(
+      /^https:\/\/.+\.supabase\.co$/
+    );
+    expect(SITE.integrations.supabaseAnonKey.length).toBeGreaterThan(20);
+    expect(ACCOUNTS_ENABLED).toBe(true);
+    expect(SITE.integrations.googleSignIn).toBe(false);
   });
 
   it("perfil de adulto: sin datos de representante", () => {

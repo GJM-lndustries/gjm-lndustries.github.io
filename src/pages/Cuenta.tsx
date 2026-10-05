@@ -12,6 +12,7 @@ import {
 import DataAuthorization from "@/components/DataAuthorization";
 import { useAuth } from "@/contexts/AuthContext";
 import { LEGAL } from "@/config/legal";
+import { SITE } from "@/config/site";
 import {
   ageOn,
   buildAuthorizationRecord,
@@ -343,6 +344,7 @@ function SignUp() {
   const auth = useAuth();
   const r = useRegistro();
   const [error, setError] = useState<string | null>(null);
+  const google = SITE.integrations.googleSignIn;
   return (
     <section
       id="panel-registro"
@@ -357,20 +359,29 @@ function SignUp() {
         </p>
       )}
       <div className="space-y-3">
-        <GoogleButton
-          disabled={!r.complete}
-          onClick={async () => {
-            const res = await auth.signInWithGoogle(r.pending());
-            if (res.error) setError(res.error);
-          }}
-        />
-        <div
-          className="flex items-center gap-2 text-xs text-muted-foreground"
-          aria-hidden="true"
-        >
-          <span className="h-px flex-1 bg-border" /> o con un enlace a tu correo{" "}
-          <span className="h-px flex-1 bg-border" />
-        </div>
+        {google ? (
+          <>
+            <GoogleButton
+              disabled={!r.complete}
+              onClick={async () => {
+                const res = await auth.signInWithGoogle(r.pending());
+                if (res.error) setError(res.error);
+              }}
+            />
+            <div
+              className="flex items-center gap-2 text-xs text-muted-foreground"
+              aria-hidden="true"
+            >
+              <span className="h-px flex-1 bg-border" /> o con un enlace a tu
+              correo <span className="h-px flex-1 bg-border" />
+            </div>
+          </>
+        ) : (
+          <p className="text-xs text-muted-foreground">
+            Te enviamos un enlace a tu correo (sin contraseña). Continuar con
+            Google llegará pronto.
+          </p>
+        )}
         <EmailForm
           cta="Crear cuenta"
           disabled={!r.complete}
@@ -393,6 +404,7 @@ function SignUp() {
 function SignIn() {
   const auth = useAuth();
   const [error, setError] = useState<string | null>(null);
+  const google = SITE.integrations.googleSignIn;
   return (
     <section
       id="panel-entrar"
@@ -400,12 +412,19 @@ function SignIn() {
       aria-labelledby="tab-entrar"
       className={`${card} space-y-3`}
     >
-      <GoogleButton
-        onClick={async () => {
-          const res = await auth.signInWithGoogle();
-          if (res.error) setError(res.error);
-        }}
-      />
+      {google ? (
+        <GoogleButton
+          onClick={async () => {
+            const res = await auth.signInWithGoogle();
+            if (res.error) setError(res.error);
+          }}
+        />
+      ) : (
+        <p className="text-xs text-muted-foreground">
+          Te enviamos un enlace a tu correo (sin contraseña). Continuar con
+          Google llegará pronto.
+        </p>
+      )}
       <EmailForm
         cta="Entrar"
         onSend={email => auth.signInWithEmail(email, false)}

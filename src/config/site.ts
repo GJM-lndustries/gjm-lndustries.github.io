@@ -30,17 +30,22 @@ export const SITE = {
     /** Google AdSense, p. ej. "ca-pub-0000000000000000" (categoría «publicidad»). */
     adsenseClientId: "",
     /**
-     * Cuentas (Supabase): URL del proyecto, p. ej. "https://abcdefgh.supabase.co", y su clave pública
-     * «anon» / «publishable». Vacías = sin cuentas: la app funciona solo con el progreso local y
-     * /cuenta muestra «Próximamente». Ver README → «Cuentas con Supabase».
+     * Cuentas (Supabase). La clave «anon» es pública por diseño (la seguridad la da RLS);
+     * NUNCA pongas aquí la clave service_role/secret ni la contraseña de la base de datos.
+     * Vacías = sin cuentas: la app funciona solo con el progreso local y /cuenta muestra «Próximamente».
+     * `googleSignIn`: false hasta configurar el proveedor Google en Supabase (ver README).
      */
-    supabaseUrl: "" as string,
-    supabaseAnonKey: "" as string,
+    supabaseUrl: "https://ycvsbjfwolnkyhvautyc.supabase.co",
+    supabaseAnonKey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InljdnNiamZ3b2xua3lodmF1dHljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyMDYyMTksImV4cCI6MjEwNjc4MjIxOX0.jdx5_45rEsOTVncpkddLruW-Y3tIuXnz2zo-BzPRVQk",
+    googleSignIn: false,
   },
 } as const;
 
 /** Convierte una ruta interna (/practica) en URL absoluta (https://…/practica). */
 export function absoluteUrl(path = "/"): string {
   if (/^https?:\/\//.test(path)) return path;
-  return SITE.url + (path === "/" ? "/" : path.startsWith("/") ? path : `/${path}`);
+  return (
+    SITE.url + (path === "/" ? "/" : path.startsWith("/") ? path : `/${path}`)
+  );
 }
