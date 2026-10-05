@@ -100,9 +100,9 @@ nada hasta que pongas los IDs en `SITE.integrations` (`src/config/site.ts`):
 Aun con el ID puesto, cada script solo se carga si la persona aceptó esa categoría.
 
 **Registro con autorización.** `src/components/DataAuthorization.tsx` es la casilla de «Autorización de tratamiento de
-datos» del registro de cuentas (`/cuenta`), con variante para menores de 18 años (datos del padre, madre o
-representante y constancia de haber escuchado al menor). `src/lib/authorization.ts` decide la variante por fecha de
-nacimiento y arma el registro (versión de la política y fecha) que debe guardarse como prueba de la autorización.
+datos» del registro de cuentas (`/cuenta`): el adulto marca la autorización de tratamiento; el menor (según fecha de
+nacimiento) marca una casilla confirmando el permiso de su acudiente, sin pedir datos del representante.
+`src/lib/authorization.ts` arma el registro (versión de la política y fecha) como prueba.
 
 ### Prerender, rutas y SEO
 
@@ -158,11 +158,11 @@ configurar Google OAuth. La clave `service_role` **nunca** va en el código.
 
 Con los dos valores puestos:
 
-- `/cuenta` ofrece **Crear cuenta** (fecha de nacimiento → `DataAuthorization` en variante adulto o menor; la de
-  menor exige nombre, documento y correo del representante y la constancia de haber escuchado al menor) y luego
-  **Google** o **enlace mágico al correo**; y **Ya tengo cuenta** (Google o enlace, sin crear cuentas nuevas).
+- `/cuenta` ofrece **Crear cuenta** (fecha de nacimiento → `DataAuthorization`: adulto = casilla de tratamiento;
+  menor = casilla de permiso del acudiente, sin datos del representante) y luego **enlace mágico al correo**
+  (Google cuando `googleSignIn` esté activo); y **Ya tengo cuenta**.
   Si alguien entra con Google sin haber pasado por el registro, se le pide completarlo antes de guardar nada.
-- Solo se guarda el **año** de nacimiento, `is_minor`, los datos del representante (si aplica) y la prueba de la
+- Solo se guarda el **año** de nacimiento, `is_minor`, la casilla de permiso (si es menor) y la prueba de la
   autorización (versión de la política y fecha) más la versión y fecha de la elección de cookies.
 - **Sincronización** (`src/lib/progressMerge.ts`, pruebas en `progressMerge.test.ts`): en el primer inicio de sesión
   en un navegador, el progreso local se **fusiona** con el de la cuenta (lecciones por id con el mejor puntaje,
@@ -172,7 +172,7 @@ Con los dos valores puestos:
   `attempts`. «Cerrar sesión y borrar el progreso de este navegador» sirve para computadores compartidos.
 - Esquema y seguridad: `supabase/migrations/0001_init.sql` (tablas `profiles`, `progress`, `attempts`; Row Level
   Security para que cada usuario solo vea y modifique sus filas; `anon` sin acceso; los intentos no se editan; un
-  menor no puede registrarse como adulto). `scripts/supabase-schema.test.ts` ejecuta la migración en Postgres
+  menor debe marcar la casilla de permiso y no puede registrarse como adulto). `scripts/supabase-schema.test.ts` ejecuta la migración en Postgres
   (PGlite) y prueba esas reglas.
 
 ### Proyecto ya creado · pasos que quedan (dueño de la cuenta)

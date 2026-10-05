@@ -29,9 +29,10 @@ const sections: LegalSection[] = [
         <li>
           <strong>Si creas una cuenta</strong> (correo o Google, cuando esté
           disponible), guardamos tu correo, el año de nacimiento, la
-          autorización de tratamiento de datos y, si eres menor de 18 años, los
-          datos de tu representante legal, para sincronizar tu progreso entre
-          dispositivos. El detalle está en la <LinkTratamiento />.
+          autorización de tratamiento de datos y, si eres menor de 18 años, la
+          confirmación de que tienes permiso de tu papá, mamá o acudiente, para
+          sincronizar tu progreso entre dispositivos. El detalle está en la{" "}
+          <LinkTratamiento />.
         </li>
         <li>Guardamos en tu navegador tu decisión sobre cookies.</li>
         <li>
@@ -103,10 +104,10 @@ const sections: LegalSection[] = [
     title: "Si eres menor de edad",
     content: (
       <p>
-        {SITE.name} está pensado para estudiantes de colegio. Para crear una
-        cuenta, si tienes menos de 18 años, necesitarás la autorización de tu
-        padre, madre o representante legal. No usamos datos de menores para
-        publicidad personalizada.
+        {SITE.name} está pensado para estudiantes de colegio. Si tienes menos de
+        18 años y creas una cuenta, te pediremos que confirmes con una casilla
+        que tienes permiso de tu papá, mamá o acudiente; no pedimos sus datos.
+        No usamos datos de menores para publicidad personalizada.
       </p>
     ),
   },

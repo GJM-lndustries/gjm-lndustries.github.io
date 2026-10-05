@@ -17,8 +17,8 @@ const sections: LegalSection[] = [
     content: (
       <p>
         Al usar {SITE.name} aceptas estos términos. Si no estás de acuerdo, no
-        uses el sitio. Si eres menor de 18 años, úsalo con el conocimiento de tu
-        padre, madre o representante legal.
+        uses el sitio. Si eres menor de 18 años, úsalo con permiso de tu papá,
+        mamá o acudiente.
       </p>
     ),
   },
@@ -102,10 +102,10 @@ const sections: LegalSection[] = [
     content: (
       <p>
         Puedes usar {SITE.name} sin cuenta. Si creas una, debes dar información
-        veraz y cuidar el acceso a tu correo. Para crear la cuenta de un menor
-        de 18 años se requiere la autorización de su padre, madre o
-        representante legal, en los términos de la <LinkTratamiento />. Puedes
-        pedir la eliminación de tu cuenta escribiendo al correo del Responsable.
+        veraz y cuidar el acceso a tu correo. Si eres menor de 18 años,
+        confirmas con una casilla que tienes permiso de tu papá, mamá o
+        acudiente, en los términos de la <LinkTratamiento />. Puedes pedir la
+        eliminación de tu cuenta escribiendo al correo del Responsable.
       </p>
     ),
   },

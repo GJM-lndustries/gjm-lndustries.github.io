@@ -28,17 +28,7 @@ const adult: PendingSignup = {
 const minor: PendingSignup = {
   birthYear: 2010,
   variant: "menor",
-  authorization: buildAuthorizationRecord(
-    "menor",
-    {
-      accepted: true,
-      guardianName: "Ana Pérez",
-      guardianDocument: "12345678",
-      guardianEmail: "ana@example.com",
-      minorHeard: true,
-    },
-    now
-  ),
+  authorization: buildAuthorizationRecord("menor", { accepted: true }, now),
   displayName: "  Sofi  ",
   createdAt: now.toISOString(),
 };
@@ -72,26 +62,30 @@ describe("cuentas", () => {
     expect(row.data_authorization_at).toBe(now.toISOString());
   });
 
-  it("perfil de menor: incluye la autorización del representante", () => {
+  it("perfil de menor: casilla de permiso, sin datos del acudiente", () => {
     const row = profileRowFrom("u2", minor, null);
     expect(row).toMatchObject({
       is_minor: true,
-      guardian_name: "Ana Pérez",
-      guardian_document: "12345678",
-      guardian_email: "ana@example.com",
+      guardian_name: null,
+      guardian_document: null,
+      guardian_email: null,
       minor_heard: true,
       display_name: "Sofi",
       consent_version: null,
     });
+    expect(minor.authorization.guardianPermissionConfirmed).toBe(true);
   });
 
-  it("menor sin representante: no se crea el perfil", () => {
+  it("menor sin casilla de permiso: no se crea el perfil", () => {
     expect(() =>
       profileRowFrom(
         "u3",
         {
           ...minor,
-          authorization: { ...minor.authorization, guardian: undefined },
+          authorization: {
+            ...minor.authorization,
+            guardianPermissionConfirmed: undefined,
+          },
         },
         null
       )
@@ -105,7 +99,10 @@ describe("cuentas", () => {
     const broken = mem({
       [PENDING_SIGNUP_KEY]: JSON.stringify({
         ...minor,
-        authorization: { ...minor.authorization, guardian: undefined },
+        authorization: {
+          ...minor.authorization,
+          guardianPermissionConfirmed: undefined,
+        },
       }),
     });
     expect(readPendingSignup(broken, now.getTime())).toBeNull();

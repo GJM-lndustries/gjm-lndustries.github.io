@@ -1,5 +1,6 @@
 /**
  * Cuentas opcionales con Supabase (Google y enlace mágico por correo).
+ * Menores: casilla de permiso del acudiente (sin datos del representante).
  * Si SITE.integrations.supabaseUrl / supabaseAnonKey están vacíos, ACCOUNTS_ENABLED es false:
  * no se descarga @supabase/supabase-js, no se hace ninguna petición y la app funciona solo con
  * el progreso local, como siempre.
@@ -86,7 +87,8 @@ export function readPendingSignup(
     )
       return null;
     if (now - Date.parse(p.createdAt) > PENDING_MAX_AGE_MS) return null;
-    if (p.variant === "menor" && !p.authorization.guardian) return null;
+    if (p.variant === "menor" && !p.authorization.guardianPermissionConfirmed)
+      return null;
     return p;
   } catch {
     return null;
@@ -122,19 +124,19 @@ export function profileRowFrom(
   consent: StoredConsent | null
 ): ProfileRow {
   const minor = p.variant === "menor";
-  const g = p.authorization.guardian;
-  if (minor && !g)
-    throw new Error("Falta la autorización del representante legal");
+  if (minor && !p.authorization.guardianPermissionConfirmed)
+    throw new Error("Falta la confirmación del permiso del acudiente");
   const name = p.displayName?.trim();
   return {
     id: userId,
     display_name: name ? name.slice(0, 80) : null,
     birth_year: p.birthYear,
     is_minor: minor,
-    guardian_name: minor ? g!.name : null,
-    guardian_document: minor ? g!.document : null,
-    guardian_email: minor ? g!.email : null,
-    // isAuthorizationComplete() exige que el representante declare haber escuchado al menor.
+    // Ya no pedimos datos del acudiente; columnas legacy quedan en null.
+    guardian_name: null,
+    guardian_document: null,
+    guardian_email: null,
+    // minor_heard = el menor marcó la casilla de permiso del acudiente.
     minor_heard: minor,
     data_policy_version: p.authorization.policyVersion,
     data_authorization_at: p.authorization.acceptedAt,
@@ -160,7 +162,7 @@ export function authErrorMessage(message: string | undefined): string {
   )
     return "Ese método de inicio de sesión aún no está disponible. Usa el enlace al correo.";
   if (m.includes("representante"))
-    return "Un menor de 18 años necesita la autorización de su representante legal.";
+    return "Un menor de 18 años debe confirmar el permiso de su acudiente.";
   if (m.includes("fetch") || m.includes("network"))
     return "No hay conexión con el servidor. Revisa tu internet e intenta de nuevo.";
   return "Algo salió mal. Intenta de nuevo en unos minutos.";

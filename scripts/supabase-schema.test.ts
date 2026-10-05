@@ -15,9 +15,9 @@ async function as(role: "anon" | "authenticated" | "postgres", uid = "") {
   await db.exec(`reset role; select set_config('request.jwt.claim.sub', '${uid}', false);`);
   if (role !== "postgres") await db.exec(`set role ${role};`);
 }
-const profile = (id: string, year: number, minor: boolean, guardian = false) =>
-  `insert into public.profiles (id, birth_year, is_minor, guardian_name, guardian_document, guardian_email, minor_heard, data_policy_version, data_authorization_at)
-   values ('${id}', ${year}, ${minor}, ${guardian ? "'Ana Pérez', '12345678', 'ana@example.com', true" : "null, null, null, false"}, '1.0', now())`;
+const profile = (id: string, year: number, minor: boolean, permission = false) =>
+  `insert into public.profiles (id, birth_year, is_minor, minor_heard, data_policy_version, data_authorization_at)
+   values ('${id}', ${year}, ${minor}, ${permission ? "true" : "false"}, '1.0', now())`;
 
 beforeAll(async () => {
   await db.exec(`
@@ -32,7 +32,10 @@ beforeAll(async () => {
     alter default privileges in schema public grant all on tables to anon, authenticated;
     insert into auth.users values ('${A}'), ('${B}');
   `);
-  await db.exec(readFileSync(path.resolve(import.meta.dirname, "../supabase/migrations/0001_init.sql"), "utf8"));
+  const mig = (n: string) =>
+    readFileSync(path.resolve(import.meta.dirname, `../supabase/migrations/${n}`), "utf8");
+  await db.exec(mig("0001_init.sql"));
+  await db.exec(mig("0002_simplify_guardian.sql"));
 }, 30_000);
 
 describe("migración 0001_init.sql", () => {
@@ -41,14 +44,15 @@ describe("migración 0001_init.sql", () => {
     await db.query(profile(A, 1990, false));
     await expect(db.query(profile(B, 1990, false))).rejects.toThrow(/row-level security/);
     await as("authenticated", B);
-    await expect(db.query(profile(B, 2010, true))).rejects.toThrow(/guardian_required_for_minors/);
-    await expect(db.query(profile(B, 2010, false))).rejects.toThrow(/representante legal/);
+    await expect(db.query(profile(B, 2010, true, false))).rejects.toThrow(/minor_permission_declared/);
+    await expect(db.query(profile(B, 2010, false))).rejects.toThrow(/casilla de permiso|representante|acudiente/);
     await db.query(profile(B, 2010, true, true));
-    const rows = await db.query<{ id: string }>("select id from public.profiles");
-    expect(rows.rows.map(r => r.id)).toEqual([B]);
-    await expect(db.query(`update public.profiles set guardian_name = null where id = '${B}'`)).rejects.toThrow(
-      /guardian_required_for_minors/
+    const rows = await db.query<{ id: string; minor_heard: boolean }>(
+      "select id, minor_heard from public.profiles"
     );
+    expect(rows.rows).toEqual([{ id: B, minor_heard: true }]);
+    // guardian_* pueden quedar null (ya no se exigen).
+    await db.query(`update public.profiles set guardian_name = null, guardian_document = null, guardian_email = null where id = '${B}'`);
     const upd = await db.query(`update public.profiles set display_name = 'x' where id = '${A}'`);
     expect(upd.affectedRows).toBe(0);
   });

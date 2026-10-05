@@ -104,9 +104,10 @@ const sections: LegalSection[] = [
             Google, cuando esté disponible), y año de nacimiento.
           </li>
           <li>
-            Datos del representante legal, si el usuario es menor de 18 años:
-            nombre, documento y correo, más la constancia de haber escuchado al
-            menor.
+            Si el usuario es menor de 18 años: la casilla en la que declara
+            tener permiso de su papá, mamá o acudiente para usar el servicio y
+            guardar su progreso (no pedimos nombre, documento ni correo del
+            acudiente).
           </li>
           <li>
             Prueba de la autorización de tratamiento de datos (versión de la
@@ -208,12 +209,10 @@ const sections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            Para crear una cuenta de un menor de 18 años se exigirá la{" "}
-            <strong>
-              autorización de su padre, madre o representante legal
-            </strong>
-            , después de que el menor haya sido escuchado y su opinión valorada
-            según su madurez.
+            Para crear una cuenta, el menor confirma con una casilla que tiene
+            permiso de su papá, mamá o acudiente. No pedimos datos de contacto
+            del acudiente; guardamos la versión de la política, la fecha de esa
+            declaración y que el usuario es menor de edad.
           </li>
           <li>
             Pediremos solo los datos mínimos necesarios para el servicio
@@ -224,8 +223,9 @@ const sections: LegalSection[] = [
             para perfiles comerciales.
           </li>
           <li>
-            El representante legal puede ejercer en cualquier momento los
-            derechos del menor descritos en esta política.
+            El padre, madre o acudiente (o el propio Titular) puede ejercer en
+            cualquier momento los derechos descritos en esta política,
+            escribiendo al correo del Responsable.
           </li>
         </ul>
       </>

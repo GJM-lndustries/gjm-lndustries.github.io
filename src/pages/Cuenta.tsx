@@ -171,8 +171,8 @@ function RegistroFields({ r }: { r: ReturnType<typeof useRegistro> }) {
             id="cuenta-nacimiento-ayuda"
             className="text-[11px] text-muted-foreground"
           >
-            Solo guardamos el año. Si eres menor de 18, la autorización la da tu
-            representante.
+            Solo guardamos el año. Si eres menor de 18, te pediremos confirmar
+            el permiso de tu acudiente.
           </p>
         </div>
         <div className="space-y-1">
