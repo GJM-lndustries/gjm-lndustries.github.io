@@ -63,7 +63,7 @@ function EstadoActual() {
       <button
         type="button"
         onClick={openSettings}
-        className="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90"
+        className="btn-primary btn-sm"
       >
         Configurar cookies
       </button>

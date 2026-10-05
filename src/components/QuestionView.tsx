@@ -8,6 +8,7 @@ import {
   type Question,
 } from "@/data/questions";
 import RichText from "./RichText";
+import AreaIcon from "@/components/AreaIcon";
 
 interface QuestionViewProps {
   question: Question;
@@ -32,8 +33,9 @@ export default function QuestionView({
     <div className="space-y-4">
       {showMeta && (
         <div className="flex flex-wrap gap-2 text-xs">
-          <span className="score-badge bg-primary/10 text-primary border border-primary/20">
-            {AREA_INFO[question.area].icon} {AREA_INFO[question.area].label}
+          <span className="score-badge gap-1.5 border border-border bg-card pl-1 text-foreground">
+            <AreaIcon area={question.area} size="sm" className="!h-5 !w-5 !rounded-md" />
+            {AREA_INFO[question.area].label}
           </span>
           <span className="score-badge bg-muted text-muted-foreground border border-border">
             {question.competencia}
@@ -50,7 +52,7 @@ export default function QuestionView({
             </span>
           )}
           <span className="score-badge bg-yellow-50 text-yellow-800 border border-yellow-200">
-            Nivel {DIFFICULTY_LABEL[question.difficulty]}
+            Nivel {DIFFICULTY_LABEL[question.difficulty].toLowerCase()}
           </span>
         </div>
       )}
@@ -157,7 +159,7 @@ export default function QuestionView({
               <div className="mt-3 flex items-start gap-2 bg-white/60 rounded-lg p-2">
                 <Lightbulb className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" />
                 <p className="text-xs text-foreground">
-                  <span className="font-semibold">Tip: </span>
+                  <span className="font-semibold">Consejo: </span>
                   {question.tip}
                 </p>
               </div>

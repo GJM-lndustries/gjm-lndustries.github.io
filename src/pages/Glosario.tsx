@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { modules, allGlossaryTerms } from '@/lib/appData';
-import { Search, BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search, BookOpen, ChevronDown, ChevronUp, SearchX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface TermCardProps {
@@ -13,7 +13,7 @@ function TermCard({ term, simple, technical }: TermCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-card rounded-xl border border-border overflow-hidden">
+    <div className="card overflow-hidden">
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full flex items-center justify-between p-4 text-left hover:bg-muted/30 transition-colors"
@@ -79,7 +79,7 @@ export default function Glosario() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Glosario</h1>
+        <h1 className="page-title">Glosario</h1>
         <p className="text-muted-foreground mt-1">
           Todas las palabras técnicas explicadas en lenguaje cotidiano
         </p>
@@ -128,7 +128,7 @@ export default function Glosario() {
       <div className="space-y-2">
         {filtered.length === 0 ? (
           <div className="text-center py-10">
-            <p className="text-4xl mb-3">🔍</p>
+            <span className="icon-tile mx-auto mb-3 h-12 w-12 rounded-2xl bg-muted text-muted-foreground" aria-hidden="true"><SearchX className="h-6 w-6" strokeWidth={1.75} /></span>
             <p className="text-muted-foreground">No encontramos esa palabra</p>
             <p className="text-sm text-muted-foreground mt-1">Intenta con otra búsqueda</p>
           </div>

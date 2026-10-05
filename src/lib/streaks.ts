@@ -174,10 +174,10 @@ export function useStreakFreeze(state: StreakState, now: Date = new Date()): Str
   const s = rollStreakDay(state, now);
   const week = bogotaWeekKey(now);
   if (s.freezesAvailable <= 0) return { error: "No te quedan congelamientos esta semana." };
-  if (s.freezeUsedWeek === week) return { error: "Ya usaste el congelamiento de esta semana." };
+  if (s.freezeUsedWeek === week) return { error: "Ya usaste el comodín de esta semana." };
   const yesterday = bogotaDateString(new Date(now.getTime() - 86400000));
-  if (s.days.includes(yesterday)) return { error: "Ayer ya cuenta: no hace falta congelar." };
-  if (s.current === 0 && s.days.length === 0) return { error: "Empieza una racha antes de congelar." };
+  if (s.days.includes(yesterday)) return { error: "Ayer ya cuenta; no necesitas el comodín." };
+  if (s.current === 0 && s.days.length === 0) return { error: "Primero empieza una racha." };
   const days = [...s.days, yesterday].sort();
   return {
     ...s,

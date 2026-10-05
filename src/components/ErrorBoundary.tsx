@@ -44,11 +44,7 @@ class ErrorBoundary extends Component<Props, State> {
 
             <button
               onClick={() => window.location.reload()}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-lg",
-                "bg-primary text-primary-foreground",
-                "hover:opacity-90 cursor-pointer"
-              )}
+              className={cn("btn-primary btn-sm")}
             >
               <RotateCcw size={16} />
               Recargar

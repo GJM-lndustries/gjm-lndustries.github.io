@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound";
 import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
 import Cuenta from "./pages/Cuenta";
 import Yo from "./pages/Yo";
+import Creditos from "./pages/Creditos";
 import CookieConsent from "./components/CookieConsent";
 import { ConsentProvider } from "./contexts/ConsentContext";
 import { useSeo } from "./seo/useSeo";
@@ -73,6 +74,7 @@ function AppContent() {
             <Route path="/tratamiento-de-datos" component={TratamientoDatos} />
             <Route path="/terminos" component={Terminos} />
             <Route path="/cookies" component={Cookies} />
+            <Route path="/creditos" component={Creditos} />
             <Route path="/leaderboard" component={Leaderboard} />
             <Route path="/cuenta" component={Cuenta} />
             <Route path="/analytics">

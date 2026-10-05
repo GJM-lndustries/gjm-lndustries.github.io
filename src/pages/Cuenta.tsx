@@ -14,13 +14,11 @@ import {
   type AuthorizationValue,
 } from "@/lib/authorization";
 
-const card = "bg-card rounded-xl border border-border p-5";
+const card = "card p-5";
 const input =
-  "w-full rounded-lg border border-border bg-card px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-primary";
-const primaryBtn =
-  "w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
-const outlineBtn =
-  "w-full flex items-center justify-center gap-2 border-2 border-border py-3 rounded-xl font-bold text-sm hover:bg-muted transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
+  "w-full min-h-11 rounded-xl border border-border bg-card px-3 py-2 text-[15px] focus-visible:outline-2 focus-visible:outline-navy";
+const primaryBtn = "btn-primary w-full";
+const outlineBtn = "btn-secondary w-full";
 
 type Tab = "entrar" | "registro";
 
@@ -47,7 +45,7 @@ export default function Cuenta() {
   return (
     <div className="max-w-xl mx-auto space-y-5">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Tu cuenta</h1>
+        <h1 className="page-title">Tu cuenta</h1>
         <p className="text-muted-foreground mt-1">Guarda tu progreso en la nube y sigue desde cualquier dispositivo.</p>
       </div>
       {!auth.enabled ? (

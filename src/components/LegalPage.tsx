@@ -32,7 +32,7 @@ export default function LegalPage({ path, title, intro, sections }: { path: stri
   return (
     <article className="max-w-3xl space-y-6 legal">
       <header className="space-y-2">
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">{title}</h1>
+        <h1 className="page-title">{title}</h1>
         <p className="text-xs text-muted-foreground">
           Versión {LEGAL.version} · Vigente desde: <Dato>{LEGAL.fechaVigencia}</Dato>
         </p>

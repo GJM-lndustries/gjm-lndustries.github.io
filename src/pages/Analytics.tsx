@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { AlertCircle, Zap, Target, TrendingUp, PenLine } from 'lucide-react';
+import { AlertCircle, Target, TrendingUp, PenLine } from 'lucide-react';
 import { useProgress } from '@/contexts/ProgressContext';
 import { modules } from '@/lib/appData';
 import { AREA_INFO } from '@/data/questions/meta';
 import { AREA_IDS } from '@/data/questions/types';
 import { MIN_ANSWERS_PER_AREA } from '@/lib/score';
+import AreaIcon from '@/components/AreaIcon';
 
 export default function Analytics() {
   const { progress, estimate, getModuleProgress } = useProgress();
@@ -49,25 +50,25 @@ export default function Analytics() {
   if (estimate.global != null) {
     recommendations.push(
       estimate.global >= progress.targetScore
-        ? { type: 'success', icon: Zap, text: '¡Tu estimado ya alcanza tu meta! Sigue practicando para mantener el nivel.' }
-        : { type: 'info', icon: Target, text: `Tu estimado está ${progress.targetScore - estimate.global} puntos por debajo de tu meta de ${progress.targetScore}. ¡Tú puedes!` }
+        ? { type: 'success', icon: Target, text: 'Tu estimado ya alcanza tu meta. Sigue practicando para mantener el nivel.' }
+        : { type: 'info', icon: Target, text: `Tu estimado está ${progress.targetScore - estimate.global} puntos por debajo de tu meta de ${progress.targetScore}. Practica tus áreas más flojas para cerrar la diferencia.` }
     );
   }
-  if (progress.streak >= 3) {
-    recommendations.push({ type: 'success', icon: TrendingUp, text: `¡Llevas ${progress.streak} días seguidos estudiando! Sigue así.` });
+  if ((progress.streakState?.current ?? progress.streak) >= 3) {
+    recommendations.push({ type: 'success', icon: TrendingUp, text: `Llevas ${progress.streakState?.current ?? progress.streak} días seguidos estudiando. Mantén el ritmo.` });
   }
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Mi progreso</h1>
+        <h1 className="page-title">Mi progreso</h1>
         <p className="text-muted-foreground mt-1">Tus aciertos por área, tu puntaje estimado y recomendaciones</p>
       </div>
 
       {/* Puntaje estimado */}
-      <section className="bg-gradient-to-br from-[#1e3a5f] to-[#0f2040] rounded-2xl p-6 text-white">
+      <section className="bg-navy rounded-2xl p-6 text-white">
         <h2 className="text-white/70 text-sm font-medium">Puntaje global estimado</h2>
-        <p className="text-5xl font-bold font-['Lexend'] text-[#4ade80] mt-1">
+        <p className="text-5xl font-bold font-['Lexend'] text-brand mt-1">
           {estimate.global ?? '—'}
           <span className="text-white/50 text-lg ml-1">/500</span>
         </p>
@@ -95,7 +96,7 @@ export default function Analytics() {
         </section>
       )}
 
-      <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-card rounded-2xl border border-border p-6">
+      <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="card p-6">
         <h2 className="font-bold font-['Lexend'] text-foreground mb-1">Aciertos por área</h2>
         <p className="text-xs text-muted-foreground mb-4">Incluye lecciones, modo práctica y simulacros.</p>
         {mounted ? (
@@ -121,7 +122,7 @@ export default function Analytics() {
       </motion.section>
 
       {simulacroData.length > 0 && (
-        <section className="bg-card rounded-2xl border border-border p-6">
+        <section className="card p-6">
           <h2 className="font-bold font-['Lexend'] text-foreground mb-4">Tus simulacros (% de aciertos)</h2>
           {mounted && (
             <ResponsiveContainer width="100%" height={240}>
@@ -137,7 +138,7 @@ export default function Analytics() {
         </section>
       )}
 
-      <section className="bg-card rounded-2xl border border-border p-6">
+      <section className="card p-6">
         <h2 className="font-bold font-['Lexend'] text-foreground mb-4">Lecciones completadas</h2>
         <div className="space-y-3">
           {modules.map(m => {
@@ -146,11 +147,11 @@ export default function Analytics() {
             return (
               <div key={m.id}>
                 <div className="flex items-center justify-between text-sm mb-1">
-                  <span className="text-foreground">{m.icon} {m.title}</span>
+                  <span className="flex items-center gap-2 text-foreground"><AreaIcon area={m.area} size="sm" />{m.title}</span>
                   <span className="font-semibold text-foreground">{done}/{m.lessons.length}</span>
                 </div>
                 <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-primary to-green-500 rounded-full" style={{ width: `${pct}%` }} />
+                  <div className="h-full bg-brand rounded-full" style={{ width: `${pct}%` }} />
                 </div>
               </div>
             );
@@ -158,7 +159,7 @@ export default function Analytics() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl border border-primary/20 p-6">
+      <section className="card p-6">
         <div className="flex items-center justify-between gap-3 mb-3">
           <h2 className="font-bold font-['Lexend'] text-foreground">Tu meta</h2>
           <Link href="/meta" className="text-sm font-semibold text-primary hover:underline">

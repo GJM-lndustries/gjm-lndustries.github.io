@@ -47,6 +47,7 @@ import {
   type SimulacroFormat,
   type SimulacroResult,
 } from "@/lib/simulacro";
+import AreaIcon from "@/components/AreaIcon";
 
 const BANK_COUNTS = Object.fromEntries(
   AREA_IDS.map(a => [a, questionsByArea[a].length])
@@ -191,7 +192,7 @@ function Intro({
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">
+        <h1 className="page-title">
           Simulacro Saber 11
         </h1>
         <p className="text-muted-foreground mt-1">
@@ -210,7 +211,7 @@ function Intro({
             <button
               type="button"
               onClick={onResume}
-              className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold"
+              className="btn-primary btn-sm"
             >
               Empezar
             </button>
@@ -228,13 +229,13 @@ function Intro({
       <div className="grid gap-4 md:grid-cols-2">
         <section
           aria-labelledby="sim-corto"
-          className="bg-gradient-to-br from-[#1e3a5f] to-[#0f2040] rounded-2xl p-5 text-white flex flex-col"
+          className="bg-navy rounded-2xl p-5 text-white flex flex-col"
         >
           <h2
             id="sim-corto"
             className="text-lg font-bold font-['Lexend'] flex items-center gap-2"
           >
-            <Target className="w-5 h-5 text-[#4ade80]" aria-hidden="true" />{" "}
+            <Target className="w-5 h-5 text-brand" aria-hidden="true" />{" "}
             Simulacro corto
           </h2>
           <p className="text-white/75 text-sm mt-1">
@@ -260,7 +261,7 @@ function Intro({
           <button
             type="button"
             onClick={() => onStart("corto")}
-            className="mt-auto w-full bg-[#4ade80] text-[#0f2040] py-3 rounded-xl font-bold font-['Lexend'] hover:bg-[#22c55e] transition-colors"
+            className="btn-primary mt-auto w-full"
           >
             Empezar simulacro corto
           </button>
@@ -268,7 +269,7 @@ function Intro({
 
         <section
           aria-labelledby="sim-completo"
-          className="bg-card rounded-2xl border border-border p-5 flex flex-col"
+          className="card p-5 flex flex-col"
         >
           <h2
             id="sim-completo"
@@ -299,7 +300,7 @@ function Intro({
           <button
             type="button"
             onClick={() => onStart("completo")}
-            className="mt-auto w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors"
+            className="btn-primary mt-auto w-full"
           >
             Empezar simulacro completo
           </button>
@@ -353,7 +354,7 @@ function Intro({
       {recent.length > 0 && (
         <section
           aria-labelledby="sim-historial"
-          className="bg-card rounded-xl border border-border p-4"
+          className="card p-4"
         >
           <h2
             id="sim-historial"
@@ -482,8 +483,9 @@ function Exam({
       </div>
 
       <div className="flex items-center justify-between gap-2">
-        <span className="score-badge bg-primary/10 text-primary border border-primary/20 text-xs">
-          {AREA_INFO[question.area].icon} {AREA_INFO[question.area].label}
+        <span className="score-badge gap-1.5 border border-border bg-card pl-1 text-xs text-foreground">
+          <AreaIcon area={question.area} size="sm" className="!h-5 !w-5 !rounded-md" />
+          {AREA_INFO[question.area].label}
         </span>
         <button
           type="button"
@@ -500,7 +502,7 @@ function Exam({
         <nav
           id="sim-navegador"
           aria-label="Preguntas de la sesión"
-          className="bg-card rounded-xl border border-border p-3"
+          className="card p-3"
         >
           <ul className="grid grid-cols-8 sm:grid-cols-10 gap-1.5">
             {ids.map((id, i) => {
@@ -519,7 +521,7 @@ function Exam({
                       answered
                         ? "bg-primary text-primary-foreground border-primary"
                         : "bg-background text-foreground border-border"
-                    } ${current ? "ring-2 ring-offset-1 ring-[#4ade80]" : ""}`}
+                    } ${current ? "ring-2 ring-offset-1 ring-brand" : ""}`}
                   >
                     {i + 1}
                     {marked && (
@@ -574,7 +576,7 @@ function Exam({
           <button
             type="button"
             onClick={() => move(attempt.index + 1)}
-            className="flex items-center justify-center gap-1 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm"
+            className="btn-primary gap-1 px-3 text-sm"
           >
             Siguiente <ChevronRight className="w-4 h-4" aria-hidden="true" />
           </button>
@@ -582,7 +584,7 @@ function Exam({
           <button
             type="button"
             onClick={() => setConfirming(true)}
-            className="flex items-center justify-center gap-1 py-3 rounded-xl bg-[#1e3a5f] text-white font-semibold text-sm"
+            className="btn-primary gap-1 px-3 text-sm"
           >
             Terminar sesión
           </button>
@@ -640,7 +642,7 @@ function ConfirmFinish({
         role="dialog"
         aria-modal="true"
         aria-labelledby="sim-confirm-title"
-        className="bg-card rounded-2xl border border-border p-5 w-full max-w-md space-y-3"
+        className="card p-5 w-full max-w-md space-y-3"
       >
         <h2
           id="sim-confirm-title"
@@ -675,7 +677,7 @@ function ConfirmFinish({
           <button
             type="button"
             onClick={onConfirm}
-            className="flex-1 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm"
+            className="btn-primary btn-sm flex-1"
           >
             Sí, terminar
           </button>
@@ -705,14 +707,14 @@ function Break({
   return (
     <div className="max-w-xl mx-auto space-y-5 text-center py-6">
       <Coffee className="w-12 h-12 text-primary mx-auto" aria-hidden="true" />
-      <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">
+      <h1 className="page-title">
         Receso: terminaste la sesión {attempt.current + 1}
       </h1>
       <p className="text-muted-foreground">
         Respondiste {answered} de {done.questionIds.length} preguntas. Los
         resultados se muestran al final del simulacro.
       </p>
-      <div className="bg-card rounded-xl border border-border p-4 text-left">
+      <div className="card p-4 text-left">
         <h2 className="font-bold font-['Lexend'] text-foreground">
           Sesión {attempt.current + 2}
         </h2>
@@ -728,7 +730,7 @@ function Break({
       <button
         type="button"
         onClick={onContinue}
-        className="w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors"
+        className="btn-primary w-full"
       >
         Empezar sesión {attempt.current + 2}
       </button>
@@ -795,14 +797,14 @@ function Results({
         <p className="text-sm font-semibold text-muted-foreground">
           {FORMAT_LABEL[attempt.format]}
         </p>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">
+        <h1 className="page-title">
           Resultados del simulacro
         </h1>
       </div>
 
       <section
         aria-labelledby="sim-global"
-        className="bg-gradient-to-br from-[#1e3a5f] to-[#0f2040] rounded-2xl p-6 text-white text-center"
+        className="bg-navy rounded-2xl p-6 text-white text-center"
       >
         <h2 id="sim-global" className="text-sm font-semibold text-white/80">
           Puntaje global estimado
@@ -825,7 +827,7 @@ function Results({
 
       <section
         aria-labelledby="sim-areas"
-        className="bg-card rounded-xl border border-border p-4"
+        className="card p-4"
       >
         <h2
           id="sim-areas"
@@ -840,8 +842,9 @@ function Results({
             return (
               <li key={a}>
                 <div className="flex items-center justify-between text-sm mb-1">
-                  <span className="text-foreground font-medium">
-                    {AREA_INFO[a].icon} {AREA_INFO[a].label}
+                  <span className="flex items-center gap-2 font-medium text-foreground">
+                    <AreaIcon area={a} size="sm" />
+                    {AREA_INFO[a].label}
                   </span>
                   <span className="text-foreground">
                     <strong>{r.score}</strong>
@@ -940,7 +943,7 @@ function Results({
       <div className="grid sm:grid-cols-2 gap-3">
         <Link
           href="/practica?repaso=1"
-          className="flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors"
+          className="btn-primary"
         >
           Repasar mis errores
         </Link>
@@ -950,7 +953,7 @@ function Results({
             onNew();
             window.scrollTo({ top: 0 });
           }}
-          className="flex items-center justify-center gap-2 border-2 border-primary text-primary py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/5 transition-colors"
+          className="btn-secondary"
         >
           <RotateCcw className="w-5 h-5" aria-hidden="true" /> Hacer otro
           simulacro
@@ -992,7 +995,7 @@ function ReviewItem({
         : "Sin responder";
   const panelId = `rev-${question.id}`;
   return (
-    <li className="bg-card rounded-xl border border-border">
+    <li className="card">
       <button
         type="button"
         onClick={() => setOpen(o => !o)}

@@ -5,11 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * ProICFES - Design System "Saber es Poder"
- * Design Movement: Colombian Academic Warmth
- * Core Principles: Accessibility, Clarity, Warmth, Progress
- * Color Philosophy: Deep navy (trust/authority) + lime green (growth/success) + warm amber (energy/Colombia)
- * Typography: Lexend (headings, max readability) + DM Sans (body, friendly)
+ * ProICFES — sistema visual
+ * Color: azul marino (navy/ink) como base y un único acento verde (brand).
+ * Tipografía: Lexend para títulos, DM Sans para texto.
+ * Escala de espacio: múltiplos de 4 px (gap-2/3/4/6, p-4/5/6); tarjetas rounded-2xl, botones rounded-xl.
  */
 
 @theme inline {
@@ -49,6 +48,13 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* Marca: un solo acento (verde) sobre azul marino */
+  --color-brand: #4ade80;
+  --color-brand-hover: #34d27a;
+  --color-brand-soft: #e9fbef;
+  --color-navy: #1e3a5f;
+  --color-ink: #0f2040;
+  --color-canvas: #f6f7f9;
 }
 
 :root {
@@ -193,30 +199,72 @@
     }
   }
 
+
+  /* ---- Botones: uno primario (verde) y uno secundario (contorno) ---- */
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-5 text-[15px] font-semibold text-ink
+           transition-colors hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-50
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-border bg-card px-5 text-[15px]
+           font-semibold text-navy transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy;
+  }
+  .btn-sm {
+    @apply min-h-10 px-4 text-sm;
+  }
+  .btn-link {
+    @apply inline-flex items-center gap-1 text-sm font-semibold text-navy underline-offset-4 hover:underline;
+  }
+
+  /* ---- Superficies ---- */
+  .card {
+    @apply rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgba(15,32,64,0.05)];
+  }
+  .icon-tile {
+    @apply inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-wider text-muted-foreground;
+  }
+  .page-title {
+    @apply font-['Lexend'] text-2xl font-bold tracking-tight text-foreground md:text-[28px];
+  }
+  .section-title {
+    @apply font-['Lexend'] text-lg font-semibold text-foreground;
+  }
+
   /* Navigation item */
   .nav-item {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sidebar-foreground/70 
-           hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-150
-           font-medium text-sm;
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-sidebar-foreground/70
+           transition-colors duration-150 hover:bg-sidebar-accent hover:text-sidebar-foreground;
   }
   .nav-item.active {
-    @apply bg-sidebar-primary text-sidebar-primary-foreground font-semibold;
+    @apply bg-sidebar-accent font-semibold text-white;
+  }
+  .nav-item.active svg {
+    @apply text-brand;
   }
 
   /* Answer option button */
   .answer-option {
-    @apply flex items-center gap-3 p-4 rounded-xl border-2 border-border bg-card 
-           text-foreground hover:border-primary/50 hover:bg-primary/5 
-           transition-all duration-150 font-medium;
+    @apply flex items-center gap-3 rounded-xl border border-border bg-card p-4 font-medium text-foreground
+           shadow-[0_1px_2px_rgba(15,32,64,0.04)] transition-colors duration-150;
+  }
+  @media (hover: hover) {
+    .answer-option:not(:disabled):hover {
+      @apply border-navy/40 bg-navy/[0.03];
+    }
   }
   .answer-option.selected {
-    @apply border-primary bg-primary/10;
+    @apply border-navy bg-navy/5 ring-1 ring-navy;
   }
   .answer-option.correct {
-    @apply border-green-500 bg-green-50 text-green-800;
+    @apply border-green-600 bg-green-50 text-green-900 ring-1 ring-green-600;
   }
   .answer-option.incorrect {
-    @apply border-red-500 bg-red-50 text-red-800;
+    @apply border-red-500 bg-red-50 text-red-900 ring-1 ring-red-500;
   }
 
   /* Score badge */

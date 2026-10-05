@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import { Link } from "wouter";
-import { BookOpen, CheckCircle2, Clock, Flame, GraduationCap, LineChart, Play, Shield, Sparkles } from "lucide-react";
+import {
+  BookOpenText, ChartNoAxesColumn, Check, ClipboardList, ListChecks, ShieldCheck, Smartphone, Target, Timer,
+} from "lucide-react";
 import FaqList from "@/components/FaqList";
 import { FAQ } from "@/data/faq";
 import { BANK_TOTAL } from "@/data/questions/meta";
@@ -10,34 +12,42 @@ import { SITE } from "@/config/site";
 import SampleQuestion from "@/components/SampleQuestion";
 import InstallPrompt from "@/components/InstallPrompt";
 import BrandMark from "@/components/BrandMark";
+import PhoneMockup from "@/components/PhoneMockup";
 
 const BENEFITS = [
   {
-    icon: BookOpen,
-    title: "Lecciones claras",
-    text: "Temas cortos, en español colombiano, alineados a las competencias del Saber 11.",
+    icon: BookOpenText,
+    title: "Lecciones cortas",
+    text: "Cada tema en pocos minutos, con ejemplos y las palabras clave que aparecen en el examen.",
   },
   {
-    icon: CheckCircle2,
-    title: "Preguntas originales",
-    text: `Más de ${BANK_TOTAL} ítems tipo ICFES con explicación al instante. No son copias del examen oficial.`,
+    icon: ListChecks,
+    title: "Preguntas con explicación",
+    text: `${BANK_TOTAL} preguntas originales tipo Saber 11. Al responder ves por qué cada opción es correcta o no.`,
   },
   {
-    icon: Clock,
-    title: "Simulacro real",
-    text: "Modo corto o completo con reloj, sesiones y puntaje global estimado 0–500.",
+    icon: Timer,
+    title: "Simulacros con reloj",
+    text: "Versión corta o completa, por sesiones, con un puntaje global estimado de 0 a 500.",
   },
   {
-    icon: LineChart,
-    title: "Progreso que se ve",
-    text: "Aciertos por área, meta personal y racha diaria para no perder el ritmo.",
+    icon: ChartNoAxesColumn,
+    title: "Tu avance a la vista",
+    text: "Aciertos por área, tu meta de puntaje y una racha diaria que te ayuda a mantener el hábito.",
   },
 ];
 
 const STEPS = [
-  { n: "1", title: "Elige un área", text: "Matemáticas, Lectura, Ciencias, Sociales o Inglés." },
-  { n: "2", title: "Lee y practica", text: "Lección breve + preguntas con feedback inmediato." },
-  { n: "3", title: "Mide tu nivel", text: "Haz un simulacro y ajusta tu plan según el estimado." },
+  { title: "Define tu meta", text: "Elige la carrera que te interesa y el puntaje al que apuntas. Toma un minuto." },
+  { title: "Cumple el reto diario", text: "Lee una lección y responde unas preguntas. Son unos cinco minutos al día." },
+  { title: "Mide tu avance", text: "Presenta un simulacro y ajusta tu plan con el puntaje estimado." },
+];
+
+const FOR_YOU = [
+  "Explicaciones en español claro, sin tecnicismos de más",
+  "Funciona en cualquier celular y puedes instalarla como app",
+  "Las preguntas que fallas vuelven en el repaso hasta que las domines",
+  "Tu progreso se guarda en el dispositivo; con una cuenta, también en la nube",
 ];
 
 export default function Landing() {
@@ -48,237 +58,262 @@ export default function Landing() {
       progress.completedLessons.length > 0 ||
       progress.hasCompletedOnboarding ||
       progress.streakState.current > 0);
+  const ctaHref = hasProgress ? "/inicio" : "/meta";
+  const ctaLabel = hasProgress ? "Continuar estudiando" : "Empezar gratis";
 
   const sample = useMemo(() => questionsByArea.matematicas.find(q => !q.stimulusId) ?? questionsByArea.matematicas[0], []);
 
   return (
-    <div className="min-h-screen bg-[#f7f8fa] text-foreground">
-      <header className="sticky top-0 z-40 border-b border-border/70 bg-[#f7f8fa]/90 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
+    <div className="min-h-screen bg-canvas text-foreground">
+      <header className="sticky top-0 z-40 border-b border-border bg-canvas/90 backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
           <BrandMark />
           <div className="flex items-center gap-2">
-            <Link
-              href="/cuenta"
-              className="hidden sm:inline-flex rounded-full px-3 py-2 text-sm font-semibold text-[#1e3a5f] hover:bg-[#1e3a5f]/5"
-            >
+            <Link href="/cuenta" className="btn-secondary btn-sm">
               Iniciar sesión
             </Link>
-            <Link
-              href={hasProgress ? "/inicio" : "/meta"}
-              className="inline-flex items-center justify-center rounded-full bg-[#1e3a5f] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#16304f] min-h-11"
-            >
-              {hasProgress ? "Continuar estudiando" : "Empezar a estudiar"}
+            <Link href={ctaHref} className="btn-primary btn-sm hidden sm:inline-flex">
+              {ctaLabel}
             </Link>
           </div>
         </div>
       </header>
 
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 md:grid-cols-2 md:items-center md:py-16">
-            <div className="space-y-5">
-              <p className="inline-flex items-center gap-2 rounded-full bg-[#1e3a5f]/8 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#1e3a5f]">
-                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                Preicfes gratis · Colombia
-              </p>
-              <h1 className="font-['Lexend'] text-3xl font-bold leading-tight text-[#0f2040] sm:text-4xl md:text-5xl">
-                Prepárate para el ICFES con calma, método y práctica real
+        {/* Portada */}
+        <section className="overflow-hidden">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-16 pt-10 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center md:pb-24 md:pt-16">
+            <div>
+              <p className="eyebrow text-navy">Preicfes gratis para el Saber 11</p>
+              <h1 className="mt-3 font-['Lexend'] text-[34px] font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl md:text-[54px]">
+                Prepárate para el ICFES con un plan diario y gratuito
               </h1>
-              <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                ProICFES es una plataforma gratuita para el Saber 11: lecciones cortas, preguntas tipo examen con
-                explicación y simulacros que estiman tu puntaje global. Sin cuentos, sin paywalls.
+              <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
+                Lecciones cortas, preguntas tipo Saber 11 con explicación y simulacros que estiman tu puntaje.
+                Todo en español y desde el celular.
               </p>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Link
-                  href={hasProgress ? "/inicio" : "/meta"}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-[#4ade80] px-6 text-base font-bold text-[#0f2040] hover:bg-[#22c55e]"
-                >
-                  <Play className="h-5 w-5" aria-hidden="true" />
-                  {hasProgress ? "Continuar estudiando" : "Empezar a estudiar"}
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link href={ctaHref} className="btn-primary px-7">
+                  {ctaLabel}
                 </Link>
-                <Link
-                  href="/cuenta"
-                  className="inline-flex min-h-12 items-center justify-center rounded-2xl border-2 border-[#1e3a5f]/15 px-6 text-base font-semibold text-[#1e3a5f] hover:bg-white"
-                >
-                  Iniciar sesión
-                </Link>
+                <a href="#ejemplo" className="btn-secondary px-7">
+                  Probar una pregunta
+                </a>
               </div>
-              <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
-                <li className="inline-flex items-center gap-1.5">
-                  <Shield className="h-4 w-4 text-[#1e3a5f]" aria-hidden="true" /> 100% gratis
-                </li>
-                <li className="inline-flex items-center gap-1.5">
-                  <GraduationCap className="h-4 w-4 text-[#1e3a5f]" aria-hidden="true" /> Competencias ICFES
-                </li>
-                <li className="inline-flex items-center gap-1.5">
-                  <Flame className="h-4 w-4 text-[#1e3a5f]" aria-hidden="true" /> Rachas diarias
-                </li>
+              <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+                {["Gratis", "Empiezas sin registrarte", "Hecho en Colombia"].map(t => (
+                  <li key={t} className="inline-flex items-center gap-1.5">
+                    <Check className="h-4 w-4 text-green-700" strokeWidth={2.25} aria-hidden="true" /> {t}
+                  </li>
+                ))}
               </ul>
             </div>
+
             <div className="relative">
-              <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-[0_20px_50px_-24px_rgba(15,32,64,0.45)]">
-                <img
-                  src="/images/landing/hero-study.jpg"
-                  alt="Estudiantes colaborando en una mesa de estudio"
-                  width={800}
-                  height={600}
-                  className="aspect-[4/3] w-full object-cover"
-                  fetchPriority="high"
-                />
+              <div className="absolute inset-x-6 bottom-6 top-10 -z-0 rounded-[3rem] bg-brand-soft md:inset-x-0" aria-hidden="true" />
+              <div className="relative">
+                <PhoneMockup />
               </div>
-              <p className="mt-2 text-center text-[11px] text-muted-foreground">Foto: Unsplash · créditos en /images/credits</p>
             </div>
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* Qué incluye */}
         <section className="border-y border-border bg-white" aria-labelledby="beneficios">
-          <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
-            <h2 id="beneficios" className="font-['Lexend'] text-2xl font-bold text-[#0f2040] md:text-3xl">
-              Por qué estudiar con ProICFES
-            </h2>
-            <p className="mt-2 max-w-2xl text-muted-foreground">
-              Pensado para bachilleres colombianos: directo, usable en el celular y con la misma escala 0–500 del Saber 11.
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+            <div className="max-w-2xl">
+              <h2 id="beneficios" className="font-['Lexend'] text-[26px] font-bold tracking-tight text-ink md:text-[32px]">
+                Todo lo que necesitas para el Saber 11
+              </h2>
+              <p className="mt-3 text-[17px] leading-relaxed text-muted-foreground">
+                Las cinco pruebas del examen, con la misma escala de 0 a 500 que usa el ICFES.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {BENEFITS.map(({ icon: Icon, title, text }) => (
-                <article key={title} className="rounded-2xl border border-border bg-[#f7f8fa] p-5">
-                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#1e3a5f] text-[#4ade80]">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+                <article key={title} className="card flex gap-4 p-5 sm:block">
+                  <span className="icon-tile bg-navy/5 text-navy" aria-hidden="true">
+                    <Icon className="h-5 w-5" strokeWidth={1.75} />
+                  </span>
+                  <div>
+                    <h3 className="font-['Lexend'] text-[17px] font-semibold text-ink sm:mt-4">{title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{text}</p>
                   </div>
-                  <h3 className="font-['Lexend'] text-lg font-bold text-[#0f2040]">{title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{text}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* How it works */}
-        <section className="mx-auto max-w-5xl px-4 py-12 md:py-16" aria-labelledby="como">
-          <h2 id="como" className="font-['Lexend'] text-2xl font-bold text-[#0f2040] md:text-3xl">
-            Cómo funciona
-          </h2>
-          <ol className="mt-8 grid gap-4 md:grid-cols-3">
-            {STEPS.map(s => (
-              <li key={s.n} className="rounded-2xl border border-border bg-white p-5">
-                <span className="font-['Lexend'] text-3xl font-bold text-[#4ade80]">{s.n}</span>
-                <h3 className="mt-2 font-['Lexend'] text-lg font-bold">{s.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{s.text}</p>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-8 overflow-hidden rounded-3xl border border-border">
-            <img
-              src="/images/landing/practice.jpg"
-              alt="Persona estudiando con cuaderno y computador"
-              width={1200}
-              height={700}
-              className="max-h-72 w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </section>
-
-        {/* Sample question */}
-        <section className="border-y border-border bg-white" aria-labelledby="ejemplo">
-          <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
-            <h2 id="ejemplo" className="font-['Lexend'] text-2xl font-bold text-[#0f2040] md:text-3xl">
-              Prueba una pregunta
-            </h2>
-            <p className="mt-2 max-w-2xl text-muted-foreground">
-              Así se siente practicar: eliges una opción y ves la explicación al momento. Sin crear cuenta.
-            </p>
-            <div className="mt-6">{sample ? <SampleQuestion question={sample} /> : null}</div>
-          </div>
-        </section>
-
-        {/* Trust */}
-        <section className="mx-auto max-w-5xl px-4 py-12 md:py-16" aria-labelledby="confianza">
-          <h2 id="confianza" className="font-['Lexend'] text-2xl font-bold text-[#0f2040]">
-            Transparencia
-          </h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <div className="rounded-2xl border border-border bg-white p-5 text-sm leading-relaxed text-muted-foreground">
-              <p>
-                ProICFES es un proyecto independiente y gratuito. <strong className="text-foreground">No está afiliado al ICFES</strong>.
-                Las preguntas son originales y se diseñan para entrenar las mismas competencias del examen; no reproducen ítems oficiales.
-              </p>
+        {/* Para quién */}
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20" aria-labelledby="para-ti">
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
+            <div className="overflow-hidden rounded-2xl border border-border bg-white">
+              <img
+                src="/images/landing/estudiante-800.webp"
+                srcSet="/images/landing/estudiante-800.webp 800w, /images/landing/estudiante-1200.webp 1200w"
+                sizes="(min-width: 768px) 560px, 100vw"
+                alt="Estudiante de bachillerato estudiando en casa con su cuaderno"
+                width={800}
+                height={600}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full object-cover"
+              />
             </div>
-            <div className="rounded-2xl border border-border bg-white p-5 text-sm leading-relaxed text-muted-foreground">
-              <p>
-                El puntaje que ves es un <strong className="text-foreground">estimado</strong> con la ponderación pública del Saber 11.
-                Para fechas, inscripción y resultados oficiales visita{" "}
-                <a className="font-semibold text-[#1e3a5f] underline" href="https://www.icfes.gov.co/" rel="noopener noreferrer" target="_blank">
-                  icfes.gov.co
-                </a>
-                .
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="border-t border-border bg-white" aria-labelledby="faq-landing">
-          <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
-            <div className="mb-4 flex items-end justify-between gap-3">
-              <h2 id="faq-landing" className="font-['Lexend'] text-2xl font-bold text-[#0f2040]">
-                Preguntas frecuentes
-              </h2>
-              <Link href="/preguntas-frecuentes" className="text-sm font-semibold text-[#1e3a5f] hover:underline">
-                Ver todas
-              </Link>
-            </div>
-            <FaqList
-              items={FAQ.filter(f => ["que-es-saber-11", "como-se-calcula-el-puntaje", "como-usar-proicfes"].includes(f.id))}
-              headingLevel="h3"
-            />
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="bg-[#1e3a5f] text-white">
-          <div className="mx-auto flex max-w-5xl flex-col items-start gap-5 px-4 py-12 md:flex-row md:items-center md:justify-between md:py-16">
             <div>
-              <h2 className="font-['Lexend'] text-2xl font-bold md:text-3xl">¿Listo para empezar?</h2>
-              <p className="mt-2 max-w-lg text-white/80">Define tu meta en un minuto o entra directo a practicar. Tu progreso se guarda en este dispositivo.</p>
+              <h2 id="para-ti" className="font-['Lexend'] text-[26px] font-bold tracking-tight text-ink md:text-[32px]">
+                Pensado para estudiantes de grado 11
+              </h2>
+              <p className="mt-3 text-[17px] leading-relaxed text-muted-foreground">
+                Estudia en ratos cortos entre el colegio y tus otras cosas. Dos minutos de lectura y tres preguntas al día
+                ya cuentan para tu racha.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {FOR_YOU.map(t => (
+                  <li key={t} className="flex items-start gap-3 text-[15px] text-foreground">
+                    <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand-soft text-green-700" aria-hidden="true">
+                      <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
+                    </span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <Link
-              href={hasProgress ? "/inicio" : "/meta"}
-              className="inline-flex min-h-12 items-center justify-center rounded-2xl bg-[#4ade80] px-6 text-base font-bold text-[#0f2040] hover:bg-[#22c55e]"
-            >
-              {hasProgress ? "Continuar estudiando" : "Empezar a estudiar"}
+          </div>
+        </section>
+
+        {/* Cómo funciona */}
+        <section className="border-y border-border bg-white" aria-labelledby="como">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+            <h2 id="como" className="font-['Lexend'] text-[26px] font-bold tracking-tight text-ink md:text-[32px]">
+              Cómo funciona
+            </h2>
+            <ol className="mt-10 grid gap-4 md:grid-cols-3">
+              {STEPS.map((s, i) => (
+                <li key={s.title} className="card flex gap-4 p-5 md:block">
+                  <span className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy font-['Lexend'] text-sm font-semibold text-white">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-['Lexend'] text-[17px] font-semibold text-ink md:mt-4">{s.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Pregunta de ejemplo */}
+        <section id="ejemplo" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6 md:py-20" aria-labelledby="ejemplo-titulo">
+          <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <h2 id="ejemplo-titulo" className="font-['Lexend'] text-[26px] font-bold tracking-tight text-ink md:text-[32px]">
+                Prueba una pregunta
+              </h2>
+              <p className="mt-3 text-[17px] leading-relaxed text-muted-foreground">
+                Elige una opción y mira la explicación. Así funciona la práctica en ProICFES, y no necesitas cuenta.
+              </p>
+            </div>
+            <div>{sample ? <SampleQuestion question={sample} /> : null}</div>
+          </div>
+        </section>
+
+        {/* Transparencia */}
+        <section className="border-y border-border bg-white" aria-labelledby="confianza">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+            <h2 id="confianza" className="font-['Lexend'] text-[26px] font-bold tracking-tight text-ink md:text-[32px]">
+              Claro desde el principio
+            </h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <div className="card flex gap-4 p-5">
+                <span className="icon-tile bg-navy/5 text-navy" aria-hidden="true">
+                  <ShieldCheck className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  ProICFES es un proyecto independiente y gratuito. <strong className="text-foreground">No está afiliado al ICFES.</strong>{" "}
+                  Las preguntas son originales: entrenan las mismas competencias del examen, pero no copian ítems oficiales.
+                </p>
+              </div>
+              <div className="card flex gap-4 p-5">
+                <span className="icon-tile bg-navy/5 text-navy" aria-hidden="true">
+                  <Target className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  Tu puntaje es un <strong className="text-foreground">estimado</strong> calculado con la ponderación pública del Saber 11.
+                  Para fechas, inscripciones y resultados oficiales, consulta{" "}
+                  <a className="font-semibold text-navy underline underline-offset-2" href="https://www.icfes.gov.co/" rel="noopener noreferrer" target="_blank">
+                    icfes.gov.co
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Preguntas frecuentes */}
+        <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-20" aria-labelledby="faq-landing">
+          <div className="mb-6 flex items-end justify-between gap-3">
+            <h2 id="faq-landing" className="font-['Lexend'] text-[26px] font-bold tracking-tight text-ink md:text-[32px]">
+              Preguntas frecuentes
+            </h2>
+            <Link href="/preguntas-frecuentes" className="btn-link">
+              Ver todas
+            </Link>
+          </div>
+          <FaqList
+            items={FAQ.filter(f => ["que-es-saber-11", "como-se-calcula-el-puntaje", "como-usar-proicfes"].includes(f.id))}
+            headingLevel="h3"
+          />
+        </section>
+
+        {/* Llamado final */}
+        <section className="px-4 pb-16 sm:px-6 md:pb-20">
+          <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 rounded-3xl bg-navy px-6 py-10 text-white md:flex-row md:items-center md:justify-between md:px-12 md:py-14">
+            <div>
+              <h2 className="font-['Lexend'] text-[26px] font-bold tracking-tight md:text-[32px]">Empieza hoy tu preparación</h2>
+              <p className="mt-2 max-w-lg text-[17px] text-white/80">
+                Define tu meta en un minuto y haz tu primer reto. Tu progreso queda guardado en este dispositivo.
+              </p>
+            </div>
+            <Link href={ctaHref} className="btn-primary flex-shrink-0 px-7">
+              {ctaLabel}
             </Link>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-border bg-[#f7f8fa]">
-        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <div className="space-y-1">
+      <footer className="border-t border-border bg-white">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 text-sm text-muted-foreground sm:px-6 md:grid-cols-[1fr_auto]">
+          <div className="space-y-2">
             <BrandMark compact />
-            <p>
-              Hecho por {SITE.author.name}. Independiente del ICFES.
+            <p className="max-w-sm">
+              Hecho en Colombia por {SITE.author.name}. Proyecto independiente, sin afiliación con el ICFES.
             </p>
           </div>
-          <nav className="flex flex-wrap gap-x-4 gap-y-2" aria-label="Legal">
-            <Link href="/politica-de-privacidad" className="hover:text-foreground hover:underline">
-              Privacidad
-            </Link>
-            <Link href="/tratamiento-de-datos" className="hover:text-foreground hover:underline">
-              Datos
-            </Link>
-            <Link href="/terminos" className="hover:text-foreground hover:underline">
-              Términos
-            </Link>
-            <Link href="/cookies" className="hover:text-foreground hover:underline">
-              Cookies
-            </Link>
-            <Link href="/preguntas-frecuentes" className="hover:text-foreground hover:underline">
-              FAQ
-            </Link>
-          </nav>
+          <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-3">
+            <nav aria-label="Estudiar" className="flex flex-col gap-2">
+              <span className="font-semibold text-foreground">Estudiar</span>
+              <Link href="/practica" className="hover:text-foreground">Practicar</Link>
+              <Link href="/simulacro" className="hover:text-foreground">Simulacro</Link>
+              <Link href="/glosario" className="hover:text-foreground">Glosario</Link>
+            </nav>
+            <nav aria-label="Ayuda" className="flex flex-col gap-2">
+              <span className="font-semibold text-foreground">Ayuda</span>
+              <Link href="/preguntas-frecuentes" className="hover:text-foreground">Preguntas frecuentes</Link>
+              <Link href="/tips" className="hover:text-foreground">Estrategias</Link>
+              <Link href="/creditos" className="hover:text-foreground">Créditos de imágenes</Link>
+            </nav>
+            <nav aria-label="Legal" className="flex flex-col gap-2">
+              <span className="font-semibold text-foreground">Legal</span>
+              <Link href="/politica-de-privacidad" className="hover:text-foreground">Privacidad</Link>
+              <Link href="/tratamiento-de-datos" className="hover:text-foreground">Tratamiento de datos</Link>
+              <Link href="/terminos" className="hover:text-foreground">Términos</Link>
+              <Link href="/cookies" className="hover:text-foreground">Cookies</Link>
+            </nav>
+          </div>
         </div>
       </footer>
 

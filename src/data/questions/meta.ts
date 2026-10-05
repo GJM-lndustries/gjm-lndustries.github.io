@@ -6,13 +6,13 @@ import type { AreaId } from "./types";
 
 export const AREA_INFO: Record<
   AreaId,
-  { label: string; short: string; icon: string; moduleId: string; weight: number }
+  { label: string; short: string; moduleId: string; weight: number }
 > = {
-  matematicas: { label: "Matemáticas", short: "Mate", icon: "📐", moduleId: "matematicas", weight: 3 },
-  "lectura-critica": { label: "Lectura Crítica", short: "Lectura", icon: "📖", moduleId: "lectura", weight: 3 },
-  "ciencias-naturales": { label: "Ciencias Naturales", short: "Ciencias", icon: "🔬", moduleId: "ciencias", weight: 3 },
-  "sociales-ciudadanas": { label: "Sociales y Ciudadanas", short: "Sociales", icon: "🗺️", moduleId: "sociales", weight: 3 },
-  ingles: { label: "Inglés", short: "Inglés", icon: "🌎", moduleId: "ingles", weight: 1 },
+  matematicas: { label: "Matemáticas", short: "Mate", moduleId: "matematicas", weight: 3 },
+  "lectura-critica": { label: "Lectura Crítica", short: "Lectura", moduleId: "lectura", weight: 3 },
+  "ciencias-naturales": { label: "Ciencias Naturales", short: "Ciencias", moduleId: "ciencias", weight: 3 },
+  "sociales-ciudadanas": { label: "Sociales y Ciudadanas", short: "Sociales", moduleId: "sociales", weight: 3 },
+  ingles: { label: "Inglés", short: "Inglés", moduleId: "ingles", weight: 1 },
 };
 
 export const DIFFICULTY_LABEL: Record<1 | 2 | 3, string> = {

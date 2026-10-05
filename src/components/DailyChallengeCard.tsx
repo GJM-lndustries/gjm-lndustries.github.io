@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "wouter";
-import { CheckCircle2, Flame, Snowflake } from "lucide-react";
+import { BookOpenText, Check, ChevronRight, Flame, PenLine, ShieldCheck } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import {
   ANSWERING_GOAL_MS,
@@ -9,6 +10,10 @@ import {
 } from "@/lib/streaks";
 import { motion, AnimatePresence } from "framer-motion";
 
+/**
+ * Tarjeta principal del tablero: el reto diario (leer + practicar), la semana
+ * de racha y el comodín semanal. Sin emoji: iconos lucide en cuadros de color.
+ */
 export default function DailyChallengeCard() {
   const { progress, useStreakFreeze, acknowledgeStreakCelebration } = useProgress();
   const { streakState } = progress;
@@ -17,110 +22,121 @@ export default function DailyChallengeCard() {
   const answeringPct = Math.min(100, Math.round((today.answeringMs / ANSWERING_GOAL_MS) * 100));
   const week = weekCalendar(streakState);
   const showCelebrate = today.completed && !today.celebrated;
+  const [freezeMsg, setFreezeMsg] = useState<string | null>(null);
+  const days = streakState.current;
 
   return (
-    <section className="space-y-3" aria-labelledby="reto-hoy">
-      <div className="flex items-center justify-between gap-3">
-        <h2 id="reto-hoy" className="font-['Lexend'] text-lg font-bold text-foreground">
-          Reto de hoy
-        </h2>
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/10 px-3 py-1 text-sm font-bold text-orange-600">
+    <section className="card overflow-hidden" aria-labelledby="reto-hoy">
+      <div className="flex items-start justify-between gap-3 p-5 pb-4">
+        <div>
+          <p className="eyebrow">Reto de hoy</p>
+          <h2 id="reto-hoy" className="section-title mt-1">
+            {today.completed ? "Reto cumplido. Nos vemos mañana." : "Lee una lección y practica"}
+          </h2>
+        </div>
+        <div
+          className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1.5 text-sm font-semibold text-orange-700"
+          aria-label={`Racha de ${days} ${days === 1 ? "día" : "días"}`}
+        >
           <Flame className="h-4 w-4" aria-hidden="true" />
-          {streakState.current}
-          <span className="font-medium text-muted-foreground">día{streakState.current === 1 ? "" : "s"}</span>
+          {days} {days === 1 ? "día" : "días"}
         </div>
       </div>
 
-      <div className="rounded-2xl border border-border bg-card p-4 space-y-4">
-        <ol className="grid grid-cols-7 gap-1.5" aria-label="Semana de racha">
+      <ul className="divide-y divide-border border-y border-border">
+        <TaskRow
+          icon={<BookOpenText className="h-5 w-5" strokeWidth={1.75} />}
+          tile="bg-amber-50 text-amber-700"
+          label="Lectura activa"
+          goal="2 minutos en una lección"
+          pct={readingPct}
+          done={today.readingDone}
+          detail={`${formatMs(today.readingMs)} de ${formatMs(READING_GOAL_MS)}`}
+          href="/matematicas"
+        />
+        <TaskRow
+          icon={<PenLine className="h-5 w-5" strokeWidth={1.75} />}
+          tile="bg-blue-50 text-blue-700"
+          label="Práctica"
+          goal="3 preguntas, mínimo 1:50"
+          pct={answeringPct}
+          done={today.answeringDone}
+          detail={`${formatMs(today.answeringMs)} de ${formatMs(ANSWERING_GOAL_MS)} · ${today.questionsAnswered} ${today.questionsAnswered === 1 ? "pregunta" : "preguntas"}`}
+          href="/practica"
+        />
+      </ul>
+
+      <div className="space-y-4 p-5 pt-4">
+        <ol className="grid grid-cols-7 gap-1" aria-label="Tu semana">
           {week.map(d => (
-            <li key={d.date} className="text-center">
-              <span className="text-[10px] font-semibold text-muted-foreground">{d.label}</span>
-              <div
-                className={`mx-auto mt-1 flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${
+            <li key={d.date} className="flex flex-col items-center gap-1">
+              <span className="text-[11px] font-medium text-muted-foreground">{d.label}</span>
+              <span
+                className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${
                   d.done
-                    ? "bg-[#4ade80] text-[#0f2040]"
+                    ? "bg-brand text-ink"
                     : d.isToday
-                      ? "border-2 border-[#1e3a5f] text-[#1e3a5f]"
+                      ? "border-2 border-navy text-navy"
                       : "bg-muted text-muted-foreground"
                 }`}
                 title={d.date}
               >
-                {d.done ? "✓" : ""}
-              </div>
+                {d.done ? <Check className="h-4 w-4" strokeWidth={2.5} aria-label="Cumplido" /> : null}
+              </span>
             </li>
           ))}
         </ol>
 
-        <div className="space-y-3">
-          <ProgressRow
-            label="Leer una lección (2 min activos)"
-            pct={readingPct}
-            done={today.readingDone}
-            detail={`${formatMs(today.readingMs)} / ${formatMs(READING_GOAL_MS)}`}
-            href="/matematicas"
-          />
-          <ProgressRow
-            label="Practicar (≥ 1:50 y 3 preguntas)"
-            pct={answeringPct}
-            done={today.answeringDone}
-            detail={`${formatMs(today.answeringMs)} / ${formatMs(ANSWERING_GOAL_MS)} · ${today.questionsAnswered} preg.`}
-            href="/practica"
-          />
-        </div>
-
-        {today.completed ? (
-          <p className="text-sm font-semibold text-green-700" role="status">
-            ¡Reto del día completado! Tu racha sigue viva.
-          </p>
-        ) : (
-          <p className="text-xs text-muted-foreground">
-            El día solo cuenta cuando terminas ambas partes. El temporizador se pausa si cambias de pestaña.
-          </p>
-        )}
-
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 text-xs text-muted-foreground">
           <span>
-            Mejor racha: <strong className="text-foreground">{streakState.longest}</strong> · Congelamientos:{" "}
-            <strong className="text-foreground">{streakState.freezesAvailable}</strong>
+            Mejor racha: <strong className="text-foreground">{streakState.longest}</strong>
+            <span className="mx-1.5" aria-hidden="true">·</span>
+            Comodines: <strong className="text-foreground">{streakState.freezesAvailable}</strong>
           </span>
           <button
             type="button"
-            className="inline-flex items-center gap-1 rounded-lg border border-border px-2 py-1.5 font-semibold hover:bg-muted"
+            className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-border px-2.5 font-semibold text-navy hover:bg-muted"
             onClick={() => {
               const { error } = useStreakFreeze();
-              if (error) alert(error);
+              setFreezeMsg(error ?? "Listo: usaste el comodín y tu racha sigue.");
             }}
           >
-            <Snowflake className="h-3.5 w-3.5" aria-hidden="true" /> Usar freeze
+            <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" /> Usar comodín
           </button>
         </div>
+        {freezeMsg ? (
+          <p className="text-xs text-foreground" role="status">
+            {freezeMsg}
+          </p>
+        ) : (
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            El día cuenta cuando completas las dos partes. El tiempo se pausa si cambias de pestaña. Tienes un comodín por semana para no perder la racha.
+          </p>
+        )}
       </div>
 
       <AnimatePresence>
         {showCelebrate && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 p-4"
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/40 p-4"
             role="dialog"
             aria-modal="true"
             aria-labelledby="racha-celebra"
           >
-            <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-xl">
-              <Flame className="mx-auto h-12 w-12 text-orange-500" aria-hidden="true" />
-              <h3 id="racha-celebra" className="mt-3 font-['Lexend'] text-xl font-bold">
-                ¡Día {streakState.current} conseguido!
+            <div className="w-full max-w-sm rounded-2xl bg-card p-6 text-center shadow-lg">
+              <span className="icon-tile mx-auto h-14 w-14 rounded-2xl bg-orange-50 text-orange-600" aria-hidden="true">
+                <Flame className="h-7 w-7" strokeWidth={1.75} />
+              </span>
+              <h3 id="racha-celebra" className="mt-4 font-['Lexend'] text-xl font-bold">
+                Día {streakState.current} cumplido
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Completaste el reto de hoy. Vuelve mañana para seguir la racha.
+                Terminaste el reto de hoy. Vuelve mañana para mantener la racha.
               </p>
-              <button
-                type="button"
-                className="mt-5 min-h-11 w-full rounded-2xl bg-[#1e3a5f] font-bold text-white"
-                onClick={() => acknowledgeStreakCelebration()}
-              >
+              <button type="button" className="btn-primary mt-5 w-full" onClick={() => acknowledgeStreakCelebration()}>
                 Seguir
               </button>
             </div>
@@ -131,34 +147,44 @@ export default function DailyChallengeCard() {
   );
 }
 
-function ProgressRow({
+function TaskRow({
+  icon,
+  tile,
   label,
+  goal,
   pct,
   done,
   detail,
   href,
 }: {
+  icon: React.ReactNode;
+  tile: string;
   label: string;
+  goal: string;
   pct: number;
   done: boolean;
   detail: string;
   href: string;
 }) {
   return (
-    <div>
-      <div className="mb-1 flex items-center justify-between gap-2">
-        <p className="text-sm font-medium text-foreground flex items-center gap-1.5">
-          {done ? <CheckCircle2 className="h-4 w-4 text-green-600" aria-hidden="true" /> : null}
-          {label}
-        </p>
-        <Link href={href} className="text-xs font-semibold text-primary hover:underline">
-          Ir
-        </Link>
-      </div>
-      <div className="h-2 overflow-hidden rounded-full bg-muted">
-        <div className="h-full rounded-full bg-[#4ade80] transition-all" style={{ width: `${pct}%` }} />
-      </div>
-      <p className="mt-1 text-[11px] text-muted-foreground">{detail}</p>
-    </div>
+    <li>
+      <Link href={href} className="flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-muted/50">
+        <span className={`icon-tile ${done ? "bg-brand-soft text-green-700" : tile}`} aria-hidden="true">
+          {done ? <Check className="h-5 w-5" strokeWidth={2.25} /> : icon}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="flex items-baseline justify-between gap-2">
+            <span className="text-sm font-semibold text-foreground">{label}</span>
+            <span className="text-xs tabular-nums text-muted-foreground">{done ? "Hecho" : `${pct}%`}</span>
+          </span>
+          <span className="block text-xs text-muted-foreground">{goal}</span>
+          <span className="mt-2 block h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden="true">
+            <span className="block h-full rounded-full bg-brand transition-all" style={{ width: `${pct}%` }} />
+          </span>
+          <span className="mt-1 block text-[11px] tabular-nums text-muted-foreground">{detail}</span>
+        </span>
+        <ChevronRight className="h-4 w-4 flex-shrink-0 text-muted-foreground" aria-hidden="true" />
+      </Link>
+    </li>
   );
 }

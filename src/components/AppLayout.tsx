@@ -1,53 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useAuth } from "@/contexts/AuthContext";
-import {
-  Home,
-  PenLine,
-  BarChart3,
-  User,
-  Menu,
-  X,
-  Star,
-  Flame,
-  BookOpen,
-  Library,
-  Lightbulb,
-  Trophy,
-  Calculator,
-  FlaskConical,
-  Map,
-  Globe,
-} from "lucide-react";
+import { Home, PenLine, ClipboardList, CircleUserRound, Star, Flame, BarChart3, Trophy, Library, Lightbulb } from "lucide-react";
+import { AREA_STYLE } from "@/components/AreaIcon";
+import { modules } from "@/lib/appData";
 import { ACCOUNTS_ENABLED, accountInitial } from "@/lib/accounts";
 import { SITE } from "@/config/site";
 import { useConsent } from "@/contexts/ConsentContext";
 import InstallPrompt from "@/components/InstallPrompt";
 
-const sideNav = [
+const mainNav = [
   { path: "/inicio", label: "Inicio", icon: Home },
   { path: "/practica", label: "Practicar", icon: PenLine },
-  { path: "/matematicas", label: "Matemáticas", icon: Calculator },
-  { path: "/lectura", label: "Lectura Crítica", icon: BookOpen },
-  { path: "/ciencias", label: "Ciencias Naturales", icon: FlaskConical },
-  { path: "/sociales", label: "Sociales y Ciudadanas", icon: Map },
-  { path: "/ingles", label: "Inglés", icon: Globe },
-  { path: "/simulacro", label: "Simulacro", icon: BarChart3 },
-  { path: "/yo", label: "Yo", icon: User },
-  { path: "/analytics", label: "Mi progreso", icon: Trophy },
-  { path: "/logros", label: "Logros", icon: Star },
-  { path: "/glosario", label: "Glosario", icon: Library },
-  { path: "/tips", label: "Estrategias", icon: Lightbulb },
-  ...(ACCOUNTS_ENABLED ? [{ path: "/cuenta", label: "Cuenta", icon: User }] : []),
+  { path: "/simulacro", label: "Simulacro", icon: ClipboardList },
+  { path: "/yo", label: "Yo", icon: CircleUserRound },
 ];
 
-const bottomNav = [
-  { path: "/inicio", label: "Inicio", icon: Home },
-  { path: "/practica", label: "Practicar", icon: PenLine },
-  { path: "/simulacro", label: "Simulacro", icon: BarChart3 },
-  { path: "/yo", label: "Yo", icon: User },
+const areaNav = modules.map(m => ({ path: `/${m.id}`, label: m.title, icon: AREA_STYLE[m.area].icon }));
+
+const moreNav = [
+  { path: "/analytics", label: "Mi progreso", icon: BarChart3 },
+  { path: "/logros", label: "Logros", icon: Trophy },
+  { path: "/glosario", label: "Glosario", icon: Library },
+  { path: "/tips", label: "Estrategias", icon: Lightbulb },
 ];
+
+/** En móvil la barra inferior cubre la navegación; lo secundario vive en «Yo». */
+const bottomNav = mainNav;
 
 const footerLinks = [
   { path: "/practica", label: "Preguntas tipo ICFES" },
@@ -55,6 +35,7 @@ const footerLinks = [
   { path: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
   { path: "/glosario", label: "Glosario" },
   { path: "/tips", label: "Estrategias" },
+  { path: "/creditos", label: "Créditos de imágenes" },
 ];
 
 const legalLinks = [
@@ -107,7 +88,7 @@ function AccountChip() {
     return (
       <Link
         href="/cuenta"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#4ade80] text-sm font-bold text-[#0f2040]"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-navy text-sm font-semibold text-white"
         aria-label="Mi cuenta"
         title={auth.email ?? "Mi cuenta"}
       >
@@ -118,7 +99,7 @@ function AccountChip() {
   return (
     <Link
       href="/cuenta"
-      className="inline-flex min-h-9 items-center rounded-full bg-[#4ade80] px-3 text-xs font-bold text-[#0f2040]"
+      className="inline-flex min-h-9 items-center rounded-full border border-border bg-card px-3.5 text-[13px] font-semibold text-navy hover:bg-muted"
       data-testid="header-login"
     >
       Iniciar sesión
@@ -132,22 +113,29 @@ function StreakChip() {
   return (
     <Link
       href="/yo"
-      className="inline-flex items-center gap-1 rounded-full bg-orange-500/15 px-2.5 py-1.5 text-xs font-bold text-orange-600"
-      aria-label={`Racha de ${n} días`}
+      className="inline-flex min-h-9 items-center gap-1 rounded-full bg-orange-50 px-3 text-[13px] font-semibold text-orange-700 hover:bg-orange-100"
+      aria-label={`Racha de ${n} ${n === 1 ? "día" : "días"}`}
     >
-      <Flame className="h-3.5 w-3.5" aria-hidden="true" />
+      <Flame className="h-4 w-4" aria-hidden="true" />
       {n}
+    </Link>
+  );
+}
+
+function SideLink({ path, label, icon: Icon, active }: { path: string; label: string; icon: typeof Home; active: boolean }) {
+  return (
+    <Link href={path} className={`nav-item ${active ? "active" : ""}`} aria-current={active ? "page" : undefined}>
+      <Icon className="h-[18px] w-[18px] flex-shrink-0" strokeWidth={1.75} aria-hidden="true" />
+      <span>{label}</span>
     </Link>
   );
 }
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { progress, estimate } = useProgress();
 
   useEffect(() => {
-    setMobileMenuOpen(false);
     window.scrollTo({ top: 0 });
   }, [location]);
 
@@ -163,93 +151,64 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </a>
 
       <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col bg-sidebar lg:flex">
-        <div className="border-b border-sidebar-border p-4">
+        <div className="px-5 pb-4 pt-5">
           <Link href="/inicio" className="flex items-center gap-2.5">
-            <img src="/icon.svg" alt="" width={36} height={36} className="h-9 w-9" />
+            <img src="/icon.svg" alt="" width={32} height={32} className="h-8 w-8" />
             <span className="font-['Lexend'] text-lg font-bold text-sidebar-foreground">ProICFES</span>
           </Link>
         </div>
-        <div className="flex items-center gap-2 border-b border-sidebar-border px-4 py-3 text-sidebar-foreground/80">
-          <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" aria-hidden="true" />
-          <span className="text-sm">{progress.totalXp} XP</span>
-          <span className="ml-auto inline-flex items-center gap-1 text-xs font-bold text-orange-300">
-            <Flame className="h-3.5 w-3.5" aria-hidden="true" />
-            {progress.streakState?.current ?? progress.streak}
-          </span>
-        </div>
-        <nav aria-label="Navegación principal" className="flex-1 space-y-1 overflow-y-auto p-3">
-          {sideNav.map(({ path, label, icon: Icon }) => (
-            <Link
-              key={path}
-              href={path}
-              className={`nav-item ${isActive(path) ? "active" : ""}`}
-              aria-current={isActive(path) ? "page" : undefined}
-            >
-              <Icon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
-              <span className="text-sm">{label}</span>
-            </Link>
-          ))}
+        <nav aria-label="Navegación principal" className="flex-1 overflow-y-auto px-3 pb-3">
+          <div className="space-y-0.5">
+            {mainNav.map(item => (
+              <SideLink key={item.path} {...item} active={isActive(item.path)} />
+            ))}
+          </div>
+          <p className="mb-1 mt-5 px-3 text-[11px] font-semibold uppercase tracking-wider text-sidebar-foreground/65">Áreas</p>
+          <div className="space-y-0.5">
+            {areaNav.map(item => (
+              <SideLink key={item.path} {...item} active={isActive(item.path)} />
+            ))}
+          </div>
+          <p className="mb-1 mt-5 px-3 text-[11px] font-semibold uppercase tracking-wider text-sidebar-foreground/65">Más</p>
+          <div className="space-y-0.5">
+            {moreNav.map(item => (
+              <SideLink key={item.path} {...item} active={isActive(item.path)} />
+            ))}
+          </div>
         </nav>
-        <div className="mx-4 mb-4 rounded-xl border border-sidebar-border bg-sidebar-accent/50 p-3">
-          <p className="text-xs text-sidebar-foreground/70">Puntaje estimado</p>
-          <p className="font-['Lexend'] text-2xl font-bold text-sidebar-foreground">{estimate.global ?? "—"}</p>
+        <div className="mx-3 mb-4 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-sidebar-border bg-sidebar-border">
+          <div className="bg-sidebar px-3 py-2.5">
+            <p className="text-[11px] text-sidebar-foreground/70">Puntaje estimado</p>
+            <p className="font-['Lexend'] text-xl font-semibold text-sidebar-foreground">{estimate.global ?? "—"}</p>
+          </div>
+          <div className="bg-sidebar px-3 py-2.5">
+            <p className="flex items-center gap-1 text-[11px] text-sidebar-foreground/70">
+              <Star className="h-3 w-3" aria-hidden="true" /> Experiencia
+            </p>
+            <p className="font-['Lexend'] text-xl font-semibold text-sidebar-foreground">{progress.totalXp} XP</p>
+          </div>
         </div>
       </aside>
 
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-sidebar-border bg-sidebar lg:hidden">
-        <div className="flex items-center justify-between gap-2 px-3 py-2.5">
-          <Link href="/inicio" className="flex min-h-11 items-center gap-2">
-            <img src="/icon.svg" alt="" width={32} height={32} className="h-8 w-8" />
-            <span className="font-['Lexend'] text-lg font-bold text-sidebar-foreground">ProICFES</span>
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-card/95 backdrop-blur lg:hidden">
+        <div className="flex h-14 items-center justify-between gap-2 px-4">
+          <Link href="/inicio" className="flex min-h-11 items-center gap-2" aria-label="ProICFES, ir al inicio">
+            <img src="/icon.svg" alt="" width={28} height={28} className="h-7 w-7" />
+            <span className="font-['Lexend'] text-[17px] font-bold text-ink">ProICFES</span>
           </Link>
           <div className="flex items-center gap-2">
             <StreakChip />
             <AccountChip />
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(o => !o)}
-              className="p-2 text-sidebar-foreground"
-              aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="menu-movil"
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
           </div>
         </div>
       </header>
 
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-black/60 lg:hidden" onClick={() => setMobileMenuOpen(false)}>
-          <div
-            id="menu-movil"
-            className="absolute left-0 right-0 top-14 max-h-[calc(100vh-3.5rem)] overflow-y-auto border-b border-sidebar-border bg-sidebar p-4"
-            onClick={e => e.stopPropagation()}
-          >
-            <nav aria-label="Menú" className="space-y-1">
-              {sideNav.map(({ path, label, icon: Icon }) => (
-                <Link
-                  key={path}
-                  href={path}
-                  className={`nav-item ${isActive(path) ? "active" : ""}`}
-                  aria-current={isActive(path) ? "page" : undefined}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                  <span>{label}</span>
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
-
-      <main id="contenido" className="min-h-screen flex-1 pb-24 pt-16 lg:ml-64 lg:pb-0 lg:pt-0">
-        <div className="sticky top-0 z-30 hidden items-center justify-end gap-3 border-b border-border/60 bg-background/90 px-4 py-3 backdrop-blur lg:flex">
+      <main id="contenido" className="min-h-screen min-w-0 flex-1 pb-24 pt-16 lg:ml-64 lg:pb-0 lg:pt-0">
+        <div className="sticky top-0 z-30 hidden h-14 items-center justify-end gap-2 border-b border-border bg-background/90 px-6 backdrop-blur lg:flex">
           <StreakChip />
           <AccountChip />
         </div>
-        <div className="mx-auto max-w-5xl px-4 py-6">
+        <div className="mx-auto max-w-5xl px-4 py-6 lg:px-8 lg:py-8">
           {children}
           <SiteFooter />
         </div>
@@ -257,7 +216,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
       <nav
         aria-label="Navegación rápida"
-        className="fixed bottom-0 left-0 right-0 z-50 border-t border-sidebar-border bg-sidebar pb-[env(safe-area-inset-bottom)] lg:hidden"
+        className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-card/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden"
       >
         <div className="grid grid-cols-4">
           {bottomNav.map(({ path, label, icon: Icon }) => (
@@ -265,12 +224,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               key={path}
               href={path}
               aria-current={isActive(path) ? "page" : undefined}
-              className={`flex min-h-[56px] flex-col items-center justify-center gap-1 px-1 py-2 transition-colors ${
-                isActive(path) ? "text-sidebar-primary" : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
+              className={`relative flex min-h-[56px] flex-col items-center justify-center gap-1 px-1 py-2 transition-colors ${
+                isActive(path) ? "text-navy" : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              <Icon className="h-5 w-5" aria-hidden="true" />
-              <span className="text-center text-[11px] font-medium leading-tight">{label}</span>
+              {isActive(path) && <span className="absolute top-0 h-0.5 w-8 rounded-full bg-brand" aria-hidden="true" />}
+              <Icon className="h-5 w-5" strokeWidth={isActive(path) ? 2.25 : 1.75} aria-hidden="true" />
+              <span className={`text-center text-[11px] leading-tight ${isActive(path) ? "font-semibold" : "font-medium"}`}>{label}</span>
             </Link>
           ))}
         </div>

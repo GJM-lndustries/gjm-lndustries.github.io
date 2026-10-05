@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useProgress } from '@/contexts/ProgressContext';
 import type { Module } from '@/lib/appData';
 import LessonView from '@/components/LessonView';
-import { ChevronLeft, CheckCircle2, Lock, Clock, Star, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, CheckCircle2, Lock, Clock, Star, ChevronRight, X, BookMarked, PenLine } from 'lucide-react';
+import AreaIcon from '@/components/AreaIcon';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { questionsByArea } from '@/data/questions';
@@ -40,7 +41,20 @@ export default function ModulePage({ module }: ModulePageProps) {
 
   // Group lessons by level
   const levels = ['basico', 'intermedio', 'avanzado', 'experto'] as const;
-  const levelNames = { basico: '🟢 Nivel Básico', intermedio: '🟡 Nivel Intermedio', avanzado: '🔴 Nivel Avanzado', experto: '⭐ Nivel Experto' };
+  const levelNames = { basico: 'Nivel básico', intermedio: 'Nivel intermedio', avanzado: 'Nivel avanzado', experto: 'Nivel experto' };
+  const levelRank = { basico: 1, intermedio: 2, avanzado: 3, experto: 4 };
+  /** Indicador de nivel en barras (sustituye los emoji de colores). */
+  const LevelBars = ({ level }: { level: keyof typeof levelRank }) => (
+    <span className="inline-flex items-end gap-0.5" aria-hidden="true">
+      {[1, 2, 3, 4].map(i => (
+        <span
+          key={i}
+          className={`w-1 rounded-sm ${i <= levelRank[level] ? 'bg-navy' : 'bg-border'}`}
+          style={{ height: `${4 + i * 3}px` }}
+        />
+      ))}
+    </span>
+  );
   // Al abrir una lección, volvemos arriba para que se vea el título
   const openLesson = (id: string) => {
     setSelectedLesson(id);
@@ -56,70 +70,63 @@ export default function ModulePage({ module }: ModulePageProps) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center gap-3">
-        <Link href="/" aria-label="Volver al inicio" className="p-2 rounded-xl hover:bg-muted transition-colors">
-          <ChevronLeft className="w-5 h-5" />
+      <div className="flex items-start gap-3">
+        <Link href="/inicio" aria-label="Volver al inicio" className="-ml-2 mt-1 rounded-xl p-2 transition-colors hover:bg-muted">
+          <ChevronLeft className="h-5 w-5" />
         </Link>
-        <div>
-          <h1 className="text-xl font-bold font-['Lexend'] text-foreground">
-            <span aria-hidden="true">{module.icon} </span>
-            {module.title} <span className="text-muted-foreground font-semibold">para el ICFES</span>
+        <div className="min-w-0">
+          <p className="eyebrow">Área del ICFES</p>
+          <h1 className="page-title mt-1">
+            {module.title} <span className="font-semibold text-muted-foreground">para el ICFES</span>
           </h1>
-          <p className="text-sm text-muted-foreground">{module.subtitle}</p>
+          <p className="mt-1 text-sm text-muted-foreground">{module.subtitle}</p>
         </div>
       </div>
 
-      {/* Module Hero */}
-      <div className="relative rounded-2xl overflow-hidden h-40">
-        <img
-          src={module.image}
-          alt=""
-          width={module.imageSize[0]}
-          height={module.imageSize[1]}
-          fetchPriority="high"
-          decoding="async"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 flex items-end p-4">
-          <div className="flex-1">
-            <p className="text-white/80 text-sm">{module.description}</p>
-            <div className="flex items-center gap-3 mt-2">
-              <div className="flex items-center gap-1 text-white text-sm">
-                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                <span>{module.totalXp} XP disponibles</span>
+      {/* Resumen del área (sin imagen decorativa) */}
+      <section className="card p-5">
+        <div className="flex items-start gap-4">
+          <AreaIcon area={module.area} size="lg" />
+          <div className="min-w-0 flex-1">
+            <p className="text-[15px] leading-relaxed text-foreground">{module.description}</p>
+            <dl className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1.5">
+                <dt className="sr-only">Lecciones</dt>
+                <BookMarked className="h-4 w-4" aria-hidden="true" />
+                <dd>{module.lessons.length} lecciones</dd>
               </div>
-              <div className="text-white/60 text-sm">•</div>
-              <div className="text-white/80 text-sm">{module.lessons.length} lecciones</div>
-            </div>
+              <div className="flex items-center gap-1.5">
+                <dt className="sr-only">Preguntas de práctica</dt>
+                <PenLine className="h-4 w-4" aria-hidden="true" />
+                <dd>{practiceCount} preguntas</dd>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <dt className="sr-only">Experiencia</dt>
+                <Star className="h-4 w-4" aria-hidden="true" />
+                <dd>{module.totalXp} XP</dd>
+              </div>
+            </dl>
           </div>
         </div>
-      </div>
-
-      {/* Practice CTA */}
-      <Link
-        href={`/practica?area=${module.area}`}
-        className="flex items-center justify-between gap-3 bg-primary text-primary-foreground rounded-xl p-4 hover:bg-primary/90 transition-colors"
-      >
-        <div>
-          <p className="font-bold font-['Lexend'] text-sm">Practicar {module.title}</p>
-          <p className="text-xs opacity-80">{practiceCount} preguntas en el banco, con explicación y tips</p>
-        </div>
-        <ChevronRight className="w-5 h-5 flex-shrink-0" />
-      </Link>
+        <Link href={`/practica?area=${module.area}`} className="btn-primary mt-5 w-full sm:w-auto">
+          <PenLine className="h-4 w-4" aria-hidden="true" />
+          Practicar {module.title}
+        </Link>
+      </section>
 
       {/* Progress */}
       {moduleProgress > 0 && (
-        <div className="bg-card rounded-xl border border-border p-4">
+        <div className="card p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-semibold text-foreground">Tu progreso en este módulo</span>
-            <span className="text-sm font-bold text-primary">{moduleProgress}%</span>
+            <span className="text-sm font-semibold text-foreground">Tu progreso en esta área</span>
+            <span className="text-sm font-bold text-foreground">{moduleProgress}%</span>
           </div>
           <div className="h-3 bg-muted rounded-full overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${moduleProgress}%` }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="h-full bg-gradient-to-r from-primary to-green-500 rounded-full"
+              className="h-full rounded-full bg-brand"
             />
           </div>
         </div>
@@ -132,10 +139,10 @@ export default function ModulePage({ module }: ModulePageProps) {
           // Niveles sin lecciones: solo mostramos «Experto» marcado como próximamente.
           if (level !== 'experto') return null;
           return (
-            <div key={level} className="rounded-xl border border-dashed border-border bg-muted/30 p-4" aria-disabled="true">
+            <div key={level} className="rounded-2xl border border-dashed border-border bg-muted/30 p-4" aria-disabled="true">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <h2 className="text-base font-bold font-['Lexend'] text-muted-foreground">{levelNames[level]}</h2>
+                  <h2 className="flex items-center gap-2 text-base font-semibold font-['Lexend'] text-muted-foreground"><LevelBars level={level} />{levelNames[level]}</h2>
                   <p className="text-xs text-muted-foreground">{levelDescs[level]}</p>
                 </div>
                 <span className="score-badge bg-muted text-muted-foreground border border-border flex-shrink-0">
@@ -149,7 +156,7 @@ export default function ModulePage({ module }: ModulePageProps) {
         return (
           <div key={level}>
             <div className="mb-3">
-              <h2 className="text-base font-bold font-['Lexend'] text-foreground">{levelNames[level]}</h2>
+              <h2 className="section-title flex items-center gap-2"><LevelBars level={level} />{levelNames[level]}</h2>
               <p className="text-xs text-muted-foreground">{levelDescs[level]}</p>
             </div>
             <div className="space-y-3">
@@ -160,10 +167,9 @@ export default function ModulePage({ module }: ModulePageProps) {
                 return (
                   <motion.button
                     key={lesson.id}
-                    whileHover={{ x: 3 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => openLesson(lesson.id)}
-                    className="w-full text-left bg-card rounded-xl border border-border p-4 hover:shadow-md transition-all hover:border-primary/30"
+                    className="card w-full p-4 text-left transition-colors hover:border-navy/30"
                   >
                     <div className="flex items-start gap-3">
                       {/* Number/Check */}
@@ -196,7 +202,7 @@ export default function ModulePage({ module }: ModulePageProps) {
                           </span>
                           {completed && lessonProg && (
                             <span className="text-xs text-green-600 font-semibold">
-                              {lessonProg.score}% en quiz
+                              {lessonProg.score} % en la práctica
                             </span>
                           )}
                         </div>
@@ -214,10 +220,10 @@ export default function ModulePage({ module }: ModulePageProps) {
 
       {/* Glossary section */}
       {module.lessons.some(l => l.glossary.length > 0) && (
-        <div className="bg-muted/30 rounded-xl p-4 border border-border">
-          <h3 className="font-bold font-['Lexend'] text-foreground mb-2">📖 Glosario del módulo</h3>
+        <div className="card p-5">
+          <h2 className="section-title mb-1 flex items-center gap-2"><BookMarked className="h-5 w-5 text-muted-foreground" aria-hidden="true" />Glosario del área</h2>
           <p className="text-xs text-muted-foreground mb-3">
-            Estas palabras técnicas las encontrarás en las lecciones. Tócalas para ver qué significan en palabras simples.
+            Términos que aparecen en las lecciones. Toca uno para ver qué significa en palabras sencillas.
           </p>
           <div className="flex flex-wrap gap-2">
             {module.lessons.flatMap(l => l.glossary).map((term, idx) => (
@@ -249,7 +255,7 @@ export default function ModulePage({ module }: ModulePageProps) {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-card rounded-2xl border border-border p-6 max-w-md w-full"
+            className="card p-6 max-w-md w-full"
           >
             <div className="flex items-start justify-between mb-4">
               <h2 className="text-xl font-bold font-['Lexend'] text-foreground">{selectedTerm.term}</h2>

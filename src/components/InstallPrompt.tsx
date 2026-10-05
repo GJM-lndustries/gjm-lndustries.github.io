@@ -50,11 +50,11 @@ export default function InstallPrompt() {
   return (
     <div className="fixed bottom-20 left-3 right-3 z-50 mx-auto max-w-md rounded-2xl border border-border bg-white p-4 shadow-lg lg:bottom-6">
       <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#1e3a5f] text-[#4ade80]">
+        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-navy text-brand">
           <Download className="h-5 w-5" aria-hidden="true" />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="font-['Lexend'] text-sm font-bold text-[#0f2040]">Instalar ProICFES</p>
+          <p className="font-['Lexend'] text-sm font-bold text-ink">Instalar ProICFES</p>
           {ios ? (
             <p className="mt-1 text-xs text-muted-foreground">
               En iPhone: toca Compartir y luego «Añadir a pantalla de inicio».
@@ -66,7 +66,7 @@ export default function InstallPrompt() {
             {deferred && (
               <button
                 type="button"
-                className="rounded-xl bg-[#4ade80] px-3 py-2 text-xs font-bold text-[#0f2040]"
+                className="btn-primary min-h-9 rounded-lg px-3 text-xs"
                 onClick={async () => {
                   await deferred.prompt();
                   dismiss();

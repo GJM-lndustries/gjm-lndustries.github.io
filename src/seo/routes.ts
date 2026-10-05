@@ -33,8 +33,8 @@ export const ROUTES: RouteMeta[] = [
   },
   {
     path: "/inicio",
-    name: "Tu estudio",
-    title: "Tu estudio · ProICFES",
+    name: "Tu plan de hoy",
+    title: "Tu plan de hoy · ProICFES",
     description: "Tablero de estudio: reto diario, áreas del Saber 11, práctica y simulacro.",
     kind: "page",
     noindex: true,
@@ -163,6 +163,14 @@ export const ROUTES: RouteMeta[] = [
     description:
       "Qué cookies y almacenamiento usa ProICFES (necesarias, analíticas y de publicidad), para qué sirven y cómo aceptarlas, rechazarlas o cambiar tu elección.",
     kind: "page",
+  },
+  {
+    path: "/creditos",
+    name: "Créditos de imágenes",
+    title: "Créditos de imágenes | ProICFES",
+    description: "Autores y licencias de las fotos, íconos y recursos gráficos que usa ProICFES.",
+    kind: "page",
+    noindex: true,
   },
   {
     path: "/analytics",

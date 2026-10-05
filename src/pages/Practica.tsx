@@ -2,13 +2,14 @@ import { useEffect, useMemo, useState } from 'react';
 import { useActiveTimer } from '@/hooks/useActiveTimer';
 import { Link, useSearch } from 'wouter';
 import { motion } from 'framer-motion';
-import { ChevronRight, RotateCcw, CheckCircle2, XCircle, PenLine, Flag, Home as HomeIcon } from 'lucide-react';
+import { ChevronRight, RotateCcw, CheckCircle2, XCircle, PenLine, Flag, Home as HomeIcon, Shuffle, Trophy, TrendingUp, BookOpen } from 'lucide-react';
 import { useProgress } from '@/contexts/ProgressContext';
 import QuestionView from '@/components/QuestionView';
 import {
   AREA_IDS, AREA_INFO, COMPETENCIAS, DIFFICULTY_LABEL, allQuestions, questionsByArea,
   type AreaId, type Question,
 } from '@/data/questions';
+import AreaIcon from '@/components/AreaIcon';
 
 type Phase = 'setup' | 'running' | 'summary';
 type AreaFilter = AreaId | 'todas';
@@ -48,7 +49,7 @@ export default function Practica() {
 
   const [phase, setPhase] = useState<Phase>('setup');
   useActiveTimer(phase === 'running', ms => trackChallengeTime('answering', ms));
-  const [area, setArea] = useState<AreaFilter>(isAreaId(areaParam) ? areaParam : repasoParam ? 'todas' : 'matematicas');
+  const [area, setArea] = useState<AreaFilter>(isAreaId(areaParam) ? areaParam : repasoParam || areaParam === 'todas' ? 'todas' : 'matematicas');
   const [difficulty, setDifficulty] = useState<0 | 1 | 2 | 3>(0);
   const [competencia, setCompetencia] = useState('');
   const [size, setSize] = useState<number>(10);
@@ -133,8 +134,10 @@ export default function Practica() {
     return (
       <div className="max-w-2xl mx-auto space-y-6">
         <div className="text-center py-4">
-          <div className="text-6xl mb-3" aria-hidden="true">{pct >= 70 ? '🎉' : pct >= 50 ? '💪' : '📚'}</div>
-          <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Resumen de la sesión</h1>
+          <span className={`icon-tile mb-3 h-14 w-14 rounded-2xl ${pct >= 70 ? 'bg-brand-soft text-green-700' : 'bg-navy/10 text-navy'}`} aria-hidden="true">
+            {pct >= 70 ? <Trophy className="h-7 w-7" strokeWidth={1.75} /> : pct >= 50 ? <TrendingUp className="h-7 w-7" strokeWidth={1.75} /> : <BookOpen className="h-7 w-7" strokeWidth={1.75} />}
+          </span>
+          <h1 className="page-title">Resumen de la sesión</h1>
           <div className="text-5xl font-bold text-primary font-['Lexend'] mt-3">{pct}%</div>
           <p className="text-muted-foreground mt-2">
             {correct.length} de {done.length} correctas{done.length < session.length ? ` (respondiste ${done.length} de ${session.length})` : ''}
@@ -142,7 +145,7 @@ export default function Practica() {
         </div>
 
         {byComp.size > 0 && (
-          <section className="bg-card rounded-xl border border-border p-4">
+          <section className="card p-4">
             <h2 className="font-bold font-['Lexend'] text-foreground mb-3">Por competencia</h2>
             <div className="space-y-3">
               {[...byComp.entries()].map(([comp, v]) => (
@@ -152,7 +155,7 @@ export default function Practica() {
                     <span className="font-semibold text-foreground">{v.ok}/{v.total}</span>
                   </div>
                   <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-primary to-green-500 rounded-full" style={{ width: `${(v.ok / v.total) * 100}%` }} />
+                    <div className="h-full bg-brand rounded-full" style={{ width: `${(v.ok / v.total) * 100}%` }} />
                   </div>
                 </div>
               ))}
@@ -183,7 +186,7 @@ export default function Practica() {
                     <p><span className="font-semibold text-red-700">Tu respuesta:</span> {yours?.id.toUpperCase()}. {yours?.text}</p>
                     <p><span className="font-semibold text-green-700">Correcta:</span> {right?.id.toUpperCase()}. {right?.text}</p>
                     <p className="text-foreground">{q.explanation}</p>
-                    <p className="text-xs text-muted-foreground"><span className="font-semibold">Tip:</span> {q.tip}</p>
+                    <p className="text-xs text-muted-foreground"><span className="font-semibold">Consejo:</span> {q.tip}</p>
                   </div>
                 </details>
               );
@@ -196,7 +199,7 @@ export default function Practica() {
             <button
               type="button"
               onClick={() => start(shuffle(wrong))}
-              className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors"
+              className="btn-primary w-full"
             >
               <RotateCcw className="w-5 h-5" aria-hidden="true" /> Volver a intentar mis errores
             </button>
@@ -204,7 +207,7 @@ export default function Practica() {
           <button
             type="button"
             onClick={() => setPhase('setup')}
-            className="w-full flex items-center justify-center gap-2 border-2 border-primary text-primary py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/5 transition-colors"
+            className="btn-secondary w-full"
           >
             <PenLine className="w-5 h-5" aria-hidden="true" /> Nueva sesión
           </button>
@@ -240,7 +243,7 @@ export default function Practica() {
         </div>
         {progress.missedQuestions[question.id] && !answered && (
           <p className="text-xs font-semibold text-orange-700 bg-orange-50 border border-orange-200 rounded-lg px-3 py-1.5 inline-block">
-            🔁 Esta pregunta la fallaste antes. ¡Ahora sí!
+            Ya fallaste esta pregunta antes. Esta vez vas con ventaja.
           </p>
         )}
 
@@ -252,7 +255,7 @@ export default function Practica() {
             animate={{ opacity: 1, y: 0 }}
             type="button"
             onClick={next}
-            className="w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+            className="btn-primary w-full"
           >
             {index < session.length - 1 ? <>Siguiente pregunta <ChevronRight className="w-5 h-5" /></> : <>Ver resumen <CheckCircle2 className="w-5 h-5" /></>}
           </motion.button>
@@ -270,9 +273,9 @@ export default function Practica() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Modo práctica</h1>
+        <h1 className="page-title">Modo práctica</h1>
         <p className="text-muted-foreground mt-1">
-          Elige un área y responde una pregunta a la vez. Verás si acertaste, la explicación y un tip al instante.
+          Elige un área y responde una pregunta a la vez. Verás si acertaste, la explicación y un consejo al instante.
         </p>
       </div>
 
@@ -303,13 +306,13 @@ export default function Practica() {
               onClick={() => { setArea(a); setCompetencia(''); }}
               className={`${chip(area === a)} text-left`}
             >
-              <span aria-hidden="true">{AREA_INFO[a].icon}</span> {AREA_INFO[a].label}
-              <span className="block text-xs opacity-75">{questionsByArea[a].length} preguntas</span>
+              <span className="flex items-center gap-2"><AreaIcon area={a} size="sm" />{AREA_INFO[a].label}</span>
+              <span className="mt-1 block text-xs opacity-75">{questionsByArea[a].length} preguntas</span>
             </button>
           ))}
           <button type="button" aria-pressed={area === 'todas'} onClick={() => { setArea('todas'); setCompetencia(''); }} className={`${chip(area === 'todas')} text-left`}>
-            🎲 Todas las áreas
-            <span className="block text-xs opacity-75">{allQuestions.length} preguntas</span>
+            <span className="flex items-center gap-2"><span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-navy/10 text-navy" aria-hidden="true"><Shuffle className="h-4 w-4" strokeWidth={1.75} /></span>Todas las áreas</span>
+            <span className="mt-1 block text-xs opacity-75">{allQuestions.length} preguntas</span>
           </button>
         </div>
       </fieldset>
@@ -366,7 +369,7 @@ export default function Practica() {
         type="button"
         disabled={pool.length === 0}
         onClick={() => start(buildSession(pool, missedIds, size, false))}
-        className="w-full bg-[#4ade80] text-[#0f2040] py-3 rounded-xl font-bold font-['Lexend'] hover:bg-[#22c55e] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-primary w-full"
       >
         <PenLine className="w-5 h-5" aria-hidden="true" /> Empezar práctica
       </button>

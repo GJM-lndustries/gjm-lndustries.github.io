@@ -15,7 +15,7 @@ export default function Leaderboard() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Ranking</h1>
+        <h1 className="page-title">Ranking</h1>
         <p className="text-muted-foreground mt-1">Compite contra tu mejor versión</p>
       </div>
 
@@ -31,22 +31,22 @@ export default function Leaderboard() {
       <section aria-labelledby="mis-marcas" className="space-y-3">
         <h2 id="mis-marcas" className="font-bold font-['Lexend'] text-foreground">Tus marcas personales</h2>
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-card rounded-xl border border-border p-4">
+          <div className="card p-4">
             <Target className="w-5 h-5 text-primary mb-1" aria-hidden="true" />
             <p className="text-2xl font-bold font-['Lexend'] text-foreground">{bestSim == null ? '—' : `${bestSim}%`}</p>
             <p className="text-xs text-muted-foreground">Mejor simulacro</p>
           </div>
-          <div className="bg-card rounded-xl border border-border p-4">
+          <div className="card p-4">
             <Flame className="w-5 h-5 text-orange-500 mb-1" aria-hidden="true" />
             <p className="text-2xl font-bold font-['Lexend'] text-foreground">{progress.streak}</p>
             <p className="text-xs text-muted-foreground">Días seguidos estudiando</p>
           </div>
-          <div className="bg-card rounded-xl border border-border p-4">
+          <div className="card p-4">
             <PenLine className="w-5 h-5 text-green-600 mb-1" aria-hidden="true" />
             <p className="text-2xl font-bold font-['Lexend'] text-foreground">{answered}</p>
             <p className="text-xs text-muted-foreground">Preguntas respondidas</p>
           </div>
-          <div className="bg-card rounded-xl border border-border p-4">
+          <div className="card p-4">
             <TrendingUp className="w-5 h-5 text-primary mb-1" aria-hidden="true" />
             <p className="text-2xl font-bold font-['Lexend'] text-foreground">{estimate.global ?? '—'}</p>
             <p className="text-xs text-muted-foreground">Puntaje global estimado</p>
@@ -56,7 +56,7 @@ export default function Leaderboard() {
 
       <Link
         href="/analytics"
-        className="block text-center w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors"
+        className="btn-primary w-full"
       >
         Ver mi progreso completo
       </Link>
