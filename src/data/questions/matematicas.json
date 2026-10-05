@@ -1,0 +1,1226 @@
+[
+  {
+    "id": "math-1-q1",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "enunciado": "En una heladería, cada vaso de helado cuesta $3.000. A cada vaso se le puede agregar acompañamientos por $1.000 cada uno. ¿Cuál expresión permite calcular el precio total de un vaso con varios acompañamientos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.000 + (1.000 × número de acompañamientos)"
+      },
+      {
+        "id": "b",
+        "text": "3.000 + (1.000 × número de acompañamientos)"
+      },
+      {
+        "id": "c",
+        "text": "1.000 + (3.000 × número de acompañamientos)"
+      },
+      {
+        "id": "d",
+        "text": "3.000 + (3.000 × número de acompañamientos)"
+      }
+    ],
+    "answer": "b",
+    "explanation": "El precio base del helado es $3.000 (ese siempre va). Luego sumas $1.000 por cada acompañamiento que agregues. Por eso la fórmula es: 3.000 + (1.000 × número de acompañamientos).",
+    "tip": "Identifica el valor fijo (3.000) y el valor que cambia (1.000 × n). El fijo siempre está, el variable depende de cuántos pidas.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "math-1-q2",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 1,
+    "enunciado": "Si un estudiante tiene $15.000 y quiere comprar el mayor número posible de cuadernos que cuestan $2.500 cada uno, ¿cuántos cuadernos puede comprar?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5 cuadernos"
+      },
+      {
+        "id": "b",
+        "text": "6 cuadernos"
+      },
+      {
+        "id": "c",
+        "text": "7 cuadernos"
+      },
+      {
+        "id": "d",
+        "text": "4 cuadernos"
+      }
+    ],
+    "answer": "b",
+    "explanation": "15.000 ÷ 2.500 = 6. Con $15.000 exactos puedes comprar 6 cuadernos (6 × 2.500 = 15.000). No sobra nada.",
+    "tip": "Cuando preguntan \"cuántos puede comprar\", divide el dinero disponible entre el precio de cada cosa.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "math-2-q1",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "enunciado": "Un atleta registró los kilómetros recorridos cada día durante 5 días: 8, 12, 8, 15, 8. Si el atleta quiere saber cuál fue la distancia que más repitió, ¿qué dato debe calcular?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El promedio de kilómetros"
+      },
+      {
+        "id": "b",
+        "text": "La mediana de los kilómetros"
+      },
+      {
+        "id": "c",
+        "text": "La moda de los kilómetros"
+      },
+      {
+        "id": "d",
+        "text": "El total de kilómetros"
+      }
+    ],
+    "answer": "c",
+    "explanation": "La moda es el valor que más se repite. En los datos 8, 12, 8, 15, 8 → el número 8 aparece 3 veces. La moda es 8 km.",
+    "tip": "\"El que más se repite\" = Moda. Esta es una pregunta clásica del ICFES.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "math-2-q2",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 2,
+    "enunciado": "Los salarios mensuales de 5 empleados son: $800.000, $900.000, $850.000, $5.000.000, $750.000. ¿Cuál medida representa mejor el salario \"típico\" de estos empleados?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El promedio, porque usa todos los datos"
+      },
+      {
+        "id": "b",
+        "text": "La moda, porque es el más frecuente"
+      },
+      {
+        "id": "c",
+        "text": "La mediana, porque no se afecta por el salario muy alto"
+      },
+      {
+        "id": "d",
+        "text": "El mayor salario, porque es el más representativo"
+      }
+    ],
+    "answer": "c",
+    "explanation": "El promedio sería (800+900+850+5000+750)/5 = 1.660.000, que no representa bien a nadie. La mediana (ordenando: 750, 800, 850, 900, 5000) es 850.000, que sí refleja mejor lo que gana la mayoría.",
+    "tip": "Cuando hay un dato muy diferente a los demás (como ese salario de 5 millones), la mediana es más justa que el promedio.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "math-3-q1",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 2,
+    "enunciado": "Una gráfica de barras muestra el número de usuarios de 4 medios de transporte: Bicicleta=225, Automóvil=300, Tren=100, Metro=275. ¿Cuáles medios de transporte tienen un número de usuarios superior a la mediana de los 4 valores?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Bicicleta, Automóvil, Tren y Metro"
+      },
+      {
+        "id": "b",
+        "text": "Bicicleta, Automóvil y Metro"
+      },
+      {
+        "id": "c",
+        "text": "Automóvil y Metro"
+      },
+      {
+        "id": "d",
+        "text": "Solo Automóvil"
+      }
+    ],
+    "answer": "c",
+    "explanation": "Ordenamos: 100, 225, 275, 300. La mediana de 4 datos es el promedio de los dos del medio: (225+275)/2 = 250. Los que superan 250 son: Automóvil (300) y Metro (275).",
+    "tip": "Para la mediana de un número par de datos, promedia los dos del centro.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "math-4-q1",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 2,
+    "enunciado": "Un taxi cobra $3.500 por la \"bajada de bandera\" (al subir) más $800 por cada kilómetro recorrido. ¿Cuál expresión representa el costo total de un viaje de k kilómetros?",
+    "options": [
+      {
+        "id": "a",
+        "text": "800 + 3.500k"
+      },
+      {
+        "id": "b",
+        "text": "3.500 + 800k"
+      },
+      {
+        "id": "c",
+        "text": "(3.500 + 800) × k"
+      },
+      {
+        "id": "d",
+        "text": "3.500 × 800k"
+      }
+    ],
+    "answer": "b",
+    "explanation": "El costo fijo (siempre se paga) es $3.500. El costo variable es $800 por cada kilómetro (800 × k). Total: 3.500 + 800k.",
+    "tip": "Identifica: ¿qué es fijo? (siempre se paga) y ¿qué cambia? (depende de algo). El fijo va solo, el variable va multiplicado por la variable.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "sim-1",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 1,
+    "enunciado": "En una tienda, cada camiseta cuesta $25.000. Si compras 3 o más camisetas, obtienes un descuento de $5.000 por camiseta. ¿Cuánto pagas si compras exactamente 3 camisetas con descuento?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$75.000"
+      },
+      {
+        "id": "b",
+        "text": "$60.000"
+      },
+      {
+        "id": "c",
+        "text": "$70.000"
+      },
+      {
+        "id": "d",
+        "text": "$65.000"
+      }
+    ],
+    "answer": "b",
+    "explanation": "Con descuento, cada camiseta cuesta $25.000 - $5.000 = $20.000. Por 3 camisetas: 3 × $20.000 = $60.000.",
+    "tip": "Primero calcula el precio de una unidad con el descuento y luego multiplica por la cantidad.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "sim-2",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "enunciado": "Las temperaturas registradas en una ciudad durante 5 días fueron: 18°C, 22°C, 18°C, 25°C, 18°C. ¿Cuál es la moda de estas temperaturas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "22 °C"
+      },
+      {
+        "id": "b",
+        "text": "25 °C"
+      },
+      {
+        "id": "c",
+        "text": "18 °C"
+      },
+      {
+        "id": "d",
+        "text": "20,2 °C"
+      }
+    ],
+    "answer": "c",
+    "explanation": "18°C aparece 3 veces (es la que más se repite). 22°C aparece 1 vez. 25°C aparece 1 vez. La moda es 18°C.",
+    "tip": "La moda es el dato que más se repite. No la confundas con el promedio.",
+    "source": "proicfes-lecciones",
+    "reviewed": false
+  },
+  {
+    "id": "mat-001",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "stimulusId": "mat-st-tienda",
+    "enunciado": "Marta compra en la tienda de don Jorge 2 libras de arroz, 12 huevos y 1 bolsa de leche. ¿Cuánto debe pagar?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$7.600"
+      },
+      {
+        "id": "b",
+        "text": "$16.400"
+      },
+      {
+        "id": "c",
+        "text": "$17.000"
+      },
+      {
+        "id": "d",
+        "text": "$18.200"
+      }
+    ],
+    "answer": "c",
+    "explanation": "Arroz: 2 × $2.800 = $5.600. Huevos: 12 × $600 = $7.200. Leche: $4.200. Total: $5.600 + $7.200 + $4.200 = $17.000.",
+    "tip": "Multiplica cada precio por la cantidad ANTES de sumar. El error típico es sumar los precios unitarios ($2.800 + $600 + $4.200 = $7.600).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-002",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 2,
+    "stimulusId": "mat-st-tienda",
+    "enunciado": "Marta paga con un billete de $50.000 una compra de 3 bolsas de leche y algunos panes. Si recibe $33.400 de vueltas, ¿cuántos panes compró?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4"
+      },
+      {
+        "id": "b",
+        "text": "8"
+      },
+      {
+        "id": "c",
+        "text": "12"
+      },
+      {
+        "id": "d",
+        "text": "33"
+      }
+    ],
+    "answer": "b",
+    "explanation": "Gastó $50.000 − $33.400 = $16.600. Las 3 bolsas de leche cuestan 3 × $4.200 = $12.600. Para los panes quedan $16.600 − $12.600 = $4.000, y $4.000 ÷ $500 = 8 panes.",
+    "tip": "Cuando te dan las vueltas, primero calcula cuánto se gastó (pagado − vueltas) y luego quita lo que ya conoces.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-003",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 2,
+    "stimulusId": "mat-st-tienda",
+    "enunciado": "Don Jorge también vende la cubeta de 30 huevos a $16.500. Un cliente afirma: «Me sale más barato comprar la cubeta que comprar 30 huevos sueltos». ¿La afirmación del cliente es correcta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, porque la cubeta cuesta $16.500 y un huevo suelto solo $600."
+      },
+      {
+        "id": "b",
+        "text": "Sí, porque en la cubeta cada huevo cuesta $500."
+      },
+      {
+        "id": "c",
+        "text": "No, porque las dos opciones cuestan lo mismo."
+      },
+      {
+        "id": "d",
+        "text": "Sí, porque 30 huevos sueltos cuestan $18.000, es decir, $1.500 más que la cubeta."
+      }
+    ],
+    "answer": "d",
+    "explanation": "30 huevos sueltos cuestan 30 × $600 = $18.000. La cubeta cuesta $16.500, así que se ahorran $1.500. (En la cubeta cada huevo sale a $16.500 ÷ 30 = $550, no a $500.)",
+    "tip": "Para comparar, pon las dos opciones en la misma cantidad (30 huevos) o calcula el precio por unidad de cada una.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-004",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "stimulusId": "mat-st-pasajes",
+    "enunciado": "¿Cuántos viajes en bus hizo Camila en total durante esa semana?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6"
+      },
+      {
+        "id": "b",
+        "text": "12"
+      },
+      {
+        "id": "c",
+        "text": "14"
+      },
+      {
+        "id": "d",
+        "text": "16"
+      }
+    ],
+    "answer": "c",
+    "explanation": "Se suman los viajes de todos los días: 2 + 2 + 4 + 2 + 3 + 1 = 14 viajes.",
+    "tip": "No confundas el número de días (6) con el número de viajes. Suma la columna completa.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-005",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 2,
+    "stimulusId": "mat-st-pasajes",
+    "enunciado": "El lunes, antes de su primer viaje, Camila recargó su tarjeta y quedó con un saldo de $50.000. Si solo usó la tarjeta para los viajes de la tabla, ¿qué saldo le quedó al final de la semana?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$5.200"
+      },
+      {
+        "id": "b",
+        "text": "$8.400"
+      },
+      {
+        "id": "c",
+        "text": "$44.800"
+      },
+      {
+        "id": "d",
+        "text": "$1.600"
+      }
+    ],
+    "answer": "a",
+    "explanation": "Gastó 14 × $3.200 = $44.800. Saldo final: $50.000 − $44.800 = $5.200.",
+    "tip": "Ojo: $44.800 es lo que gastó, no lo que le queda. Lee bien qué te preguntan.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-006",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 3,
+    "stimulusId": "mat-st-pasajes",
+    "enunciado": "La empresa de buses ofrece un plan semanal de viajes ilimitados por $40.000. Camila afirma: «El plan me conviene si hago 13 viajes o más en la semana». ¿Es correcta su afirmación?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, porque con 12 viajes ya le conviene el plan, pues 12 × $3.200 = $40.000."
+      },
+      {
+        "id": "b",
+        "text": "No, porque necesita hacer por lo menos 15 viajes para que el plan sea más barato."
+      },
+      {
+        "id": "c",
+        "text": "Sí, porque 40.000 ÷ 3.200 = 13 exactamente."
+      },
+      {
+        "id": "d",
+        "text": "Sí, porque 12 viajes cuestan $38.400 (menos que el plan) y 13 viajes cuestan $41.600 (más que el plan)."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Pagando pasaje por pasaje: 12 viajes cuestan 12 × $3.200 = $38.400 < $40.000 (no conviene el plan) y 13 viajes cuestan 13 × $3.200 = $41.600 > $40.000 (sí conviene). Por eso el plan conviene desde 13 viajes. Además, 40.000 ÷ 3.200 = 12,5, no 13 exacto.",
+    "tip": "Para validar una afirmación con un «a partir de», revisa el valor justo antes y justo después del límite.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-007",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "stimulusId": "mat-st-encuesta",
+    "enunciado": "¿Qué porcentaje de los estudiantes de grado 11 llega al colegio en bicicleta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6 %"
+      },
+      {
+        "id": "b",
+        "text": "15 %"
+      },
+      {
+        "id": "c",
+        "text": "20 %"
+      },
+      {
+        "id": "d",
+        "text": "25 %"
+      }
+    ],
+    "answer": "b",
+    "explanation": "6 de 40 estudiantes van en bicicleta: 6 ÷ 40 = 0,15 = 15 %.",
+    "tip": "Porcentaje = (parte ÷ total) × 100. El total aquí es 40, no 100.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-008",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 2,
+    "stimulusId": "mat-st-encuesta",
+    "enunciado": "Se quiere representar los resultados de la encuesta en un diagrama circular. ¿Cuántos grados debe medir el sector correspondiente a «A pie»?",
+    "options": [
+      {
+        "id": "a",
+        "text": "14°"
+      },
+      {
+        "id": "b",
+        "text": "35°"
+      },
+      {
+        "id": "c",
+        "text": "126°"
+      },
+      {
+        "id": "d",
+        "text": "140°"
+      }
+    ],
+    "answer": "c",
+    "explanation": "«A pie» representa 14 de 40 estudiantes, es decir 14/40 = 35 % del total. El círculo completo tiene 360°, así que el sector mide 0,35 × 360° = 126°.",
+    "tip": "En un diagrama circular: grados = (parte ÷ total) × 360°. No confundas el porcentaje (35) con los grados.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-009",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 2,
+    "stimulusId": "mat-st-encuesta",
+    "enunciado": "El rector afirma: «Más de la mitad de los estudiantes de grado 11 llega al colegio sin usar un vehículo con motor». ¿La afirmación es correcta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, porque los que van a pie o en bicicleta son 20 de 40, que es exactamente la mitad, no más de la mitad."
+      },
+      {
+        "id": "b",
+        "text": "Sí, porque 14 + 6 + 8 = 28 estudiantes no usan bus."
+      },
+      {
+        "id": "c",
+        "text": "Sí, porque el grupo más grande es el de los que van a pie."
+      },
+      {
+        "id": "d",
+        "text": "No, porque solo 14 estudiantes van a pie, y eso es menos de la mitad."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Sin vehículo con motor van los que caminan (14) y los que van en bicicleta (6): 14 + 6 = 20. La mitad de 40 es 20, así que es exactamente la mitad y no «más de la mitad». La opción que solo cuenta a los 14 que van a pie llega a la misma respuesta (no), pero con una razón incompleta: olvida a los de bicicleta.",
+    "tip": "En Argumentación no basta con acertar «sí» o «no»: la justificación también tiene que ser correcta y completa.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-010",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 1,
+    "enunciado": "Un celular cuesta $900.000 y está en promoción con 20 % de descuento. ¿Cuál es su precio con el descuento?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$180.000"
+      },
+      {
+        "id": "b",
+        "text": "$700.000"
+      },
+      {
+        "id": "c",
+        "text": "$720.000"
+      },
+      {
+        "id": "d",
+        "text": "$880.000"
+      }
+    ],
+    "answer": "c",
+    "explanation": "El 20 % de $900.000 es 0,20 × 900.000 = $180.000. Precio final: $900.000 − $180.000 = $720.000. (También: 80 % de 900.000 = $720.000.)",
+    "tip": "Un descuento del 20 % significa que pagas el 80 %. Multiplicar por 0,8 es el camino más rápido.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-011",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 2,
+    "enunciado": "En un almacén, un pantalón costaba $50.000. En diciembre subieron su precio un 10 % y en enero lo rebajaron un 10 % sobre el nuevo precio. ¿Cuánto cuesta el pantalón en enero?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$45.000"
+      },
+      {
+        "id": "b",
+        "text": "$49.500"
+      },
+      {
+        "id": "c",
+        "text": "$50.000"
+      },
+      {
+        "id": "d",
+        "text": "$55.000"
+      }
+    ],
+    "answer": "b",
+    "explanation": "En diciembre: $50.000 × 1,10 = $55.000. En enero: $55.000 × 0,90 = $49.500. Queda $500 por debajo del precio original.",
+    "tip": "Los porcentajes sucesivos no se cancelan: cada uno se aplica sobre el valor que hay en ese momento.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-012",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 3,
+    "enunciado": "Un estudiante afirma: «Si a un precio se le sube el 10 % y después se le baja el 10 %, vuelve a quedar igual». ¿Por qué esta afirmación es incorrecta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque un porcentaje solo se puede aplicar una vez a un mismo precio."
+      },
+      {
+        "id": "b",
+        "text": "Porque el descuento del 10 % se calcula sobre el precio original, así que el precio final queda mayor."
+      },
+      {
+        "id": "c",
+        "text": "Porque después de los dos cambios el precio siempre queda por debajo del 90 % del original."
+      },
+      {
+        "id": "d",
+        "text": "Porque el descuento del 10 % se calcula sobre un valor mayor que el original, así que se resta más de lo que se había sumado."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Si el precio es P, al subir 10 % queda 1,1P; al bajar 10 % de ese valor queda 0,9 × 1,1P = 0,99P. El 10 % de 1,1P es mayor que el 10 % de P, por eso se resta más de lo que se sumó y el precio final es 1 % menor que el original (no menor al 90 %).",
+    "tip": "Prueba con un número fácil, como 100: sube a 110 y luego baja 11, quedando en 99.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-013",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 2,
+    "enunciado": "Para preparar 8 arepas, doña Rosa usa 2 tazas de harina de maíz. Si mantiene la misma receta, ¿cuántas tazas de harina necesita para preparar 20 arepas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4"
+      },
+      {
+        "id": "b",
+        "text": "5"
+      },
+      {
+        "id": "c",
+        "text": "6"
+      },
+      {
+        "id": "d",
+        "text": "10"
+      }
+    ],
+    "answer": "b",
+    "explanation": "Con 2 tazas salen 8 arepas, entonces 1 taza alcanza para 4 arepas. Para 20 arepas: 20 ÷ 4 = 5 tazas. (Regla de tres: 2 × 20 ÷ 8 = 5.)",
+    "tip": "Busca primero el valor para una unidad (arepas por taza) y luego escala. Así evitas montar mal la regla de tres.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-014",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 2,
+    "stimulusId": "mat-st-agua",
+    "enunciado": "¿Entre qué par de meses consecutivos se presentó el MAYOR AUMENTO en el consumo de agua?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Entre enero y febrero."
+      },
+      {
+        "id": "b",
+        "text": "Entre febrero y marzo."
+      },
+      {
+        "id": "c",
+        "text": "Entre marzo y abril."
+      },
+      {
+        "id": "d",
+        "text": "Entre abril y mayo."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Cambios: enero→febrero: −3; febrero→marzo: +6; marzo→abril: −9; abril→mayo: +12. El mayor aumento es de abril a mayo (+12 m³). De marzo a abril hubo un cambio grande, pero fue una disminución.",
+    "tip": "Distingue «mayor cambio» de «mayor aumento»: un aumento debe ser positivo.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-015",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 1,
+    "stimulusId": "mat-st-agua",
+    "enunciado": "¿Cuál fue el consumo promedio mensual de agua de la familia en esos cinco meses?",
+    "options": [
+      {
+        "id": "a",
+        "text": "15 m³"
+      },
+      {
+        "id": "b",
+        "text": "18 m³"
+      },
+      {
+        "id": "c",
+        "text": "21 m³"
+      },
+      {
+        "id": "d",
+        "text": "24 m³"
+      }
+    ],
+    "answer": "b",
+    "explanation": "Promedio = (18 + 15 + 21 + 12 + 24) ÷ 5 = 90 ÷ 5 = 18 m³.",
+    "tip": "Promedio: suma todos los datos y divide entre la cantidad de datos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-016",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 3,
+    "stimulusId": "mat-st-agua",
+    "enunciado": "El acueducto cobra un cargo fijo de $12.000 al mes más $3.500 por cada metro cúbico consumido. La familia dice: «Como en mayo gastamos el doble de agua que en abril, la factura de mayo fue el doble de la de abril». ¿Tienen razón?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, porque el cargo fijo no se duplica: la factura de abril fue $54.000 y la de mayo $96.000, que no es el doble."
+      },
+      {
+        "id": "b",
+        "text": "Sí, porque 24 m³ es el doble de 12 m³."
+      },
+      {
+        "id": "c",
+        "text": "Sí, porque $96.000 es el doble de $48.000."
+      },
+      {
+        "id": "d",
+        "text": "No, porque la factura de mayo fue más del doble que la de abril."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Abril: $12.000 + 12 × $3.500 = $54.000. Mayo: $12.000 + 24 × $3.500 = $96.000. El doble de $54.000 sería $108.000. Como el cargo fijo es el mismo cada mes, duplicar el consumo no duplica la factura.",
+    "tip": "Cuando hay un valor fijo más uno variable, la relación NO es directamente proporcional.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-017",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 2,
+    "enunciado": "En un mapa del municipio, la escala es 1 : 50.000. Si la distancia entre la plaza principal y el polideportivo en el mapa es de 4 cm, ¿cuál es la distancia real?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0,2 km"
+      },
+      {
+        "id": "b",
+        "text": "2 km"
+      },
+      {
+        "id": "c",
+        "text": "20 km"
+      },
+      {
+        "id": "d",
+        "text": "200 km"
+      }
+    ],
+    "answer": "b",
+    "explanation": "Escala 1 : 50.000 significa que 1 cm en el mapa equivale a 50.000 cm reales. Entonces 4 cm equivalen a 200.000 cm = 2.000 m = 2 km.",
+    "tip": "Recuerda: 100 cm = 1 m y 1.000 m = 1 km, así que 100.000 cm = 1 km.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-018",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 1,
+    "enunciado": "Andrés quiere comprar unos tenis de $160.000. Ya tiene ahorrados $40.000 y ahorra $15.000 cada semana. ¿En cuántas semanas completará el dinero exacto para los tenis?",
+    "options": [
+      {
+        "id": "a",
+        "text": "8"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "11"
+      },
+      {
+        "id": "d",
+        "text": "12"
+      }
+    ],
+    "answer": "a",
+    "explanation": "Le faltan $160.000 − $40.000 = $120.000. A $15.000 por semana: 120.000 ÷ 15.000 = 8 semanas.",
+    "tip": "No olvides lo que ya está ahorrado: primero calcula cuánto falta.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-019",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 3,
+    "enunciado": "En una papelería, 3 cuadernos y 2 lapiceros cuestan $13.000, mientras que 1 cuaderno y 2 lapiceros cuestan $5.800. Si todos los cuadernos tienen el mismo precio y todos los lapiceros también, ¿cuánto cuesta un cuaderno?",
+    "options": [
+      {
+        "id": "a",
+        "text": "$1.100"
+      },
+      {
+        "id": "b",
+        "text": "$3.000"
+      },
+      {
+        "id": "c",
+        "text": "$3.600"
+      },
+      {
+        "id": "d",
+        "text": "$4.200"
+      }
+    ],
+    "answer": "c",
+    "explanation": "La diferencia entre las dos compras es de 2 cuadernos (los lapiceros son los mismos): $13.000 − $5.800 = $7.200, así que un cuaderno cuesta $7.200 ÷ 2 = $3.600. Comprobación: un lapicero cuesta ($5.800 − $3.600) ÷ 2 = $1.100 y 3 × 3.600 + 2 × 1.100 = 13.000. ✔",
+    "tip": "Si dos compras tienen algo en común, réstalas: lo que queda es la diferencia entre ellas.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-020",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 2,
+    "enunciado": "Un plan de celular cuesta $25.000 al mes e incluye 10 GB de datos. Cada GB adicional cuesta $3.000. Si g es el número de GB usados en el mes (con g mayor que 10), ¿cuál expresión representa el costo mensual?",
+    "options": [
+      {
+        "id": "a",
+        "text": "25.000 + 3.000g"
+      },
+      {
+        "id": "b",
+        "text": "3.000(g − 10)"
+      },
+      {
+        "id": "c",
+        "text": "25.000 − 3.000(g − 10)"
+      },
+      {
+        "id": "d",
+        "text": "25.000 + 3.000(g − 10)"
+      }
+    ],
+    "answer": "d",
+    "explanation": "Siempre se pagan los $25.000 del plan. Solo se cobran los GB que pasan de 10, que son (g − 10), a $3.000 cada uno. Por ejemplo, con 12 GB: 25.000 + 3.000 × 2 = $31.000.",
+    "tip": "Comprueba la expresión con un valor sencillo: con g = 10 el costo debe ser exactamente $25.000.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-021",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 2,
+    "enunciado": "Para la excursión del curso se rifa una bicicleta y se venden 200 boletas. Laura compró 5 boletas y Pedro compró 8. Pedro afirma: «Tengo más del doble de probabilidad de ganar que Laura». ¿Es correcta su afirmación?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, porque su probabilidad es 8/200 = 4 % y la de Laura es 5/200 = 2,5 %, y 4 % no alcanza a ser el doble de 2,5 %."
+      },
+      {
+        "id": "b",
+        "text": "Sí, porque compró 3 boletas más que Laura."
+      },
+      {
+        "id": "c",
+        "text": "Sí, porque 8/200 es mayor que 5/200."
+      },
+      {
+        "id": "d",
+        "text": "No, porque como solo hay un ganador, los dos tienen la misma probabilidad."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Probabilidad de Pedro: 8/200 = 0,04 = 4 %. Probabilidad de Laura: 5/200 = 0,025 = 2,5 %. El doble de 2,5 % es 5 %, y 4 % < 5 %. Pedro tiene más probabilidad, pero no más del doble (para eso necesitaría más de 10 boletas).",
+    "tip": "«Mayor que» no es lo mismo que «más del doble». Calcula el doble y compara.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-022",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 2,
+    "enunciado": "En una bolsa hay 10 dulces del mismo tamaño: 5 de mora, 3 de limón y 2 de naranja. Si se saca un dulce al azar, ¿cuál es la probabilidad de que NO sea de limón?",
+    "options": [
+      {
+        "id": "a",
+        "text": "3/10"
+      },
+      {
+        "id": "b",
+        "text": "3/7"
+      },
+      {
+        "id": "c",
+        "text": "7/10"
+      },
+      {
+        "id": "d",
+        "text": "1/3"
+      }
+    ],
+    "answer": "c",
+    "explanation": "Los dulces que no son de limón son 5 + 2 = 7, de un total de 10. Probabilidad = 7/10. (También: 1 − 3/10 = 7/10.)",
+    "tip": "«No sea» suele resolverse más rápido con el complemento: 1 − P(sí sea).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-023",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "enunciado": "En un curso de 36 estudiantes, 24 son mujeres. ¿Qué fracción del curso representan los hombres?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1/3"
+      },
+      {
+        "id": "b",
+        "text": "1/2"
+      },
+      {
+        "id": "c",
+        "text": "2/3"
+      },
+      {
+        "id": "d",
+        "text": "12/24"
+      }
+    ],
+    "answer": "a",
+    "explanation": "Hombres: 36 − 24 = 12. Fracción: 12/36, que simplificada es 1/3.",
+    "tip": "La fracción es parte/total. El total es todo el curso (36), no solo las mujeres.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-024",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 3,
+    "enunciado": "Un patio rectangular mide 20 m de largo por 15 m de ancho. En una esquina hay un jardín cuadrado de 5 m de lado que no se va a embaldosar. Si cada baldosa es un cuadrado de 0,5 m de lado, ¿cuántas baldosas se necesitan para cubrir el resto del patio?",
+    "options": [
+      {
+        "id": "a",
+        "text": "275"
+      },
+      {
+        "id": "b",
+        "text": "550"
+      },
+      {
+        "id": "c",
+        "text": "1.100"
+      },
+      {
+        "id": "d",
+        "text": "1.200"
+      }
+    ],
+    "answer": "c",
+    "explanation": "Área del patio: 20 × 15 = 300 m². Área del jardín: 5 × 5 = 25 m². Área a embaldosar: 300 − 25 = 275 m². Cada baldosa cubre 0,5 × 0,5 = 0,25 m², así que se necesitan 275 ÷ 0,25 = 1.100 baldosas.",
+    "tip": "Divide entre el ÁREA de la baldosa (0,25 m²), no entre su lado (0,5 m).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-025",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 3,
+    "stimulusId": "mat-st-ventas",
+    "enunciado": "Al comparar las ventas de la semana, ¿cuál de las siguientes afirmaciones es correcta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La tienda B vendió más en la semana porque tuvo el día de mayor venta."
+      },
+      {
+        "id": "b",
+        "text": "La tienda A vendió más en la semana porque nunca bajó de 190 mil pesos."
+      },
+      {
+        "id": "c",
+        "text": "Las dos tiendas se comportan igual porque tienen el mismo promedio."
+      },
+      {
+        "id": "d",
+        "text": "Las dos tiendas tienen el mismo promedio diario, pero las ventas de la tienda A son mucho más estables."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Ambas suman 1.000 mil pesos en la semana, así que su promedio diario es 200 mil pesos. Pero la tienda A varía entre 190 y 210 (rango 20), mientras que la B varía entre 100 y 350 (rango 250). Mismo promedio no significa mismo comportamiento.",
+    "tip": "El promedio no cuenta toda la historia: mira también qué tanto se alejan los datos (el rango o la dispersión).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-026",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 2,
+    "stimulusId": "mat-st-ventas",
+    "enunciado": "¿Cuál es la mediana de las ventas diarias de la tienda B?",
+    "options": [
+      {
+        "id": "a",
+        "text": "100 mil pesos"
+      },
+      {
+        "id": "b",
+        "text": "150 mil pesos"
+      },
+      {
+        "id": "c",
+        "text": "200 mil pesos"
+      },
+      {
+        "id": "d",
+        "text": "300 mil pesos"
+      }
+    ],
+    "answer": "b",
+    "explanation": "Ordenando los datos de la tienda B: 100, 100, 150, 300, 350. El dato del centro (el tercero) es 150. Por eso la mediana es 150 mil pesos, aunque el promedio sea 200.",
+    "tip": "Para la mediana, ¡primero ordena los datos! Luego toma el del centro.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-027",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 2,
+    "enunciado": "Para calcular un descuento del 15 % sobre $48.000, Sofía calcula el 10 % ($4.800) y le suma la mitad de ese valor ($2.400), y obtiene $7.200. ¿Es válido su procedimiento?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sí, porque el 5 % es la mitad del 10 %, entonces 4.800 + 2.400 = 7.200 es el 15 % de 48.000."
+      },
+      {
+        "id": "b",
+        "text": "No, porque el 15 % se calcula dividiendo 48.000 entre 15."
+      },
+      {
+        "id": "c",
+        "text": "No, porque debería sumar el 10 % y el 15 %."
+      },
+      {
+        "id": "d",
+        "text": "Sí, porque la mitad de 48.000 es 24.000 y el 15 % es su décima parte."
+      }
+    ],
+    "answer": "a",
+    "explanation": "15 % = 10 % + 5 %, y el 5 % es la mitad del 10 %. El 10 % de 48.000 es 4.800, el 5 % es 2.400, y 4.800 + 2.400 = 7.200. Se comprueba: 0,15 × 48.000 = 7.200. La idea de tomar «la décima parte de 24.000» da 2.400, que no es el 15 %.",
+    "tip": "Truco de cálculo mental: 10 % = correr la coma un lugar; 5 % = la mitad de eso.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-028",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 3,
+    "stimulusId": "mat-st-parqueadero",
+    "enunciado": "¿Cuál de las siguientes expresiones permite calcular el costo C (en pesos) de dejar un carro h horas en el parqueadero?",
+    "options": [
+      {
+        "id": "a",
+        "text": "C = 2.500h"
+      },
+      {
+        "id": "b",
+        "text": "C = 1.500h"
+      },
+      {
+        "id": "c",
+        "text": "C = 2.500 + 1.500h"
+      },
+      {
+        "id": "d",
+        "text": "C = 1.500h + 1.000"
+      }
+    ],
+    "answer": "d",
+    "explanation": "Cada hora adicional aumenta el costo en $1.500 (de 2.500 a 4.000, de 4.000 a 5.500…). Con h = 1: 1.500 × 1 + 1.000 = 2.500 ✔; con h = 4: 1.500 × 4 + 1.000 = 7.000 ✔. La expresión C = 2.500 + 1.500h da $4.000 para 1 hora, que no coincide con la tabla.",
+    "tip": "Encuentra cuánto sube por cada hora (la pendiente) y luego verifica la expresión con dos filas de la tabla.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-029",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 1,
+    "enunciado": "Luisa tiene $20.000 y quiere pagar 3 almuerzos de $6.500 cada uno. Para calcular rápido, redondea cada almuerzo a $7.000, obtiene 3 × 7.000 = $21.000 y concluye que no le alcanza. ¿Es correcta su conclusión?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No, porque al redondear hacia arriba aumentó el gasto: el costo real es 3 × $6.500 = $19.500, que sí alcanza."
+      },
+      {
+        "id": "b",
+        "text": "Sí, porque $21.000 es mayor que $20.000."
+      },
+      {
+        "id": "c",
+        "text": "Sí, porque con dinero siempre se debe redondear hacia arriba."
+      },
+      {
+        "id": "d",
+        "text": "No, porque debió redondear a $6.000 y así le sobrarían $2.000."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El costo real es 3 × $6.500 = $19.500, que es menor que $20.000, así que sí le alcanza (le sobran $500). Redondear hacia arriba sirve para estimar, pero cuando el resultado queda tan cerca del límite hay que hacer la cuenta exacta. Redondear a $6.000 también lleva a «sí alcanza», pero con una cuenta que no corresponde al costo real.",
+    "tip": "Las estimaciones son útiles, pero si el resultado queda muy cerca del límite, verifica con los valores exactos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-030",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 1,
+    "enunciado": "En la tienda, una gaseosa de 1,5 litros cuesta $4.500 y una de 400 mililitros cuesta $1.600. Carlos afirma que la gaseosa grande es más económica. ¿Qué razón justifica correctamente su afirmación?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La gaseosa pequeña cuesta menos dinero."
+      },
+      {
+        "id": "b",
+        "text": "El litro en la presentación grande sale a $3.000 y en la pequeña a $4.000."
+      },
+      {
+        "id": "c",
+        "text": "La gaseosa grande trae más mililitros."
+      },
+      {
+        "id": "d",
+        "text": "Tres gaseosas pequeñas cuestan $4.800, que es más que $4.500, y traen la misma cantidad."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Precio por litro de la grande: $4.500 ÷ 1,5 = $3.000. De la pequeña: $1.600 ÷ 0,4 = $4.000. La grande es más económica por litro. Comparar con tres gaseosas pequeñas no sirve: 3 × 400 mL = 1.200 mL, que no es la misma cantidad que la grande (1.500 mL).",
+    "tip": "Para saber cuál «rinde» más, compara el precio por la misma unidad (por litro o por mL).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-031",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Plantea y ejecuta estrategias de conteo para resolver problemas en contextos cotidianos.",
+    "difficulty": 3,
+    "enunciado": "Un colegio de Tunja asigna a cada estudiante un código de acceso a la biblioteca formado por 3 letras distintas, escogidas entre A, B, C, D y E, en un orden determinado (por ejemplo, BEA). ¿Cuántos códigos diferentes se pueden formar?",
+    "options": [
+      {
+        "id": "a",
+        "text": "10"
+      },
+      {
+        "id": "b",
+        "text": "15"
+      },
+      {
+        "id": "c",
+        "text": "60"
+      },
+      {
+        "id": "d",
+        "text": "125"
+      }
+    ],
+    "answer": "c",
+    "explanation": "El orden importa (BEA y ABE son códigos distintos) y no se pueden repetir letras. Hay 5 opciones para la primera letra, 4 para la segunda y 3 para la tercera: 5 × 4 × 3 = 60. Con 125 = 5³ se estarían permitiendo letras repetidas, y con 10 se contarían grupos sin importar el orden (combinaciones).",
+    "tip": "Antes de calcular, pregúntate dos cosas: ¿importa el orden? y ¿se puede repetir? Las respuestas te dicen si multiplicas, divides o elevas a una potencia.",
+    "source": "original",
+    "reviewed": false
+  }
+]
