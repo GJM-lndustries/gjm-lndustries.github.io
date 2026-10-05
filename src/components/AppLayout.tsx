@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
+import { useAuth } from '@/contexts/AuthContext';
 import {
   Home, BookOpen, FlaskConical, Globe, Map,
   Calculator, Trophy, BarChart3, Menu, X, Star, Library, Lightbulb, TrendingUp, PenLine, Target, UserCircle
 } from 'lucide-react';
-import { ACCOUNTS_ENABLED } from '@/lib/accounts';
+import { ACCOUNTS_ENABLED, accountInitial } from '@/lib/accounts';
 import { SITE } from '@/config/site';
 import { useConsent } from '@/contexts/ConsentContext';
 
@@ -81,6 +82,51 @@ function SiteFooter() {
         Hecho por <span className="font-semibold text-foreground">{SITE.author.name}</span>
       </p>
     </footer>
+  );
+}
+
+function AccountHeaderButton({ compact = false }: { compact?: boolean }) {
+  const auth = useAuth();
+  if (!ACCOUNTS_ENABLED) return null;
+  const signedIn = auth.status === "ready" || auth.status === "needs-profile" || auth.status === "password-recovery";
+  if (signedIn) {
+    const initial = accountInitial(auth.email);
+    return (
+      <Link
+        href="/cuenta"
+        className={`inline-flex items-center gap-1.5 rounded-full font-semibold transition-colors ${
+          compact
+            ? "bg-sidebar-primary text-sidebar-primary-foreground w-9 h-9 justify-center text-sm"
+            : "bg-primary text-primary-foreground px-3 py-1.5 text-sm hover:bg-primary/90"
+        }`}
+        aria-label="Mi cuenta"
+        title={auth.email ?? "Mi cuenta"}
+      >
+        {compact ? (
+          <span aria-hidden="true">{initial}</span>
+        ) : (
+          <>
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-foreground/20 text-xs font-bold" aria-hidden="true">
+              {initial}
+            </span>
+            Mi cuenta
+          </>
+        )}
+      </Link>
+    );
+  }
+  return (
+    <Link
+      href="/cuenta"
+      className={`inline-flex items-center justify-center rounded-full font-semibold transition-colors ${
+        compact
+          ? "bg-sidebar-primary text-sidebar-primary-foreground px-2.5 py-1.5 text-xs"
+          : "bg-primary text-primary-foreground px-3 py-1.5 text-sm hover:bg-primary/90"
+      }`}
+      data-testid="header-login"
+    >
+      Iniciar sesión
+    </Link>
   );
 }
 
@@ -181,7 +227,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <span className="text-xl" aria-hidden="true">🎓</span>
             <span className="text-sidebar-foreground font-bold text-lg font-['Lexend']">ProICFES</span>
           </Link>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <AccountHeaderButton compact />
             <Link
               href="/analytics"
               className="flex items-center gap-1.5 bg-sidebar-accent/60 px-3 py-1.5 rounded-full"
@@ -237,6 +284,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
       {/* Main Content */}
       <main id="contenido" className="flex-1 lg:ml-64 min-h-screen pb-24 lg:pb-0 pt-16 lg:pt-0">
+        <div className="hidden lg:flex sticky top-0 z-30 justify-end px-4 py-3 bg-background/90 backdrop-blur border-b border-border/60">
+          <AccountHeaderButton />
+        </div>
         <div className="max-w-5xl mx-auto px-4 py-6">
           {children}
           <SiteFooter />
