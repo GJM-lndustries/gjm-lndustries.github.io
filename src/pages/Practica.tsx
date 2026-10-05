@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useActiveTimer } from '@/hooks/useActiveTimer';
 import { Link, useSearch } from 'wouter';
 import { motion } from 'framer-motion';
 import { ChevronRight, RotateCcw, CheckCircle2, XCircle, PenLine, Flag, Home as HomeIcon } from 'lucide-react';
@@ -42,10 +43,11 @@ export default function Practica() {
   const params = new URLSearchParams(useSearch());
   const areaParam = params.get('area');
   const repasoParam = params.get('repaso') === '1';
-  const { progress, recordAnswer } = useProgress();
+  const { progress, recordAnswer, trackChallengeTime, trackChallengeQuestion } = useProgress();
   const missedIds = useMemo(() => new Set(Object.keys(progress.missedQuestions)), [progress.missedQuestions]);
 
   const [phase, setPhase] = useState<Phase>('setup');
+  useActiveTimer(phase === 'running', ms => trackChallengeTime('answering', ms));
   const [area, setArea] = useState<AreaFilter>(isAreaId(areaParam) ? areaParam : repasoParam ? 'todas' : 'matematicas');
   const [difficulty, setDifficulty] = useState<0 | 1 | 2 | 3>(0);
   const [competencia, setCompetencia] = useState('');
@@ -86,6 +88,7 @@ export default function Practica() {
     if (!question || answered) return;
     setAnswers(prev => ({ ...prev, [question.id]: optionId }));
     recordAnswer(question, optionId === question.answer);
+    trackChallengeQuestion();
   };
 
   const next = () => {

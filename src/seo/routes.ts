@@ -25,11 +25,27 @@ export interface RouteMeta {
 export const ROUTES: RouteMeta[] = [
   {
     path: "/",
-    name: "Inicio",
+    name: "Portada",
     title: "Preicfes gratis: estudia para el ICFES Saber 11 | ProICFES",
     description:
       "Estudia para el ICFES gratis con lecciones cortas, preguntas tipo ICFES con explicación y simulacros. Calcula tu puntaje estimado del Saber 11 por áreas.",
     kind: "home",
+  },
+  {
+    path: "/inicio",
+    name: "Tu estudio",
+    title: "Tu estudio · ProICFES",
+    description: "Tablero de estudio: reto diario, áreas del Saber 11, práctica y simulacro.",
+    kind: "page",
+    noindex: true,
+  },
+  {
+    path: "/yo",
+    name: "Yo",
+    title: "Tu espacio · ProICFES",
+    description: "Racha, meta personal y acceso a tu cuenta.",
+    kind: "page",
+    noindex: true,
   },
   {
     path: "/practica",

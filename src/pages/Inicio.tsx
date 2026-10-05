@@ -4,10 +4,9 @@ import { useProgress } from '@/contexts/ProgressContext';
 import { modules } from '@/lib/appData';
 import { AREA_INFO, BANK_TOTAL } from '@/data/questions/meta';
 import { AREA_IDS } from '@/data/questions/types';
-import { ChevronRight, Star, Zap, Target, BookOpen, Trophy, Flame, PenLine, RotateCcw } from 'lucide-react';
+import { ChevronRight, Star, Zap, Target, BookOpen, Trophy, Flame, PenLine, RotateCcw, Library, Lightbulb } from 'lucide-react';
 import { motion } from 'framer-motion';
-import FaqList from '@/components/FaqList';
-import { FAQ } from '@/data/faq';
+import DailyChallengeCard from '@/components/DailyChallengeCard';
 
 function ScoreGauge() {
   const { estimate, progress } = useProgress();
@@ -124,7 +123,7 @@ function ModuleCard({ module }: { module: typeof modules[0] }) {
   );
 }
 
-export default function Home() {
+export default function Inicio() {
   const { progress } = useProgress();
   const totalLessons = modules.reduce((sum, m) => sum + m.lessons.length, 0);
   const completedCount = progress.completedLessons.filter(l => l.completed).length;
@@ -132,12 +131,12 @@ export default function Home() {
   const isNew = progress.totalXp === 0 && completedCount === 0;
 
   const tips = [
-    '💡 El Saber 11 tiene dos sesiones de 4 horas y 30 minutos. ¡Practica tu ritmo!',
-    '📖 En Lectura Crítica, lee primero la pregunta y luego busca la evidencia en el texto.',
-    '📐 En Matemáticas, reemplaza números sencillos para verificar expresiones algebraicas.',
-    '🔬 En Ciencias, el ICFES evalúa razonamiento, no memorización.',
-    '🗺️ En Sociales, conecta los eventos históricos con la situación actual de Colombia.',
-    '🌎 En Inglés, usa los cognados (palabras parecidas al español) a tu favor.',
+    'El Saber 11 tiene dos sesiones de 4 horas y 30 minutos. ¡Practica tu ritmo!',
+    'En Lectura Crítica, lee primero la pregunta y luego busca la evidencia en el texto.',
+    'En Matemáticas, reemplaza números sencillos para verificar expresiones algebraicas.',
+    'En Ciencias, el ICFES evalúa razonamiento, no memorización.',
+    'En Sociales, conecta los eventos históricos con la situación actual de Colombia.',
+    'En Inglés, usa los cognados (palabras parecidas al español) a tu favor.',
   ];
   // El consejo cambia cada día; se elige después de montar para que el HTML prerenderizado coincida.
   const [dailyTip, setDailyTip] = useState(tips[0]);
@@ -187,7 +186,7 @@ export default function Home() {
                   href="/meta"
                   className="inline-flex items-center gap-1.5 bg-[#0f2040]/70 text-white px-4 py-2 rounded-xl text-sm font-semibold hover:bg-[#0f2040]/90 transition-colors"
                 >
-                  Definir mi meta (opcional)
+                  Definir mi meta
                 </Link>
               </div>
             </div>
@@ -208,7 +207,7 @@ export default function Home() {
         <div className="bg-card rounded-xl border border-border p-3 text-center">
           <div className="flex items-center justify-center gap-1 mb-1">
             <Flame className="w-4 h-4 text-orange-500" aria-hidden="true" />
-            <span className="text-lg font-bold font-['Lexend'] text-foreground">{progress.streak}</span>
+            <span className="text-lg font-bold font-['Lexend'] text-foreground">{progress.streakState?.current ?? progress.streak}</span>
           </div>
           <p className="text-xs text-muted-foreground">Días seguidos</p>
         </div>
@@ -294,7 +293,7 @@ export default function Home() {
             href="/glosario"
             className="flex items-center gap-3 bg-card border border-border rounded-xl p-4 hover:shadow-md hover:border-primary/30 transition-all"
           >
-            <span className="text-2xl" aria-hidden="true">📖</span>
+            <Library className="w-6 h-6 text-primary" aria-hidden="true" />
             <div>
               <p className="font-bold text-sm font-['Lexend'] text-foreground">Glosario</p>
               <p className="text-xs text-muted-foreground">Palabras técnicas explicadas</p>
@@ -304,7 +303,7 @@ export default function Home() {
             href="/tips"
             className="flex items-center gap-3 bg-card border border-border rounded-xl p-4 hover:shadow-md hover:border-primary/30 transition-all"
           >
-            <span className="text-2xl" aria-hidden="true">💡</span>
+            <Lightbulb className="w-6 h-6 text-primary" aria-hidden="true" />
             <div>
               <p className="font-bold text-sm font-['Lexend'] text-foreground">Estrategias</p>
               <p className="text-xs text-muted-foreground">Trucos para el examen</p>
@@ -337,15 +336,15 @@ export default function Home() {
           Fuente: Guía de orientación Saber 11.° del ICFES. Consulta siempre la guía vigente en icfes.gov.co.
         </p>
       </section>
-      <section aria-labelledby="faq-titulo" className="space-y-3">
-        <div className="flex items-center justify-between gap-3">
-          <h2 id="faq-titulo" className="text-lg font-bold font-['Lexend'] text-foreground">Preguntas frecuentes</h2>
-          <Link href="/preguntas-frecuentes" className="text-sm text-primary font-semibold hover:underline">
-            Ver todas
-          </Link>
-        </div>
-        <FaqList items={FAQ.filter(f => ['que-es-saber-11', 'como-se-calcula-el-puntaje', 'como-usar-proicfes'].includes(f.id))} headingLevel="h3" />
-      </section>
+      <DailyChallengeCard />
+
+      <p className="text-sm text-muted-foreground">
+        ¿Dudas sobre el examen?{" "}
+        <Link href="/preguntas-frecuentes" className="font-semibold text-primary hover:underline">
+          Preguntas frecuentes
+        </Link>
+        .
+      </p>
     </div>
   );
 }

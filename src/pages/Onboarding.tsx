@@ -1,350 +1,224 @@
-import { useState } from 'react';
-import { useProgress } from '@/contexts/ProgressContext';
-import { useLocation } from 'wouter';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Target, Zap, TrendingUp, Sparkles } from 'lucide-react';
+import { useMemo, useState } from "react";
+import { useLocation } from "wouter";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, Target } from "lucide-react";
+import { useProgress } from "@/contexts/ProgressContext";
+import BrandMark from "@/components/BrandMark";
 
-type Step = 'welcome' | 'current' | 'minimum' | 'target' | 'career' | 'summary';
+const CAREERS = [
+  "Medicina",
+  "Ingeniería",
+  "Derecho",
+  "Psicología",
+  "Administración",
+  "Licenciatura / Educación",
+  "Arquitectura",
+  "Comunicación",
+  "Otra / aún no sé",
+];
+
+type Step = "score" | "career";
 
 export default function Onboarding() {
   const { completeOnboarding, progress } = useProgress();
   const editing = progress.hasCompletedOnboarding;
   const [, setLocation] = useLocation();
-  
-  const [step, setStep] = useState<Step>('welcome');
-  const [currentScore, setCurrentScore] = useState(progress.currentScore || 0);
-  const [minimumScore, setMinimumScore] = useState(progress.minimumScore || 310);
-  const [targetScore, setTargetScore] = useState(progress.targetScore || 360);
-  const [career, setCareer] = useState(progress.career || '');
+  const [step, setStep] = useState<Step>("score");
+  const [presented, setPresented] = useState(progress.presentedExam);
+  const [score, setScore] = useState(progress.currentScore || 280);
+  const [career, setCareer] = useState(progress.career || "");
+  const [customCareer, setCustomCareer] = useState("");
+  const [target, setTarget] = useState(progress.targetScore || 300);
 
-  const handleNext = () => {
-    const steps: Step[] = ['welcome', 'current', 'minimum', 'target', 'career', 'summary'];
-    const currentIdx = steps.indexOf(step);
-    if (step === 'minimum' && targetScore < minimumScore) setTargetScore(minimumScore);
-    if (currentIdx < steps.length - 1) {
-      setStep(steps[currentIdx + 1]);
+  const careerValue = useMemo(() => {
+    if (career === "Otra / aún no sé" || career === "Otra") return customCareer.trim() || "Por definir";
+    return career.trim();
+  }, [career, customCareer]);
+
+  const finish = (skip = false) => {
+    if (!skip) {
+      completeOnboarding(
+        presented ? score : 0,
+        300,
+        Math.min(500, Math.max(0, target)),
+        careerValue || progress.career || "",
+        presented
+      );
     }
+    setLocation("/inicio");
   };
-
-  const handleComplete = () => {
-    completeOnboarding(currentScore, minimumScore, targetScore, career.trim());
-    setLocation('/');
-  };
-  const handleSkip = () => setLocation('/');
-
-  const suggestedTarget = Math.min(500, minimumScore + 10);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1e3a5f] to-[#0f2040] flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl">
-        {/* Skip */}
-        <div className="flex justify-end mb-4">
-          <button
-            type="button"
-            onClick={handleSkip}
-            className="text-sm text-white/80 hover:text-white underline underline-offset-4"
-          >
-            {editing ? 'Cancelar' : 'Omitir por ahora'}
+    <div className="min-h-screen bg-[#f7f8fa]">
+      <div className="mx-auto flex max-w-lg flex-col px-4 py-6">
+        <div className="mb-6 flex items-center justify-between">
+          <BrandMark compact />
+          <button type="button" onClick={() => finish(true)} className="text-sm font-semibold text-muted-foreground underline-offset-2 hover:underline">
+            {editing ? "Cancelar" : "Omitir"}
           </button>
         </div>
 
-        {/* Progress bar */}
-        <div className="mb-8" aria-hidden="true">
-          <div className="flex gap-2">
-            {['welcome', 'current', 'minimum', 'target', 'career', 'summary'].map((s, idx) => (
-              <div
-                key={s}
-                className={`h-1 flex-1 rounded-full transition-colors ${
-                  ['welcome', 'current', 'minimum', 'target', 'career', 'summary'].indexOf(step) >= idx
-                    ? 'bg-[#4ade80]'
-                    : 'bg-white/20'
-                }`}
-              />
-            ))}
-          </div>
+        <div className="mb-6 flex gap-2" aria-hidden="true">
+          {(["score", "career"] as Step[]).map((s, i) => (
+            <div key={s} className={`h-1.5 flex-1 rounded-full ${step === s || (step === "career" && i === 0) ? "bg-[#4ade80]" : "bg-[#1e3a5f]/15"}`} />
+          ))}
         </div>
 
         <AnimatePresence mode="wait" initial={false}>
-          {/* Welcome */}
-          {step === 'welcome' && (
-            <motion.div
-              key="welcome"
-              initial={{ opacity: 0, y: 20 }}
+          {step === "score" && (
+            <motion.section
+              key="score"
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -12 }}
               className="space-y-6"
             >
-              <div className="text-center space-y-4">
-                <div className="text-6xl mb-4">🎓</div>
-                <h1 className="text-4xl font-bold font-['Lexend'] text-white">Define tu meta</h1>
-                <p className="text-xl text-white/80">Es opcional y puedes cambiarla cuando quieras</p>
-              </div>
-
-              <div className="bg-white/10 rounded-2xl p-6 space-y-4 backdrop-blur-sm border border-white/20">
-                <p className="text-white text-lg leading-relaxed">
-                  Responde 4 preguntas rápidas para personalizar tu meta. Todo se guarda solo en este dispositivo.
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#1e3a5f]/70">Paso 1 de 2</p>
+                <h1 className="mt-1 font-['Lexend'] text-2xl font-bold text-[#0f2040]">
+                  ¿Qué puntaje crees que sacarías en el ICFES?
+                </h1>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Si ya lo presentaste, marca la casilla e indica cuánto sacaste. Escala oficial 0–500.
                 </p>
-                <div className="space-y-3 text-white/80 text-sm">
-                  <div className="flex items-start gap-3">
-                    <Zap className="w-5 h-5 text-[#4ade80] flex-shrink-0 mt-0.5" />
-                    <span>Tu puntaje actual (si ya presentaste el examen)</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-[#4ade80] flex-shrink-0 mt-0.5" />
-                    <span>El puntaje que pide tu carrera y tu objetivo</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <TrendingUp className="w-5 h-5 text-[#4ade80] flex-shrink-0 mt-0.5" />
-                    <span>Verás cuánto te falta en tu tablero de progreso</span>
-                  </div>
+              </div>
+
+              <label className="flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border border-border bg-white px-4 py-3">
+                <input
+                  type="checkbox"
+                  className="h-5 w-5 accent-[#1e3a5f]"
+                  checked={presented}
+                  onChange={e => setPresented(e.target.checked)}
+                />
+                <span className="text-sm font-medium">Ya lo presenté</span>
+              </label>
+
+              <div className="rounded-2xl border border-border bg-white p-5">
+                <div className="flex items-end justify-between gap-3">
+                  <label htmlFor="score-range" className="text-sm font-medium text-muted-foreground">
+                    {presented ? "Tu puntaje global" : "Tu estimación"}
+                  </label>
+                  <input
+                    type="number"
+                    min={0}
+                    max={500}
+                    value={score}
+                    onChange={e => setScore(Math.min(500, Math.max(0, Number(e.target.value) || 0)))}
+                    className="w-24 rounded-xl border border-border px-3 py-2 text-center font-['Lexend'] text-2xl font-bold text-[#1e3a5f]"
+                    aria-label="Puntaje"
+                  />
+                </div>
+                <input
+                  id="score-range"
+                  type="range"
+                  min={0}
+                  max={500}
+                  step={5}
+                  value={score}
+                  onChange={e => setScore(Number(e.target.value))}
+                  className="mt-4 w-full accent-[#4ade80]"
+                />
+                <div className="mt-1 flex justify-between text-xs text-muted-foreground">
+                  <span>0</span>
+                  <span>500</span>
                 </div>
               </div>
 
               <button
-                onClick={handleNext}
-                className="w-full bg-[#4ade80] text-[#0f2040] py-4 rounded-xl font-bold font-['Lexend'] text-lg hover:bg-[#22c55e] transition-colors flex items-center justify-center gap-2"
+                type="button"
+                onClick={() => setStep("career")}
+                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[#1e3a5f] text-base font-bold text-white hover:bg-[#16304f]"
               >
-                Empecemos <ChevronRight className="w-5 h-5" />
+                Continuar <ChevronRight className="h-5 w-5" aria-hidden="true" />
               </button>
-            </motion.div>
+            </motion.section>
           )}
 
-          {/* Current Score */}
-          {step === 'current' && (
-            <motion.div
-              key="current"
-              initial={{ opacity: 0, y: 20 }}
+          {step === "career" && (
+            <motion.section
+              key="career"
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -12 }}
               className="space-y-6"
             >
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold font-['Lexend'] text-white">¿Cuál es tu puntaje actual?</h2>
-                <p className="text-white/70">Si ya presentaste el ICFES, ingresa tu puntaje. Si no, déjalo en 0.</p>
-                <label htmlFor="puntaje-actual" className="sr-only">Puntaje actual</label>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#1e3a5f]/70">Paso 2 de 2</p>
+                <h1 className="mt-1 font-['Lexend'] text-2xl font-bold text-[#0f2040]">
+                  ¿Qué carrera quieres estudiar?
+                </h1>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Elige una orientación y tu meta de puntaje. No inventamos cortes por universidad: cada programa publica el suyo.
+                </p>
               </div>
 
-              <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm border border-white/20 space-y-6">
-                <div className="text-center">
-                  <div className="text-6xl font-bold font-['Lexend'] text-[#4ade80] mb-4">{currentScore}</div>
-                  <p className="text-white/70">de 500 puntos</p>
-                </div>
-
+              <div className="grid grid-cols-2 gap-2">
+                {CAREERS.map(c => (
+                  <button
+                    key={c}
+                    type="button"
+                    onClick={() => setCareer(c)}
+                    className={`min-h-12 rounded-xl border-2 px-3 py-2 text-left text-sm font-semibold ${
+                      career === c ? "border-[#1e3a5f] bg-[#1e3a5f]/5 text-[#1e3a5f]" : "border-border bg-white"
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+              {(career === "Otra / aún no sé" || career.startsWith("Otra")) && (
                 <input
-                  id="puntaje-actual"
-                  type="range"
-                  min="0"
-                  max="500"
-                  value={currentScore}
-                  onChange={(e) => setCurrentScore(parseInt(e.target.value))}
-                  className="w-full h-3 bg-white/20 rounded-full appearance-none cursor-pointer"
-                  style={{
-                    background: `linear-gradient(to right, #4ade80 0%, #4ade80 ${(currentScore / 500) * 100}%, rgba(255,255,255,0.2) ${(currentScore / 500) * 100}%, rgba(255,255,255,0.2) 100%)`
-                  }}
+                  className="w-full rounded-xl border border-border bg-white px-3 py-3 text-sm"
+                  placeholder="Escribe tu carrera (opcional)"
+                  value={customCareer}
+                  onChange={e => setCustomCareer(e.target.value)}
+                  maxLength={80}
                 />
+              )}
 
-                <div className="grid grid-cols-4 gap-2 text-xs text-white/60">
-                  <button onClick={() => setCurrentScore(100)} className="p-2 bg-white/10 rounded hover:bg-white/20">100</button>
-                  <button onClick={() => setCurrentScore(150)} className="p-2 bg-white/10 rounded hover:bg-white/20">150</button>
-                  <button onClick={() => setCurrentScore(250)} className="p-2 bg-white/10 rounded hover:bg-white/20">250</button>
-                  <button onClick={() => setCurrentScore(350)} className="p-2 bg-white/10 rounded hover:bg-white/20">350</button>
+              <div className="rounded-2xl border border-border bg-white p-5">
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#1e3a5f]">
+                  <Target className="h-4 w-4" aria-hidden="true" /> Meta sugerida
                 </div>
-              </div>
-
-              <button
-                onClick={handleNext}
-                className="w-full bg-[#4ade80] text-[#0f2040] py-4 rounded-xl font-bold font-['Lexend'] text-lg hover:bg-[#22c55e] transition-colors flex items-center justify-center gap-2"
-              >
-                Continuar <ChevronRight className="w-5 h-5" />
-              </button>
-            </motion.div>
-          )}
-
-          {/* Minimum Score */}
-          {step === 'minimum' && (
-            <motion.div
-              key="minimum"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
-            >
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold font-['Lexend'] text-white">¿Cuál es el puntaje mínimo de tu carrera?</h2>
-                <p className="text-white/70">El puntaje que exige la universidad para tu programa</p>
-              </div>
-
-              <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm border border-white/20 space-y-6">
-                <div className="text-center">
-                  <div className="text-6xl font-bold font-['Lexend'] text-[#4ade80] mb-4">{minimumScore}</div>
-                  <p className="text-white/70">puntos mínimos</p>
+                <div className="mt-3 flex items-end justify-between gap-3">
+                  <p className="text-sm text-muted-foreground">Puntaje global que quieres alcanzar</p>
+                  <input
+                    type="number"
+                    min={0}
+                    max={500}
+                    value={target}
+                    onChange={e => setTarget(Math.min(500, Math.max(0, Number(e.target.value) || 0)))}
+                    className="w-24 rounded-xl border border-border px-3 py-2 text-center font-['Lexend'] text-2xl font-bold"
+                    aria-label="Meta de puntaje"
+                  />
                 </div>
-
                 <input
-                  aria-label="Puntaje mínimo de la carrera"
                   type="range"
-                  min="100"
-                  max="500"
-                  value={minimumScore}
-                  onChange={(e) => setMinimumScore(parseInt(e.target.value))}
-                  className="w-full h-3 bg-white/20 rounded-full appearance-none cursor-pointer"
-                  style={{
-                    background: `linear-gradient(to right, #4ade80 0%, #4ade80 ${((minimumScore - 100) / 400) * 100}%, rgba(255,255,255,0.2) ${((minimumScore - 100) / 400) * 100}%, rgba(255,255,255,0.2) 100%)`
-                  }}
+                  min={0}
+                  max={500}
+                  step={5}
+                  value={target}
+                  onChange={e => setTarget(Number(e.target.value))}
+                  className="mt-4 w-full accent-[#4ade80]"
                 />
-
-                <div className="grid grid-cols-4 gap-2 text-xs text-white/60">
-                  <button onClick={() => setMinimumScore(250)} className="p-2 bg-white/10 rounded hover:bg-white/20">250</button>
-                  <button onClick={() => setMinimumScore(300)} className="p-2 bg-white/10 rounded hover:bg-white/20">300</button>
-                  <button onClick={() => setMinimumScore(350)} className="p-2 bg-white/10 rounded hover:bg-white/20">350</button>
-                  <button onClick={() => setMinimumScore(400)} className="p-2 bg-white/10 rounded hover:bg-white/20">400</button>
-                </div>
+                <p className="mt-3 text-xs text-muted-foreground">
+                  300 es una meta general de partida. Consulta el puntaje de corte de tu universidad; no hay un mínimo único para todo el país.
+                </p>
               </div>
 
-              <button
-                onClick={handleNext}
-                className="w-full bg-[#4ade80] text-[#0f2040] py-4 rounded-xl font-bold font-['Lexend'] text-lg hover:bg-[#22c55e] transition-colors flex items-center justify-center gap-2"
-              >
-                Continuar <ChevronRight className="w-5 h-5" />
-              </button>
-            </motion.div>
-          )}
-
-          {/* Target Score */}
-          {step === 'target' && (
-            <motion.div
-              key="target"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
-            >
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold font-['Lexend'] text-white">¿Cuál es tu objetivo?</h2>
-                <p className="text-white/70">¿A cuántos puntos quieres llegar?</p>
-              </div>
-
-              <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm border border-white/20 space-y-6">
-                <div className="text-center">
-                  <div className="text-6xl font-bold font-['Lexend'] text-[#4ade80] mb-4">{targetScore}</div>
-                  <p className="text-white/70">puntos objetivo</p>
-                </div>
-
-                <input
-                  aria-label="Puntaje objetivo"
-                  type="range"
-                  min={minimumScore}
-                  max="500"
-                  value={targetScore}
-                  onChange={(e) => setTargetScore(parseInt(e.target.value))}
-                  className="w-full h-3 bg-white/20 rounded-full appearance-none cursor-pointer"
-                  style={{
-                    background: `linear-gradient(to right, #4ade80 0%, #4ade80 ${((targetScore - minimumScore) / (500 - minimumScore)) * 100}%, rgba(255,255,255,0.2) ${((targetScore - minimumScore) / (500 - minimumScore)) * 100}%, rgba(255,255,255,0.2) 100%)`
-                  }}
-                />
-
+              <div className="flex gap-2">
+                <button type="button" onClick={() => setStep("score")} className="min-h-12 flex-1 rounded-2xl border-2 border-border font-semibold">
+                  Atrás
+                </button>
                 <button
-                  onClick={() => setTargetScore(suggestedTarget)}
-                  className="w-full bg-white/20 hover:bg-white/30 text-white py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2"
+                  type="button"
+                  onClick={() => finish(false)}
+                  className="min-h-12 flex-[2] rounded-2xl bg-[#4ade80] font-bold text-[#0f2040] hover:bg-[#22c55e]"
                 >
-                  <Sparkles className="w-4 h-4" />
-                  Sugerencia: {suggestedTarget} puntos (¿por qué no apuntar {suggestedTarget - minimumScore} puntos más?)
+                  Guardar y entrar
                 </button>
               </div>
-
-              <button
-                onClick={handleNext}
-                className="w-full bg-[#4ade80] text-[#0f2040] py-4 rounded-xl font-bold font-['Lexend'] text-lg hover:bg-[#22c55e] transition-colors flex items-center justify-center gap-2"
-              >
-                Continuar <ChevronRight className="w-5 h-5" />
-              </button>
-            </motion.div>
-          )}
-
-          {/* Career */}
-          {step === 'career' && (
-            <motion.div
-              key="career"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
-            >
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold font-['Lexend'] text-white">¿Qué carrera quieres estudiar?</h2>
-                <p className="text-white/70">Opcional: puedes dejarlo en blanco</p>
-              </div>
-
-              <label htmlFor="carrera" className="sr-only">Carrera</label>
-              <input
-                id="carrera"
-                type="text"
-                value={career}
-                onChange={(e) => setCareer(e.target.value)}
-                placeholder="Ej: Ingeniería de Sistemas, Medicina, Derecho..."
-                className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#4ade80] text-lg"
-              />
-
-              <button
-                onClick={handleNext}
-                className="w-full bg-[#4ade80] text-[#0f2040] py-4 rounded-xl font-bold font-['Lexend'] text-lg hover:bg-[#22c55e] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Continuar <ChevronRight className="w-5 h-5" />
-              </button>
-            </motion.div>
-          )}
-
-          {/* Summary */}
-          {step === 'summary' && (
-            <motion.div
-              key="summary"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
-            >
-              <div className="text-center space-y-2">
-                <h2 className="text-3xl font-bold font-['Lexend'] text-white">¡Perfecto!</h2>
-                <p className="text-white/70">Aquí está tu plan personalizado</p>
-              </div>
-
-              <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm border border-white/20 space-y-6">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between pb-4 border-b border-white/20">
-                    <span className="text-white/70">Tu carrera</span>
-                    <span className="text-xl font-bold text-white">{career.trim() || 'Sin definir'}</span>
-                  </div>
-                  
-                  <div className="flex items-center justify-between pb-4 border-b border-white/20">
-                    <span className="text-white/70">Puntaje actual</span>
-                    <span className="text-xl font-bold text-white">{currentScore}/500</span>
-                  </div>
-                  
-                  <div className="flex items-center justify-between pb-4 border-b border-white/20">
-                    <span className="text-white/70">Mínimo requerido</span>
-                    <span className="text-xl font-bold text-white">{minimumScore}/500</span>
-                  </div>
-                  
-                  <div className="flex items-center justify-between bg-[#4ade80]/20 rounded-xl p-4">
-                    <span className="text-white font-semibold">Tu objetivo</span>
-                    <span className="text-3xl font-bold text-[#4ade80]">{targetScore}/500</span>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 rounded-xl p-4 text-center">
-                  <p className="text-white/70 text-sm mb-2">Necesitas subir</p>
-                  <p className="text-3xl font-bold text-[#4ade80]">{Math.max(0, targetScore - currentScore)} puntos</p>
-                </div>
-              </div>
-
-              <button
-                onClick={handleComplete}
-                className="w-full bg-[#4ade80] text-[#0f2040] py-4 rounded-xl font-bold font-['Lexend'] text-lg hover:bg-[#22c55e] transition-colors flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-5 h-5" />
-                Guardar mi meta
-              </button>
-            </motion.div>
+            </motion.section>
           )}
         </AnimatePresence>
       </div>

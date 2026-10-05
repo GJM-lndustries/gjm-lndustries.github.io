@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useActiveTimer } from '@/hooks/useActiveTimer';
 import { Link } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
 import type { Lesson, GlossaryTerm } from '@/lib/appData';
@@ -131,8 +132,9 @@ function ContentBlock({ content, glossary }: { content: Lesson['content'][0]; gl
 
 // Quiz component (preguntas del banco)
 function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (score: number) => void }) {
+  const { recordAnswer, trackChallengeQuestion, trackChallengeTime } = useProgress();
+  useActiveTimer(true, ms => trackChallengeTime("answering", ms));
   const questions = useMemo(() => getQuestions(lesson.questionIds), [lesson.questionIds]);
-  const { recordAnswer } = useProgress();
   const [currentQ, setCurrentQ] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
@@ -152,6 +154,7 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
     setAnswered(true);
     if (correct) setCorrectCount(c => c + 1);
     recordAnswer(question, correct);
+    trackChallengeQuestion();
   };
 
   const handleNext = () => {
@@ -237,7 +240,8 @@ interface LessonViewProps {
 export default function LessonView({ lesson, onBack }: LessonViewProps) {
   const [phase, setPhase] = useState<'content' | 'quiz' | 'done'>('content');
   const [contentStep, setContentStep] = useState(0);
-  const { completeLesson, isLessonCompleted } = useProgress();
+  const { completeLesson, isLessonCompleted, trackChallengeTime } = useProgress();
+  useActiveTimer(phase === 'content', ms => trackChallengeTime('reading', ms));
   const alreadyCompleted = isLessonCompleted(lesson.id);
 
   const handleCompleteQuiz = (score: number) => {
