@@ -7,14 +7,14 @@
  * indicar nombre o razón social, domicilio, dirección, correo electrónico y teléfono del Responsable.)
  */
 /**
- * 📅 FECHA DE LANZAMIENTO (AAAA-MM-DD): es la fecha de entrada en vigencia de todas las políticas.
- * ⚠️ Provisional: ACTUALÍZALA a la fecha real en que el sitio se publique en proicfes.com.co.
+ * 📅 FECHA DE LANZAMIENTO (AAAA-MM-DD): fecha de entrada en vigencia de todas las políticas
+ * (publicación en proicfes.com.co).
  */
-export const FECHA_LANZAMIENTO = "2026-10-04";
+export const FECHA_LANZAMIENTO = "2026-10-05";
 
 const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
-/** «2026-10-04» → «4 de octubre de 2026» (sin zona horaria: no depende del reloj ni del navegador). */
+/** «2026-10-05» → «5 de octubre de 2026» (sin zona horaria: no depende del reloj ni del navegador). */
 export function fechaLarga(iso: string): string {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
   if (!m) return iso;

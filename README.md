@@ -79,12 +79,10 @@ en las páginas y `pnpm build` lo lista como advertencia). La fecha de entrada e
 
 ```ts
 // src/config/legal.ts
-export const FECHA_LANZAMIENTO = "2026-10-04"; // ⚠️ cambiar por la fecha real de publicación al lanzar
+export const FECHA_LANZAMIENTO = "2026-10-05"; // vigencia = fecha de publicación
 ```
 
-Se muestra como «4 de octubre de 2026» en las cuatro páginas legales. **Al lanzar, cámbiala por la fecha real.**
-
-Si cambias el contenido de las políticas, sube `LEGAL.version`. Los textos son una base redactada según la norma
+Se muestra como «5 de octubre de 2026» en las cuatro páginas legales. Si cambias el contenido de las políticas, sube `LEGAL.version`. Los textos son una base redactada según la norma
 citada; conviene que los revise un abogado antes de lanzar cuentas o pagos.
 
 **Cookies y Google (Consent Mode v2).** El `<head>` de cada página fija por defecto todo en `denied`
