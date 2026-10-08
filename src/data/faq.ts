@@ -15,7 +15,7 @@ export const FAQ: FaqItem[] = [
     id: "que-es-saber-11",
     question: "¿Qué es el examen Saber 11?",
     answer: [
-      "Es el examen de Estado que aplica el ICFES a quienes terminan la educación media (grado 11) en Colombia. Tiene cinco pruebas: Lectura Crítica, Matemáticas, Sociales y Ciudadanas, Ciencias Naturales e Inglés, además de un cuestionario socioeconómico.",
+      "Es el examen de Estado que aplica el ICFES a quienes terminan la educación media (grado 11) en Colombia. Tiene cinco pruebas: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés, además de un cuestionario socioeconómico.",
       "Sus resultados se usan, entre otras cosas, en los procesos de admisión a la educación superior y para acceder a becas y créditos educativos.",
     ],
   },
@@ -31,8 +31,8 @@ export const FAQ: FaqItem[] = [
     id: "como-se-calcula-el-puntaje",
     question: "¿Cómo se calcula el puntaje global del ICFES?",
     answer: [
-      "Cada prueba se califica de 0 a 100 y el puntaje global va de 0 a 500. Se obtiene con un promedio ponderado: Lectura Crítica, Matemáticas, Sociales y Ciudadanas y Ciencias Naturales pesan 3 cada una, e Inglés pesa 1.",
-      "La fórmula oficial es: puntaje global = (3 × Lectura Crítica + 3 × Matemáticas + 3 × Sociales + 3 × Ciencias + 1 × Inglés) ÷ 13 × 5, redondeado al entero más cercano.",
+      "Cada prueba se califica de 0 a 100 y el puntaje global va de 0 a 500. Se obtiene con un promedio ponderado: Lectura crítica, Matemáticas, Sociales y ciudadanas y Ciencias naturales pesan 3 cada una, e Inglés pesa 1.",
+      "La fórmula oficial es: puntaje global = (3 × Lectura crítica + 3 × Matemáticas + 3 × Sociales + 3 × Ciencias + 1 × Inglés) ÷ 13 × 5, redondeado al entero más cercano.",
       "Ejemplo: con 60 en las cuatro primeras pruebas y 50 en Inglés, (720 + 50) ÷ 13 × 5 = 296,2, es decir, 296 puntos.",
     ],
   },

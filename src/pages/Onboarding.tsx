@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Target } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import BrandMark from "@/components/BrandMark";
+import { withMotion } from '@/components/withMotion';
 
 const CAREERS = [
   "Medicina",
@@ -19,7 +20,7 @@ const CAREERS = [
 
 type Step = "score" | "career";
 
-export default function Onboarding() {
+function Onboarding() {
   const { completeOnboarding, progress } = useProgress();
   const editing = progress.hasCompletedOnboarding;
   const [, setLocation] = useLocation();
@@ -226,3 +227,5 @@ export default function Onboarding() {
     </div>
   );
 }
+
+export default withMotion(Onboarding);

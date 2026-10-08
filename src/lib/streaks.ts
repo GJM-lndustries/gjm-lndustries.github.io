@@ -195,7 +195,7 @@ export function weekCalendar(state: StreakState, now: Date = new Date()): { date
   const utc = new Date(Date.UTC(y!, m! - 1, d!));
   const dow = new Date(utc).getUTCDay(); // 0 Sun
   const mondayOffset = dow === 0 ? -6 : 1 - dow;
-  const labels = ["L", "M", "X", "J", "V", "S", "D"];
+  const labels = ["L", "M", "Mi", "J", "V", "S", "D"];
   const out = [];
   for (let i = 0; i < 7; i++) {
     const day = new Date(utc.getTime() + (mondayOffset + i) * 86400000);

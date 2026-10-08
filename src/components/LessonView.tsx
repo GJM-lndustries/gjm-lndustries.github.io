@@ -210,7 +210,7 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
       </div>
       <div className="h-2 bg-muted rounded-full overflow-hidden">
         <div
-          className="h-full bg-brand rounded-full transition-all"
+          className="progress-fill h-full bg-brand rounded-full"
           style={{ width: `${(currentQ / questions.length) * 100}%` }}
         />
       </div>

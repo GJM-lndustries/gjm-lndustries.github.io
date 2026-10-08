@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { Link } from "wouter";
 import {
   BookOpenText, ChartNoAxesColumn, Check, ClipboardList, ListChecks, ShieldCheck, Smartphone, Target, Timer,
@@ -6,7 +5,7 @@ import {
 import FaqList from "@/components/FaqList";
 import { FAQ } from "@/data/faq";
 import { BANK_TOTAL } from "@/data/questions/meta";
-import { questionsByArea } from "@/data/questions";
+import { SAMPLE_QUESTION } from "@/data/questions/sample";
 import { useProgress } from "@/contexts/ProgressContext";
 import { SITE } from "@/config/site";
 import SampleQuestion from "@/components/SampleQuestion";
@@ -61,7 +60,7 @@ export default function Landing() {
   const ctaHref = hasProgress ? "/inicio" : "/meta";
   const ctaLabel = hasProgress ? "Continuar estudiando" : "Empezar gratis";
 
-  const sample = useMemo(() => questionsByArea.matematicas.find(q => !q.stimulusId) ?? questionsByArea.matematicas[0], []);
+  const sample = SAMPLE_QUESTION;
 
   return (
     <div className="min-h-screen bg-canvas text-foreground">

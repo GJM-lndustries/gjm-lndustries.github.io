@@ -104,7 +104,7 @@ const mathLessons: Lesson[] = [
     xp: 60,
     glossary: [
       {
-        term: 'Promedio (Media)',
+        term: 'Promedio (media)',
         simple: 'Es el valor "del medio" cuando sumas todos los datos y los divides entre cuántos son. Como cuando calculas tu promedio de notas.',
         technical: 'Medida de tendencia central que se calcula sumando todos los valores y dividiendo entre el número total de datos.'
       },
@@ -146,7 +146,7 @@ const mathLessons: Lesson[] = [
       {
         type: 'tip',
         title: 'Truco para el ICFES',
-        text: 'Cuando el ICFES pregunte sobre "el valor que más se repite" → Moda. "El valor central" → Mediana. "El valor típico calculado" → Promedio. Lee bien la pregunta, estas palabras clave son tu guía.'
+        text: 'Cuando el ICFES pregunte por "el valor que más se repite", busca la moda. Si dice "el valor central", es la mediana. Si habla del "valor típico calculado", es el promedio. Lee bien la pregunta, estas palabras clave son tu guía.'
       }
     ],
     questionIds: ['math-2-q1', 'math-2-q2']
@@ -253,7 +253,7 @@ const mathLessons: Lesson[] = [
   },
   {
     id: 'math-5',
-    title: 'Probabilidad y Combinatoria',
+    title: 'Probabilidad y combinatoria',
     subtitle: 'Contar posibilidades y calcular probabilidades',
     level: 'avanzado',
     difficulty: 'dificil',
@@ -292,7 +292,7 @@ const mathLessons: Lesson[] = [
         type: 'explanation',
         title: 'Permutaciones y combinaciones',
         text: 'Permutación (orden importa): ¿De cuántas formas puedo ordenar 3 libros en un estante? 3 × 2 × 1 = 6 formas. Combinación (orden no importa): ¿De cuántas formas puedo elegir 2 libros de 5? 5!/(2!×3!) = 10 formas.',
-        highlight: 'La clave: ¿importa el orden? Si sí → permutación. Si no → combinación.'
+        highlight: 'La clave: ¿importa el orden? Si importa, es una permutación. Si no, es una combinación.'
       },
       {
         type: 'example',
@@ -388,7 +388,7 @@ const readingLessons: Lesson[] = [
       {
         type: 'explanation',
         title: 'Tipos de preguntas inferenciales en el ICFES',
-        text: '1. "¿Qué se puede concluir del texto?" → Busca qué se desprende lógicamente de lo que dice. 2. "¿Cuál sería una continuación adecuada?" → El texto debe seguir la misma línea de argumentación. 3. "¿Qué relación hay entre estos fragmentos?" → Identifica si uno apoya, contradice o ejemplifica al otro.',
+        text: '1. "¿Qué se puede concluir del texto?": busca qué se desprende lógicamente de lo que dice. 2. "¿Cuál sería una continuación adecuada?": el texto debe seguir la misma línea de argumentación. 3. "¿Qué relación hay entre estos fragmentos?": identifica si uno apoya, contradice o ejemplifica al otro.',
         highlight: 'La respuesta correcta siempre se puede justificar con algo del texto. Si no puedes justificarla con el texto, probablemente está mal.'
       },
       {
@@ -443,14 +443,14 @@ const readingLessons: Lesson[] = [
       {
         type: 'explanation',
         title: 'Cómo identificar el propósito del autor',
-        text: 'Pregúntate: ¿El autor está dando información neutral? → Informar. ¿Está defendiendo una posición? → Argumentar/Convencer. ¿Está contando una historia? → Narrar. ¿Está describiendo algo? → Describir. La mayoría de textos del ICFES son argumentativos: el autor defiende una idea.',
+        text: 'Pregúntate qué hace el autor. Si da información neutral, su propósito es informar. Si defiende una posición, quiere argumentar o convencer. Si cuenta una historia, su propósito es narrar, y si describe algo, describir. La mayoría de textos del ICFES son argumentativos: el autor defiende una idea.',
         highlight: 'En textos argumentativos, busca la tesis (qué defiende) y los argumentos (cómo lo defiende).'
       },
       {
         type: 'explanation',
         title: 'Estrategias argumentativas más comunes en el ICFES',
         text: '1. Citar expertos: "Según el filósofo X..." 2. Dar ejemplos concretos 3. Usar estadísticas o datos 4. Comparar situaciones 5. Contar una anécdota personal 6. Presentar y refutar el argumento contrario.',
-        highlight: 'El ICFES pregunta: "¿Qué estrategia usa el autor para..." → Identifica cuál de estas está usando.'
+        highlight: 'Cuando el ICFES pregunte "¿Qué estrategia usa el autor para...?", identifica cuál de estas está usando.'
       }
     ],
     questionIds: ['lc-007', 'lc-008', 'lc-015']
@@ -705,7 +705,7 @@ const englishLessons: Lesson[] = [
         type: 'explanation',
         title: 'Tu mejor aliado: los cognados',
         text: 'Muchas palabras en inglés se parecen al español: information=información, important=importante, national=nacional, president=presidente, education=educación, technology=tecnología, communication=comunicación. Si ves una palabra larga en inglés que termina en -tion, -sion, -ity, probablemente tiene un equivalente en español.',
-        highlight: 'Regla de oro: Palabras que terminan en -tion en inglés → -ción en español. Nation → Nación. Action → Acción.'
+        highlight: 'Regla de oro: las palabras que terminan en -tion en inglés suelen terminar en -ción en español: nation es nación y action es acción.'
       },
       {
         type: 'explanation',
@@ -762,7 +762,7 @@ const englishLessons: Lesson[] = [
         type: 'explanation',
         title: 'Simple past: lo que ya pasó',
         text: 'Uso: acciones terminadas en el pasado. Forma: sujeto + verbo-ed (regulares) o forma especial (irregulares). "worked, played, went, came, made". Palabras clave: yesterday, last week, in 1990, ago.',
-        highlight: 'Los verbos irregulares más comunes: go→went, come→came, make→made, take→took, have→had, be→was/were.'
+        highlight: 'Los verbos irregulares más comunes: go (went), come (came), make (made), take (took), have (had), be (was/were).'
       }
     ],
     questionIds: ['eng-2-q1']
@@ -788,7 +788,7 @@ export const modules: Module[] = [
   {
     id: 'lectura',
     area: 'lectura-critica',
-    title: 'Lectura Crítica',
+    title: 'Lectura crítica',
     subtitle: 'Comprensión y análisis de textos',
     description: 'Lee textos de distintos tipos y responde sobre lo que dicen, lo que dan a entender y la intención del autor.',
     color: 'text-amber-700',
@@ -799,7 +799,7 @@ export const modules: Module[] = [
   {
     id: 'ciencias',
     area: 'ciencias-naturales',
-    title: 'Ciencias Naturales',
+    title: 'Ciencias naturales',
     subtitle: 'Biología, química y física',
     description: 'De la célula a las leyes del movimiento, con ejemplos de la vida diaria en Colombia.',
     color: 'text-teal-700',
@@ -810,7 +810,7 @@ export const modules: Module[] = [
   {
     id: 'sociales',
     area: 'sociales-ciudadanas',
-    title: 'Sociales y Ciudadanas',
+    title: 'Sociales y ciudadanas',
     subtitle: 'Historia, geografía y constitución',
     description: 'Historia de Colombia, tus derechos como ciudadano y cómo funciona el Estado.',
     color: 'text-orange-700',

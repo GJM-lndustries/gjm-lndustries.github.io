@@ -10,6 +10,7 @@ import {
   daysBetween,
   formatMs,
   streakBadges,
+  weekCalendar,
   useStreakFreeze,
 } from "./streaks";
 
@@ -78,5 +79,10 @@ describe("streaks", () => {
       expect(frozen.days).toContain("2026-10-06");
       expect(frozen.freezesAvailable).toBe(0);
     }
+  });
+
+  it("la semana usa las iniciales de Colombia: L, M, Mi, J, V, S, D", () => {
+    const labels = weekCalendar(defaultStreakState(new Date("2026-10-08T15:00:00Z")), new Date("2026-10-08T15:00:00Z")).map(d => d.label);
+    expect(labels).toEqual(["L", "M", "Mi", "J", "V", "S", "D"]);
   });
 });

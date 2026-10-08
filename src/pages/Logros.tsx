@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AreaIcon from '@/components/AreaIcon';
+import { withMotion } from '@/components/withMotion';
 
 type BadgeTone = 'navy' | 'orange' | 'green' | 'violet';
 
@@ -67,7 +68,7 @@ function BadgeCard({ badge, earned }: { badge: Badge; earned: boolean }) {
   );
 }
 
-export default function Logros() {
+function Logros() {
   const { progress, estimate } = useProgress();
   
   const totalLessons = modules.reduce((sum, m) => sum + m.lessons.length, 0);
@@ -222,3 +223,5 @@ function StatCard({ icon: Icon, tile, label, value, note }: { icon: LucideIcon; 
     </div>
   );
 }
+
+export default withMotion(Logros);

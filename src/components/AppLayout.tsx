@@ -110,6 +110,9 @@ function AccountChip() {
 function StreakChip() {
   const { progress } = useProgress();
   const n = progress.streakState?.current ?? progress.streak;
+  const s = progress.streakState;
+  // Sin ninguna racha todavía no mostramos un «0»: el reto de /inicio invita a empezar el día 1.
+  if (n === 0 && (!s || (s.longest === 0 && s.days.length === 0))) return null;
   return (
     <Link
       href="/yo"

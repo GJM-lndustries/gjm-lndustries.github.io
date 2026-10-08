@@ -1,12 +1,15 @@
-import { useEffect, useState, type ContextType, type ReactNode } from 'react';
-import { PresenceContext } from 'framer-motion';
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 
-type Presence = ContextType<typeof PresenceContext>;
-const base = { id: 'app', isPresent: true, custom: undefined, onExitComplete: () => {}, register: () => () => {} };
-/** `initial: false`: los componentes `motion` se montan ya en su estado final (sin animación de entrada). */
-const NO_INITIAL_ANIMATION = { ...base, initial: false } as unknown as Presence;
-/** Comportamiento normal. Nunca se usa `null`: framer-motion llama hooks distintos si el contexto es nulo. */
-const NORMAL = { ...base, initial: undefined } as unknown as Presence;
+/**
+ * `true` solo durante la hidratación del HTML prerenderizado (primer montaje en el navegador).
+ * No depende de framer-motion, así la portada no descarga esa librería: las páginas que la usan
+ * leen este valor con `withMotion` (src/components/withMotion.tsx).
+ */
+const HydrationGateContext = createContext(false);
+
+export function useHydrationGate(): boolean {
+  return useContext(HydrationGateContext);
+}
 
 /**
  * Mientras `active`, las animaciones de entrada se omiten: así el HTML prerenderizado es visible
@@ -19,5 +22,5 @@ export default function InitialMotionGate({ active, children }: { active: boolea
   useEffect(() => {
     if (blocking) setBlocking(false);
   }, [blocking]);
-  return <PresenceContext.Provider value={blocking ? NO_INITIAL_ANIMATION : NORMAL}>{children}</PresenceContext.Provider>;
+  return <HydrationGateContext.Provider value={blocking}>{children}</HydrationGateContext.Provider>;
 }

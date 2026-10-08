@@ -12,7 +12,7 @@ Descarga: 5 de octubre de 2026, desde el CDN de Unsplash (`photo-1758525861622-f
 
 ## Ilustraciones y gráficos
 
-- El logo, el ícono de la app y la imagen para redes (`public/og-image.jpg`, `public/splash-1200x630.png`) son diseños propios de ProICFES.
+- El logo, el ícono de la app y la imagen para redes (`public/og-image-v2.jpg`) son diseños propios de ProICFES.
 - La maqueta del celular en la portada es HTML/CSS propio que reproduce la interfaz real de la app.
 - Los íconos de la interfaz son de [Lucide](https://lucide.dev) (licencia ISC).
 

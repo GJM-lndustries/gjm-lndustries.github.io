@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import DailyChallengeCard from '@/components/DailyChallengeCard';
 import AreaIcon from '@/components/AreaIcon';
+import { withMotion } from '@/components/withMotion';
 
 /** Puntaje estimado frente a la meta, con el detalle por área. */
 function GoalCard() {
@@ -42,7 +43,7 @@ function GoalCard() {
       </div>
 
       <div className="relative mt-3 h-2 rounded-full bg-muted" aria-hidden="true">
-        <div className="h-full rounded-full bg-navy transition-all" style={{ width: `${pct}%` }} />
+        <div className="progress-fill h-full rounded-full bg-navy" style={{ width: `${pct}%` }} />
         <span className="absolute -top-1 h-4 w-0.5 rounded-full bg-brand" style={{ left: `${targetPct}%` }} />
       </div>
       <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
@@ -90,7 +91,7 @@ function AreaCard({ module }: { module: typeof modules[0] }) {
       </div>
       <div className="mt-4 flex items-center gap-3">
         <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted" aria-hidden="true">
-          <div className="h-full rounded-full bg-brand" style={{ width: `${pct}%` }} />
+          <div className="progress-fill h-full rounded-full bg-brand" style={{ width: `${pct}%` }} />
         </div>
         <span className="text-xs tabular-nums text-muted-foreground">
           {pct > 0 ? `${pct}%` : `${module.lessons.length} lecciones`}
@@ -107,7 +108,7 @@ const FACTS = [
   { icon: CircleCheck, title: 'Sin penalización', text: 'Una respuesta incorrecta no resta.' },
 ];
 
-export default function Inicio() {
+function Inicio() {
   const { progress } = useProgress();
   const totalLessons = modules.reduce((sum, m) => sum + m.lessons.length, 0);
   const completedCount = progress.completedLessons.filter(l => l.completed).length;
@@ -228,3 +229,5 @@ export default function Inicio() {
     </div>
   );
 }
+
+export default withMotion(Inicio);

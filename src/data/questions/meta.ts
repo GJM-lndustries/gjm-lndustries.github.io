@@ -9,9 +9,9 @@ export const AREA_INFO: Record<
   { label: string; short: string; moduleId: string; weight: number }
 > = {
   matematicas: { label: "Matemáticas", short: "Mate", moduleId: "matematicas", weight: 3 },
-  "lectura-critica": { label: "Lectura Crítica", short: "Lectura", moduleId: "lectura", weight: 3 },
-  "ciencias-naturales": { label: "Ciencias Naturales", short: "Ciencias", moduleId: "ciencias", weight: 3 },
-  "sociales-ciudadanas": { label: "Sociales y Ciudadanas", short: "Sociales", moduleId: "sociales", weight: 3 },
+  "lectura-critica": { label: "Lectura crítica", short: "Lectura", moduleId: "lectura", weight: 3 },
+  "ciencias-naturales": { label: "Ciencias naturales", short: "Ciencias", moduleId: "ciencias", weight: 3 },
+  "sociales-ciudadanas": { label: "Sociales y ciudadanas", short: "Sociales", moduleId: "sociales", weight: 3 },
   ingles: { label: "Inglés", short: "Inglés", moduleId: "ingles", weight: 1 },
 };
 

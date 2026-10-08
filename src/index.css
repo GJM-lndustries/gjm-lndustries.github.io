@@ -208,7 +208,7 @@
   }
   .btn-secondary {
     @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-border bg-card px-5 text-[15px]
-           font-semibold text-navy transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50
+           font-semibold text-navy transition-colors hover:border-navy/30 hover:bg-navy/[0.03] disabled:cursor-not-allowed disabled:opacity-50
            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy;
   }
   .btn-sm {
@@ -288,4 +288,33 @@
     @apply text-primary font-semibold cursor-pointer border-b-2 border-dotted border-primary/50
            hover:border-primary transition-colors;
   }
+}
+
+/* ---- Microinteracciones (sutiles; se apagan con «reducir movimiento») ---- */
+@keyframes pi-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes pi-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+@keyframes pi-rise {
+  from { transform: translateY(4px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@layer utilities {
+  .anim-pop { animation: pi-pop 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .anim-shake { animation: pi-shake 360ms ease-in-out; }
+  .anim-rise { animation: pi-rise 260ms ease-out both; }
+  .progress-fill { transition: width 500ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-pop, .anim-shake, .anim-rise { animation: none !important; }
+  .progress-fill { transition: none !important; }
+  html { scroll-behavior: auto !important; }
 }

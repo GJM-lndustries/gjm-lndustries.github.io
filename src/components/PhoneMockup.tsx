@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { BookOpenText, Calculator, Check, FlaskConical, Flame, Landmark, Languages, PenLine, Target } from "lucide-react";
 
 /**
@@ -5,7 +6,12 @@ import { BookOpenText, Calculator, Check, FlaskConical, Flame, Landmark, Languag
  * real (reto de hoy, meta, áreas) con HTML/CSS propio: no es una foto ni una imagen generada.
  */
 export default function PhoneMockup() {
-  const week = ["L", "M", "M", "J", "V", "S", "D"];
+  const week = ["L", "M", "Mi", "J", "V", "S", "D"];
+  // «Hoy» en el HTML prerenderizado (y en la imagen para redes); la fecha real se pone al montar.
+  const [today, setToday] = useState("Hoy");
+  useEffect(() => {
+    setToday(new Intl.DateTimeFormat("es-CO", { weekday: "long", day: "numeric", month: "long", timeZone: "America/Bogota" }).format(new Date()));
+  }, []);
   return (
     <figure className="relative mx-auto w-full max-w-[300px]" aria-label="Vista de la app ProICFES en un celular: reto de hoy, meta de puntaje y áreas">
       <div className="rounded-[2.75rem] bg-ink p-2.5 shadow-[0_30px_60px_-30px_rgba(15,32,64,0.55)]">
@@ -23,7 +29,7 @@ export default function PhoneMockup() {
 
           <div className="space-y-2.5 p-3">
             <div>
-              <p className="text-[8px] font-semibold uppercase tracking-wider text-muted-foreground">Lunes, 5 de octubre</p>
+              <p className="text-[8px] font-semibold uppercase tracking-wider text-muted-foreground" data-mock-date>{today}</p>
               <p className="font-['Lexend'] text-[15px] font-bold text-ink">Tu plan de hoy</p>
             </div>
 

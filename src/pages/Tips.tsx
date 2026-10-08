@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Lightbulb, Target, Clock, Brain, BookOpen, Calculator } from 'lucide-react';
+import { withMotion } from '@/components/withMotion';
 
 interface TipSection {
   id: string;
@@ -27,7 +28,7 @@ const tipSections: TipSection[] = [
       },
       {
         title: 'Lee las preguntas antes del texto',
-        content: 'En Lectura Crítica, lee primero las preguntas y luego el texto. Así sabes exactamente qué buscar y no pierdes tiempo leyendo lo que no necesitas.'
+        content: 'En Lectura crítica, lee primero las preguntas y luego el texto. Así sabes exactamente qué buscar y no pierdes tiempo leyendo lo que no necesitas.'
       },
       {
         title: 'Elimina opciones incorrectas',
@@ -62,7 +63,7 @@ const tipSections: TipSection[] = [
   {
     id: 'lectura',
     icon: <BookOpen className="w-5 h-5" strokeWidth={1.75} />,
-    title: 'Lectura Crítica',
+    title: 'Lectura crítica',
     color: 'bg-amber-50 text-amber-700',
     tips: [
       {
@@ -79,14 +80,14 @@ const tipSections: TipSection[] = [
       },
       {
         title: 'Los conectores son clave',
-        content: '"Sin embargo", "pero", "aunque" → contraste. "Por lo tanto", "entonces", "así que" → conclusión. "Porque", "ya que", "puesto que" → causa. Identificar el conector te dice la relación entre las ideas.'
+        content: '"Sin embargo", "pero" y "aunque" indican contraste. "Por lo tanto", "entonces" y "así que" indican conclusión. "Porque", "ya que" y "puesto que" indican causa. Identificar el conector te dice la relación entre las ideas.'
       }
     ]
   },
   {
     id: 'ciencias',
     icon: <Brain className="w-5 h-5" strokeWidth={1.75} />,
-    title: 'Ciencias Naturales',
+    title: 'Ciencias naturales',
     color: 'bg-teal-50 text-teal-700',
     tips: [
       {
@@ -140,13 +141,13 @@ function TipCard({ section }: { section: TipSection }) {
         aria-expanded={expanded}
         className="w-full flex items-center justify-between gap-3 p-4 text-left"
       >
-        <div className="flex items-center gap-3">
+        <span className="flex items-center gap-3">
           <span className={`icon-tile ${section.color}`} aria-hidden="true">{section.icon}</span>
           <span>
             <span className="block font-['Lexend'] text-[15px] font-semibold text-foreground">{section.title}</span>
             <span className="block text-xs text-muted-foreground">{section.tips.length} consejos</span>
           </span>
-        </div>
+        </span>
         {expanded ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
       </button>
       
@@ -163,12 +164,13 @@ function TipCard({ section }: { section: TipSection }) {
                 <div key={idx} className="overflow-hidden rounded-xl border border-border bg-card">
                   <button
                     onClick={() => setOpenTip(openTip === idx ? null : idx)}
+                    aria-expanded={openTip === idx}
                     className="w-full flex items-center justify-between p-3 text-left"
                   >
-                    <div className="flex items-center gap-2">
+                    <span className="flex items-center gap-2">
                       <Lightbulb className="w-4 h-4 text-amber-600 flex-shrink-0" strokeWidth={1.75} aria-hidden="true" />
                       <span className="text-sm font-semibold text-foreground">{tip.title}</span>
-                    </div>
+                    </span>
                     {openTip === idx ? (
                       <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                     ) : (
@@ -199,7 +201,7 @@ function TipCard({ section }: { section: TipSection }) {
   );
 }
 
-export default function Tips() {
+function Tips() {
   return (
     <div className="space-y-5">
       <header>
@@ -230,3 +232,5 @@ export default function Tips() {
     </div>
   );
 }
+
+export default withMotion(Tips);

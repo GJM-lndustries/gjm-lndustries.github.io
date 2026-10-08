@@ -491,7 +491,7 @@
     ],
     "answer": "a",
     "explanation": "Si llega menos papa a los mercados (menor oferta) y las personas siguen queriendo comprar la misma cantidad (demanda estable), el precio tiende a subir. Es la ley de la oferta y la demanda.",
-    "tip": "Oferta baja con demanda igual → precio sube; oferta alta con demanda igual → precio baja.",
+    "tip": "Si la oferta baja y la demanda sigue igual, el precio sube; si la oferta sube y la demanda sigue igual, el precio baja.",
     "source": "original",
     "reviewed": false
   },
@@ -741,7 +741,7 @@
     ],
     "answer": "a",
     "explanation": "La migración del campo a la ciudad y el desplazamiento forzado aumentaron rápidamente la población urbana. Muchas familias se asentaron en zonas periféricas que crecieron más rápido que la capacidad de las ciudades para dotarlas de servicios, vivienda y empleo formal.",
-    "tip": "Relaciona procesos: violencia y falta de oportunidades en el campo → migración → crecimiento urbano desordenado.",
+    "tip": "Relaciona procesos: violencia y falta de oportunidades en el campo llevan a la migración, y la migración, a un crecimiento urbano desordenado.",
     "source": "original",
     "reviewed": false
   },

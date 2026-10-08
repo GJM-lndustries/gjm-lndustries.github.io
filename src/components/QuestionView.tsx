@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, XCircle, Lightbulb } from "lucide-react";
 import {
@@ -9,6 +10,7 @@ import {
 } from "@/data/questions";
 import RichText from "./RichText";
 import AreaIcon from "@/components/AreaIcon";
+import { haptic } from "@/lib/feedback";
 
 interface QuestionViewProps {
   question: Question;
@@ -28,6 +30,12 @@ export default function QuestionView({
 }: QuestionViewProps) {
   const stimulus = getStimulus(question.stimulusId);
   const isCorrect = selected === question.answer;
+
+  // Vibración corta al ver la retroalimentación (solo Android; nada con «reducir movimiento»).
+  useEffect(() => {
+    if (answered && selected != null) haptic(isCorrect ? 12 : [24, 50, 24]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [answered]);
 
   return (
     <div className="space-y-4">
@@ -96,7 +104,7 @@ export default function QuestionView({
               key={option.id}
               type="button"
               whileTap={!answered ? { scale: 0.98 } : {}}
-              className={`w-full text-left ${className}`}
+              className={`w-full text-left ${className}${markWrong ? " anim-shake" : ""}`}
               onClick={() => onSelect(option.id)}
               disabled={answered}
               aria-pressed={option.id === selected}
@@ -115,13 +123,13 @@ export default function QuestionView({
               <span className="text-sm">{option.text}</span>
               {markCorrect && (
                 <CheckCircle2
-                  className="w-5 h-5 text-green-500 ml-auto flex-shrink-0"
+                  className="anim-pop w-5 h-5 text-green-500 ml-auto flex-shrink-0"
                   aria-label="Respuesta correcta"
                 />
               )}
               {markWrong && (
                 <XCircle
-                  className="w-5 h-5 text-red-500 ml-auto flex-shrink-0"
+                  className="anim-pop w-5 h-5 text-red-500 ml-auto flex-shrink-0"
                   aria-label="Tu respuesta (incorrecta)"
                 />
               )}
@@ -140,7 +148,7 @@ export default function QuestionView({
           >
             <div className="flex items-center gap-2 mb-2">
               {isCorrect ? (
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <CheckCircle2 className="anim-pop w-5 h-5 text-green-600" />
               ) : (
                 <XCircle className="w-5 h-5 text-red-600" />
               )}

@@ -10,6 +10,7 @@ import {
   type AreaId, type Question,
 } from '@/data/questions';
 import AreaIcon from '@/components/AreaIcon';
+import { withMotion } from '@/components/withMotion';
 
 type Phase = 'setup' | 'running' | 'summary';
 type AreaFilter = AreaId | 'todas';
@@ -40,7 +41,7 @@ function isAreaId(v: string | null): v is AreaId {
   return !!v && (AREA_IDS as string[]).includes(v);
 }
 
-export default function Practica() {
+function Practica() {
   const params = new URLSearchParams(useSearch());
   const areaParam = params.get('area');
   const repasoParam = params.get('repaso') === '1';
@@ -155,7 +156,7 @@ export default function Practica() {
                     <span className="font-semibold text-foreground">{v.ok}/{v.total}</span>
                   </div>
                   <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-brand rounded-full" style={{ width: `${(v.ok / v.total) * 100}%` }} />
+                    <div className="progress-fill h-full bg-brand rounded-full" style={{ width: `${(v.ok / v.total) * 100}%` }} />
                   </div>
                 </div>
               ))}
@@ -381,3 +382,4 @@ export default function Practica() {
   );
 }
 
+export default withMotion(Practica);

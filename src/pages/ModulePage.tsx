@@ -7,12 +7,13 @@ import AreaIcon from '@/components/AreaIcon';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { questionsByArea } from '@/data/questions';
+import { withMotion } from '@/components/withMotion';
 
 interface ModulePageProps {
   module: Module;
 }
 
-export default function ModulePage({ module }: ModulePageProps) {
+function ModulePage({ module }: ModulePageProps) {
   const [selectedLesson, setSelectedLesson] = useState<string | null>(null);
   const [selectedTerm, setSelectedTerm] = useState<{ term: string; simple: string; technical: string } | null>(null);
   const { getModuleProgress, isLessonCompleted, getLessonProgress } = useProgress();
@@ -171,9 +172,9 @@ export default function ModulePage({ module }: ModulePageProps) {
                     onClick={() => openLesson(lesson.id)}
                     className="card w-full p-4 text-left transition-colors hover:border-navy/30"
                   >
-                    <div className="flex items-start gap-3">
+                    <span className="flex items-start gap-3">
                       {/* Number/Check */}
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                      <span className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
                         completed ? 'bg-green-100' : 'bg-primary/10'
                       }`}>
                         {completed ? (
@@ -181,14 +182,14 @@ export default function ModulePage({ module }: ModulePageProps) {
                         ) : (
                           <span className="text-primary font-bold text-sm font-['Lexend']">{idx + 1}</span>
                         )}
-                      </div>
+                      </span>
                       
                       {/* Content */}
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-sm font-['Lexend'] text-foreground leading-tight">{lesson.title}</h3>
-                        <p className="text-xs text-muted-foreground mt-0.5">{lesson.subtitle}</p>
+                      <span className="flex-1 min-w-0">
+                        <span className="block font-bold text-sm font-['Lexend'] text-foreground leading-tight">{lesson.title}</span>
+                        <span className="block text-xs text-muted-foreground mt-0.5">{lesson.subtitle}</span>
                         
-                        <div className="flex items-center gap-2 mt-2 flex-wrap">
+                        <span className="flex items-center gap-2 mt-2 flex-wrap">
                           <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${difficultyColor[lesson.difficulty]}`}>
                             {difficultyLabel[lesson.difficulty]}
                           </span>
@@ -205,11 +206,11 @@ export default function ModulePage({ module }: ModulePageProps) {
                               {lessonProg.score} % en la práctica
                             </span>
                           )}
-                        </div>
-                      </div>
+                        </span>
+                      </span>
                       
                       <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1" />
-                    </div>
+                    </span>
                   </motion.button>
                 );
               })}
@@ -283,3 +284,5 @@ export default function ModulePage({ module }: ModulePageProps) {
     </div>
   );
 }
+
+export default withMotion(ModulePage);

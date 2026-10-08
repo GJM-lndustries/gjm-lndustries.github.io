@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from "react";
+import { useEffect } from "react";
 import { Route, Switch, useLocation } from "wouter";
 import { Toaster } from "@/components/ui/sonner";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -9,12 +9,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { usePWA } from "./hooks/usePWA";
 import { modules } from "./lib/appData";
 import Landing from "./pages/Landing";
-import Inicio from "./pages/Inicio";
-import Logros from "./pages/Logros";
-import Glosario from "./pages/Glosario";
-import Tips from "./pages/Tips";
 import Leaderboard from "./pages/Leaderboard";
-import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
 import Cuenta from "./pages/Cuenta";
@@ -25,9 +20,8 @@ import { ConsentProvider } from "./contexts/ConsentContext";
 import { useSeo } from "./seo/useSeo";
 import { PageLoading } from "./lib/lazyPage";
 import { Cookies, PoliticaPrivacidad, Terminos, TratamientoDatos } from "./pages/legal";
-import { ModulePage, Practica, Simulacro } from "./pages/lazyRoutes";
+import { Analytics, Glosario, Inicio, Logros, ModulePage, Onboarding, Practica, Simulacro, Tips } from "./pages/lazyRoutes";
 
-const Analytics = lazy(() => import("./pages/Analytics"));
 
 
 function Redirect({ to }: { to: string }) {
@@ -77,11 +71,7 @@ function AppContent() {
             <Route path="/creditos" component={Creditos} />
             <Route path="/leaderboard" component={Leaderboard} />
             <Route path="/cuenta" component={Cuenta} />
-            <Route path="/analytics">
-              <Suspense fallback={<PageLoading />}>
-                <Analytics />
-              </Suspense>
-            </Route>
+            <Route path="/analytics" component={Analytics} />
             {modules.map(module => (
               <Route key={module.id} path={`/${module.id}`}>
                 <ModulePage key={module.id} module={module} />

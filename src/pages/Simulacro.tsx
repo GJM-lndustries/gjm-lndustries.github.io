@@ -48,6 +48,7 @@ import {
   type SimulacroResult,
 } from "@/lib/simulacro";
 import AreaIcon from "@/components/AreaIcon";
+import { withMotion } from '@/components/withMotion';
 
 const BANK_COUNTS = Object.fromEntries(
   AREA_IDS.map(a => [a, questionsByArea[a].length])
@@ -81,7 +82,7 @@ function newSeed(): number {
   return Math.floor(Math.random() * 2 ** 32);
 }
 
-export default function Simulacro() {
+function Simulacro() {
   // Primer render igual en el prerender y en el navegador: el intento guardado se carga después.
   const [attempt, setAttempt] = useState<SimulacroAttempt | null>(null);
   const [loaded, setLoaded] = useState(false);
@@ -476,7 +477,7 @@ function Exam({
           aria-hidden="true"
         >
           <div
-            className="h-full bg-primary rounded-full transition-all"
+            className="progress-fill h-full bg-primary rounded-full"
             style={{ width: `${(answeredCount / ids.length) * 100}%` }}
           />
         </div>
@@ -818,8 +819,8 @@ function Results({
           {result.total - result.answered} sin responder
         </p>
         <p className="text-xs text-white/60 mt-3 max-w-md mx-auto">
-          Estimado con la ponderación oficial: Matemáticas, Lectura Crítica,
-          Sociales y Ciudadanas y Ciencias Naturales valen 3 cada una e Inglés
+          Estimado con la ponderación oficial: Matemáticas, Lectura crítica,
+          Sociales y ciudadanas y Ciencias naturales valen 3 cada una e Inglés
           vale 1; la suma se divide entre 13 y se multiplica por 5. No es el
           puntaje oficial del ICFES.
         </p>
@@ -1045,3 +1046,5 @@ function ReviewItem({
     </li>
   );
 }
+
+export default withMotion(Simulacro);

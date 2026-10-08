@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { AlertCircle, Target, TrendingUp, PenLine } from 'lucide-react';
+import { AlertCircle, Target, TrendingUp, PenLine, BarChart3 } from 'lucide-react';
 import { useProgress } from '@/contexts/ProgressContext';
 import { modules } from '@/lib/appData';
 import { AREA_INFO } from '@/data/questions/meta';
 import { AREA_IDS } from '@/data/questions/types';
 import { MIN_ANSWERS_PER_AREA } from '@/lib/score';
 import AreaIcon from '@/components/AreaIcon';
+import { withMotion } from '@/components/withMotion';
 
-export default function Analytics() {
+function Analytics() {
   const { progress, estimate, getModuleProgress } = useProgress();
   // Las gráficas miden el contenedor: se dibujan solo en el navegador (no en el prerender).
   const [mounted, setMounted] = useState(false);
@@ -28,8 +29,11 @@ export default function Analytics() {
     aciertos: Math.round(score),
   }));
 
+  const totalAnswered = AREA_IDS.reduce((n, a) => n + (progress.areaStats[a]?.answered ?? 0), 0);
+  const isEmpty = totalAnswered === 0 && progress.simulacroScores.length === 0;
+
   const recommendations: { type: 'warning' | 'info' | 'success'; text: string; icon: typeof AlertCircle }[] = [];
-  if (estimate.missingAreas.length > 0) {
+  if (!isEmpty && estimate.missingAreas.length > 0) {
     recommendations.push({
       type: 'info',
       icon: PenLine,
@@ -68,14 +72,26 @@ export default function Analytics() {
       {/* Puntaje estimado */}
       <section className="bg-navy rounded-2xl p-6 text-white">
         <h2 className="text-white/70 text-sm font-medium">Puntaje global estimado</h2>
-        <p className="text-5xl font-bold font-['Lexend'] text-brand mt-1">
-          {estimate.global ?? '—'}
-          <span className="text-white/50 text-lg ml-1">/500</span>
-        </p>
-        <p className="text-xs text-white/70 mt-2 max-w-xl">
-          Se calcula con la ponderación oficial del Saber 11: (3 × Lectura + 3 × Matemáticas + 3 × Sociales + 3 × Ciencias + 1 × Inglés) ÷ 13 × 5,
-          usando tu porcentaje de aciertos en cada área. Es una referencia para estudiar, no un resultado oficial.
-        </p>
+        {estimate.global != null ? (
+          <p className="text-5xl font-bold font-['Lexend'] text-brand mt-1">
+            {estimate.global}
+            <span className="text-white/50 text-lg ml-1">/500</span>
+          </p>
+        ) : (
+          <>
+            <p className="mt-2 font-['Lexend'] text-2xl font-bold text-white">Aún sin estimado</p>
+            <p className="mt-1 max-w-xl text-sm text-white/80">
+              Responde al menos {MIN_ANSWERS_PER_AREA} preguntas en cada una de las cinco áreas y aquí verás tu puntaje de 0 a 500.
+            </p>
+          </>
+        )}
+        <details className="group mt-3 max-w-xl text-xs text-white/70">
+          <summary className="cursor-pointer select-none font-semibold text-white/85 hover:text-white">¿Cómo se calcula?</summary>
+          <p className="mt-2">
+            Con la ponderación oficial del Saber 11: (3 × Lectura + 3 × Matemáticas + 3 × Sociales + 3 × Ciencias + 1 × Inglés) ÷ 13 × 5,
+            usando tu porcentaje de aciertos en cada área. Es una referencia para estudiar, no un resultado oficial.
+          </p>
+        </details>
       </section>
 
       {recommendations.length > 0 && (
@@ -96,30 +112,54 @@ export default function Analytics() {
         </section>
       )}
 
-      <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="card p-6">
-        <h2 className="font-bold font-['Lexend'] text-foreground mb-1">Aciertos por área</h2>
-        <p className="text-xs text-muted-foreground mb-4">Incluye lecciones, modo práctica y simulacros.</p>
-        {mounted ? (
-          <ResponsiveContainer width="100%" height={260}>
-            <BarChart data={accuracyData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-            <XAxis dataKey="name" stroke="#6b7280" fontSize={12} />
-            <YAxis stroke="#6b7280" domain={[0, 100]} unit="%" fontSize={12} />
-            <Tooltip formatter={(value: number, _n, item) => (item.payload.sinDatos ? 'Sin datos suficientes' : `${value}%`)} />
-            <Bar dataKey="aciertos" radius={[8, 8, 0, 0]}>
-              {accuracyData.map(d => <Cell key={d.name} fill={d.sinDatos ? '#cbd5e1' : '#4ade80'} />)}
-            </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        ) : (
-          <div className="h-[260px]" aria-hidden="true" />
-        )}
-        <ul className="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-xs text-muted-foreground">
-          {accuracyData.map(d => (
-            <li key={d.name}>{d.name}: {d.respondidas} {d.respondidas === 1 ? 'respuesta' : 'respuestas'}</li>
-          ))}
-        </ul>
-      </motion.section>
+      {isEmpty ? (
+        <section className="card p-6 text-center" aria-labelledby="sin-datos">
+          <span className="icon-tile mx-auto h-12 w-12 bg-blue-50 text-blue-700" aria-hidden="true">
+            <BarChart3 className="h-6 w-6" strokeWidth={1.75} />
+          </span>
+          <h2 id="sin-datos" className="mt-3 font-bold font-['Lexend'] text-foreground">Todavía no hay respuestas</h2>
+          <p className="mx-auto mt-1 max-w-sm text-sm text-muted-foreground">
+            Responde {MIN_ANSWERS_PER_AREA} preguntas por área para ver tu puntaje estimado y tus aciertos en cada prueba.
+          </p>
+          <ul className="mx-auto mt-5 max-w-sm space-y-2 text-left" aria-label="Preguntas que faltan por área">
+            {AREA_IDS.map(a => (
+              <li key={a} className="flex items-center gap-3 rounded-xl border border-border px-3 py-2">
+                <AreaIcon area={a} size="sm" />
+                <span className="flex-1 text-sm text-foreground">{AREA_INFO[a].label}</span>
+                <span className="text-xs tabular-nums text-muted-foreground">0 de {MIN_ANSWERS_PER_AREA}</span>
+              </li>
+            ))}
+          </ul>
+          <Link href="/practica?area=todas" className="btn-primary mt-5 w-full sm:w-auto">
+            <PenLine className="h-4 w-4" aria-hidden="true" /> Empezar a practicar
+          </Link>
+        </section>
+      ) : (
+        <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="card p-6">
+          <h2 className="font-bold font-['Lexend'] text-foreground mb-1">Aciertos por área</h2>
+          <p className="text-xs text-muted-foreground mb-4">Incluye lecciones, modo práctica y simulacros.</p>
+          {mounted ? (
+            <ResponsiveContainer width="100%" height={260}>
+              <BarChart data={accuracyData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis dataKey="name" stroke="#6b7280" fontSize={11} interval={0} tickMargin={6} />
+              <YAxis stroke="#6b7280" domain={[0, 100]} unit="%" fontSize={12} />
+              <Tooltip formatter={(value: number, _n, item) => (item.payload.sinDatos ? 'Sin datos suficientes' : `${value}%`)} />
+              <Bar dataKey="aciertos" radius={[8, 8, 0, 0]}>
+                {accuracyData.map(d => <Cell key={d.name} fill={d.sinDatos ? '#cbd5e1' : '#4ade80'} />)}
+              </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="h-[260px]" aria-hidden="true" />
+          )}
+          <ul className="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-3 text-xs text-muted-foreground">
+            {accuracyData.map(d => (
+              <li key={d.name}>{d.name}: {d.respondidas} {d.respondidas === 1 ? 'respuesta' : 'respuestas'}</li>
+            ))}
+          </ul>
+        </motion.section>
+      )}
 
       {simulacroData.length > 0 && (
         <section className="card p-6">
@@ -151,7 +191,7 @@ export default function Analytics() {
                   <span className="font-semibold text-foreground">{done}/{m.lessons.length}</span>
                 </div>
                 <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-brand rounded-full" style={{ width: `${pct}%` }} />
+                  <div className="progress-fill h-full bg-brand rounded-full" style={{ width: `${pct}%` }} />
                 </div>
               </div>
             );
@@ -175,3 +215,5 @@ export default function Analytics() {
     </div>
   );
 }
+
+export default withMotion(Analytics);

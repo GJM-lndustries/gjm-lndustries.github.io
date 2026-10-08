@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { modules, allGlossaryTerms } from '@/lib/appData';
 import { Search, BookOpen, ChevronDown, ChevronUp, SearchX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { withMotion } from '@/components/withMotion';
 
 interface TermCardProps {
   term: string;
@@ -16,14 +17,15 @@ function TermCard({ term, simple, technical }: TermCardProps) {
     <div className="card overflow-hidden">
       <button
         onClick={() => setExpanded(!expanded)}
+        aria-expanded={expanded}
         className="w-full flex items-center justify-between p-4 text-left hover:bg-muted/30 transition-colors"
       >
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+        <span className="flex items-center gap-3">
+          <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
             <BookOpen className="w-4 h-4 text-primary" />
-          </div>
+          </span>
           <span className="font-semibold text-foreground font-['Lexend'] text-sm">{term}</span>
-        </div>
+        </span>
         {expanded ? (
           <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
         ) : (
@@ -60,7 +62,7 @@ function TermCard({ term, simple, technical }: TermCardProps) {
   );
 }
 
-export default function Glosario() {
+function Glosario() {
   const [search, setSearch] = useState('');
   const [activeModule, setActiveModule] = useState<string | null>(null);
 
@@ -102,7 +104,7 @@ export default function Glosario() {
         <button
           onClick={() => setActiveModule(null)}
           className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-            !activeModule ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/70'
+            !activeModule ? 'bg-navy text-white' : 'border border-border bg-card text-foreground hover:border-navy/30'
           }`}
         >
           Todos ({uniqueTerms.length})
@@ -115,7 +117,7 @@ export default function Glosario() {
               key={mod}
               onClick={() => setActiveModule(activeModule === mod ? null : mod)}
               className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-                activeModule === mod ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/70'
+                activeModule === mod ? 'bg-navy text-white' : 'border border-border bg-card text-foreground hover:border-navy/30'
               }`}
             >
               {mod} ({count})
@@ -145,3 +147,5 @@ export default function Glosario() {
     </div>
   );
 }
+
+export default withMotion(Glosario);
