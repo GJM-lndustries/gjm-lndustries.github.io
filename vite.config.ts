@@ -15,6 +15,8 @@ export default defineConfig(({ isSsrBuild }) => ({
   build: {
     outDir: isSsrBuild ? "dist-ssr" : "dist",
     emptyOutDir: true,
+    // scripts/postbuild.mjs lo usa para precargar el archivo JS de cada ruta (y lo borra después).
+    manifest: !isSsrBuild,
     rollupOptions: {
       // Separa librerías grandes para aprovechar mejor la caché del navegador
       // (no aplica al build de prerender, que corre en Node).

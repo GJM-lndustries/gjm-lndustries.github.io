@@ -1,106 +1,74 @@
+import { Link } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
 import { modules } from '@/lib/appData';
-import { Star, Flame, BookOpen, Target } from 'lucide-react';
+import {
+  Star, Flame, BookOpen, Target, Footprints, BookMarked, Medal, Gem, Trophy, CalendarCheck, Mountain, Lock, CircleCheckBig,
+  type LucideIcon,
+} from 'lucide-react';
 import { motion } from 'framer-motion';
+import AreaIcon from '@/components/AreaIcon';
+import { withMotion } from '@/components/withMotion';
+
+type BadgeTone = 'navy' | 'orange' | 'green' | 'violet';
 
 interface Badge {
   id: string;
-  icon: string;
+  icon: LucideIcon;
+  tone: BadgeTone;
   title: string;
   description: string;
   condition: string;
 }
 
+/** Mismo diseño para todas las insignias: icono lucide en un cuadro redondeado del color de su categoría. */
+const TONES: Record<BadgeTone, string> = {
+  navy: 'bg-navy/5 text-navy ring-navy/15',
+  orange: 'bg-orange-50 text-orange-700 ring-orange-200',
+  green: 'bg-brand-soft text-green-700 ring-green-200',
+  violet: 'bg-violet-50 text-violet-700 ring-violet-200',
+};
+
 const allBadges: Badge[] = [
-  {
-    id: 'primer_paso',
-    icon: '👣',
-    title: 'Primer Paso',
-    description: 'Completaste tu primera lección',
-    condition: 'Completa 1 lección'
-  },
-  {
-    id: 'cinco_lecciones',
-    icon: '📚',
-    title: 'Estudiante Dedicado',
-    description: 'Completaste 5 lecciones',
-    condition: 'Completa 5 lecciones'
-  },
-  {
-    id: 'racha_3',
-    icon: '🔥',
-    title: 'En Racha',
-    description: 'Estudiaste 3 días seguidos',
-    condition: '3 días de racha'
-  },
-  {
-    id: 'perfecto',
-    icon: '⭐',
-    title: 'Perfecto',
-    description: 'Obtuviste 100% en un quiz',
-    condition: '100% en un quiz'
-  },
-  {
-    id: 'simulacro_70',
-    icon: '🎯',
-    title: 'Buen Simulacro',
-    description: 'Obtuviste 70%+ en un simulacro',
-    condition: '70%+ en simulacro'
-  },
-  {
-    id: 'xp_500',
-    icon: '💎',
-    title: 'Acumulador',
-    description: 'Acumulaste 500 XP',
-    condition: '500 XP totales'
-  },
-  {
-    id: 'modulo_completo',
-    icon: '🏆',
-    title: 'Módulo Completo',
-    description: 'Completaste todas las lecciones de un módulo',
-    condition: 'Completa un módulo'
-  },
-  {
-    id: 'racha_7',
-    icon: '🌟',
-    title: 'Semana Perfecta',
-    description: 'Estudiaste 7 días seguidos',
-    condition: '7 días de racha'
-  }
+  { id: 'primer_paso', icon: Footprints, tone: 'navy', title: 'Primer paso', description: 'Completaste tu primera lección', condition: 'Completa 1 lección' },
+  { id: 'cinco_lecciones', icon: BookMarked, tone: 'navy', title: 'Constancia', description: 'Completaste 5 lecciones', condition: 'Completa 5 lecciones' },
+  { id: 'modulo_completo', icon: Trophy, tone: 'navy', title: 'Área completa', description: 'Terminaste todas las lecciones de un área', condition: 'Completa un área' },
+  { id: 'racha_3', icon: Flame, tone: 'orange', title: 'En racha', description: 'Cumpliste el reto 3 días seguidos', condition: '3 días de racha' },
+  { id: 'racha_7', icon: CalendarCheck, tone: 'orange', title: 'Semana completa', description: 'Cumpliste el reto 7 días seguidos', condition: '7 días de racha' },
+  { id: 'racha_30', icon: Mountain, tone: 'orange', title: 'Un mes sin parar', description: 'Cumpliste el reto 30 días seguidos', condition: '30 días de racha' },
+  { id: 'perfecto', icon: CircleCheckBig, tone: 'green', title: 'Sin errores', description: 'Sacaste 100 % en la práctica de una lección', condition: '100 % en una lección' },
+  { id: 'simulacro_70', icon: Medal, tone: 'green', title: 'Buen simulacro', description: 'Sacaste 70 % o más en un simulacro', condition: '70 % en un simulacro' },
+  { id: 'xp_500', icon: Gem, tone: 'violet', title: '500 XP', description: 'Acumulaste 500 puntos de experiencia', condition: 'Llega a 500 XP' },
 ];
 
 function BadgeCard({ badge, earned }: { badge: Badge; earned: boolean }) {
+  const Icon = badge.icon;
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className={`rounded-xl border p-4 text-center transition-all ${
-        earned 
-          ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200 shadow-md' 
-          : 'bg-muted/30 border-border opacity-50'
-      }`}
-    >
-      <div className={`text-4xl mb-2 ${!earned ? 'grayscale' : ''}`}>
-        {earned ? badge.icon : '🔒'}
-      </div>
-      <h3 className={`font-bold text-sm font-['Lexend'] ${earned ? 'text-foreground' : 'text-muted-foreground'}`}>
+    <li className={`card flex flex-col items-center p-4 text-center ${earned ? '' : 'bg-muted/40 shadow-none'}`}>
+      <span className="relative">
+        <span
+          className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl ring-1 ring-inset ${
+            earned ? TONES[badge.tone] : 'bg-muted text-muted-foreground/60 ring-border'
+          }`}
+          aria-hidden="true"
+        >
+          <Icon className="h-7 w-7" strokeWidth={1.75} />
+        </span>
+        {!earned && (
+          <span className="absolute -bottom-1 -right-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-card text-muted-foreground" aria-hidden="true">
+            <Lock className="h-3 w-3" />
+          </span>
+        )}
+      </span>
+      <h3 className={`mt-3 font-['Lexend'] text-sm font-semibold ${earned ? 'text-foreground' : 'text-muted-foreground'}`}>
         {badge.title}
       </h3>
-      <p className={`text-xs mt-1 ${earned ? 'text-muted-foreground' : 'text-muted-foreground/60'}`}>
-        {earned ? badge.description : badge.condition}
-      </p>
-      {earned && (
-        <div className="mt-2 inline-flex items-center gap-1 bg-yellow-100 text-yellow-700 text-xs px-2 py-0.5 rounded-full">
-          <Star className="w-3 h-3 fill-current" />
-          Ganada
-        </div>
-      )}
-    </motion.div>
+      <p className="mt-1 text-xs text-muted-foreground">{earned ? badge.description : badge.condition}</p>
+      <span className="sr-only">{earned ? 'Insignia ganada' : 'Insignia bloqueada'}</span>
+    </li>
   );
 }
 
-export default function Logros() {
+function Logros() {
   const { progress, estimate } = useProgress();
   
   const totalLessons = modules.reduce((sum, m) => sum + m.lessons.length, 0);
@@ -115,7 +83,7 @@ export default function Logros() {
   // Dynamic badge checks
   if (progress.simulacroScores.some(s => s >= 70)) earnedBadgeIds.add('simulacro_70');
   if (progress.totalXp >= 500) earnedBadgeIds.add('xp_500');
-  if (progress.streak >= 7) earnedBadgeIds.add('racha_7');
+  
   
   // Check module completion
   modules.forEach(module => {
@@ -128,51 +96,21 @@ export default function Logros() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Mis Logros</h1>
-        <p className="text-muted-foreground mt-1">Tu progreso en ProICFES</p>
-      </div>
+      <header>
+        <h1 className="page-title">Logros</h1>
+        <p className="mt-1 text-[15px] text-muted-foreground">Tus insignias y tu avance en ProICFES.</p>
+      </header>
 
-      {/* Stats Overview */}
-      <div className="grid grid-cols-2 gap-3">
-        <div className="bg-gradient-to-br from-[#1e3a5f] to-[#0f2040] rounded-xl p-4 text-white">
-          <div className="flex items-center gap-2 mb-1">
-            <Target className="w-5 h-5 text-[#4ade80]" />
-            <span className="text-sm text-white/80">Puntaje global estimado</span>
-          </div>
-          <p className="text-3xl font-bold font-['Lexend'] text-[#4ade80]">{estimate.global ?? '—'}</p>
-          <p className="text-xs text-white/70 mt-1">{estimate.global == null ? 'Responde preguntas de las 5 áreas' : 'de 500 (estimado)'}</p>
-        </div>
-        <div className="bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl p-4 text-white">
-          <div className="flex items-center gap-2 mb-1">
-            <Star className="w-5 h-5 text-white fill-white" />
-            <span className="text-sm text-white/80">XP Totales</span>
-          </div>
-          <p className="text-3xl font-bold font-['Lexend']">{progress.totalXp}</p>
-          <p className="text-xs text-white/70 mt-1">puntos de experiencia</p>
-        </div>
-        <div className="bg-card rounded-xl border border-border p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <BookOpen className="w-5 h-5 text-primary" />
-            <span className="text-sm text-muted-foreground">Lecciones</span>
-          </div>
-          <p className="text-3xl font-bold font-['Lexend'] text-foreground">{completedLessons}</p>
-          <p className="text-xs text-muted-foreground mt-1">de {totalLessons} completadas</p>
-        </div>
-        <div className="bg-card rounded-xl border border-border p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <Flame className="w-5 h-5 text-orange-500" />
-            <span className="text-sm text-muted-foreground">Racha</span>
-          </div>
-          <p className="text-3xl font-bold font-['Lexend'] text-foreground">{progress.streak}</p>
-          <p className="text-xs text-muted-foreground mt-1">días seguidos</p>
-        </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <StatCard icon={Target} tile="bg-brand-soft text-green-700" label="Puntaje estimado" value={`${estimate.global ?? '—'}`} note={estimate.global == null ? 'Responde en las 5 áreas' : 'de 500'} />
+        <StatCard icon={Star} tile="bg-violet-50 text-violet-700" label="Experiencia" value={`${progress.totalXp}`} note="XP" />
+        <StatCard icon={BookOpen} tile="bg-navy/5 text-navy" label="Lecciones" value={`${completedLessons}`} note={`de ${totalLessons}`} />
+        <StatCard icon={Flame} tile="bg-orange-50 text-orange-700" label="Racha" value={`${progress.streakState?.current ?? progress.streak}`} note="días seguidos" />
       </div>
 
       {/* Progress by module */}
-      <div className="bg-card rounded-xl border border-border p-4">
-        <h2 className="font-bold font-['Lexend'] text-foreground mb-4">Progreso por área</h2>
+      <div className="card p-5">
+        <h2 className="section-title mb-4">Progreso por área</h2>
         <div className="space-y-3">
           {modules.map(module => {
             const lessonIds = module.lessons.map(l => l.id);
@@ -182,7 +120,7 @@ export default function Logros() {
             return (
               <div key={module.id}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-foreground">{module.icon} {module.title}</span>
+                  <span className="flex items-center gap-2 text-sm font-medium text-foreground"><AreaIcon area={module.area} size="sm" />{module.title}</span>
                   <span className="text-xs text-muted-foreground">{completed}/{lessonIds.length}</span>
                 </div>
                 <div className="h-2 bg-muted rounded-full overflow-hidden">
@@ -190,7 +128,7 @@ export default function Logros() {
                     initial={{ width: 0 }}
                     animate={{ width: `${pct}%` }}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    className="h-full bg-gradient-to-r from-primary to-green-500 rounded-full"
+                    className="h-full rounded-full bg-brand"
                   />
                 </div>
               </div>
@@ -201,10 +139,10 @@ export default function Logros() {
 
       {/* Average score */}
       {avgScore > 0 && (
-        <div className="bg-card rounded-xl border border-border p-4">
+        <div className="card p-5">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold font-['Lexend'] text-foreground">Promedio en quizzes</h3>
+              <h2 className="section-title">Promedio en las lecciones</h2>
               <p className="text-xs text-muted-foreground mt-0.5">Basado en {completedLessons} lecciones</p>
             </div>
             <div className="text-right">
@@ -226,24 +164,20 @@ export default function Logros() {
       {/* Badges */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="font-bold font-['Lexend'] text-foreground">Insignias</h2>
+          <h2 className="section-title">Insignias</h2>
           <span className="text-sm text-muted-foreground">{earnedCount}/{allBadges.length} ganadas</span>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {allBadges.map(badge => (
-            <BadgeCard 
-              key={badge.id} 
-              badge={badge} 
-              earned={earnedBadgeIds.has(badge.id)} 
-            />
+            <BadgeCard key={badge.id} badge={badge} earned={earnedBadgeIds.has(badge.id)} />
           ))}
-        </div>
+        </ul>
       </div>
 
       {/* Simulacro history */}
       {progress.simulacroScores.length > 0 && (
-        <div className="bg-card rounded-xl border border-border p-4">
-          <h2 className="font-bold font-['Lexend'] text-foreground mb-3">Historial de simulacros</h2>
+        <div className="card p-5">
+          <h2 className="section-title mb-3">Historial de simulacros</h2>
           <div className="space-y-2">
             {progress.simulacroScores.map((score, idx) => (
               <div key={idx} className="flex items-center gap-3">
@@ -265,14 +199,29 @@ export default function Logros() {
 
       {/* Motivation */}
       {completedLessons === 0 && (
-        <div className="bg-primary/5 rounded-xl border border-primary/20 p-5 text-center">
-          <div className="text-4xl mb-3">🚀</div>
-          <h3 className="font-bold font-['Lexend'] text-foreground">¡Empieza tu viaje!</h3>
-          <p className="text-sm text-muted-foreground mt-2">
-            Completa tu primera lección para ganar tu primera insignia. Tu puntaje estimado se calcula con lo que respondas en lecciones, práctica y simulacros.
+        <div className="card p-5">
+          <h2 className="section-title">Tu primera insignia está a una lección</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Completa una lección para ganarla. Tu puntaje estimado se calcula con lo que respondes en lecciones, práctica y simulacros.
           </p>
+          <Link href="/matematicas" className="btn-primary btn-sm mt-4">Empezar una lección</Link>
         </div>
       )}
     </div>
   );
 }
+
+function StatCard({ icon: Icon, tile, label, value, note }: { icon: LucideIcon; tile: string; label: string; value: string; note: string }) {
+  return (
+    <div className="card p-4">
+      <span className={`icon-tile h-9 w-9 rounded-lg ${tile}`} aria-hidden="true">
+        <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} />
+      </span>
+      <p className="mt-3 text-xs text-muted-foreground">{label}</p>
+      <p className="font-['Lexend'] text-2xl font-semibold tabular-nums text-foreground">{value}</p>
+      <p className="text-[11px] text-muted-foreground">{note}</p>
+    </div>
+  );
+}
+
+export default withMotion(Logros);

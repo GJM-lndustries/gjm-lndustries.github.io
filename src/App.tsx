@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from "react";
+import { useEffect } from "react";
 import { Route, Switch, useLocation } from "wouter";
 import { Toaster } from "@/components/ui/sonner";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -8,27 +8,30 @@ import { ProgressProvider } from "./contexts/ProgressContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { usePWA } from "./hooks/usePWA";
 import { modules } from "./lib/appData";
-import Home from "./pages/Home";
-import Logros from "./pages/Logros";
-import Glosario from "./pages/Glosario";
-import Tips from "./pages/Tips";
+import Landing from "./pages/Landing";
 import Leaderboard from "./pages/Leaderboard";
-import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
 import Cuenta from "./pages/Cuenta";
+import Yo from "./pages/Yo";
+import Creditos from "./pages/Creditos";
 import CookieConsent from "./components/CookieConsent";
 import { ConsentProvider } from "./contexts/ConsentContext";
 import { useSeo } from "./seo/useSeo";
 import { PageLoading } from "./lib/lazyPage";
 import { Cookies, PoliticaPrivacidad, Terminos, TratamientoDatos } from "./pages/legal";
-import { ModulePage, Practica, Simulacro } from "./pages/lazyRoutes";
-
-// Las gráficas (recharts) pesan bastante: se cargan solo al abrir «Mi progreso».
-const Analytics = lazy(() => import("./pages/Analytics"));
+import { Analytics, Glosario, Inicio, Logros, ModulePage, Onboarding, Practica, Simulacro, Tips } from "./pages/lazyRoutes";
 
 
-/** GitHub Pages puede servir /ruta/ con barra final: la normalizamos a /ruta. */
+
+function Redirect({ to }: { to: string }) {
+  const [, nav] = useLocation();
+  useEffect(() => {
+    nav(to, { replace: true });
+  }, [nav, to]);
+  return <PageLoading />;
+}
+
 function useTrailingSlashFix() {
   const [location, navigate] = useLocation();
   useEffect(() => {
@@ -45,12 +48,16 @@ function AppContent() {
 
   return (
     <Switch>
-      {/* Meta personal: opcional, pantalla completa, nunca bloquea el resto de la app */}
+      <Route path="/" component={Landing} />
       <Route path="/meta" component={Onboarding} />
       <Route>
         <AppLayout>
           <Switch>
-            <Route path="/" component={Home} />
+            <Route path="/inicio" component={Inicio} />
+            <Route path="/app">
+              <Redirect to="/inicio" />
+            </Route>
+            <Route path="/yo" component={Yo} />
             <Route path="/practica" component={Practica} />
             <Route path="/simulacro" component={Simulacro} />
             <Route path="/logros" component={Logros} />
@@ -61,13 +68,10 @@ function AppContent() {
             <Route path="/tratamiento-de-datos" component={TratamientoDatos} />
             <Route path="/terminos" component={Terminos} />
             <Route path="/cookies" component={Cookies} />
+            <Route path="/creditos" component={Creditos} />
             <Route path="/leaderboard" component={Leaderboard} />
             <Route path="/cuenta" component={Cuenta} />
-            <Route path="/analytics">
-              <Suspense fallback={<PageLoading />}>
-                <Analytics />
-              </Suspense>
-            </Route>
+            <Route path="/analytics" component={Analytics} />
             {modules.map(module => (
               <Route key={module.id} path={`/${module.id}`}>
                 <ModulePage key={module.id} module={module} />
@@ -81,7 +85,6 @@ function AppContent() {
   );
 }
 
-/** `hydrating`: la app arranca sobre HTML prerenderizado (ver main.tsx y entry-server.tsx). */
 export default function App({ hydrating = false }: { hydrating?: boolean }) {
   return (
     <ErrorBoundary>

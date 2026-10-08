@@ -57,8 +57,25 @@ function Table({ lines, id }: { lines: string[]; id: string }) {
   );
 }
 
-export default function RichText({ text, className = "" }: { text: string; className?: string }) {
+export default function RichText({ text, className = "", inline = false }: { text: string; className?: string; inline?: boolean }) {
   const blocks = text.split(/\n\s*\n/);
+  if (inline) {
+    // Dentro de <button> solo se permite contenido de frase: <span> en vez de <div>/<p>/<table>.
+    return (
+      <span className={`block ${className}`}>
+        {blocks.map((block, bi) => (
+          <span key={bi} className={`block leading-relaxed${bi > 0 ? " mt-2" : ""}`}>
+            {block.split("\n").map((l, li) => (
+              <React.Fragment key={li}>
+                {li > 0 && <br />}
+                {renderInline(l, `i${bi}-${li}`)}
+              </React.Fragment>
+            ))}
+          </span>
+        ))}
+      </span>
+    );
+  }
   return (
     <div className={`space-y-2 ${className}`}>
       {blocks.map((block, bi) => {

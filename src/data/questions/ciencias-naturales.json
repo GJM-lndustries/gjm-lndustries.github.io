@@ -57,7 +57,7 @@
     ],
     "answer": "c",
     "explanation": "La primera ley (inercia): el cuerpo del pasajero estaba en movimiento y tiende a seguir moviéndose hacia adelante aunque el bus haya frenado. Por eso los cinturones de seguridad son obligatorios.",
-    "tip": "Inercia = resistencia al cambio de movimiento. Si algo sigue moviéndose cuando debería parar (o viceversa) → primera ley.",
+    "tip": "Inercia = resistencia al cambio de movimiento. Si algo sigue moviéndose cuando debería parar (o viceversa), piensa en la primera ley.",
     "source": "proicfes-lecciones",
     "reviewed": false
   },
@@ -120,7 +120,7 @@
     ],
     "answer": "b",
     "explanation": "Los glóbulos rojos (eritrocitos) contienen hemoglobina, una proteína que se une al oxígeno en los pulmones y lo lleva a los tejidos. La defensa la hacen los glóbulos blancos y la coagulación, las plaquetas.",
-    "tip": "Asocia cada componente de la sangre con una función: glóbulos rojos → oxígeno, glóbulos blancos → defensa, plaquetas → coagulación.",
+    "tip": "Asocia cada componente de la sangre con una función: los glóbulos rojos llevan oxígeno, los glóbulos blancos defienden y las plaquetas coagulan.",
     "source": "original",
     "reviewed": false
   },
@@ -281,7 +281,7 @@
       }
     ],
     "answer": "d",
-    "explanation": "La ecuación general es 6 CO₂ + 6 H₂O + luz → C₆H₁₂O₆ (glucosa) + 6 O₂. El dióxido de carbono y el agua son los reactivos, no los productos.",
+    "explanation": "En la ecuación general, 6 CO₂ + 6 H₂O + luz producen C₆H₁₂O₆ (glucosa) + 6 O₂. El dióxido de carbono y el agua son los reactivos, no los productos.",
     "tip": "Fotosíntesis y respiración son procesos «opuestos»: lo que una produce, la otra lo consume.",
     "source": "original",
     "reviewed": false
@@ -570,7 +570,7 @@
     ],
     "answer": "d",
     "explanation": "Las propiedades químicas dependen sobre todo de los electrones de valencia (los del último nivel). Los elementos de un mismo grupo tienen igual número de electrones de valencia; por ejemplo, el litio, el sodio y el potasio tienen uno. Cada elemento tiene un número de protones distinto.",
-    "tip": "Grupo (columna) → mismos electrones de valencia → comportamiento químico parecido.",
+    "tip": "Mismo grupo (columna) significa los mismos electrones de valencia y, por eso, un comportamiento químico parecido.",
     "source": "original",
     "reviewed": false
   },
@@ -924,7 +924,7 @@
     ],
     "answer": "d",
     "explanation": "El agua del embalse está en altura (energía potencial). Al bajar, gana velocidad (energía cinética) y mueve las turbinas, que hacen girar un generador que produce electricidad.",
-    "tip": "Sigue el recorrido de la energía paso a paso: altura → movimiento → giro de la turbina → electricidad.",
+    "tip": "Sigue el recorrido de la energía paso a paso: de la altura al movimiento, del movimiento al giro de la turbina y del giro a la electricidad.",
     "source": "original",
     "reviewed": false
   },

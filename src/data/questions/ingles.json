@@ -58,8 +58,8 @@
       }
     ],
     "answer": "c",
-    "explanation": "La palabra \"Yesterday\" indica que la acción ocurrió en el pasado y ya terminó. Por eso se usa Simple Past: \"studied\" (study + ed). Recuerda: palabras como yesterday, last week, ago → Simple Past.",
-    "tip": "Si ves \"yesterday\", \"last...\", \"...ago\" en la oración → Simple Past (verbo + ed o forma irregular).",
+    "explanation": "La palabra \"Yesterday\" indica que la acción ocurrió en el pasado y ya terminó. Por eso se usa Simple Past: \"studied\" (study + ed). Recuerda: palabras como yesterday, last week o ago piden Simple Past.",
+    "tip": "Si ves \"yesterday\", \"last...\", \"...ago\" en la oración, usa Simple Past (verbo + ed o forma irregular).",
     "source": "proicfes-lecciones",
     "reviewed": false
   },
@@ -500,7 +500,7 @@
     ],
     "answer": "a",
     "explanation": "Ante una disculpa, una respuesta natural es tranquilizar a la otra persona: «Don't worry…». «You're welcome» responde a un agradecimiento, no a una disculpa.",
-    "tip": "Thank you → You're welcome. Sorry → Don't worry / That's OK.",
+    "tip": "A \"Thank you\" se responde \"You're welcome\". A \"Sorry\", \"Don't worry\" o \"That's OK\".",
     "source": "original",
     "reviewed": false
   },
@@ -528,7 +528,7 @@
     ],
     "answer": "c",
     "explanation": "«Would you like…?» es un ofrecimiento; se responde «Yes, please» o «No, thanks». «Yes, I do» no corresponde, porque la pregunta no se hizo con «do».",
-    "tip": "Para responder Yes/No con el auxiliar, usa el mismo de la pregunta: Would you…? → Yes, I would.",
+    "tip": "Para responder Yes/No con el auxiliar, usa el mismo de la pregunta: a \"Would you…?\" se responde \"Yes, I would\".",
     "source": "original",
     "reviewed": false
   },

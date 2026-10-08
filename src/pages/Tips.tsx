@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Lightbulb, Target, Clock, Brain, BookOpen, Calculator } from 'lucide-react';
+import { withMotion } from '@/components/withMotion';
 
 interface TipSection {
   id: string;
@@ -13,9 +14,9 @@ interface TipSection {
 const tipSections: TipSection[] = [
   {
     id: 'general',
-    icon: <Target className="w-5 h-5" />,
-    title: 'Estrategia General',
-    color: 'bg-blue-50 border-blue-200 text-blue-700',
+    icon: <Target className="w-5 h-5" strokeWidth={1.75} />,
+    title: 'Estrategia general',
+    color: 'bg-navy/5 text-navy',
     tips: [
       {
         title: 'El ICFES no penaliza respuestas incorrectas',
@@ -27,19 +28,19 @@ const tipSections: TipSection[] = [
       },
       {
         title: 'Lee las preguntas antes del texto',
-        content: 'En Lectura Crítica, lee primero las preguntas y luego el texto. Así sabes exactamente qué buscar y no pierdes tiempo leyendo lo que no necesitas.'
+        content: 'En Lectura crítica, lee primero las preguntas y luego el texto. Así sabes exactamente qué buscar y no pierdes tiempo leyendo lo que no necesitas.'
       },
       {
         title: 'Elimina opciones incorrectas',
-        content: 'Cuando no estés seguro, elimina las opciones que claramente están mal. Si eliminas 2 de 4 opciones, tienes 50% de probabilidad de acertar. Esto mejora mucho tus chances.'
+        content: 'Cuando no estés seguro, elimina las opciones que claramente están mal. Si eliminas 2 de 4 opciones, tienes 50% de probabilidad de acertar. Así mejoras mucho tus probabilidades.'
       }
     ]
   },
   {
     id: 'matematicas',
-    icon: <Calculator className="w-5 h-5" />,
+    icon: <Calculator className="w-5 h-5" strokeWidth={1.75} />,
     title: 'Matemáticas',
-    color: 'bg-indigo-50 border-indigo-200 text-indigo-700',
+    color: 'bg-blue-50 text-blue-700',
     tips: [
       {
         title: 'Reemplaza números para verificar expresiones',
@@ -61,9 +62,9 @@ const tipSections: TipSection[] = [
   },
   {
     id: 'lectura',
-    icon: <BookOpen className="w-5 h-5" />,
-    title: 'Lectura Crítica',
-    color: 'bg-amber-50 border-amber-200 text-amber-700',
+    icon: <BookOpen className="w-5 h-5" strokeWidth={1.75} />,
+    title: 'Lectura crítica',
+    color: 'bg-amber-50 text-amber-700',
     tips: [
       {
         title: 'La respuesta siempre está en el texto',
@@ -79,15 +80,15 @@ const tipSections: TipSection[] = [
       },
       {
         title: 'Los conectores son clave',
-        content: '"Sin embargo", "pero", "aunque" → contraste. "Por lo tanto", "entonces", "así que" → conclusión. "Porque", "ya que", "puesto que" → causa. Identificar el conector te dice la relación entre las ideas.'
+        content: '"Sin embargo", "pero" y "aunque" indican contraste. "Por lo tanto", "entonces" y "así que" indican conclusión. "Porque", "ya que" y "puesto que" indican causa. Identificar el conector te dice la relación entre las ideas.'
       }
     ]
   },
   {
     id: 'ciencias',
-    icon: <Brain className="w-5 h-5" />,
-    title: 'Ciencias Naturales',
-    color: 'bg-teal-50 border-teal-200 text-teal-700',
+    icon: <Brain className="w-5 h-5" strokeWidth={1.75} />,
+    title: 'Ciencias naturales',
+    color: 'bg-teal-50 text-teal-700',
     tips: [
       {
         title: 'El ICFES evalúa razonamiento, no memorización',
@@ -105,9 +106,9 @@ const tipSections: TipSection[] = [
   },
   {
     id: 'tiempo',
-    icon: <Clock className="w-5 h-5" />,
-    title: 'El Día del Examen',
-    color: 'bg-green-50 border-green-200 text-green-700',
+    icon: <Clock className="w-5 h-5" strokeWidth={1.75} />,
+    title: 'El día del examen',
+    color: 'bg-green-50 text-green-700',
     tips: [
       {
         title: 'La noche anterior: descansa bien',
@@ -134,17 +135,20 @@ function TipCard({ section }: { section: TipSection }) {
   const [openTip, setOpenTip] = useState<number | null>(null);
 
   return (
-    <div className={`rounded-xl border-2 overflow-hidden ${section.color}`}>
+    <div className="card overflow-hidden">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between p-4 text-left"
+        aria-expanded={expanded}
+        className="w-full flex items-center justify-between gap-3 p-4 text-left"
       >
-        <div className="flex items-center gap-3">
-          {section.icon}
-          <span className="font-bold font-['Lexend'] text-base">{section.title}</span>
-          <span className="text-xs opacity-70">{section.tips.length} consejos</span>
-        </div>
-        {expanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+        <span className="flex items-center gap-3">
+          <span className={`icon-tile ${section.color}`} aria-hidden="true">{section.icon}</span>
+          <span>
+            <span className="block font-['Lexend'] text-[15px] font-semibold text-foreground">{section.title}</span>
+            <span className="block text-xs text-muted-foreground">{section.tips.length} consejos</span>
+          </span>
+        </span>
+        {expanded ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
       </button>
       
       <AnimatePresence>
@@ -155,17 +159,18 @@ function TipCard({ section }: { section: TipSection }) {
             exit={{ height: 0 }}
             className="overflow-hidden"
           >
-            <div className="bg-white/60 border-t border-current/10 p-3 space-y-2">
+            <div className="space-y-2 border-t border-border bg-muted/40 p-3">
               {section.tips.map((tip, idx) => (
-                <div key={idx} className="bg-white rounded-lg overflow-hidden border border-current/10">
+                <div key={idx} className="overflow-hidden rounded-xl border border-border bg-card">
                   <button
                     onClick={() => setOpenTip(openTip === idx ? null : idx)}
+                    aria-expanded={openTip === idx}
                     className="w-full flex items-center justify-between p-3 text-left"
                   >
-                    <div className="flex items-center gap-2">
-                      <Lightbulb className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+                    <span className="flex items-center gap-2">
+                      <Lightbulb className="w-4 h-4 text-amber-600 flex-shrink-0" strokeWidth={1.75} aria-hidden="true" />
                       <span className="text-sm font-semibold text-foreground">{tip.title}</span>
-                    </div>
+                    </span>
                     {openTip === idx ? (
                       <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                     ) : (
@@ -196,29 +201,27 @@ function TipCard({ section }: { section: TipSection }) {
   );
 }
 
-export default function Tips() {
+function Tips() {
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Estrategias y Consejos</h1>
-        <p className="text-muted-foreground mt-1">
-          Los trucos que usan los que sacan más de 360 puntos
+      <header>
+        <h1 className="page-title">Estrategias para el examen</h1>
+        <p className="mt-1 text-[15px] text-muted-foreground">
+          Cómo leer las preguntas, manejar el tiempo y descartar opciones.
         </p>
-      </div>
+      </header>
 
-      <div className="bg-gradient-to-br from-[#1e3a5f] to-[#0f2040] rounded-2xl p-5 text-white">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="text-3xl">🎯</div>
-          <div>
-            <h2 className="font-bold font-['Lexend'] text-lg">El secreto del 360+</h2>
-            <p className="text-white/70 text-sm">No es solo estudiar más, es estudiar mejor</p>
-          </div>
+      <div className="card flex items-start gap-4 p-5">
+        <span className="icon-tile bg-brand-soft text-green-700" aria-hidden="true">
+          <Target className="h-5 w-5" strokeWidth={1.75} />
+        </span>
+        <div>
+          <h2 className="section-title">Estudiar mejor, no solo más</h2>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+            Conocer el formato del examen, practicar con preguntas tipo ICFES y llevar un buen ritmo
+            pesa tanto como saber los temas. Estas estrategias te ayudan con las tres cosas.
+          </p>
         </div>
-        <p className="text-white/80 text-sm leading-relaxed">
-          Los estudiantes que sacan más de 360 puntos no son necesariamente los más inteligentes. 
-          Son los que conocen las estrategias del examen, practican con preguntas tipo ICFES y 
-          administran bien su tiempo. ¡Tú puedes lograrlo!
-        </p>
       </div>
 
       <div className="space-y-3">
@@ -229,3 +232,5 @@ export default function Tips() {
     </div>
   );
 }
+
+export default withMotion(Tips);

@@ -7,9 +7,8 @@ import { SITE } from '@/config/site';
 
 const inactive = (id: string) => (id ? '' : ' Hoy no están activas en ProICFES.');
 
-const btn = 'px-3 py-2 rounded-lg text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2';
-const btnPrimary = `${btn} bg-primary text-primary-foreground hover:bg-primary/90`;
-const btnSecondary = `${btn} border border-border bg-card text-foreground hover:bg-muted`;
+const btnPrimary = 'btn-primary btn-sm';
+const btnSecondary = 'btn-secondary btn-sm';
 
 /** Aviso de cookies (no modal) + panel de configuración. Solo se muestra en el navegador. */
 export default function CookieConsent() {

@@ -14,6 +14,15 @@ import {
   type AreaStats,
   type ScoreEstimate,
 } from "@/lib/score";
+import {
+  addActiveMs,
+  addChallengeQuestion,
+  defaultStreakState,
+  rollStreakDay,
+  streakBadges,
+  useStreakFreeze as applyFreeze,
+  type StreakState,
+} from "@/lib/streaks";
 
 const STORAGE_KEY = "proicfes_progress";
 
@@ -64,8 +73,12 @@ export interface UserProgress {
   minimumScore: number;
   targetScore: number;
   career: string;
+  /** true si el usuario indicó que ya presentó el Saber 11 */
+  presentedExam: boolean;
   favoriteLessons: string[];
   favoriteQuestions: string[];
+  /** Racha con reto diario (America/Bogota). */
+  streakState: StreakState;
 }
 
 interface ProgressContextType {
@@ -94,8 +107,15 @@ interface ProgressContextType {
     currentScore: number,
     minimumScore: number,
     targetScore: number,
-    career: string
+    career: string,
+    presentedExam?: boolean
   ) => void;
+  /** Suma tiempo activo al reto de hoy (lectura o práctica). */
+  trackChallengeTime: (kind: "reading" | "answering", ms: number) => void;
+  /** Cuenta una respuesta hacia el mínimo del reto. */
+  trackChallengeQuestion: () => void;
+  useStreakFreeze: () => { error?: string };
+  acknowledgeStreakCelebration: () => void;
 }
 
 export const defaultProgress = (): UserProgress => ({
@@ -111,10 +131,12 @@ export const defaultProgress = (): UserProgress => ({
   hasCompletedOnboarding: false,
   currentScore: 0,
   minimumScore: 0,
-  targetScore: 360,
+  targetScore: 300,
   career: "",
+  presentedExam: false,
   favoriteLessons: [],
   favoriteQuestions: [],
+  streakState: defaultStreakState(),
 });
 
 /** Carga el progreso guardado y completa campos que no existían en versiones anteriores. */
@@ -137,7 +159,20 @@ export function normalizeProgress(
       ? p.simulacroHistory
       : [],
     badges: Array.isArray(p.badges) ? p.badges : [],
+    presentedExam: Boolean(p.presentedExam),
+    streakState: rollStreakDay(
+      p.streakState && typeof p.streakState === "object"
+        ? { ...defaultStreakState(), ...p.streakState, today: { ...defaultStreakState().today, ...(p.streakState as StreakState).today } }
+        : migrateLegacyStreak(p as Partial<UserProgress>)
+    ),
   };
+}
+
+function migrateLegacyStreak(p: Partial<UserProgress>): StreakState {
+  const base = defaultStreakState();
+  if (!p.streak || !p.lastStudyDate) return base;
+  // No inventamos días pasados; solo conservamos el contador como longest hint.
+  return { ...base, current: 0, longest: Math.max(base.longest, p.streak) };
 }
 
 function loadProgress(): UserProgress {
@@ -151,18 +186,6 @@ function loadProgress(): UserProgress {
   }
 }
 
-function withStudyDay(
-  prev: UserProgress
-): Pick<UserProgress, "streak" | "lastStudyDate"> {
-  const today = new Date().toDateString();
-  if (prev.lastStudyDate === today)
-    return { streak: prev.streak || 1, lastStudyDate: today };
-  const yesterday = new Date(Date.now() - 86400000).toDateString();
-  return {
-    streak: prev.lastStudyDate === yesterday ? prev.streak + 1 : 1,
-    lastStudyDate: today,
-  };
-}
 
 function addBadge(badges: string[], id: string, condition: boolean) {
   if (condition && !badges.includes(id)) badges.push(id);
@@ -241,15 +264,15 @@ export function ProgressProvider({
                 completedAt: now,
               },
             ];
-        const day = withStudyDay(prev);
         const badges = [...prev.badges];
         addBadge(badges, "primer_paso", completedLessons.length >= 1);
         addBadge(badges, "cinco_lecciones", completedLessons.length >= 5);
-        addBadge(badges, "racha_3", day.streak >= 3);
         addBadge(badges, "perfecto", score === 100);
+        for (const id of streakBadges(prev.streakState.longest, prev.streakState.current)) {
+          addBadge(badges, id, true);
+        }
         return {
           ...prev,
-          ...day,
           totalXp: completedLessons.reduce((sum, l) => sum + l.xpEarned, 0),
           completedLessons,
           badges,
@@ -262,7 +285,6 @@ export function ProgressProvider({
   const addSimulacroScore = useCallback((score: number) => {
     setProgress(prev => ({
       ...prev,
-      ...withStudyDay(prev),
       simulacroScores: [...prev.simulacroScores, score],
     }));
   }, []);
@@ -289,7 +311,6 @@ export function ProgressProvider({
         }
         return {
           ...prev,
-          ...withStudyDay(prev),
           areaStats,
           missedQuestions,
           simulacroScores: [...prev.simulacroScores, record.percent],
@@ -324,7 +345,6 @@ export function ProgressProvider({
         }
         return {
           ...prev,
-          ...withStudyDay(prev),
           areaStats: {
             ...prev.areaStats,
             [question.area]: {
@@ -373,7 +393,8 @@ export function ProgressProvider({
       currentScore: number,
       minimumScore: number,
       targetScore: number,
-      career: string
+      career: string,
+      presentedExam = false
     ) => {
       setProgress(prev => ({
         ...prev,
@@ -382,10 +403,54 @@ export function ProgressProvider({
         minimumScore,
         targetScore,
         career,
+        presentedExam,
       }));
     },
     []
   );
+
+  const syncStreakFields = (prev: UserProgress, streakState: StreakState): UserProgress => {
+    const badges = [...prev.badges];
+    for (const id of streakBadges(streakState.longest, streakState.current)) addBadge(badges, id, true);
+    return {
+      ...prev,
+      streakState,
+      streak: streakState.current,
+      lastStudyDate: streakState.today.completed ? streakState.today.date : prev.lastStudyDate,
+      badges,
+    };
+  };
+
+  const trackChallengeTime = useCallback((kind: "reading" | "answering", ms: number) => {
+    setProgress(prev => syncStreakFields(prev, addActiveMs(prev.streakState, kind, ms)));
+  }, []);
+
+  const trackChallengeQuestion = useCallback(() => {
+    setProgress(prev => syncStreakFields(prev, addChallengeQuestion(prev.streakState)));
+  }, []);
+
+  const useStreakFreeze = useCallback(() => {
+    let error: string | undefined;
+    setProgress(prev => {
+      const res = applyFreeze(prev.streakState);
+      if ("error" in res) {
+        error = res.error;
+        return prev;
+      }
+      return syncStreakFields(prev, res);
+    });
+    return { error };
+  }, []);
+
+  const acknowledgeStreakCelebration = useCallback(() => {
+    setProgress(prev => ({
+      ...prev,
+      streakState: {
+        ...prev.streakState,
+        today: { ...prev.streakState.today, celebrated: true },
+      },
+    }));
+  }, []);
 
   return (
     <ProgressContext.Provider
@@ -403,6 +468,10 @@ export function ProgressProvider({
         getModuleProgress,
         resetProgress,
         completeOnboarding,
+        trackChallengeTime,
+        trackChallengeQuestion,
+        useStreakFreeze,
+        acknowledgeStreakCelebration,
       }}
     >
       {children}

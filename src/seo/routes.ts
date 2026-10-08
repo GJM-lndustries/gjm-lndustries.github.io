@@ -25,18 +25,34 @@ export interface RouteMeta {
 export const ROUTES: RouteMeta[] = [
   {
     path: "/",
-    name: "Inicio",
+    name: "Portada",
     title: "Preicfes gratis: estudia para el ICFES Saber 11 | ProICFES",
     description:
       "Estudia para el ICFES gratis con lecciones cortas, preguntas tipo ICFES con explicación y simulacros. Calcula tu puntaje estimado del Saber 11 por áreas.",
     kind: "home",
   },
   {
+    path: "/inicio",
+    name: "Tu plan de hoy",
+    title: "Tu plan de hoy · ProICFES",
+    description: "Tablero de estudio: reto diario, áreas del Saber 11, práctica y simulacro.",
+    kind: "page",
+    noindex: true,
+  },
+  {
+    path: "/yo",
+    name: "Yo",
+    title: "Tu espacio · ProICFES",
+    description: "Racha, meta personal y acceso a tu cuenta.",
+    kind: "page",
+    noindex: true,
+  },
+  {
     path: "/practica",
     name: "Modo práctica",
     title: "Preguntas tipo ICFES con respuestas y explicación | ProICFES",
     description:
-      "Practica gratis preguntas tipo Saber 11 de Matemáticas, Lectura Crítica, Ciencias, Sociales e Inglés. Elige área y nivel, y mira la explicación al instante.",
+      "Practica gratis preguntas tipo Saber 11 de Matemáticas, Lectura crítica, Ciencias, Sociales e Inglés. Elige área y nivel, y mira la explicación al instante.",
     kind: "practice",
   },
   {
@@ -58,28 +74,28 @@ export const ROUTES: RouteMeta[] = [
   },
   {
     path: "/lectura",
-    name: "Lectura Crítica",
-    title: "Lectura Crítica ICFES: lecciones y preguntas | ProICFES",
+    name: "Lectura crítica",
+    title: "Lectura crítica ICFES: lecciones y preguntas | ProICFES",
     description:
-      "Mejora en Lectura Crítica para el Saber 11: comprensión literal e inferencial, propósito del autor y argumentación, con preguntas tipo ICFES explicadas.",
+      "Mejora en Lectura crítica para el Saber 11: comprensión literal e inferencial, propósito del autor y argumentación, con preguntas tipo ICFES explicadas.",
     kind: "course",
     area: "lectura-critica",
   },
   {
     path: "/ciencias",
-    name: "Ciencias Naturales",
-    title: "Ciencias Naturales ICFES: lecciones y preguntas | ProICFES",
+    name: "Ciencias naturales",
+    title: "Ciencias naturales ICFES: lecciones y preguntas | ProICFES",
     description:
-      "Prepara Ciencias Naturales para el ICFES con lecciones sobre la célula y las leyes de Newton, ejemplos cotidianos y preguntas tipo Saber 11 con explicación.",
+      "Prepara Ciencias naturales para el ICFES con lecciones sobre la célula y las leyes de Newton, ejemplos cotidianos y preguntas tipo Saber 11 con explicación.",
     kind: "course",
     area: "ciencias-naturales",
   },
   {
     path: "/sociales",
-    name: "Sociales y Ciudadanas",
-    title: "Sociales y Ciudadanas ICFES: lecciones | ProICFES",
+    name: "Sociales y ciudadanas",
+    title: "Sociales y ciudadanas ICFES: lecciones | ProICFES",
     description:
-      "Estudia Sociales y Ciudadanas para el Saber 11: la Constitución de 1991, tus derechos y los momentos clave de la historia de Colombia, con preguntas explicadas.",
+      "Estudia Sociales y ciudadanas para el Saber 11: la Constitución de 1991, tus derechos y los momentos clave de la historia de Colombia, con preguntas explicadas.",
     kind: "course",
     area: "sociales-ciudadanas",
   },
@@ -147,6 +163,14 @@ export const ROUTES: RouteMeta[] = [
     description:
       "Qué cookies y almacenamiento usa ProICFES (necesarias, analíticas y de publicidad), para qué sirven y cómo aceptarlas, rechazarlas o cambiar tu elección.",
     kind: "page",
+  },
+  {
+    path: "/creditos",
+    name: "Créditos de imágenes",
+    title: "Créditos de imágenes | ProICFES",
+    description: "Autores y licencias de las fotos, íconos y recursos gráficos que usa ProICFES.",
+    kind: "page",
+    noindex: true,
   },
   {
     path: "/analytics",

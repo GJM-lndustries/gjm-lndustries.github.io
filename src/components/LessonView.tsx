@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useActiveTimer } from '@/hooks/useActiveTimer';
 import { Link } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
 import type { Lesson, GlossaryTerm } from '@/lib/appData';
@@ -6,7 +7,7 @@ import { getQuestions } from '@/data/questions';
 import QuestionView from '@/components/QuestionView';
 import {
   ChevronRight, ChevronLeft, CheckCircle2,
-  Lightbulb, BookOpen, AlertCircle, Star, X, HelpCircle
+  Lightbulb, BookOpen, AlertCircle, Star, X, HelpCircle, Clock, PenLine, Trophy, TrendingUp
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
@@ -61,20 +62,21 @@ function GlossaryTooltip({ term, children }: { term: GlossaryTerm; children: Rea
 
 // Content block renderer
 function ContentBlock({ content, glossary }: { content: Lesson['content'][0]; glossary: GlossaryTerm[] }) {
+  // Un solo estilo de tarjeta; el tipo de bloque se distingue por el icono y su color.
   const icons = {
-    intro: <BookOpen className="w-5 h-5 text-primary" />,
-    explanation: <Lightbulb className="w-5 h-5 text-yellow-500" />,
-    example: <CheckCircle2 className="w-5 h-5 text-green-500" />,
-    tip: <Star className="w-5 h-5 text-orange-500" />,
-    warning: <AlertCircle className="w-5 h-5 text-red-500" />
+    intro: <BookOpen className="h-4 w-4" strokeWidth={1.75} />,
+    explanation: <Lightbulb className="h-4 w-4" strokeWidth={1.75} />,
+    example: <CheckCircle2 className="h-4 w-4" strokeWidth={1.75} />,
+    tip: <Star className="h-4 w-4" strokeWidth={1.75} />,
+    warning: <AlertCircle className="h-4 w-4" strokeWidth={1.75} />
   };
 
-  const bgColors = {
-    intro: 'bg-primary/5 border-primary/20',
-    explanation: 'bg-yellow-50 border-yellow-200',
-    example: 'bg-green-50 border-green-200',
-    tip: 'bg-orange-50 border-orange-200',
-    warning: 'bg-red-50 border-red-200'
+  const tiles = {
+    intro: 'bg-navy/5 text-navy',
+    explanation: 'bg-amber-50 text-amber-700',
+    example: 'bg-brand-soft text-green-700',
+    tip: 'bg-violet-50 text-violet-700',
+    warning: 'bg-red-50 text-red-700'
   };
 
   // Replace glossary terms with tooltips
@@ -109,19 +111,19 @@ function ContentBlock({ content, glossary }: { content: Lesson['content'][0]; gl
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`rounded-xl border p-4 ${bgColors[content.type]}`}
+      className="card p-4 sm:p-5"
     >
       {content.title && (
-        <div className="flex items-center gap-2 mb-2">
-          {icons[content.type]}
-          <h4 className="font-bold text-sm font-['Lexend'] text-foreground">{content.title}</h4>
+        <div className="mb-2 flex items-center gap-2.5">
+          <span className={`icon-tile h-7 w-7 rounded-lg ${tiles[content.type]}`} aria-hidden="true">{icons[content.type]}</span>
+          <h2 className="font-['Lexend'] text-[15px] font-semibold text-foreground">{content.title}</h2>
         </div>
       )}
-      <div className="text-sm text-foreground leading-relaxed">
+      <div className="text-[15px] leading-relaxed text-foreground">
         {renderTextWithGlossary(content.text)}
       </div>
       {content.highlight && (
-        <div className="mt-3 p-3 bg-white/60 rounded-lg border border-current/10">
+        <div className="mt-3 rounded-xl border-l-4 border-brand bg-brand-soft/60 px-3 py-2.5">
           <p className="text-sm font-semibold text-foreground">{content.highlight}</p>
         </div>
       )}
@@ -131,8 +133,9 @@ function ContentBlock({ content, glossary }: { content: Lesson['content'][0]; gl
 
 // Quiz component (preguntas del banco)
 function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (score: number) => void }) {
+  const { recordAnswer, trackChallengeQuestion, trackChallengeTime } = useProgress();
+  useActiveTimer(true, ms => trackChallengeTime("answering", ms));
   const questions = useMemo(() => getQuestions(lesson.questionIds), [lesson.questionIds]);
-  const { recordAnswer } = useProgress();
   const [currentQ, setCurrentQ] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
@@ -152,6 +155,7 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
     setAnswered(true);
     if (correct) setCorrectCount(c => c + 1);
     recordAnswer(question, correct);
+    trackChallengeQuestion();
   };
 
   const handleNext = () => {
@@ -174,11 +178,13 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-8 space-y-4"
       >
-        <div className="text-6xl">{finalScore >= 70 ? '🎉' : '💪'}</div>
-        <h2 className="text-2xl font-bold font-['Lexend']">
-          {finalScore >= 70 ? '¡Excelente trabajo!' : '¡Sigue practicando!'}
+        <span className={`icon-tile h-14 w-14 rounded-2xl ${finalScore >= 70 ? 'bg-brand-soft text-green-700' : 'bg-navy/10 text-navy'}`} aria-hidden="true">
+          {finalScore >= 70 ? <Trophy className="h-7 w-7" strokeWidth={1.75} /> : <TrendingUp className="h-7 w-7" strokeWidth={1.75} />}
+        </span>
+        <h2 className="page-title">
+          {finalScore >= 70 ? 'Muy bien hecho' : 'Vas por buen camino'}
         </h2>
-        <div className="text-5xl font-bold text-primary font-['Lexend']">{finalScore}%</div>
+        <div className="font-['Lexend'] text-5xl font-bold tabular-nums text-foreground">{finalScore}%</div>
         <p className="text-muted-foreground">
           {correctCount} de {questions.length} preguntas correctas
         </p>
@@ -204,7 +210,7 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
       </div>
       <div className="h-2 bg-muted rounded-full overflow-hidden">
         <div
-          className="h-full bg-primary rounded-full transition-all"
+          className="progress-fill h-full bg-brand rounded-full"
           style={{ width: `${(currentQ / questions.length) * 100}%` }}
         />
       </div>
@@ -216,7 +222,7 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           onClick={handleNext}
-          className="w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+          className="btn-primary w-full"
         >
           {currentQ < questions.length - 1 ? (
             <>Siguiente pregunta <ChevronRight className="w-5 h-5" /></>
@@ -237,16 +243,17 @@ interface LessonViewProps {
 export default function LessonView({ lesson, onBack }: LessonViewProps) {
   const [phase, setPhase] = useState<'content' | 'quiz' | 'done'>('content');
   const [contentStep, setContentStep] = useState(0);
-  const { completeLesson, isLessonCompleted } = useProgress();
+  const { completeLesson, isLessonCompleted, trackChallengeTime } = useProgress();
+  useActiveTimer(phase === 'content', ms => trackChallengeTime('reading', ms));
   const alreadyCompleted = isLessonCompleted(lesson.id);
 
   const handleCompleteQuiz = (score: number) => {
     completeLesson(lesson.id, score, lesson.xp);
     setPhase('done');
     if (score >= 70) {
-      toast.success(`¡Lección completada! +${lesson.xp} XP`, { duration: 3000 });
+      toast.success(`Lección completada · +${lesson.xp} XP`, { duration: 3000 });
     } else {
-      toast.info('Lección completada. ¡Practica más para mejorar!', { duration: 3000 });
+      toast.info('Lección completada. Practica un poco más para afianzarla.', { duration: 3000 });
     }
   };
 
@@ -262,7 +269,7 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
           <ChevronLeft className="w-5 h-5" />
         </button>
         <div className="flex-1">
-          <h1 className="text-lg font-bold font-['Lexend'] text-foreground leading-tight">{lesson.title}</h1>
+          <h1 className="font-['Lexend'] text-xl font-bold leading-tight tracking-tight text-foreground">{lesson.title}</h1>
           <p className="text-sm text-muted-foreground">{lesson.subtitle}</p>
         </div>
       </div>
@@ -276,14 +283,14 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
           {levelLabel[lesson.level]}
         </span>
         <span className="score-badge bg-muted text-muted-foreground border border-border">
-          ⏱ {lesson.duration} min
+          <Clock className="mr-1 h-3.5 w-3.5" aria-hidden="true" />{lesson.duration} min
         </span>
         <span className="score-badge bg-yellow-50 text-yellow-700 border border-yellow-200">
-          ⭐ {lesson.xp} XP
+          <Star className="mr-1 h-3.5 w-3.5" aria-hidden="true" />{lesson.xp} XP
         </span>
         {alreadyCompleted && (
           <span className="score-badge bg-green-50 text-green-700 border border-green-200">
-            ✅ Completada
+            <CheckCircle2 className="mr-1 h-3.5 w-3.5" aria-hidden="true" />Completada
           </span>
         )}
       </div>
@@ -296,7 +303,7 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
             phase === 'content' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
           }`}
         >
-          📚 Lección
+          <span className="inline-flex items-center justify-center gap-1.5"><BookOpen className="h-4 w-4" aria-hidden="true" />Lección</span>
         </button>
         <button
           onClick={() => setPhase('quiz')}
@@ -304,7 +311,7 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
             phase === 'quiz' || phase === 'done' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
           }`}
         >
-          ✏️ Práctica
+          <span className="inline-flex items-center justify-center gap-1.5"><PenLine className="h-4 w-4" aria-hidden="true" />Práctica</span>
         </button>
       </div>
 
@@ -315,7 +322,7 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
           {lesson.glossary.length > 0 && (
             <div className="bg-muted/50 rounded-xl p-3 border border-border">
               <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">
-                📖 Palabras clave de esta lección (toca para ver qué significan):
+                Palabras clave · toca una para ver su significado
               </p>
               <div className="flex flex-wrap gap-2">
                 {lesson.glossary.map(term => (
@@ -339,16 +346,16 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
             {contentStep < lesson.content.length - 1 ? (
               <button
                 onClick={() => setContentStep(s => s + 1)}
-                className="flex-1 bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+                className="btn-primary flex-1"
               >
                 Continuar <ChevronRight className="w-5 h-5" />
               </button>
             ) : (
               <button
                 onClick={() => setPhase('quiz')}
-                className="flex-1 bg-green-600 text-white py-3 rounded-xl font-bold font-['Lexend'] hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                className="btn-primary flex-1"
               >
-                ¡Ir a practicar! ✏️
+                Ir a practicar <ChevronRight className="w-5 h-5" />
               </button>
             )}
           </div>
@@ -370,9 +377,9 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
       {phase === 'done' && (
         <button
           onClick={onBack}
-          className="w-full border-2 border-primary text-primary py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/5 transition-colors"
+          className="btn-secondary w-full"
         >
-          ← Volver al módulo
+          Volver al módulo
         </button>
       )}
     </div>

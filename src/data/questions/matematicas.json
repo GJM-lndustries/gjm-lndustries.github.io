@@ -87,7 +87,7 @@
       }
     ],
     "answer": "c",
-    "explanation": "La moda es el valor que más se repite. En los datos 8, 12, 8, 15, 8 → el número 8 aparece 3 veces. La moda es 8 km.",
+    "explanation": "La moda es el valor que más se repite. En los datos 8, 12, 8, 15, 8, el número 8 aparece 3 veces. La moda es 8 km.",
     "tip": "\"El que más se repite\" = Moda. Esta es una pregunta clásica del ICFES.",
     "source": "proicfes-lecciones",
     "reviewed": false
@@ -686,7 +686,7 @@
       }
     ],
     "answer": "d",
-    "explanation": "Cambios: enero→febrero: −3; febrero→marzo: +6; marzo→abril: −9; abril→mayo: +12. El mayor aumento es de abril a mayo (+12 m³). De marzo a abril hubo un cambio grande, pero fue una disminución.",
+    "explanation": "Cambios: de enero a febrero, −3; de febrero a marzo, +6; de marzo a abril, −9; de abril a mayo, +12. El mayor aumento es de abril a mayo (+12 m³). De marzo a abril hubo un cambio grande, pero fue una disminución.",
     "tip": "Distingue «mayor cambio» de «mayor aumento»: un aumento debe ser positivo.",
     "source": "original",
     "reviewed": false
@@ -843,7 +843,7 @@
       }
     ],
     "answer": "c",
-    "explanation": "La diferencia entre las dos compras es de 2 cuadernos (los lapiceros son los mismos): $13.000 − $5.800 = $7.200, así que un cuaderno cuesta $7.200 ÷ 2 = $3.600. Comprobación: un lapicero cuesta ($5.800 − $3.600) ÷ 2 = $1.100 y 3 × 3.600 + 2 × 1.100 = 13.000. ✔",
+    "explanation": "La diferencia entre las dos compras es de 2 cuadernos (los lapiceros son los mismos): $13.000 − $5.800 = $7.200, así que un cuaderno cuesta $7.200 ÷ 2 = $3.600. Comprobación: un lapicero cuesta ($5.800 − $3.600) ÷ 2 = $1.100 y 3 × 3.600 + 2 × 1.100 = 13.000, que coincide con la primera compra.",
     "tip": "Si dos compras tienen algo en común, réstalas: lo que queda es la diferencia entre ellas.",
     "source": "original",
     "reviewed": false
@@ -1125,7 +1125,7 @@
       }
     ],
     "answer": "d",
-    "explanation": "Cada hora adicional aumenta el costo en $1.500 (de 2.500 a 4.000, de 4.000 a 5.500…). Con h = 1: 1.500 × 1 + 1.000 = 2.500 ✔; con h = 4: 1.500 × 4 + 1.000 = 7.000 ✔. La expresión C = 2.500 + 1.500h da $4.000 para 1 hora, que no coincide con la tabla.",
+    "explanation": "Cada hora adicional aumenta el costo en $1.500 (de 2.500 a 4.000, de 4.000 a 5.500…). Con h = 1: 1.500 × 1 + 1.000 = 2.500 (coincide); con h = 4: 1.500 × 4 + 1.000 = 7.000 (también coincide). La expresión C = 2.500 + 1.500h da $4.000 para 1 hora, que no coincide con la tabla.",
     "tip": "Encuentra cuánto sube por cada hora (la pendiente) y luego verifica la expresión con dos filas de la tabla.",
     "source": "original",
     "reviewed": false

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" role="img" aria-label="ProICFES">
+  <rect x="0" y="2" width="36" height="36" rx="9" fill="#1e3a5f"/>
+  <path d="M10 30V12h7.2c3.6 0 5.9 2 5.9 5.2 0 3.2-2.3 5.3-5.9 5.3H14.6V30H10zm4.6-7.3h2.2c1.6 0 2.6-.85 2.6-2.15S18.4 18.4 16.8 18.4h-2.2v4.3z" fill="#4ade80"/>
+  <circle cx="27.5" cy="27.5" r="3" fill="#4ade80"/>
+  <text x="48" y="27" font-family="Lexend, system-ui, sans-serif" font-size="20" font-weight="700" fill="#1e3a5f">ProICFES</text>
+</svg>

@@ -166,6 +166,11 @@ export function mergeProgress(
     minimumScore: goalFrom.minimumScore,
     targetScore: goalFrom.targetScore,
     career: goalFrom.career,
+    presentedExam: goalFrom.presentedExam ?? local.presentedExam,
+    streakState:
+      (local.streakState?.days?.length ?? 0) >= (remote.streakState?.days?.length ?? 0)
+        ? local.streakState ?? remote.streakState
+        : remote.streakState ?? local.streakState,
     favoriteLessons: union(remote.favoriteLessons, local.favoriteLessons),
     favoriteQuestions: union(remote.favoriteQuestions, local.favoriteQuestions),
   };

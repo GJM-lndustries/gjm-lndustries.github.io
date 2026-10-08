@@ -1,6 +1,6 @@
-const CACHE_NAME = 'proicfes-v3';
+const CACHE_NAME = 'proicfes-v6';
 const urlsToCache = [
-  '/',
+  '/', '/inicio',
   '/index.html',
   '/manifest.json'
 ];
