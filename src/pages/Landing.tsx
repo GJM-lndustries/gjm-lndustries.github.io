@@ -49,6 +49,27 @@ const FOR_YOU = [
   "Tu progreso se guarda en el dispositivo; con una cuenta, también en la nube",
 ];
 
+const PLACES = [
+  {
+    slug: "bus",
+    title: "En el bus",
+    text: "Una pregunta entre paradas, y si quieren, la comparan entre amigas.",
+    alt: "Dos estudiantes de colegio con uniforme se ríen mientras revisan una pregunta en el celular, sentadas en un bus urbano",
+  },
+  {
+    slug: "casa",
+    title: "En la casa",
+    text: "La lección del día en la mesa de la cocina, con el cuaderno al lado.",
+    alt: "Estudiante en la mesa de la cocina de su casa, de noche, tomando apuntes en un cuaderno junto a su celular y una taza",
+  },
+  {
+    slug: "biblioteca",
+    title: "En la biblioteca",
+    text: "Un simulacro con tiempo cuando tienes un rato largo y tranquilo.",
+    alt: "Estudiante con audífonos al cuello escribe en su cuaderno en una mesa de madera de una biblioteca pública, con el celular al lado",
+  },
+];
+
 export default function Landing() {
   const { progress, loaded } = useProgress();
   const hasProgress =
@@ -152,7 +173,7 @@ export default function Landing() {
                 src="/images/landing/estudiante-800.webp"
                 srcSet="/images/landing/estudiante-800.webp 800w, /images/landing/estudiante-1200.webp 1200w"
                 sizes="(min-width: 768px) 560px, 100vw"
-                alt="Estudiante de bachillerato estudiando en casa con su cuaderno"
+                alt="Estudiante de grado 11 con uniforme escribe en su cuaderno y revisa una pregunta en el celular, sentada en el patio del colegio"
                 width={800}
                 height={600}
                 loading="lazy"
@@ -201,6 +222,44 @@ export default function Landing() {
                 </li>
               ))}
             </ol>
+
+            {/* Estudia donde estés */}
+            <div className="mt-16 md:mt-20">
+              <h3 id="donde" className="font-['Lexend'] text-[22px] font-bold tracking-tight text-ink md:text-[26px]">
+                Estudia donde estés
+              </h3>
+              <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted-foreground md:text-[17px]">
+                Cinco minutos alcanzan para el reto del día: en el bus, en la casa o en la biblioteca, desde el celular.
+              </p>
+              <ul
+                className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-2 sm:scroll-px-6 [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0"
+                aria-labelledby="donde"
+              >
+                {PLACES.map(p => (
+                  <li key={p.slug} className="w-[78%] flex-shrink-0 snap-start sm:w-[46%] md:w-auto">
+                    <figure>
+                      <div className="overflow-hidden rounded-2xl border border-border bg-muted">
+                        <img
+                          src={`/images/landing/estudia-${p.slug}-480.webp`}
+                          srcSet={`/images/landing/estudia-${p.slug}-480.webp 480w, /images/landing/estudia-${p.slug}-800.webp 800w`}
+                          sizes="(min-width: 1152px) 352px, (min-width: 768px) 31vw, (min-width: 640px) 46vw, 78vw"
+                          alt={p.alt}
+                          width={800}
+                          height={800}
+                          loading="lazy"
+                          decoding="async"
+                          className="aspect-square w-full object-cover"
+                        />
+                      </div>
+                      <figcaption className="mt-3">
+                        <span className="block font-['Lexend'] text-[16px] font-semibold text-ink">{p.title}</span>
+                        <span className="mt-0.5 block text-sm leading-relaxed text-muted-foreground">{p.text}</span>
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
