@@ -13,7 +13,7 @@ export const SITE = {
   ogLocale: "es_CO",
   themeColor: "#1e3a5f",
   /** Imagen por defecto para compartir en redes (1200×630). */
-  ogImage: "/og-image.jpg",
+  ogImage: "/og-image-v2.jpg",
   ogImageAlt: "ProICFES: estudia gratis para el ICFES Saber 11",
   /** Creador del sitio (crédito en el pie de página y Organization en JSON-LD). */
   author: {

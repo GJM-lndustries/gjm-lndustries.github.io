@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'wouter';
-import { Cookie, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useConsent } from '@/contexts/ConsentContext';
 import { ALL_DENIED, ALL_GRANTED } from '@/lib/consent';
 import { SITE } from '@/config/site';
 
 const inactive = (id: string) => (id ? '' : ' Hoy no están activas en ProICFES.');
 
-const btn = 'px-3 py-2 rounded-lg text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2';
-const btnPrimary = `${btn} bg-primary text-primary-foreground hover:bg-primary/90`;
-const btnSecondary = `${btn} border border-border bg-card text-foreground hover:bg-muted`;
+const btnPrimary = 'btn-primary btn-sm';
+const btnSecondary = 'btn-secondary btn-sm';
 
 /** Aviso de cookies (no modal) + panel de configuración. Solo se muestra en el navegador. */
 export default function CookieConsent() {
@@ -22,23 +21,17 @@ export default function CookieConsent() {
           role="region"
           aria-label="Aviso de cookies"
           data-testid="cookie-banner"
-          className="fixed z-[55] left-2 right-2 bottom-[calc(4rem+env(safe-area-inset-bottom))] lg:bottom-4 lg:left-auto lg:right-4 lg:max-w-md bg-card text-foreground border border-border rounded-2xl shadow-xl p-4"
+          className="fixed z-[55] left-2 right-2 bottom-[calc(4rem+env(safe-area-inset-bottom))] lg:bottom-4 lg:left-auto lg:right-4 lg:max-w-md bg-card text-foreground border border-border rounded-xl shadow-lg px-3.5 py-3"
         >
-          <div className="flex items-start gap-3">
-            <Cookie className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
-            <div className="space-y-1">
-              <h2 className="font-bold font-['Lexend'] text-sm">Tu privacidad</h2>
-              <p className="text-xs leading-relaxed text-foreground/85">
-                Usamos almacenamiento necesario para guardar tu progreso en este dispositivo. Las cookies de analítica y
-                publicidad solo se activan si las aceptas. Más información en la{' '}
-                <Link href="/cookies" className="underline underline-offset-2 font-semibold text-primary">política de cookies</Link>.
-              </p>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-2 mt-3">
-            <button type="button" className={btnSecondary} onClick={() => save(ALL_DENIED)}>Rechazar</button>
-            <button type="button" className={btnSecondary} onClick={openSettings}>Configurar</button>
-            <button type="button" className={btnPrimary} onClick={() => save(ALL_GRANTED)}>Aceptar todas</button>
+          <p className="text-[13px] leading-snug text-foreground/90">
+            Solo guardamos tu progreso en este dispositivo. Analítica y anuncios, solo si aceptas.{' '}
+            <Link href="/cookies" className="underline underline-offset-2 font-semibold text-navy">Más info</Link>
+          </p>
+          {/* Rechazar y aceptar con el mismo peso visual: sin empujar hacia «aceptar». */}
+          <div className="mt-2 flex items-center gap-2">
+            <button type="button" className="btn-secondary btn-sm flex-1" onClick={() => save(ALL_DENIED)}>Rechazar</button>
+            <button type="button" className="btn-secondary btn-sm flex-1" onClick={() => save(ALL_GRANTED)}>Aceptar todas</button>
+            <button type="button" className="min-h-9 px-2 text-[13px] font-semibold text-muted-foreground underline underline-offset-2 hover:text-foreground" onClick={openSettings}>Configurar</button>
           </div>
         </section>
       )}

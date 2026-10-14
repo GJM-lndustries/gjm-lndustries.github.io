@@ -3,8 +3,8 @@
  * (sin pausa, como en el examen real) y calcula los resultados.
  *
  * Estructura oficial del cuadernillo estándar Saber 11 (Guía de orientación ICFES 2026):
- *   Sesión 1 (4 h 30 min): Matemáticas 25, Lectura Crítica 41, Sociales y Ciudadanas 25, Ciencias Naturales 29.
- *   Sesión 2 (4 h 30 min): Matemáticas 25, Sociales y Ciudadanas 25, Ciencias Naturales 29, Inglés 55.
+ *   Sesión 1 (4 h 30 min): Matemáticas 25, Lectura crítica 41, Sociales y ciudadanas 25, Ciencias naturales 29.
+ *   Sesión 2 (4 h 30 min): Matemáticas 25, Sociales y ciudadanas 25, Ciencias naturales 29, Inglés 55.
  * El simulacro completo conserva esa estructura y la escala al tamaño del banco.
  */
 import { AREA_IDS, type AreaId, type Question } from "@/data/questions/types";

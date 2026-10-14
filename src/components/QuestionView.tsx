@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, XCircle, Lightbulb } from "lucide-react";
+import { CheckCircle2, Lightbulb } from "lucide-react";
 import {
   AREA_INFO,
   DIFFICULTY_LABEL,
@@ -8,6 +9,8 @@ import {
   type Question,
 } from "@/data/questions";
 import RichText from "./RichText";
+import AreaIcon from "@/components/AreaIcon";
+import { haptic } from "@/lib/feedback";
 
 interface QuestionViewProps {
   question: Question;
@@ -28,12 +31,19 @@ export default function QuestionView({
   const stimulus = getStimulus(question.stimulusId);
   const isCorrect = selected === question.answer;
 
+  // Vibración corta al ver la retroalimentación (solo Android; nada con «reducir movimiento»).
+  useEffect(() => {
+    if (answered && selected != null) haptic(isCorrect ? 12 : [24, 50, 24]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [answered]);
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" data-qid={question.id}>
       {showMeta && (
         <div className="flex flex-wrap gap-2 text-xs">
-          <span className="score-badge bg-primary/10 text-primary border border-primary/20">
-            {AREA_INFO[question.area].icon} {AREA_INFO[question.area].label}
+          <span className="score-badge gap-1.5 border border-border bg-card pl-1 text-foreground">
+            <AreaIcon area={question.area} size="sm" className="!h-5 !w-5 !rounded-md" />
+            {AREA_INFO[question.area].label}
           </span>
           <span className="score-badge bg-muted text-muted-foreground border border-border">
             {question.competencia}
@@ -50,7 +60,7 @@ export default function QuestionView({
             </span>
           )}
           <span className="score-badge bg-yellow-50 text-yellow-800 border border-yellow-200">
-            Nivel {DIFFICULTY_LABEL[question.difficulty]}
+            Nivel {DIFFICULTY_LABEL[question.difficulty].toLowerCase()}
           </span>
         </div>
       )}
@@ -104,7 +114,7 @@ export default function QuestionView({
                   markCorrect
                     ? "border-green-500 bg-green-500 text-white"
                     : markWrong
-                      ? "border-red-500 bg-red-500 text-white"
+                      ? "border-amber-500 bg-amber-100 text-amber-900"
                       : "border-current"
                 }`}
               >
@@ -113,15 +123,14 @@ export default function QuestionView({
               <span className="text-sm">{option.text}</span>
               {markCorrect && (
                 <CheckCircle2
-                  className="w-5 h-5 text-green-500 ml-auto flex-shrink-0"
+                  className="anim-pop w-5 h-5 text-green-500 ml-auto flex-shrink-0"
                   aria-label="Respuesta correcta"
                 />
               )}
               {markWrong && (
-                <XCircle
-                  className="w-5 h-5 text-red-500 ml-auto flex-shrink-0"
-                  aria-label="Tu respuesta (incorrecta)"
-                />
+                <span className="ml-auto flex-shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-900">
+                  Tu respuesta
+                </span>
               )}
             </motion.button>
           );
@@ -134,30 +143,32 @@ export default function QuestionView({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             role="status"
-            className={`rounded-xl p-4 border ${isCorrect ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}
+            className={`rounded-xl p-4 border ${isCorrect ? "bg-green-50 border-green-200" : selected == null ? "bg-muted/60 border-border" : "bg-amber-50/80 border-amber-200"}`}
           >
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-start gap-2 mb-2">
               {isCorrect ? (
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                <CheckCircle2 className="anim-pop mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" aria-hidden="true" />
               ) : (
-                <XCircle className="w-5 h-5 text-red-600" />
+                <Lightbulb className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" aria-hidden="true" />
               )}
-              <span
-                className={`font-bold text-sm ${isCorrect ? "text-green-800" : "text-red-800"}`}
-              >
-                {isCorrect
-                  ? "¡Correcto!"
-                  : selected == null
-                    ? `No respondiste esta pregunta. La correcta es la ${question.answer.toUpperCase()}.`
-                    : `Respuesta incorrecta. La correcta es la ${question.answer.toUpperCase()}.`}
-              </span>
+              <p className="text-sm">
+                <span className={`font-bold ${isCorrect ? "text-green-800" : "text-foreground"}`}>
+                  {isCorrect
+                    ? "¡Bien! Esa es."
+                    : selected == null
+                      ? "No respondiste esta pregunta."
+                      : "Casi. Mira el truco:"}
+                </span>
+                {!isCorrect && (
+                  <span className="text-muted-foreground"> la correcta es la {question.answer.toUpperCase()}.</span>
+                )}
+              </p>
             </div>
             <p className="text-sm text-foreground">{question.explanation}</p>
             {question.tip && (
-              <div className="mt-3 flex items-start gap-2 bg-white/60 rounded-lg p-2">
-                <Lightbulb className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" />
+              <div className="mt-3 rounded-lg bg-white/70 p-2.5">
                 <p className="text-xs text-foreground">
-                  <span className="font-semibold">Tip: </span>
+                  <span className="font-semibold">El truco: </span>
                   {question.tip}
                 </p>
               </div>

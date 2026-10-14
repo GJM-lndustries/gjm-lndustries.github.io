@@ -40,10 +40,6 @@ export interface Module {
   description: string;
   color: string;
   bgColor: string;
-  icon: string;
-  image: string;
-  /** Tamaño real de la imagen (ancho, alto) para reservar espacio y evitar saltos. */
-  imageSize: [number, number];
   lessons: Lesson[];
   totalXp: number;
 }
@@ -55,7 +51,7 @@ export interface Module {
 const mathLessons: Lesson[] = [
   {
     id: 'math-1',
-    title: 'Números y Operaciones Básicas',
+    title: 'Números y operaciones básicas',
     subtitle: 'Suma, resta, multiplicación y división',
     level: 'basico',
     difficulty: 'facil',
@@ -92,7 +88,7 @@ const mathLessons: Lesson[] = [
       },
       {
         type: 'tip',
-        title: '💡 Consejo para el examen',
+        title: 'Consejo para el examen',
         text: 'Cuando veas una expresión como "3.000 + (1.000 × n)", léela como una receta: primero el precio fijo (3.000), luego lo que cambia según cuántos acompañamientos pidas. El ICFES siempre pone problemas de la vida cotidiana, así que piensa en situaciones reales.'
       }
     ],
@@ -100,7 +96,7 @@ const mathLessons: Lesson[] = [
   },
   {
     id: 'math-2',
-    title: 'Promedio, Moda y Mediana',
+    title: 'Promedio, moda y mediana',
     subtitle: 'Las tres medidas más importantes del ICFES',
     level: 'basico',
     difficulty: 'facil',
@@ -108,7 +104,7 @@ const mathLessons: Lesson[] = [
     xp: 60,
     glossary: [
       {
-        term: 'Promedio (Media)',
+        term: 'Promedio (media)',
         simple: 'Es el valor "del medio" cuando sumas todos los datos y los divides entre cuántos son. Como cuando calculas tu promedio de notas.',
         technical: 'Medida de tendencia central que se calcula sumando todos los valores y dividiendo entre el número total de datos.'
       },
@@ -131,33 +127,33 @@ const mathLessons: Lesson[] = [
       },
       {
         type: 'explanation',
-        title: 'Cómo calcular el Promedio',
+        title: 'Cómo calcular el promedio',
         text: 'Suma todos los valores y divide entre cuántos hay. Ejemplo: Las notas de Juan son 3, 4, 5, 4, 4. Suma: 3+4+5+4+4 = 20. Divide: 20 ÷ 5 = 4. El promedio de Juan es 4.',
         highlight: 'El promedio es sensible a valores extremos. Un dato muy alto o muy bajo puede "jalar" el promedio.'
       },
       {
         type: 'explanation',
-        title: 'Cómo encontrar la Moda',
+        title: 'Cómo encontrar la moda',
         text: 'Mira cuál número se repite más veces. En las notas de Juan: 3 aparece 1 vez, 4 aparece 3 veces, 5 aparece 1 vez. La moda es 4 porque es la que más se repite.',
         highlight: 'Puede haber más de una moda si dos valores se repiten la misma cantidad de veces.'
       },
       {
         type: 'explanation',
-        title: 'Cómo encontrar la Mediana',
+        title: 'Cómo encontrar la mediana',
         text: 'Ordena los datos de menor a mayor: 3, 4, 4, 4, 5. El dato del medio (posición 3 de 5) es 4. La mediana es 4. Si hay un número par de datos, promedia los dos del medio.',
         highlight: 'La mediana no se afecta por valores extremos, por eso se usa para salarios o precios de casas.'
       },
       {
         type: 'tip',
-        title: '💡 Truco para el ICFES',
-        text: 'Cuando el ICFES pregunte sobre "el valor que más se repite" → Moda. "El valor central" → Mediana. "El valor típico calculado" → Promedio. Lee bien la pregunta, estas palabras clave son tu guía.'
+        title: 'Truco para el ICFES',
+        text: 'Cuando el ICFES pregunte por "el valor que más se repite", busca la moda. Si dice "el valor central", es la mediana. Si habla del "valor típico calculado", es el promedio. Lee bien la pregunta, estas palabras clave son tu guía.'
       }
     ],
     questionIds: ['math-2-q1', 'math-2-q2']
   },
   {
     id: 'math-3',
-    title: 'Interpretación de Gráficas y Tablas',
+    title: 'Interpretación de gráficas y tablas',
     subtitle: 'Leer datos sin confundirte',
     level: 'basico',
     difficulty: 'facil',
@@ -199,7 +195,7 @@ const mathLessons: Lesson[] = [
       },
       {
         type: 'tip',
-        title: '💡 Consejo clave',
+        title: 'Consejo clave',
         text: 'En gráficas circulares, recuerda que el total es 100%. Si un sector ocupa más de la mitad del círculo, representa más del 50%. Si el ICFES te da porcentajes, verifica que sumen 100%.'
       }
     ],
@@ -207,8 +203,8 @@ const mathLessons: Lesson[] = [
   },
   {
     id: 'math-4',
-    title: 'Álgebra Básica: Variables y Expresiones',
-    subtitle: 'Las letras en matemáticas no dan miedo',
+    title: 'Álgebra básica: variables y expresiones',
+    subtitle: 'Qué significan las letras en una expresión',
     level: 'intermedio',
     difficulty: 'medio',
     duration: 25,
@@ -249,7 +245,7 @@ const mathLessons: Lesson[] = [
       },
       {
         type: 'tip',
-        title: '💡 Estrategia para el ICFES',
+        title: 'Estrategia para el ICFES',
         text: 'Cuando veas opciones con expresiones algebraicas, reemplaza un número sencillo (como n=1 o n=2) en cada opción y verifica cuál da el resultado correcto según el problema. Esto te ahorra tiempo y evita errores.'
       }
     ],
@@ -257,8 +253,8 @@ const mathLessons: Lesson[] = [
   },
   {
     id: 'math-5',
-    title: 'Probabilidad y Combinatoria',
-    subtitle: 'Contar posibilidades y calcular chances',
+    title: 'Probabilidad y combinatoria',
+    subtitle: 'Contar posibilidades y calcular probabilidades',
     level: 'avanzado',
     difficulty: 'dificil',
     duration: 30,
@@ -294,9 +290,9 @@ const mathLessons: Lesson[] = [
       },
       {
         type: 'explanation',
-        title: 'Permutaciones vs Combinaciones',
+        title: 'Permutaciones y combinaciones',
         text: 'Permutación (orden importa): ¿De cuántas formas puedo ordenar 3 libros en un estante? 3 × 2 × 1 = 6 formas. Combinación (orden no importa): ¿De cuántas formas puedo elegir 2 libros de 5? 5!/(2!×3!) = 10 formas.',
-        highlight: 'La clave: ¿importa el orden? Si sí → permutación. Si no → combinación.'
+        highlight: 'La clave: ¿importa el orden? Si importa, es una permutación. Si no, es una combinación.'
       },
       {
         type: 'example',
@@ -315,7 +311,7 @@ const mathLessons: Lesson[] = [
 const readingLessons: Lesson[] = [
   {
     id: 'read-1',
-    title: '¿Qué dice el texto? Comprensión Literal',
+    title: '¿Qué dice el texto? Comprensión literal',
     subtitle: 'Encontrar la información que está escrita directamente',
     level: 'basico',
     difficulty: 'facil',
@@ -352,7 +348,7 @@ const readingLessons: Lesson[] = [
       },
       {
         type: 'tip',
-        title: '💡 Truco para preguntas literales',
+        title: 'Truco para preguntas literales',
         text: 'Las preguntas literales usan frases como: "Según el texto...", "De acuerdo con el texto...", "El autor afirma que...". La respuesta siempre está escrita directamente en el texto. Busca las palabras clave de la pregunta en el texto.'
       }
     ],
@@ -360,7 +356,7 @@ const readingLessons: Lesson[] = [
   },
   {
     id: 'read-2',
-    title: '¿Qué quiere decir el texto? Comprensión Inferencial',
+    title: '¿Qué quiere decir el texto? Comprensión inferencial',
     subtitle: 'Entender lo que el texto dice entre líneas',
     level: 'intermedio',
     difficulty: 'medio',
@@ -392,7 +388,7 @@ const readingLessons: Lesson[] = [
       {
         type: 'explanation',
         title: 'Tipos de preguntas inferenciales en el ICFES',
-        text: '1. "¿Qué se puede concluir del texto?" → Busca qué se desprende lógicamente de lo que dice. 2. "¿Cuál sería una continuación adecuada?" → El texto debe seguir la misma línea de argumentación. 3. "¿Qué relación hay entre estos fragmentos?" → Identifica si uno apoya, contradice o ejemplifica al otro.',
+        text: '1. "¿Qué se puede concluir del texto?": busca qué se desprende lógicamente de lo que dice. 2. "¿Cuál sería una continuación adecuada?": el texto debe seguir la misma línea de argumentación. 3. "¿Qué relación hay entre estos fragmentos?": identifica si uno apoya, contradice o ejemplifica al otro.',
         highlight: 'La respuesta correcta siempre se puede justificar con algo del texto. Si no puedes justificarla con el texto, probablemente está mal.'
       },
       {
@@ -402,7 +398,7 @@ const readingLessons: Lesson[] = [
       },
       {
         type: 'tip',
-        title: '💡 Estrategia para preguntas inferenciales',
+        title: 'Estrategia para preguntas inferenciales',
         text: 'Elimina las opciones que: (1) contradigan el texto, (2) no tengan relación con el texto, (3) sean demasiado extremas o absolutas. La respuesta correcta siempre es moderada y se puede justificar.'
       }
     ],
@@ -410,7 +406,7 @@ const readingLessons: Lesson[] = [
   },
   {
     id: 'read-3',
-    title: 'Propósito del Autor y Estrategias Argumentativas',
+    title: 'Propósito del autor y estrategias argumentativas',
     subtitle: '¿Por qué escribió esto y cómo lo defiende?',
     level: 'avanzado',
     difficulty: 'dificil',
@@ -447,14 +443,14 @@ const readingLessons: Lesson[] = [
       {
         type: 'explanation',
         title: 'Cómo identificar el propósito del autor',
-        text: 'Pregúntate: ¿El autor está dando información neutral? → Informar. ¿Está defendiendo una posición? → Argumentar/Convencer. ¿Está contando una historia? → Narrar. ¿Está describiendo algo? → Describir. La mayoría de textos del ICFES son argumentativos: el autor defiende una idea.',
+        text: 'Pregúntate qué hace el autor. Si da información neutral, su propósito es informar. Si defiende una posición, quiere argumentar o convencer. Si cuenta una historia, su propósito es narrar, y si describe algo, describir. La mayoría de textos del ICFES son argumentativos: el autor defiende una idea.',
         highlight: 'En textos argumentativos, busca la tesis (qué defiende) y los argumentos (cómo lo defiende).'
       },
       {
         type: 'explanation',
         title: 'Estrategias argumentativas más comunes en el ICFES',
         text: '1. Citar expertos: "Según el filósofo X..." 2. Dar ejemplos concretos 3. Usar estadísticas o datos 4. Comparar situaciones 5. Contar una anécdota personal 6. Presentar y refutar el argumento contrario.',
-        highlight: 'El ICFES pregunta: "¿Qué estrategia usa el autor para..." → Identifica cuál de estas está usando.'
+        highlight: 'Cuando el ICFES pregunte "¿Qué estrategia usa el autor para...?", identifica cuál de estas está usando.'
       }
     ],
     questionIds: ['lc-007', 'lc-008', 'lc-015']
@@ -468,7 +464,7 @@ const readingLessons: Lesson[] = [
 const scienceLessons: Lesson[] = [
   {
     id: 'sci-1',
-    title: 'La Célula: La Unidad de la Vida',
+    title: 'La célula: la unidad de la vida',
     subtitle: 'El "ladrillo" con el que está hecho todo ser vivo',
     level: 'basico',
     difficulty: 'facil',
@@ -510,7 +506,7 @@ const scienceLessons: Lesson[] = [
       },
       {
         type: 'explanation',
-        title: 'Células animales vs vegetales',
+        title: 'Células animales y vegetales',
         text: 'Las células vegetales tienen algo extra: pared celular (una capa rígida exterior, como una caja de madera), cloroplastos (para hacer fotosíntesis, capturan la luz solar) y vacuola grande central. Las animales no tienen estos.',
         highlight: 'Pregunta frecuente del ICFES: ¿Por qué las plantas pueden hacer su propio alimento y los animales no? Por los cloroplastos.'
       }
@@ -519,7 +515,7 @@ const scienceLessons: Lesson[] = [
   },
   {
     id: 'sci-2',
-    title: 'Leyes del Movimiento de Newton',
+    title: 'Leyes del movimiento de Newton',
     subtitle: 'Por qué las cosas se mueven o se quedan quietas',
     level: 'intermedio',
     difficulty: 'medio',
@@ -550,19 +546,19 @@ const scienceLessons: Lesson[] = [
       },
       {
         type: 'explanation',
-        title: '1ª Ley: La Ley de la Inercia',
+        title: 'Primera ley: la ley de la inercia',
         text: 'Un objeto quieto sigue quieto, y uno en movimiento sigue moviéndose, a menos que una fuerza lo cambie. Ejemplo: Cuando el bus frena de golpe, tú sigues hacia adelante (tu cuerpo quería seguir moviéndose). Por eso existen los cinturones de seguridad.',
         highlight: 'Clave: Si no hay fuerza neta, el movimiento no cambia.'
       },
       {
         type: 'explanation',
-        title: '2ª Ley: F = ma',
+        title: 'Segunda ley: F = ma',
         text: 'La fuerza necesaria para mover algo depende de su masa y de cuánto quieres que acelere. F = masa × aceleración. Ejemplo: Es más difícil empujar un bus que una bicicleta (más masa = necesitas más fuerza para la misma aceleración).',
         highlight: 'F = ma es la fórmula más importante de física en el ICFES.'
       },
       {
         type: 'explanation',
-        title: '3ª Ley: Acción y Reacción',
+        title: 'Tercera ley: acción y reacción',
         text: 'Por cada fuerza que ejerces, hay una fuerza igual pero en dirección contraria. Ejemplo: Cuando saltas, empujas el suelo hacia abajo y el suelo te empuja hacia arriba. Los cohetes funcionan así: expulsan gas hacia abajo y el cohete sube.',
         highlight: 'Las fuerzas de acción y reacción actúan sobre objetos DIFERENTES, no sobre el mismo.'
       }
@@ -578,7 +574,7 @@ const scienceLessons: Lesson[] = [
 const socialLessons: Lesson[] = [
   {
     id: 'soc-1',
-    title: 'La Constitución de 1991: Tus Derechos',
+    title: 'La Constitución de 1991: tus derechos',
     subtitle: 'Lo que la ley dice que tienes derecho a tener',
     level: 'basico',
     difficulty: 'facil',
@@ -609,7 +605,7 @@ const socialLessons: Lesson[] = [
     content: [
       {
         type: 'intro',
-        title: 'La Constitución del 91: Un antes y un después',
+        title: 'La Constitución del 91: un antes y un después',
         text: 'En 1991, Colombia cambió su Constitución. Antes había una del 1886 que era muy vieja y no protegía bien a los ciudadanos. La nueva Constitución fue escrita con participación de muchos grupos, incluyendo indígenas y exguerrilleros. Es considerada una de las más avanzadas del mundo en derechos humanos.'
       },
       {
@@ -620,7 +616,7 @@ const socialLessons: Lesson[] = [
       },
       {
         type: 'explanation',
-        title: 'La Tutela: Tu herramienta más poderosa',
+        title: 'La tutela: tu herramienta más poderosa',
         text: 'Si alguien viola tus derechos fundamentales, puedes poner una tutela. El juez tiene 10 días para responder. Ejemplo: Si una EPS te niega un medicamento urgente, puedes poner tutela. Si un colegio te expulsa sin proceso, puedes poner tutela.',
         highlight: 'La tutela solo protege derechos FUNDAMENTALES (los del Título II). Para otros derechos hay otras acciones.'
       }
@@ -629,7 +625,7 @@ const socialLessons: Lesson[] = [
   },
   {
     id: 'soc-2',
-    title: 'Historia de Colombia: Los Momentos Clave',
+    title: 'Historia de Colombia: los momentos clave',
     subtitle: 'Lo que pasó y por qué importa hoy',
     level: 'intermedio',
     difficulty: 'medio',
@@ -681,8 +677,8 @@ const socialLessons: Lesson[] = [
 const englishLessons: Lesson[] = [
   {
     id: 'eng-1',
-    title: 'Vocabulario Básico: Las Palabras Más Comunes',
-    subtitle: 'Las 200 palabras en inglés que más aparecen en el ICFES',
+    title: 'Vocabulario básico: las palabras más comunes',
+    subtitle: 'Palabras frecuentes en la prueba de inglés',
     level: 'basico',
     difficulty: 'facil',
     duration: 20,
@@ -707,9 +703,9 @@ const englishLessons: Lesson[] = [
       },
       {
         type: 'explanation',
-        title: 'Tu superpoder: Los cognados',
+        title: 'Tu mejor aliado: los cognados',
         text: 'Muchas palabras en inglés se parecen al español: information=información, important=importante, national=nacional, president=presidente, education=educación, technology=tecnología, communication=comunicación. Si ves una palabra larga en inglés que termina en -tion, -sion, -ity, probablemente tiene un equivalente en español.',
-        highlight: 'Regla de oro: Palabras que terminan en -tion en inglés → -ción en español. Nation → Nación. Action → Acción.'
+        highlight: 'Regla de oro: las palabras que terminan en -tion en inglés suelen terminar en -ción en español: nation es nación y action es acción.'
       },
       {
         type: 'explanation',
@@ -719,7 +715,7 @@ const englishLessons: Lesson[] = [
       },
       {
         type: 'tip',
-        title: '💡 Estrategia para el inglés del ICFES',
+        title: 'Estrategia para el inglés del ICFES',
         text: 'Si no entiendes una palabra, usa el contexto. Lee la oración completa y las de alrededor. El significado muchas veces se puede deducir. Además, las preguntas del ICFES en inglés siempre tienen las opciones en español, así que solo necesitas entender el texto en inglés.'
       }
     ],
@@ -727,7 +723,7 @@ const englishLessons: Lesson[] = [
   },
   {
     id: 'eng-2',
-    title: 'Gramática Básica: Tiempos Verbales',
+    title: 'Gramática básica: tiempos verbales',
     subtitle: 'Presente, pasado y futuro en inglés',
     level: 'intermedio',
     difficulty: 'medio',
@@ -758,15 +754,15 @@ const englishLessons: Lesson[] = [
       },
       {
         type: 'explanation',
-        title: 'Simple Present: El presente de siempre',
+        title: 'Simple present: el presente habitual',
         text: 'Uso: hábitos ("I eat breakfast every day"), hechos ("Water boils at 100°C"), horarios ("The bus leaves at 8am"). Forma: sujeto + verbo (+ s para he/she/it). "She works, He plays, It rains."',
         highlight: 'Palabras clave del Simple Present: always, usually, often, sometimes, never, every day/week/month.'
       },
       {
         type: 'explanation',
-        title: 'Simple Past: Lo que ya pasó',
+        title: 'Simple past: lo que ya pasó',
         text: 'Uso: acciones terminadas en el pasado. Forma: sujeto + verbo-ed (regulares) o forma especial (irregulares). "worked, played, went, came, made". Palabras clave: yesterday, last week, in 1990, ago.',
-        highlight: 'Los verbos irregulares más comunes: go→went, come→came, make→made, take→took, have→had, be→was/were.'
+        highlight: 'Los verbos irregulares más comunes: go (went), come (came), make (made), take (took), have (had), be (was/were).'
       }
     ],
     questionIds: ['eng-2-q1']
@@ -783,54 +779,42 @@ export const modules: Module[] = [
     area: 'matematicas',
     title: 'Matemáticas',
     subtitle: 'Números, álgebra y estadística',
-    description: 'Aprende desde las operaciones básicas hasta estadística y probabilidad. El ICFES siempre pone problemas de la vida real, ¡y tú los vas a resolver!',
+    description: 'De las operaciones básicas a la estadística y la probabilidad, siempre con problemas de la vida real, como los del examen.',
     color: 'text-blue-700',
     bgColor: 'bg-blue-50',
-    icon: '📐',
-    image: '/images/modulo-matematicas.webp',
-    imageSize: [640, 640],
     lessons: mathLessons,
     totalXp: mathLessons.reduce((sum, l) => sum + l.xp, 0)
   },
   {
     id: 'lectura',
     area: 'lectura-critica',
-    title: 'Lectura Crítica',
+    title: 'Lectura crítica',
     subtitle: 'Comprensión y análisis de textos',
-    description: 'Aprende a leer textos de todo tipo y a responder preguntas sobre lo que dicen, lo que implican y el propósito del autor.',
+    description: 'Lee textos de distintos tipos y responde sobre lo que dicen, lo que dan a entender y la intención del autor.',
     color: 'text-amber-700',
     bgColor: 'bg-amber-50',
-    icon: '📖',
-    image: '/images/modulo-lectura.webp',
-    imageSize: [640, 640],
     lessons: readingLessons,
     totalXp: readingLessons.reduce((sum, l) => sum + l.xp, 0)
   },
   {
     id: 'ciencias',
     area: 'ciencias-naturales',
-    title: 'Ciencias Naturales',
+    title: 'Ciencias naturales',
     subtitle: 'Biología, química y física',
-    description: 'Desde la célula hasta las leyes del movimiento. Aprende ciencias con ejemplos de la vida cotidiana colombiana.',
+    description: 'De la célula a las leyes del movimiento, con ejemplos de la vida diaria en Colombia.',
     color: 'text-teal-700',
     bgColor: 'bg-teal-50',
-    icon: '🔬',
-    image: '/images/modulo-ciencias.webp',
-    imageSize: [640, 640],
     lessons: scienceLessons,
     totalXp: scienceLessons.reduce((sum, l) => sum + l.xp, 0)
   },
   {
     id: 'sociales',
     area: 'sociales-ciudadanas',
-    title: 'Sociales y Ciudadanas',
+    title: 'Sociales y ciudadanas',
     subtitle: 'Historia, geografía y constitución',
-    description: 'Conoce la historia de Colombia, tus derechos como ciudadano y cómo funciona el país. ¡Es tu historia!',
+    description: 'Historia de Colombia, tus derechos como ciudadano y cómo funciona el Estado.',
     color: 'text-orange-700',
     bgColor: 'bg-orange-50',
-    icon: '🗺️',
-    image: '/images/modulo-sociales.webp',
-    imageSize: [640, 640],
     lessons: socialLessons,
     totalXp: socialLessons.reduce((sum, l) => sum + l.xp, 0)
   },
@@ -839,12 +823,9 @@ export const modules: Module[] = [
     area: 'ingles',
     title: 'Inglés',
     subtitle: 'Vocabulario, gramática y comprensión',
-    description: 'Aprende el inglés que necesitas para el ICFES. Empezamos desde cero con vocabulario básico hasta leer textos completos.',
+    description: 'El inglés que pide el examen: desde el vocabulario básico hasta la lectura de textos completos.',
     color: 'text-purple-700',
     bgColor: 'bg-purple-50',
-    icon: '🌎',
-    image: '/images/modulo-ingles.webp',
-    imageSize: [400, 267],
     lessons: englishLessons,
     totalXp: englishLessons.reduce((sum, l) => sum + l.xp, 0)
   }

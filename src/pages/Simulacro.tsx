@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import {
+  ChevronDown,
   BarChart3,
   CheckCircle2,
   ChevronLeft,
@@ -47,6 +48,8 @@ import {
   type SimulacroFormat,
   type SimulacroResult,
 } from "@/lib/simulacro";
+import AreaIcon from "@/components/AreaIcon";
+import { withMotion } from '@/components/withMotion';
 
 const BANK_COUNTS = Object.fromEntries(
   AREA_IDS.map(a => [a, questionsByArea[a].length])
@@ -80,7 +83,7 @@ function newSeed(): number {
   return Math.floor(Math.random() * 2 ** 32);
 }
 
-export default function Simulacro() {
+function Simulacro() {
   // Primer render igual en el prerender y en el navegador: el intento guardado se carga después.
   const [attempt, setAttempt] = useState<SimulacroAttempt | null>(null);
   const [loaded, setLoaded] = useState(false);
@@ -191,7 +194,7 @@ function Intro({
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">
+        <h1 className="page-title">
           Simulacro Saber 11
         </h1>
         <p className="text-muted-foreground mt-1">
@@ -210,7 +213,7 @@ function Intro({
             <button
               type="button"
               onClick={onResume}
-              className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold"
+              className="btn-primary btn-sm"
             >
               Empezar
             </button>
@@ -225,135 +228,97 @@ function Intro({
         </div>
       )}
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <section
-          aria-labelledby="sim-corto"
-          className="bg-gradient-to-br from-[#1e3a5f] to-[#0f2040] rounded-2xl p-5 text-white flex flex-col"
-        >
-          <h2
-            id="sim-corto"
-            className="text-lg font-bold font-['Lexend'] flex items-center gap-2"
-          >
-            <Target className="w-5 h-5 text-[#4ade80]" aria-hidden="true" />{" "}
-            Simulacro corto
-          </h2>
-          <p className="text-white/75 text-sm mt-1">
-            Una sesión con las cinco pruebas. Ideal para medirte entre semana.
-          </p>
-          <dl className="grid grid-cols-2 gap-3 my-4">
-            <div className="bg-white/10 rounded-xl p-3 text-center">
-              <dt className="text-xs text-white/70">Preguntas</dt>
-              <dd className="text-2xl font-bold">{countOf(corto.areas)}</dd>
-            </div>
-            <div className="bg-white/10 rounded-xl p-3 text-center">
-              <dt className="text-xs text-white/70">Tiempo</dt>
-              <dd className="text-2xl font-bold">
-                {formatMinutes(corto.minutes)}
-              </dd>
-            </div>
-          </dl>
-          <p className="text-xs text-white/70 mb-4">
-            {Object.entries(corto.areas)
-              .map(([a, n]) => `${AREA_INFO[a as AreaId].label} ${n}`)
-              .join(" · ")}
-          </p>
-          <button
-            type="button"
-            onClick={() => onStart("corto")}
-            className="mt-auto w-full bg-[#4ade80] text-[#0f2040] py-3 rounded-xl font-bold font-['Lexend'] hover:bg-[#22c55e] transition-colors"
-          >
-            Empezar simulacro corto
-          </button>
-        </section>
-
-        <section
-          aria-labelledby="sim-completo"
-          className="bg-card rounded-2xl border border-border p-5 flex flex-col"
-        >
-          <h2
-            id="sim-completo"
-            className="text-lg font-bold font-['Lexend'] text-foreground flex items-center gap-2"
-          >
-            <ListChecks className="w-5 h-5 text-primary" aria-hidden="true" />{" "}
-            Simulacro completo por sesiones
-          </h2>
-          <p className="text-muted-foreground text-sm mt-1">
-            Dos sesiones con la misma estructura del examen, a escala de nuestro
-            banco.
-          </p>
-          <ol className="space-y-2 my-4">
-            {completo.map((s, i) => (
-              <li key={i} className="rounded-xl bg-muted/60 p-3">
-                <p className="text-sm font-semibold text-foreground">
-                  Sesión {i + 1}: {countOf(s.areas)} preguntas ·{" "}
-                  {formatMinutes(s.minutes)}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  {Object.entries(s.areas)
-                    .map(([a, n]) => `${AREA_INFO[a as AreaId].label} ${n}`)
-                    .join(" · ")}
-                </p>
-              </li>
-            ))}
-          </ol>
-          <button
-            type="button"
-            onClick={() => onStart("completo")}
-            className="mt-auto w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors"
-          >
-            Empezar simulacro completo
-          </button>
-        </section>
-      </div>
-
       <section
-        aria-labelledby="sim-reglas"
-        className="bg-primary/5 rounded-xl border border-primary/20 p-4"
+        aria-labelledby="sim-corto"
+        className="bg-navy rounded-2xl p-5 text-white"
+        data-testid="sim-recomendado"
       >
-        <h2
-          id="sim-reglas"
-          className="font-bold font-['Lexend'] text-primary text-sm mb-2"
-        >
-          Reglas, como en el examen real
-        </h2>
-        <ul className="space-y-1.5 text-sm text-foreground list-disc pl-5">
-          <li>
-            El tiempo corre sin pausa desde que empiezas una sesión, aunque
-            cierres la página o cambies de pestaña.
-          </li>
-          <li>
-            Dentro de la sesión puedes avanzar, volver a cualquier pregunta,
-            cambiar tu respuesta y marcarla para revisarla.
-          </li>
-          <li>
-            Cuando terminas una sesión (o se acaba el tiempo) ya no puedes
-            volver a ella.
-          </li>
-          <li>
-            En el simulacro completo hay un receso entre la sesión 1 y la 2:
-            empiezas la segunda cuando estés listo.
-          </li>
-          <li>
-            No se restan puntos por respuestas incorrectas: no dejes preguntas
-            en blanco.
-          </li>
-          <li>
-            No verás si acertaste hasta el final. Ahí tienes el puntaje por
-            prueba y la explicación de cada pregunta.
-          </li>
-        </ul>
-        <p className="text-xs text-muted-foreground mt-3">
-          El examen real tiene dos sesiones de 4 horas y 30 minutos. Aquí se
-          conserva el mismo ritmo (unos 2 minutos por pregunta). El puntaje es
-          un estimado: el ICFES calcula el oficial con modelos estadísticos
-          propios.
+        <p className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold text-white">
+          <Target className="h-3.5 w-3.5 text-brand" aria-hidden="true" /> Recomendado para empezar
         </p>
+        <h2 id="sim-corto" className="mt-3 text-xl font-bold font-['Lexend']">
+          Simulacro corto: {countOf(corto.areas)} preguntas
+        </h2>
+        <p className="text-white/80 text-sm mt-1">
+          Las cinco pruebas en una sola sesión de {formatMinutes(corto.minutes)}. Al final te decimos cuántos puntos te faltan para tu meta y qué practicar.
+        </p>
+        <p className="text-xs text-white/65 mt-3">
+          {Object.entries(corto.areas)
+            .map(([a, n]) => `${AREA_INFO[a as AreaId].label} ${n}`)
+            .join(" · ")}
+        </p>
+        <button
+          type="button"
+          onClick={() => onStart("corto")}
+          className="btn-primary mt-5 w-full sm:w-auto"
+        >
+          Empezar simulacro corto
+        </button>
+      </section>
+
+      <details className="card group p-4" aria-labelledby="sim-reglas">
+        <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3">
+          <h2 id="sim-reglas" className="font-semibold text-foreground text-[15px]">Cómo funciona (reglas del examen)</h2>
+          <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" />
+        </summary>
+        <div className="mt-3">
+        <ul className="space-y-1.5 text-sm text-foreground list-disc pl-5">
+            <li>
+              El tiempo corre sin pausa desde que empiezas una sesión, aunque
+              cierres la página o cambies de pestaña.
+            </li>
+            <li>
+              Dentro de la sesión puedes avanzar, volver a cualquier pregunta,
+              cambiar tu respuesta y marcarla para revisarla.
+            </li>
+            <li>
+              Cuando terminas una sesión (o se acaba el tiempo) ya no puedes
+              volver a ella.
+            </li>
+            <li>
+              En el simulacro completo hay un receso entre la sesión 1 y la 2:
+              empiezas la segunda cuando estés listo.
+            </li>
+            <li>
+              No se restan puntos por respuestas incorrectas: no dejes preguntas
+              en blanco.
+            </li>
+            <li>
+              No verás si acertaste hasta el final. Ahí tienes el puntaje por
+              prueba y la explicación de cada pregunta.
+            </li>
+          </ul>
+          <p className="text-xs text-muted-foreground mt-3">
+            El examen real tiene dos sesiones de 4 horas y 30 minutos. Aquí se
+            conserva el mismo ritmo (unos 2 minutos por pregunta). El puntaje es
+            un estimado: el ICFES calcula el oficial con modelos estadísticos
+            propios.
+          </p>
+  </div>
+      </details>
+
+      <section aria-labelledby="sim-completo" className="card p-5">
+        <p className="eyebrow">Para cuando estés listo</p>
+        <h2 id="sim-completo" className="mt-1 text-lg font-bold font-['Lexend'] text-foreground flex items-center gap-2">
+          <ListChecks className="w-5 h-5 text-primary" aria-hidden="true" /> Simulacro completo por sesiones
+        </h2>
+        <p className="text-muted-foreground text-sm mt-1">
+          Dos sesiones con la misma estructura del examen, a escala de nuestro banco:{" "}
+          {completo.map((s, i) => `sesión ${i + 1}, ${countOf(s.areas)} preguntas en ${formatMinutes(s.minutes)}`).join("; ")}.
+        </p>
+        <button
+          type="button"
+          onClick={() => onStart("completo")}
+          className="btn-secondary mt-4 w-full sm:w-auto"
+        >
+          Empezar simulacro completo
+        </button>
       </section>
 
       {recent.length > 0 && (
         <section
           aria-labelledby="sim-historial"
-          className="bg-card rounded-xl border border-border p-4"
+          className="card p-4"
         >
           <h2
             id="sim-historial"
@@ -475,15 +440,16 @@ function Exam({
           aria-hidden="true"
         >
           <div
-            className="h-full bg-primary rounded-full transition-all"
+            className="progress-fill h-full bg-primary rounded-full"
             style={{ width: `${(answeredCount / ids.length) * 100}%` }}
           />
         </div>
       </div>
 
       <div className="flex items-center justify-between gap-2">
-        <span className="score-badge bg-primary/10 text-primary border border-primary/20 text-xs">
-          {AREA_INFO[question.area].icon} {AREA_INFO[question.area].label}
+        <span className="score-badge gap-1.5 border border-border bg-card pl-1 text-xs text-foreground">
+          <AreaIcon area={question.area} size="sm" className="!h-5 !w-5 !rounded-md" />
+          {AREA_INFO[question.area].label}
         </span>
         <button
           type="button"
@@ -500,7 +466,7 @@ function Exam({
         <nav
           id="sim-navegador"
           aria-label="Preguntas de la sesión"
-          className="bg-card rounded-xl border border-border p-3"
+          className="card p-3"
         >
           <ul className="grid grid-cols-8 sm:grid-cols-10 gap-1.5">
             {ids.map((id, i) => {
@@ -519,7 +485,7 @@ function Exam({
                       answered
                         ? "bg-primary text-primary-foreground border-primary"
                         : "bg-background text-foreground border-border"
-                    } ${current ? "ring-2 ring-offset-1 ring-[#4ade80]" : ""}`}
+                    } ${current ? "ring-2 ring-offset-1 ring-brand" : ""}`}
                   >
                     {i + 1}
                     {marked && (
@@ -574,7 +540,7 @@ function Exam({
           <button
             type="button"
             onClick={() => move(attempt.index + 1)}
-            className="flex items-center justify-center gap-1 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm"
+            className="btn-primary gap-1 px-3 text-sm"
           >
             Siguiente <ChevronRight className="w-4 h-4" aria-hidden="true" />
           </button>
@@ -582,7 +548,7 @@ function Exam({
           <button
             type="button"
             onClick={() => setConfirming(true)}
-            className="flex items-center justify-center gap-1 py-3 rounded-xl bg-[#1e3a5f] text-white font-semibold text-sm"
+            className="btn-primary gap-1 px-3 text-sm"
           >
             Terminar sesión
           </button>
@@ -640,7 +606,7 @@ function ConfirmFinish({
         role="dialog"
         aria-modal="true"
         aria-labelledby="sim-confirm-title"
-        className="bg-card rounded-2xl border border-border p-5 w-full max-w-md space-y-3"
+        className="card p-5 w-full max-w-md space-y-3"
       >
         <h2
           id="sim-confirm-title"
@@ -675,7 +641,7 @@ function ConfirmFinish({
           <button
             type="button"
             onClick={onConfirm}
-            className="flex-1 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm"
+            className="btn-primary btn-sm flex-1"
           >
             Sí, terminar
           </button>
@@ -705,14 +671,14 @@ function Break({
   return (
     <div className="max-w-xl mx-auto space-y-5 text-center py-6">
       <Coffee className="w-12 h-12 text-primary mx-auto" aria-hidden="true" />
-      <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">
+      <h1 className="page-title">
         Receso: terminaste la sesión {attempt.current + 1}
       </h1>
       <p className="text-muted-foreground">
         Respondiste {answered} de {done.questionIds.length} preguntas. Los
         resultados se muestran al final del simulacro.
       </p>
-      <div className="bg-card rounded-xl border border-border p-4 text-left">
+      <div className="card p-4 text-left">
         <h2 className="font-bold font-['Lexend'] text-foreground">
           Sesión {attempt.current + 2}
         </h2>
@@ -728,7 +694,7 @@ function Break({
       <button
         type="button"
         onClick={onContinue}
-        className="w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors"
+        className="btn-primary w-full"
       >
         Empezar sesión {attempt.current + 2}
       </button>
@@ -784,6 +750,22 @@ function Results({
     marcadas: all.filter(x => attempt.marked.includes(x.id)).length,
   };
   const g = result.global;
+  const { progress } = useProgress();
+  const target = progress.targetScore;
+  const gap = g != null ? Math.max(0, target - g) : null;
+  // Tres cosas para practicar: las competencias con más fallos (pesan más las áreas que valen 3).
+  const focus = useMemo(() => {
+    const miss = new Map<string, { area: AreaId; competencia: string; n: number }>();
+    for (const { id } of all) {
+      if (statusOf(id) === "ok") continue;
+      const q = questionOf(id);
+      const key = `${q.area}|${q.competencia}`;
+      const cur = miss.get(key) ?? { area: q.area, competencia: q.competencia, n: 0 };
+      cur.n += q.area === "ingles" ? 1 : 3;
+      miss.set(key, cur);
+    }
+    return [...miss.values()].sort((x, y) => y.n - x.n).slice(0, 3);
+  }, [all, statusOf]);
 
   return (
     <motion.div
@@ -795,14 +777,14 @@ function Results({
         <p className="text-sm font-semibold text-muted-foreground">
           {FORMAT_LABEL[attempt.format]}
         </p>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">
+        <h1 className="page-title">
           Resultados del simulacro
         </h1>
       </div>
 
       <section
         aria-labelledby="sim-global"
-        className="bg-gradient-to-br from-[#1e3a5f] to-[#0f2040] rounded-2xl p-6 text-white text-center"
+        className="bg-navy rounded-2xl p-6 text-white text-center"
       >
         <h2 id="sim-global" className="text-sm font-semibold text-white/80">
           Puntaje global estimado
@@ -815,17 +797,52 @@ function Results({
           {result.correct} de {result.total} correctas ({result.percent}%) ·{" "}
           {result.total - result.answered} sin responder
         </p>
+        {gap != null && (
+          <div className="mx-auto mt-4 max-w-sm text-left" data-testid="sim-te-faltan">
+            <p className="text-center font-['Lexend'] text-lg font-semibold">
+              {gap === 0 ? `Alcanzas tu meta de ${target}` : `Te faltan ${gap} puntos para tu meta de ${target}`}
+            </p>
+            <div className="relative mt-3 h-2.5 rounded-full bg-white/15" aria-hidden="true">
+              <div className="h-full rounded-full bg-white" style={{ width: `${Math.min(100, (g! / 500) * 100)}%` }} />
+              <span className="absolute -top-1.5 h-5 w-1 rounded-full bg-brand" style={{ left: `calc(${Math.min(100, (target / 500) * 100)}% - 2px)` }} />
+            </div>
+          </div>
+        )}
         <p className="text-xs text-white/60 mt-3 max-w-md mx-auto">
-          Estimado con la ponderación oficial: Matemáticas, Lectura Crítica,
-          Sociales y Ciudadanas y Ciencias Naturales valen 3 cada una e Inglés
+          Estimado con la ponderación oficial: Matemáticas, Lectura crítica,
+          Sociales y ciudadanas y Ciencias naturales valen 3 cada una e Inglés
           vale 1; la suma se divide entre 13 y se multiplica por 5. No es el
           puntaje oficial del ICFES.
         </p>
       </section>
 
+      {focus.length > 0 && (
+        <section aria-labelledby="sim-practicar" className="card p-4" data-testid="sim-practicar">
+          <h2 id="sim-practicar" className="font-bold font-['Lexend'] text-foreground">
+            {focus.length === 1 ? "Lo que más te suma practicar" : `${focus.length} cosas que más te suman`}
+          </h2>
+          <p className="mt-0.5 text-sm text-muted-foreground">Donde tuviste más fallos o dejaste en blanco.</p>
+          <ol className="mt-3 divide-y divide-border">
+            {focus.map((f, i) => (
+              <li key={`${f.area}-${f.competencia}`}>
+                <Link href={`/practica?area=${f.area}`} className="flex min-h-14 items-center gap-3 py-2.5">
+                  <span className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-sm font-semibold text-navy">{i + 1}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[15px] font-semibold text-foreground">{f.competencia}</span>
+                    <span className="block text-xs text-muted-foreground">{AREA_INFO[f.area].label}</span>
+                  </span>
+                  <span className="text-sm font-semibold text-navy">Practicar</span>
+                  <ChevronRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
       <section
         aria-labelledby="sim-areas"
-        className="bg-card rounded-xl border border-border p-4"
+        className="card p-4"
       >
         <h2
           id="sim-areas"
@@ -840,8 +857,9 @@ function Results({
             return (
               <li key={a}>
                 <div className="flex items-center justify-between text-sm mb-1">
-                  <span className="text-foreground font-medium">
-                    {AREA_INFO[a].icon} {AREA_INFO[a].label}
+                  <span className="flex items-center gap-2 font-medium text-foreground">
+                    <AreaIcon area={a} size="sm" />
+                    {AREA_INFO[a].label}
                   </span>
                   <span className="text-foreground">
                     <strong>{r.score}</strong>
@@ -860,7 +878,7 @@ function Results({
                   aria-label={`${AREA_INFO[a].label}: ${r.score} de 100`}
                 >
                   <div
-                    className={`h-full rounded-full ${r.score >= 70 ? "bg-green-500" : r.score >= 50 ? "bg-yellow-500" : "bg-red-500"}`}
+                    className={`h-full rounded-full ${r.score >= 70 ? "bg-brand" : r.score >= 50 ? "bg-navy/70" : "bg-amber-400"}`}
                     style={{ width: `${r.score}%` }}
                   />
                 </div>
@@ -940,7 +958,7 @@ function Results({
       <div className="grid sm:grid-cols-2 gap-3">
         <Link
           href="/practica?repaso=1"
-          className="flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/90 transition-colors"
+          className="btn-primary"
         >
           Repasar mis errores
         </Link>
@@ -950,7 +968,7 @@ function Results({
             onNew();
             window.scrollTo({ top: 0 });
           }}
-          className="flex items-center justify-center gap-2 border-2 border-primary text-primary py-3 rounded-xl font-bold font-['Lexend'] hover:bg-primary/5 transition-colors"
+          className="btn-secondary"
         >
           <RotateCcw className="w-5 h-5" aria-hidden="true" /> Hacer otro
           simulacro
@@ -982,17 +1000,17 @@ function ReviewItem({
     status === "ok"
       ? "text-green-600"
       : status === "wrong"
-        ? "text-red-600"
+        ? "text-amber-700"
         : "text-muted-foreground";
   const statusLabel =
     status === "ok"
       ? "Correcta"
       : status === "wrong"
-        ? "Incorrecta"
+        ? "Para repasar"
         : "Sin responder";
   const panelId = `rev-${question.id}`;
   return (
-    <li className="bg-card rounded-xl border border-border">
+    <li className="card">
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
@@ -1042,3 +1060,5 @@ function ReviewItem({
     </li>
   );
 }
+
+export default withMotion(Simulacro);

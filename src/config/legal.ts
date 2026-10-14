@@ -7,7 +7,7 @@
  * indicar nombre o razón social, domicilio, dirección, correo electrónico y teléfono del Responsable.)
  */
 /**
- * 📅 FECHA DE LANZAMIENTO (AAAA-MM-DD): fecha de entrada en vigencia de todas las políticas
+ * FECHA DE LANZAMIENTO (AAAA-MM-DD): fecha de entrada en vigencia de todas las políticas
  * (publicación en proicfes.com.co).
  */
 export const FECHA_LANZAMIENTO = "2026-10-05";

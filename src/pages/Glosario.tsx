@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { modules, allGlossaryTerms } from '@/lib/appData';
-import { Search, BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search, BookOpen, ChevronDown, ChevronUp, SearchX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { withMotion } from '@/components/withMotion';
 
 interface TermCardProps {
   term: string;
@@ -13,17 +14,18 @@ function TermCard({ term, simple, technical }: TermCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-card rounded-xl border border-border overflow-hidden">
+    <div className="card overflow-hidden">
       <button
         onClick={() => setExpanded(!expanded)}
+        aria-expanded={expanded}
         className="w-full flex items-center justify-between p-4 text-left hover:bg-muted/30 transition-colors"
       >
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+        <span className="flex items-center gap-3">
+          <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
             <BookOpen className="w-4 h-4 text-primary" />
-          </div>
+          </span>
           <span className="font-semibold text-foreground font-['Lexend'] text-sm">{term}</span>
-        </div>
+        </span>
         {expanded ? (
           <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />
         ) : (
@@ -60,7 +62,7 @@ function TermCard({ term, simple, technical }: TermCardProps) {
   );
 }
 
-export default function Glosario() {
+function Glosario() {
   const [search, setSearch] = useState('');
   const [activeModule, setActiveModule] = useState<string | null>(null);
 
@@ -79,7 +81,7 @@ export default function Glosario() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Glosario</h1>
+        <h1 className="page-title">Glosario</h1>
         <p className="text-muted-foreground mt-1">
           Todas las palabras técnicas explicadas en lenguaje cotidiano
         </p>
@@ -102,7 +104,7 @@ export default function Glosario() {
         <button
           onClick={() => setActiveModule(null)}
           className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-            !activeModule ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/70'
+            !activeModule ? 'bg-navy text-white' : 'border border-border bg-card text-foreground hover:border-navy/30'
           }`}
         >
           Todos ({uniqueTerms.length})
@@ -115,7 +117,7 @@ export default function Glosario() {
               key={mod}
               onClick={() => setActiveModule(activeModule === mod ? null : mod)}
               className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-                activeModule === mod ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/70'
+                activeModule === mod ? 'bg-navy text-white' : 'border border-border bg-card text-foreground hover:border-navy/30'
               }`}
             >
               {mod} ({count})
@@ -128,7 +130,7 @@ export default function Glosario() {
       <div className="space-y-2">
         {filtered.length === 0 ? (
           <div className="text-center py-10">
-            <p className="text-4xl mb-3">🔍</p>
+            <span className="icon-tile mx-auto mb-3 h-12 w-12 rounded-2xl bg-muted text-muted-foreground" aria-hidden="true"><SearchX className="h-6 w-6" strokeWidth={1.75} /></span>
             <p className="text-muted-foreground">No encontramos esa palabra</p>
             <p className="text-sm text-muted-foreground mt-1">Intenta con otra búsqueda</p>
           </div>
@@ -145,3 +147,5 @@ export default function Glosario() {
     </div>
   );
 }
+
+export default withMotion(Glosario);

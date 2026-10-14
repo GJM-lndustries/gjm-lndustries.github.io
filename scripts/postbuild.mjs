@@ -30,11 +30,47 @@ const fontPreloads = fs
   .map(f => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`);
 if (fontPreloads.length !== 2) throw new Error(`Se esperaban 2 fuentes para precargar, hay ${fontPreloads.length}`);
 
+// Páginas en archivo JS aparte (src/pages/lazyRoutes.ts): al abrir su URL directamente,
+// main.tsx las carga antes de hidratar. Precargarlas en el <head> evita esperar en cascada.
+const manifestPath = path.join(dist, ".vite", "manifest.json");
+const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+const ROUTE_SOURCES = {
+  "/inicio": "src/pages/Inicio.tsx",
+  "/logros": "src/pages/Logros.tsx",
+  "/glosario": "src/pages/Glosario.tsx",
+  "/tips": "src/pages/Tips.tsx",
+  "/meta": "src/pages/Onboarding.tsx",
+  "/analytics": "src/pages/Analytics.tsx",
+  "/practica": "src/pages/Practica.tsx",
+  "/simulacro": "src/pages/Simulacro.tsx",
+  "/politica-de-privacidad": "src/pages/legal/PoliticaPrivacidad.tsx",
+  "/tratamiento-de-datos": "src/pages/legal/TratamientoDatos.tsx",
+  "/terminos": "src/pages/legal/Terminos.tsx",
+  "/cookies": "src/pages/legal/Cookies.tsx",
+  ...Object.fromEntries(["matematicas", "lectura", "ciencias", "sociales", "ingles"].map(m => [`/${m}`, "src/pages/ModulePage.tsx"])),
+};
+const entryKey = Object.keys(manifest).find(k => manifest[k].isEntry);
+const alreadyLoaded = new Set([manifest[entryKey].file, ...(manifest[entryKey].imports ?? []).map(k => manifest[k].file)]);
+function routePreloads(routePath) {
+  const src = ROUTE_SOURCES[routePath];
+  if (!src) return [];
+  if (!manifest[src]) throw new Error(`postbuild: ${src} no está en el manifest de Vite`);
+  const files = new Set();
+  const visit = key => {
+    const c = manifest[key];
+    if (!c || files.has(c.file)) return;
+    files.add(c.file);
+    (c.imports ?? []).forEach(visit);
+  };
+  visit(src);
+  return [...files].filter(f => !alreadyLoaded.has(f) && !template.includes(f)).map(f => `<link rel="modulepreload" crossorigin href="/${f}" />`);
+}
+
 async function page(route, renderPath = route.path) {
   const appHtml = await renderRoute(renderPath);
   if (!appHtml.includes("<h1")) throw new Error(`La ruta ${renderPath} no tiene <h1> en el HTML prerenderizado`);
   return template
-    .replace(/<title>[^<]*<\/title>\s*<!--app-head[^>]*-->/, [renderHeadTags(route), ...fontPreloads].join("\n    "))
+    .replace(/<title>[^<]*<\/title>\s*<!--app-head[^>]*-->/, [renderHeadTags(route), ...fontPreloads, ...routePreloads(route.path)].join("\n    "))
     .replace("<!--app-html-->", appHtml);
 }
 
@@ -67,6 +103,7 @@ fs.writeFileSync(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSite
 // GitHub Pages: no procesar con Jekyll
 fs.writeFileSync(path.join(dist, ".nojekyll"), "");
 fs.rmSync(ssrDir, { recursive: true, force: true });
+fs.rmSync(path.join(dist, ".vite"), { recursive: true, force: true });
 
 const pending = pendingLegalPlaceholders();
 if (pending.length) {

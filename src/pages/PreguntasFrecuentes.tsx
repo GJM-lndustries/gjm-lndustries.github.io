@@ -6,7 +6,7 @@ export default function PreguntasFrecuentes() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold font-['Lexend'] text-foreground">Preguntas frecuentes sobre el Saber 11</h1>
+        <h1 className="page-title">Preguntas frecuentes sobre el Saber 11</h1>
         <p className="text-muted-foreground mt-1">
           Qué es el examen, cómo se calcula el puntaje global del ICFES y cómo sacarle provecho a ProICFES.
         </p>

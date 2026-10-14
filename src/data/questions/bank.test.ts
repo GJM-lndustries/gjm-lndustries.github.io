@@ -65,4 +65,13 @@ describe("banco de preguntas", () => {
   it("BANK_COUNTS (meta.ts) coincide con el banco", () => {
     for (const a of AREA_IDS) expect(BANK_COUNTS[a], a).toBe(questionsByArea[a].length);
   });
+
+  it("sin emoji ni flechas/símbolos pictográficos en preguntas, textos y lecciones", () => {
+    const PICTO = /\p{Extended_Pictographic}|[\u{1F1E6}-\u{1F1FF}\u{FE0F}\u{20E3}\u2190-\u21FF\u2700-\u27BF]/u;
+    const offenders: string[] = [];
+    const stimuli = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "stimuli.json"), "utf8"));
+    for (const q of [...allQuestions, ...stimuli]) if (PICTO.test(JSON.stringify(q))) offenders.push(q.id);
+    for (const m of modules) for (const l of m.lessons) if (PICTO.test(JSON.stringify(l))) offenders.push(l.id);
+    expect(offenders).toEqual([]);
+  });
 });

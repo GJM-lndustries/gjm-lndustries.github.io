@@ -45,7 +45,7 @@ export interface Question {
   difficulty: QuestionDifficulty;
   /** Texto/tabla compartido (ver stimuli.json). Opcional. */
   stimulusId?: string;
-  /** Ciencias Naturales: componente (biológico, químico, físico o CTS). */
+  /** Ciencias naturales: componente (biológico, químico, físico o CTS). */
   componente?: CienciasComponente;
   /** Inglés: parte de la prueba Saber 11 (1 a 7) a la que imita la pregunta. */
   parte?: InglesParte;
