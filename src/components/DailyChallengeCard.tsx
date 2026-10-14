@@ -10,6 +10,7 @@ import {
 } from "@/lib/streaks";
 import { motion, AnimatePresence } from "framer-motion";
 import { haptic, useCountUp } from "@/lib/feedback";
+import { useNow } from "@/hooks/useNow";
 
 /**
  * Tarjeta principal del tablero: el reto diario (leer + practicar), la semana
@@ -21,7 +22,8 @@ export default function DailyChallengeCard() {
   const today = streakState.today;
   const readingPct = Math.min(100, Math.round((today.readingMs / READING_GOAL_MS) * 100));
   const answeringPct = Math.min(100, Math.round((today.answeringMs / ANSWERING_GOAL_MS) * 100));
-  const week = weekCalendar(streakState);
+  const now = useNow();
+  const week = weekCalendar(streakState, now);
   const showCelebrate = today.completed && !today.celebrated;
   const [freezeMsg, setFreezeMsg] = useState<string | null>(null);
   const days = streakState.current;
@@ -76,7 +78,7 @@ export default function DailyChallengeCard() {
       </ul>
 
       <div className="space-y-4 p-5 pt-4">
-        <ol className="grid grid-cols-7 gap-1" aria-label="Tu semana">
+        <ol className="grid grid-cols-7 gap-1" aria-label="Tu semana" data-today={week.find(d => d.isToday)?.date ?? ""}>
           {week.map(d => (
             <li key={d.date} className="flex flex-col items-center gap-1">
               <span className="text-[11px] font-medium text-muted-foreground">{d.label}</span>

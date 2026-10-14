@@ -8,6 +8,9 @@ export const READING_GOAL_MS = 2 * 60 * 1000;
 export const ANSWERING_GOAL_MS = 110 * 1000; // 1:50
 export const MIN_QUESTIONS_FOR_STREAK = 3;
 export const FREEZES_PER_WEEK = 1;
+/** Meta flexible: días de estudio por semana (lunes a domingo). */
+export const DEFAULT_WEEKLY_GOAL = 4;
+export const WEEKLY_GOAL_OPTIONS = [3, 4, 5, 7] as const;
 
 export interface DailyChallengeState {
   /** Día civil en Bogota (YYYY-MM-DD). */
@@ -30,6 +33,12 @@ export interface StreakState {
   /** Semana ISO (YYYY-Www) en que se usó el congelamiento. */
   freezeUsedWeek: string | null;
   today: DailyChallengeState;
+  /** Días cubiertos por el comodín (también están en `days` para no romper la racha). */
+  frozenDays?: string[];
+  /** Último día cubierto automáticamente por el comodín, para avisarlo una vez. */
+  freezeNotice?: string | null;
+  /** Días por semana que el estudiante eligió como meta. */
+  weeklyGoal?: number;
 }
 
 export function bogotaDateString(now: Date = new Date()): string {
@@ -75,31 +84,40 @@ export function defaultStreakState(now: Date = new Date()): StreakState {
   };
 }
 
-/** Asegura que `today` corresponde al día civil actual; resetea si cambió el día. */
+/**
+ * Asegura que `today` corresponde al día civil actual; resetea si cambió el día.
+ * Si faltó exactamente un día y queda comodín esta semana, el comodín cubre ese día
+ * automáticamente (sin que el estudiante tenga que hacer nada) y se avisa una vez.
+ */
 export function rollStreakDay(state: StreakState, now: Date = new Date()): StreakState {
   const today = bogotaDateString(now);
   if (state.today.date === today) return state;
   let freezes = state.freezesAvailable;
   const week = bogotaWeekKey(now);
   if (state.freezeUsedWeek !== week) freezes = Math.max(freezes, FREEZES_PER_WEEK);
-  // ¿Se rompió la racha? Si ayer no está en days y no se congela…
   const yesterday = bogotaDateString(new Date(now.getTime() - 86400000));
-  let current = state.current;
-  if (state.days.includes(yesterday) || state.days.includes(today)) {
-    // ok
-  } else if (current > 0) {
-    // Opción de freeze: si hay freeze y el hueco es de 1 día desde último day
-    const last = state.days[state.days.length - 1];
-    if (last && freezes > 0 && isYesterdayOf(last, today)) {
-      // no auto-usar; el usuario puede usarlo explícitamente. Aquí solo detectamos rotura.
-      current = 0;
-    } else if (!last || daysBetween(last, today) > 1) {
+  let { current, days, freezeUsedWeek } = state;
+  let frozenDays = state.frozenDays ?? [];
+  let freezeNotice = state.freezeNotice ?? null;
+  if (!days.includes(yesterday) && !days.includes(today) && current > 0) {
+    const last = days[days.length - 1];
+    if (last && daysBetween(last, today) === 2 && freezes > 0 && freezeUsedWeek !== week) {
+      days = [...days, yesterday].sort();
+      frozenDays = [...frozenDays, yesterday];
+      freezes -= 1;
+      freezeUsedWeek = week;
+      freezeNotice = yesterday;
+    } else {
       current = 0;
     }
   }
   return {
     ...state,
+    days,
     current,
+    frozenDays,
+    freezeNotice,
+    freezeUsedWeek,
     freezesAvailable: freezes,
     today: emptyDaily(today),
   };
@@ -182,34 +200,53 @@ export function useStreakFreeze(state: StreakState, now: Date = new Date()): Str
   return {
     ...s,
     days,
+    frozenDays: [...(s.frozenDays ?? []), yesterday],
     freezesAvailable: s.freezesAvailable - 1,
     freezeUsedWeek: week,
     // current se recalcula al completar hoy
   };
 }
 
-export function weekCalendar(state: StreakState, now: Date = new Date()): { date: string; label: string; done: boolean; isToday: boolean }[] {
-  const today = bogotaDateString(now);
-  // Lunes–domingo de la semana actual (Bogota)
+export interface WeekDay {
+  date: string;
+  label: string;
+  done: boolean;
+  frozen: boolean;
+  isToday: boolean;
+}
+
+/** Fechas (YYYY-MM-DD) de lunes a domingo de la semana de `today`. */
+export function weekDates(today: string): string[] {
   const [y, m, d] = today.split("-").map(Number);
-  const utc = new Date(Date.UTC(y!, m! - 1, d!));
-  const dow = new Date(utc).getUTCDay(); // 0 Sun
+  const utc = Date.UTC(y!, m! - 1, d!);
+  const dow = new Date(utc).getUTCDay(); // 0 = domingo
   const mondayOffset = dow === 0 ? -6 : 1 - dow;
-  const labels = ["L", "M", "Mi", "J", "V", "S", "D"];
-  const out = [];
-  for (let i = 0; i < 7; i++) {
-    const day = new Date(utc.getTime() + (mondayOffset + i) * 86400000);
-    const date = bogotaDateString(day);
-    // bogotaDateString on UTC midnight can drift; build from parts instead
-    const iso = day.toISOString().slice(0, 10);
-    out.push({
-      date: iso,
-      label: labels[i]!,
-      done: state.days.includes(iso) || (state.today.completed && state.today.date === iso),
-      isToday: iso === today,
-    });
-  }
-  return out;
+  return Array.from({ length: 7 }, (_, i) => new Date(utc + (mondayOffset + i) * 86400000).toISOString().slice(0, 10));
+}
+
+export const WEEK_LABELS = ["L", "M", "Mi", "J", "V", "S", "D"] as const;
+
+/**
+ * Semana actual (lunes a domingo, Bogotá). `now = null` devuelve la semana sin marcar
+ * «hoy»: es lo que se usa en el HTML prerenderizado, que no sabe qué día se abrirá.
+ */
+export function weekCalendar(state: StreakState, now: Date | null = new Date()): WeekDay[] {
+  const today = now ? bogotaDateString(now) : state.today.date;
+  const frozen = new Set(state.frozenDays ?? []);
+  return weekDates(today).map((iso, i) => ({
+    date: iso,
+    label: WEEK_LABELS[i]!,
+    done: !frozen.has(iso) && (state.days.includes(iso) || (state.today.completed && state.today.date === iso)),
+    frozen: frozen.has(iso),
+    isToday: now != null && iso === today,
+  }));
+}
+
+/** Días estudiados esta semana (sin contar los cubiertos por comodín) frente a la meta semanal. */
+export function weekProgress(state: StreakState, now: Date = new Date()): { done: number; goal: number; met: boolean } {
+  const goal = state.weeklyGoal ?? DEFAULT_WEEKLY_GOAL;
+  const done = weekCalendar(state, now).filter(d => d.done).length;
+  return { done, goal, met: done >= goal };
 }
 
 export function formatMs(ms: number): string {

@@ -12,6 +12,9 @@ import {
   streakBadges,
   weekCalendar,
   useStreakFreeze,
+  rollStreakDay,
+  weekProgress,
+  DEFAULT_WEEKLY_GOAL,
 } from "./streaks";
 
 // helper exported via completing both parts
@@ -66,23 +69,75 @@ describe("streaks", () => {
     expect(streakBadges(30, 1)).toEqual(expect.arrayContaining(["racha_30"]));
   });
 
-  it("congelamiento cubre un día faltante", () => {
+  it("congelamiento cubre un día faltante (automático al volver)", () => {
     const now = new Date("2026-10-07T12:00:00-05:00");
     // Completó el 5, saltó el 6, ahora es 7
     let s = completeToday(defaultStreakState(new Date("2026-10-05T12:00:00-05:00")));
     s = { ...s, current: 1, days: ["2026-10-05"], today: { ...s.today, date: "2026-10-05", completed: true } };
     s = addActiveMs(s, "reading", 0, now); // roll to 7
     expect(s.today.date).toBe("2026-10-07");
-    const frozen = useStreakFreeze(s, now);
-    expect("error" in frozen).toBe(false);
-    if (!("error" in frozen)) {
-      expect(frozen.days).toContain("2026-10-06");
-      expect(frozen.freezesAvailable).toBe(0);
-    }
+    expect(s.days).toContain("2026-10-06");
+    expect(s.current).toBe(1);
+    expect(s.freezesAvailable).toBe(0);
+    // ya no hace falta usarlo a mano
+    expect("error" in useStreakFreeze(s, now)).toBe(true);
   });
 
   it("la semana usa las iniciales de Colombia: L, M, Mi, J, V, S, D", () => {
     const labels = weekCalendar(defaultStreakState(new Date("2026-10-08T15:00:00Z")), new Date("2026-10-08T15:00:00Z")).map(d => d.label);
     expect(labels).toEqual(["L", "M", "Mi", "J", "V", "S", "D"]);
+  });
+});
+
+describe("semana flexible y comodín automático", () => {
+  const at = (d: string) => new Date(`${d}T12:00:00-05:00`);
+  function doneOn(s: ReturnType<typeof defaultStreakState>, d: string) {
+    let x = addActiveMs(s, "reading", READING_GOAL_MS, at(d));
+    x = addActiveMs(x, "answering", ANSWERING_GOAL_MS, at(d));
+    for (let i = 0; i < MIN_QUESTIONS_FOR_STREAK; i++) x = addChallengeQuestion(x, at(d));
+    return x;
+  }
+
+  it("marca hoy según la fecha real, no la del prerender", () => {
+    const s = defaultStreakState(at("2026-10-12"));
+    const wed = weekCalendar(s, at("2026-10-14"));
+    expect(wed.map(d => d.label)).toEqual(["L", "M", "Mi", "J", "V", "S", "D"]);
+    expect(wed.find(d => d.isToday)?.label).toBe("Mi");
+    expect(weekCalendar(s, at("2026-10-18")).find(d => d.isToday)?.label).toBe("D");
+    expect(weekCalendar(s, null).some(d => d.isToday)).toBe(false);
+  });
+
+  it("el comodín cubre solo un día faltante, una vez por semana, y avisa", () => {
+    let s = doneOn(defaultStreakState(at("2026-10-12")), "2026-10-12");
+    s = doneOn(s, "2026-10-13");
+    expect(s.current).toBe(2);
+    // falta el 14; el 15 entra: el comodín cubre el 14
+    s = rollStreakDay(s, at("2026-10-15"));
+    expect(s.current).toBe(2);
+    expect(s.frozenDays).toEqual(["2026-10-14"]);
+    expect(s.freezeNotice).toBe("2026-10-14");
+    s = doneOn(s, "2026-10-15");
+    expect(s.current).toBe(3);
+    const wk = weekCalendar(s, at("2026-10-15"));
+    expect(wk.find(d => d.date === "2026-10-14")).toMatchObject({ frozen: true, done: false });
+    // otro hueco la misma semana: ya no hay comodín
+    s = rollStreakDay(s, at("2026-10-17"));
+    expect(s.current).toBe(0);
+  });
+
+  it("dos días seguidos sin estudiar reinician la racha", () => {
+    let s = doneOn(defaultStreakState(at("2026-10-12")), "2026-10-12");
+    s = rollStreakDay(s, at("2026-10-15"));
+    expect(s.current).toBe(0);
+    expect(s.frozenDays ?? []).toEqual([]);
+  });
+
+  it("cuenta los días de la semana frente a la meta flexible", () => {
+    let s = doneOn(defaultStreakState(at("2026-10-12")), "2026-10-12");
+    s = doneOn(s, "2026-10-14");
+    expect(weekProgress(s, at("2026-10-14"))).toEqual({ done: 2, goal: DEFAULT_WEEKLY_GOAL, met: false });
+    expect(weekProgress({ ...s, weeklyGoal: 2 }, at("2026-10-14")).met).toBe(true);
+    // la semana siguiente empieza en cero
+    expect(weekProgress(rollStreakDay(s, at("2026-10-19")), at("2026-10-19")).done).toBe(0);
   });
 });

@@ -24,7 +24,31 @@ import {
   type StreakState,
 } from "@/lib/streaks";
 
+import { grantXp, xpForAnswer, type XpDay } from "@/lib/xp";
+
 const STORAGE_KEY = "proicfes_progress";
+
+/** Respuestas del onboarding que personalizan el plan. Todo es opcional y editable en /meta. */
+export interface StudyPlan {
+  /** Rango de puntaje que cree que sacaría (o que sacó). */
+  scoreRange: string;
+  /** Cuándo presenta: "AAAA-03", "AAAA-08" o "nose". */
+  examWindow: string;
+  /** Minutos al día que se propone. */
+  dailyMinutes: number;
+  /** Intención de implementación: en qué momento del día va a estudiar. */
+  studyMoment: string;
+}
+
+/** Resultado de la mini prueba de 5 preguntas (una por área). */
+export interface DiagnosticResult {
+  finishedAt: string; // ISO
+  answers: { questionId: string; area: AreaId; correct: boolean }[];
+  /** Punto de partida aproximado (0–500) y su rango. */
+  estimate: number;
+  low: number;
+  high: number;
+}
 
 interface LessonProgress {
   lessonId: string;
@@ -79,6 +103,14 @@ export interface UserProgress {
   favoriteQuestions: string[];
   /** Racha con reto diario (America/Bogota). */
   streakState: StreakState;
+  /** XP de preguntas respondidas (las lecciones suman aparte en completedLessons). */
+  practiceXp: number;
+  /** XP ganado hoy, para el tope diario. */
+  xpDay?: XpDay;
+  plan?: StudyPlan;
+  diagnostic?: DiagnosticResult;
+  /** Día (YYYY-MM-DD) en que el estudiante cerró la invitación a crear cuenta. */
+  accountPromptDismissed?: string;
 }
 
 interface ProgressContextType {
@@ -116,6 +148,11 @@ interface ProgressContextType {
   trackChallengeQuestion: () => void;
   useStreakFreeze: () => { error?: string };
   acknowledgeStreakCelebration: () => void;
+  savePlan: (plan: StudyPlan) => void;
+  saveDiagnostic: (d: DiagnosticResult) => void;
+  setWeeklyGoal: (days: number) => void;
+  dismissFreezeNotice: () => void;
+  dismissAccountPrompt: () => void;
 }
 
 export const defaultProgress = (): UserProgress => ({
@@ -137,6 +174,7 @@ export const defaultProgress = (): UserProgress => ({
   favoriteLessons: [],
   favoriteQuestions: [],
   streakState: defaultStreakState(),
+  practiceXp: 0,
 });
 
 /** Carga el progreso guardado y completa campos que no existían en versiones anteriores. */
@@ -160,6 +198,7 @@ export function normalizeProgress(
       : [],
     badges: Array.isArray(p.badges) ? p.badges : [],
     presentedExam: Boolean(p.presentedExam),
+    practiceXp: typeof p.practiceXp === "number" ? p.practiceXp : 0,
     streakState: rollStreakDay(
       p.streakState && typeof p.streakState === "object"
         ? { ...defaultStreakState(), ...p.streakState, today: { ...defaultStreakState().today, ...(p.streakState as StreakState).today } }
@@ -243,13 +282,15 @@ export function ProgressProvider({
           l => l.lessonId === lessonId
         );
         const now = new Date().toISOString();
+        // Solo suma la parte del XP de la lección que no se había ganado, y con el tope diario.
+        const { granted, day: xpDay } = grantXp(prev.xpDay, Math.max(0, xp - (existing?.xpEarned ?? 0)));
         const completedLessons = existing
           ? prev.completedLessons.map(l =>
               l.lessonId === lessonId
                 ? {
                     ...l,
                     score: Math.max(l.score, score),
-                    xpEarned: Math.max(l.xpEarned, xp),
+                    xpEarned: l.xpEarned + granted,
                     completedAt: now,
                   }
                 : l
@@ -260,7 +301,7 @@ export function ProgressProvider({
                 lessonId,
                 completed: true,
                 score,
-                xpEarned: xp,
+                xpEarned: granted,
                 completedAt: now,
               },
             ];
@@ -273,9 +314,10 @@ export function ProgressProvider({
         }
         return {
           ...prev,
-          totalXp: completedLessons.reduce((sum, l) => sum + l.xpEarned, 0),
+          totalXp: completedLessons.reduce((sum, l) => sum + l.xpEarned, 0) + (prev.practiceXp ?? 0),
           completedLessons,
           badges,
+          xpDay,
         };
       });
     },
@@ -343,8 +385,16 @@ export function ProgressProvider({
             lastMissed: new Date().toISOString(),
           };
         }
+        const { granted, day: xpDay } = grantXp(prev.xpDay, xpForAnswer(correct));
+        const badges = [...prev.badges];
+        const totalXp = prev.totalXp + granted;
+        addBadge(badges, "xp_500", totalXp >= 500);
         return {
           ...prev,
+          practiceXp: (prev.practiceXp ?? 0) + granted,
+          totalXp,
+          xpDay,
+          badges,
           areaStats: {
             ...prev.areaStats,
             [question.area]: {
@@ -386,6 +436,26 @@ export function ProgressProvider({
 
   const resetProgress = useCallback(() => {
     setProgress(defaultProgress());
+  }, []);
+
+  const savePlan = useCallback((plan: StudyPlan) => {
+    setProgress(prev => ({ ...prev, plan }));
+  }, []);
+
+  const saveDiagnostic = useCallback((d: DiagnosticResult) => {
+    setProgress(prev => ({ ...prev, diagnostic: d }));
+  }, []);
+
+  const setWeeklyGoal = useCallback((days: number) => {
+    setProgress(prev => ({ ...prev, streakState: { ...prev.streakState, weeklyGoal: days } }));
+  }, []);
+
+  const dismissFreezeNotice = useCallback(() => {
+    setProgress(prev => ({ ...prev, streakState: { ...prev.streakState, freezeNotice: null } }));
+  }, []);
+
+  const dismissAccountPrompt = useCallback(() => {
+    setProgress(prev => ({ ...prev, accountPromptDismissed: new Date().toISOString().slice(0, 10) }));
   }, []);
 
   const completeOnboarding = useCallback(
@@ -472,6 +542,11 @@ export function ProgressProvider({
         trackChallengeQuestion,
         useStreakFreeze,
         acknowledgeStreakCelebration,
+        savePlan,
+        saveDiagnostic,
+        setWeeklyGoal,
+        dismissFreezeNotice,
+        dismissAccountPrompt,
       }}
     >
       {children}

@@ -154,7 +154,11 @@ export function mergeProgress(
   return {
     ...defaultProgress(),
     ...day,
-    totalXp: completedLessons.reduce((s, l) => s + l.xpEarned, 0),
+    practiceXp: Math.max(local.practiceXp ?? 0, remote.practiceXp ?? 0),
+    totalXp: completedLessons.reduce((s, l) => s + l.xpEarned, 0) + Math.max(local.practiceXp ?? 0, remote.practiceXp ?? 0),
+    xpDay: local.xpDay ?? remote.xpDay,
+    plan: goalFrom.plan ?? local.plan ?? remote.plan,
+    diagnostic: [local.diagnostic, remote.diagnostic].filter(Boolean).sort((a, b) => (a!.finishedAt < b!.finishedAt ? 1 : -1))[0],
     completedLessons,
     areaStats,
     missedQuestions,
