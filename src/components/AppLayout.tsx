@@ -96,15 +96,9 @@ function AccountChip() {
       </Link>
     );
   }
-  return (
-    <Link
-      href="/cuenta"
-      className="inline-flex min-h-9 items-center rounded-full border border-border bg-card px-3.5 text-[13px] font-semibold text-navy hover:bg-muted"
-      data-testid="header-login"
-    >
-      Iniciar sesión
-    </Link>
-  );
+  // Sin sesión no hay botón en el encabezado de la app: la cuenta se ofrece cuando tiene
+  // valor (al tener una racha que guardar) y desde «Yo». La portada sí muestra «Iniciar sesión».
+  return null;
 }
 
 function StreakChip() {

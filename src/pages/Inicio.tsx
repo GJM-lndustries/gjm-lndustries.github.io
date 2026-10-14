@@ -1,76 +1,104 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { modules } from '@/lib/appData';
-import { AREA_INFO, BANK_TOTAL } from '@/data/questions/meta';
+import { AREA_INFO } from '@/data/questions/meta';
 import { AREA_IDS } from '@/data/questions/types';
-import {
-  ChevronRight, Target, PenLine, ClipboardList, RotateCcw, Library, Lightbulb, CircleHelp,
-  ListChecks, Gauge, Scale, CircleCheck, Shuffle,
-} from 'lucide-react';
+import { ChevronDown, ChevronRight, ClipboardList, PenLine, RotateCcw, Shuffle, Sparkles, Star, CloudUpload, X } from 'lucide-react';
 import DailyChallengeCard from '@/components/DailyChallengeCard';
 import AreaIcon from '@/components/AreaIcon';
+import GoalBar from '@/components/GoalBar';
 import { withMotion } from '@/components/withMotion';
+import { ACCOUNTS_ENABLED } from '@/lib/accounts';
+import { intentionSentence } from '@/lib/plan';
+import { DAILY_XP_CAP, xpToday } from '@/lib/xp';
 
-/** Puntaje estimado frente a la meta, con el detalle por área. */
+/** «Te faltan X»: distancia a la meta con el estimado (o el punto de partida de la mini prueba). */
 function GoalCard() {
   const { estimate, progress } = useProgress();
-  const score = estimate.global;
   const target = progress.targetScore;
-  const pct = score == null ? 0 : Math.min(100, (score / 500) * 100);
-  const targetPct = (target / 500) * 100;
-  const gap = score == null ? null : target - score;
-  const completedCount = progress.completedLessons.filter(l => l.completed).length;
+  const from = estimate.global ?? progress.diagnostic?.estimate ?? null;
+  const source = estimate.global != null ? 'estimado con tus respuestas' : 'punto de partida de tu mini prueba';
+  const gap = from == null ? null : target - from;
+  const xp = xpToday(progress.xpDay);
+  const areasWithData = AREA_IDS.filter(a => estimate.perArea[a] != null);
 
   return (
-    <section aria-labelledby="meta-titulo" className="card flex flex-col p-5">
+    <section aria-labelledby="meta-titulo" className="card p-5">
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <span className="icon-tile bg-brand-soft text-green-700" aria-hidden="true">
-            <Target className="h-5 w-5" strokeWidth={1.75} />
-          </span>
-          <div>
-            <p className="eyebrow">Tu meta</p>
-            <h2 id="meta-titulo" className="section-title">{target} puntos</h2>
+        <p className="eyebrow">Tu meta: {target} puntos</p>
+        <Link href="/meta" className="btn-link -mt-1">Editar</Link>
+      </div>
+      {from == null ? (
+        <>
+          <h2 id="meta-titulo" className="section-title mt-1">¿Dónde estás hoy?</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Haz la mini prueba de 5 preguntas y te mostramos cuánto te falta para tu meta.</p>
+          <Link href="/meta?paso=diagnostico" className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-navy underline-offset-2 hover:underline">
+            <Sparkles className="h-4 w-4" aria-hidden="true" /> Hacer la mini prueba (5 min)
+          </Link>
+        </>
+      ) : (
+        <>
+          <h2 id="meta-titulo" className="section-title mt-1" data-testid="te-faltan">
+            {gap! > 0 ? <>Te faltan <span className="tabular-nums">{gap}</span> puntos</> : 'Ya llegaste a tu meta'}
+          </h2>
+          <GoalBar from={from} target={target} className="mt-3" />
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+            Vas en <strong className="text-foreground tabular-nums">{from}</strong> de 500 ({source}). Es un estimado con la ponderación oficial, no un resultado del ICFES.
+          </p>
+          {areasWithData.length > 0 && (
+            <ul className="mt-3 flex flex-wrap gap-1.5">
+              {areasWithData.map(a => (
+                <li key={a} className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-xs text-foreground">
+                  {AREA_INFO[a].short} <strong className="tabular-nums">{estimate.perArea[a]}%</strong>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      )}
+      {(progress.totalXp > 0 || xp > 0) && (
+        <div className="mt-4 border-t border-border pt-3">
+          <div className="flex items-center justify-between text-xs">
+            <span className="inline-flex items-center gap-1 text-muted-foreground"><Star className="h-3.5 w-3.5" aria-hidden="true" /> XP de hoy</span>
+            <span className="tabular-nums text-foreground"><strong>{xp}</strong> de {DAILY_XP_CAP} · total {progress.totalXp}</span>
           </div>
+          <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden="true">
+            <div className="progress-fill h-full rounded-full bg-amber-400" style={{ width: `${Math.min(100, (xp / DAILY_XP_CAP) * 100)}%` }} />
+          </div>
+          {xp >= DAILY_XP_CAP && <p className="mt-1.5 text-xs text-muted-foreground">Ya ganaste todo el XP de hoy. Descansa: mañana hay más.</p>}
         </div>
-        <Link href="/meta" className="btn-link">Editar</Link>
+      )}
+    </section>
+  );
+}
+
+/** Invitación a crear cuenta en el momento en que tiene valor: cuando ya hay una racha que guardar. */
+function AccountPrompt() {
+  const { progress, loaded, dismissAccountPrompt } = useProgress();
+  const auth = useAuth();
+  const signedIn = auth.status === 'ready' || auth.status === 'needs-profile' || auth.status === 'password-recovery';
+  const days = progress.streakState.days.length;
+  const dismissed = progress.accountPromptDismissed;
+  const recentlyDismissed = dismissed && (Date.now() - new Date(dismissed).getTime()) / 86400000 < 7;
+  if (!ACCOUNTS_ENABLED || !loaded || signedIn || auth.status === 'loading' || days < 1 || recentlyDismissed) return null;
+  const n = Math.max(progress.streakState.current, 1);
+  return (
+    <section className="card flex items-start gap-3 p-4" aria-labelledby="cuenta-invita" data-testid="cuenta-invita">
+      <span className="icon-tile bg-navy/5 text-navy" aria-hidden="true"><CloudUpload className="h-5 w-5" strokeWidth={1.75} /></span>
+      <div className="min-w-0 flex-1">
+        <h2 id="cuenta-invita" className="text-[15px] font-semibold text-foreground">
+          {n === 1 ? 'Ya tienes tu primer día. ¿Lo guardamos?' : `Llevas ${n} días. ¿Guardamos tu racha?`}
+        </h2>
+        <p className="mt-0.5 text-sm text-muted-foreground">Con una cuenta gratis no pierdes tu progreso si cambias de celular. Es opcional.</p>
+        <Link href="/cuenta" className="mt-2 inline-flex min-h-10 items-center gap-1 text-sm font-semibold text-navy underline-offset-2 hover:underline">
+          Crear cuenta <ChevronRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
       </div>
-
-      <div className="mt-5 flex items-end gap-2">
-        <span className={`font-['Lexend'] text-4xl font-bold tracking-tight tabular-nums ${score == null ? 'text-muted-foreground/60' : 'text-foreground'}`}>{score ?? '–'}</span>
-        <span className="mb-1 text-sm text-muted-foreground">de 500 · puntaje estimado</span>
-      </div>
-
-      <div className="relative mt-3 h-2 rounded-full bg-muted" aria-hidden="true">
-        <div className="progress-fill h-full rounded-full bg-navy" style={{ width: `${pct}%` }} />
-        <span className="absolute -top-1 h-4 w-0.5 rounded-full bg-brand" style={{ left: `${targetPct}%` }} />
-      </div>
-      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-        {score == null
-          ? estimate.totalAnswered === 0
-            ? 'Responde preguntas de las cinco áreas y aquí verás tu estimado.'
-            : `Para estimarlo faltan datos de ${estimate.missingAreas.map(a => AREA_INFO[a].label).join(', ')}.`
-          : gap != null && gap > 0
-            ? `Te faltan ${gap} puntos para tu meta. Es un estimado con la ponderación oficial, no un resultado del ICFES.`
-            : 'Vas por encima de tu meta. Es un estimado con la ponderación oficial, no un resultado del ICFES.'}
-      </p>
-
-      <ul className="mt-4 grid grid-cols-5 gap-2 border-t border-border pt-4">
-        {AREA_IDS.map(a => (
-          <li key={a} className="flex flex-col items-center gap-1 text-center">
-            <AreaIcon area={a} size="sm" />
-            <span className="text-sm font-semibold tabular-nums text-foreground">
-              {estimate.perArea[a] == null ? '—' : `${estimate.perArea[a]}%`}
-            </span>
-            <span className="text-[10px] leading-tight text-muted-foreground">{AREA_INFO[a].short}</span>
-          </li>
-        ))}
-      </ul>
-
-      <p className="mt-4 text-xs text-muted-foreground">
-        {progress.totalXp} XP · {completedCount} {completedCount === 1 ? 'lección completada' : 'lecciones completadas'}
-      </p>
+      <button type="button" onClick={dismissAccountPrompt} className="-m-1 rounded-lg p-2 text-muted-foreground hover:bg-muted" aria-label="Ahora no">
+        <X className="h-4 w-4" aria-hidden="true" />
+      </button>
     </section>
   );
 }
@@ -78,42 +106,22 @@ function GoalCard() {
 function AreaCard({ module }: { module: typeof modules[0] }) {
   const { getModuleProgress } = useProgress();
   const pct = getModuleProgress(module.id, module.lessons.map(l => l.id));
-
   return (
-    <Link href={`/${module.id}`} className="card group flex flex-col p-4 transition-colors hover:border-navy/30">
-      <div className="flex items-start gap-3">
-        <AreaIcon area={module.area} />
-        <div className="min-w-0 flex-1">
-          <h3 className="font-['Lexend'] text-[15px] font-semibold text-foreground">{module.title}</h3>
-          <p className="mt-0.5 line-clamp-2 text-sm text-muted-foreground">{module.subtitle}</p>
-        </div>
-        <ChevronRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-      </div>
-      <div className="mt-4 flex items-center gap-3">
-        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted" aria-hidden="true">
-          <div className="progress-fill h-full rounded-full bg-brand" style={{ width: `${pct}%` }} />
-        </div>
-        <span className="text-xs tabular-nums text-muted-foreground">
-          {pct > 0 ? `${pct}%` : `${module.lessons.length} lecciones`}
-        </span>
-      </div>
+    <Link href={`/${module.id}`} className="card group flex items-center gap-3 p-4 transition-colors hover:border-navy/30">
+      <AreaIcon area={module.area} />
+      <span className="min-w-0 flex-1">
+        <span className="block font-['Lexend'] text-[15px] font-semibold text-foreground">{module.title}</span>
+        <span className="block text-xs text-muted-foreground">{pct > 0 ? `${pct}% de las lecciones` : `${module.lessons.length} lecciones cortas`}</span>
+      </span>
+      <ChevronRight className="h-4 w-4 flex-shrink-0 text-muted-foreground" aria-hidden="true" />
     </Link>
   );
 }
 
-const FACTS = [
-  { icon: ListChecks, title: '254 preguntas con puntaje', text: 'En dos sesiones de 4 h 30 min.' },
-  { icon: Gauge, title: 'Puntaje global de 0 a 500', text: 'Cada prueba va de 0 a 100.' },
-  { icon: Scale, title: 'Inglés pesa menos', text: 'Las otras cuatro pruebas pesan el triple.' },
-  { icon: CircleCheck, title: 'Sin penalización', text: 'Una respuesta incorrecta no resta.' },
-];
-
 function Inicio() {
   const { progress } = useProgress();
-  const totalLessons = modules.reduce((sum, m) => sum + m.lessons.length, 0);
-  const completedCount = progress.completedLessons.filter(l => l.completed).length;
   const missedCount = Object.keys(progress.missedQuestions).length;
-  const isNew = progress.totalXp === 0 && completedCount === 0;
+  const plan = progress.plan;
 
   // La fecha se pone después de montar para que el HTML prerenderizado coincida.
   const [today, setToday] = useState('');
@@ -122,110 +130,57 @@ function Inicio() {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className="mx-auto max-w-2xl space-y-5">
       <header>
         <p className="eyebrow min-h-4 first-letter:uppercase">{today}</p>
         <h1 className="page-title mt-1">Tu plan de hoy</h1>
         <p className="mt-1 text-[15px] text-muted-foreground">
-          {isNew
-            ? 'Empieza por el reto: son unos cinco minutos entre lectura y práctica.'
-            : `Llevas ${completedCount} de ${totalLessons} lecciones. Sigue con el reto de hoy.`}
+          {plan?.studyMoment ? intentionSentence(plan.dailyMinutes, plan.studyMoment) : 'Unos 5 minutos entre lectura y práctica.'}
         </p>
       </header>
 
-      <div className="grid gap-4 lg:grid-cols-5 lg:items-start">
-        <div className="lg:col-span-3">
-          <DailyChallengeCard />
-        </div>
-        <div className="space-y-4 lg:col-span-2">
-          <GoalCard />
+      <DailyChallengeCard />
+      <GoalCard />
+      <AccountPrompt />
+
+      {missedCount > 0 && (
+        <Link href="/practica?repaso=1" className="card flex items-center gap-3 p-4 transition-colors hover:border-navy/30">
+          <span className="icon-tile bg-amber-50 text-amber-700" aria-hidden="true">
+            <RotateCcw className="h-5 w-5" strokeWidth={1.75} />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-semibold text-foreground">Repasar lo que fallaste</span>
+            <span className="block text-xs text-muted-foreground">
+              {missedCount} {missedCount === 1 ? 'pregunta' : 'preguntas'} para volver a intentar
+            </span>
+          </span>
+          <ChevronRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
+        </Link>
+      )}
+
+      <details className="group" aria-labelledby="areas-titulo">
+        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between rounded-xl px-1 [&::-webkit-details-marker]:hidden">
+          <h2 id="areas-titulo" className="section-title">Más para practicar</h2>
+          <ChevronDown className="h-5 w-5 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" />
+        </summary>
+        <div className="mt-2 space-y-3">
           <div className="grid grid-cols-2 gap-3">
-            <Link href="/practica" className="btn-primary">
-              <PenLine className="h-4 w-4" aria-hidden="true" /> Practicar
-            </Link>
-            <Link href="/simulacro" className="btn-secondary">
-              <ClipboardList className="h-4 w-4" aria-hidden="true" /> Simulacro
+            <Link href="/practica" className="btn-secondary"><PenLine className="h-4 w-4" aria-hidden="true" /> Práctica libre</Link>
+            <Link href="/simulacro" className="btn-secondary"><ClipboardList className="h-4 w-4" aria-hidden="true" /> Simulacro</Link>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {modules.map(module => <AreaCard key={module.id} module={module} />)}
+            <Link href="/practica?area=todas" className="card group flex items-center gap-3 p-4 transition-colors hover:border-navy/30">
+              <span className="icon-tile bg-navy/5 text-navy" aria-hidden="true"><Shuffle className="h-5 w-5" strokeWidth={1.75} /></span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-['Lexend'] text-[15px] font-semibold text-foreground">Práctica mixta</span>
+                <span className="block text-xs text-muted-foreground">Las cinco áreas, como en el examen</span>
+              </span>
+              <ChevronRight className="h-4 w-4 flex-shrink-0 text-muted-foreground" aria-hidden="true" />
             </Link>
           </div>
-          {missedCount > 0 && (
-            <Link href="/practica?repaso=1" className="card flex items-center gap-3 p-4 transition-colors hover:border-navy/30">
-              <span className="icon-tile bg-red-50 text-red-700" aria-hidden="true">
-                <RotateCcw className="h-5 w-5" strokeWidth={1.75} />
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-sm font-semibold text-foreground">Repasar errores</span>
-                <span className="block text-xs text-muted-foreground">
-                  {missedCount} {missedCount === 1 ? 'pregunta pendiente' : 'preguntas pendientes'}
-                </span>
-              </span>
-              <ChevronRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
-            </Link>
-          )}
         </div>
-      </div>
-
-      <section aria-labelledby="areas-titulo">
-        <div className="mb-3 flex items-baseline justify-between">
-          <h2 id="areas-titulo" className="section-title">Áreas del Saber 11</h2>
-          <Link href="/practica" className="btn-link">{BANK_TOTAL} preguntas</Link>
-        </div>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {modules.map(module => (
-            <AreaCard key={module.id} module={module} />
-          ))}
-          <Link href="/practica?area=todas" className="card group flex flex-col p-4 transition-colors hover:border-navy/30">
-            <div className="flex items-start gap-3">
-              <span className="icon-tile bg-navy/5 text-navy" aria-hidden="true">
-                <Shuffle className="h-5 w-5" strokeWidth={1.75} />
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="font-['Lexend'] text-[15px] font-semibold text-foreground">Práctica mixta</h3>
-                <p className="mt-0.5 text-sm text-muted-foreground">Preguntas de las cinco áreas, como en el examen</p>
-              </div>
-              <ChevronRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      <section aria-labelledby="recursos-titulo">
-        <h2 id="recursos-titulo" className="section-title mb-3">Recursos</h2>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-          {[
-            { href: '/glosario', icon: Library, title: 'Glosario', text: 'Términos explicados con palabras sencillas' },
-            { href: '/tips', icon: Lightbulb, title: 'Estrategias', text: 'Cómo manejar el tiempo el día del examen' },
-            { href: '/preguntas-frecuentes', icon: CircleHelp, title: 'Preguntas frecuentes', text: 'Fechas, puntajes y cómo funciona el examen' },
-          ].map(({ href, icon: Icon, title, text }) => (
-            <Link key={href} href={href} className="card flex items-center gap-3 p-4 transition-colors hover:border-navy/30">
-              <span className="icon-tile bg-navy/5 text-navy" aria-hidden="true">
-                <Icon className="h-5 w-5" strokeWidth={1.75} />
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-sm font-semibold text-foreground">{title}</span>
-                <span className="block text-xs text-muted-foreground">{text}</span>
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section aria-labelledby="saber-titulo" className="card p-5">
-        <h2 id="saber-titulo" className="section-title">Así es el Saber 11</h2>
-        <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {FACTS.map(({ icon: Icon, title, text }) => (
-            <li key={title} className="flex items-start gap-3">
-              <Icon className="mt-0.5 h-5 w-5 flex-shrink-0 text-navy" strokeWidth={1.75} aria-hidden="true" />
-              <span>
-                <span className="block text-sm font-semibold text-foreground">{title}</span>
-                <span className="block text-xs text-muted-foreground">{text}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-4 text-[11px] text-muted-foreground">
-          Fuente: Guía de orientación Saber 11.° del ICFES. Consulta siempre la guía vigente en icfes.gov.co.
-        </p>
-      </section>
+      </details>
     </div>
   );
 }

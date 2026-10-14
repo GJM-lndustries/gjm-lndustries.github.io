@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useActiveTimer } from '@/hooks/useActiveTimer';
 import { Link } from 'wouter';
 import { useProgress } from '@/contexts/ProgressContext';
@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
+import { lessonMinutes } from '@/lib/lessonTime';
+import { MIN_CARDS_MS } from '@/lib/streaks';
 
 // Glossary tooltip component
 function GlossaryTooltip({ term, children }: { term: GlossaryTerm; children: React.ReactNode }) {
@@ -204,9 +206,8 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between text-sm text-muted-foreground">
-        <span>Pregunta {currentQ + 1} de {questions.length}</span>
-        <span className="font-semibold">{correctCount} correctas</span>
+      <div className="text-sm font-semibold text-foreground">
+        Pregunta {currentQ + 1} de {questions.length}
       </div>
       <div className="h-2 bg-muted rounded-full overflow-hidden">
         <div
@@ -238,13 +239,33 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
 interface LessonViewProps {
   lesson: Lesson;
   onBack: () => void;
+  /** Vino desde el reto de hoy: al terminar ofrece volver al plan. */
+  fromReto?: boolean;
 }
 
-export default function LessonView({ lesson, onBack }: LessonViewProps) {
+export default function LessonView({ lesson, onBack, fromReto = false }: LessonViewProps) {
   const [phase, setPhase] = useState<'content' | 'quiz' | 'done'>('content');
   const [contentStep, setContentStep] = useState(0);
-  const { completeLesson, isLessonCompleted, trackChallengeTime } = useProgress();
-  useActiveTimer(phase === 'content', ms => trackChallengeTime('reading', ms));
+  const { completeLesson, isLessonCompleted, trackChallengeTime, trackReadingCards, progress } = useProgress();
+  // Tiempo activo en las tarjetas: al terminar la última, cuenta como la lectura del día.
+  const cardsMs = useRef(0);
+  useActiveTimer(phase === 'content', ms => {
+    cardsMs.current += ms;
+    trackChallengeTime('reading', ms);
+  });
+  const cards = lesson.content.length;
+  const minutes = lessonMinutes(lesson);
+  const isLast = contentStep >= cards - 1;
+  const goToCard = (n: number) => {
+    setContentStep(Math.max(0, Math.min(cards - 1, n)));
+    window.scrollTo({ top: 0 });
+  };
+  const finishCards = () => {
+    trackReadingCards(cardsMs.current);
+    setPhase('quiz');
+    window.scrollTo({ top: 0 });
+  };
+  const readingDone = progress.streakState.today.readingDone;
   const alreadyCompleted = isLessonCompleted(lesson.id);
 
   const handleCompleteQuiz = (score: number) => {
@@ -283,7 +304,7 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
           {levelLabel[lesson.level]}
         </span>
         <span className="score-badge bg-muted text-muted-foreground border border-border">
-          <Clock className="mr-1 h-3.5 w-3.5" aria-hidden="true" />{lesson.duration} min
+          <Clock className="mr-1 h-3.5 w-3.5" aria-hidden="true" />{cards} tarjetas · ~{minutes} min
         </span>
         <span className="score-badge bg-yellow-50 text-yellow-700 border border-yellow-200">
           <Star className="mr-1 h-3.5 w-3.5" aria-hidden="true" />{lesson.xp} XP
@@ -315,11 +336,10 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
         </button>
       </div>
 
-      {/* Content Phase */}
+      {/* Tarjetas: una a la vez, cada una de menos de un minuto */}
       {phase === 'content' && (
         <div className="space-y-4">
-          {/* Glossary preview */}
-          {lesson.glossary.length > 0 && (
+          {contentStep === 0 && lesson.glossary.length > 0 && (
             <div className="bg-muted/50 rounded-xl p-3 border border-border">
               <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">
                 Palabras clave · toca una para ver su significado
@@ -334,35 +354,38 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
             </div>
           )}
 
-          {/* Content blocks */}
-          <AnimatePresence mode="wait">
-            {lesson.content.slice(0, contentStep + 1).map((block, idx) => (
-              <ContentBlock key={idx} content={block} glossary={lesson.glossary} />
-            ))}
+          <div className="flex items-center justify-between gap-3" aria-live="polite">
+            <p className="text-sm font-semibold text-foreground" data-testid="tarjeta-n">Tarjeta {contentStep + 1} de {cards}</p>
+            <ol className="flex gap-1.5" aria-hidden="true">
+              {lesson.content.map((_, i) => (
+                <li key={i} className={`h-1.5 rounded-full transition-all ${i === contentStep ? 'w-6 bg-navy' : i < contentStep ? 'w-3 bg-brand' : 'w-3 bg-navy/15'}`} />
+              ))}
+            </ol>
+          </div>
+
+          <AnimatePresence mode="wait" initial={false}>
+            <ContentBlock key={contentStep} content={lesson.content[contentStep]!} glossary={lesson.glossary} />
           </AnimatePresence>
 
-          {/* Navigation */}
           <div className="flex gap-3">
-            {contentStep < lesson.content.length - 1 ? (
-              <button
-                onClick={() => setContentStep(s => s + 1)}
-                className="btn-primary flex-1"
-              >
-                Continuar <ChevronRight className="w-5 h-5" />
+            {contentStep > 0 && (
+              <button type="button" onClick={() => goToCard(contentStep - 1)} className="btn-secondary px-4" aria-label="Tarjeta anterior">
+                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+              </button>
+            )}
+            {!isLast ? (
+              <button type="button" onClick={() => goToCard(contentStep + 1)} className="btn-primary flex-1">
+                Siguiente tarjeta <ChevronRight className="w-5 h-5" aria-hidden="true" />
               </button>
             ) : (
-              <button
-                onClick={() => setPhase('quiz')}
-                className="btn-primary flex-1"
-              >
-                Ir a practicar <ChevronRight className="w-5 h-5" />
+              <button type="button" onClick={finishCards} className="btn-primary flex-1">
+                Ir a practicar ({lesson.questionIds.length} {lesson.questionIds.length === 1 ? 'pregunta' : 'preguntas'}) <ChevronRight className="w-5 h-5" aria-hidden="true" />
               </button>
             )}
           </div>
-          
-          {contentStep < lesson.content.length - 1 && (
+          {isLast && !readingDone && cardsMs.current < MIN_CARDS_MS && (
             <p className="text-center text-xs text-muted-foreground">
-              {contentStep + 1} de {lesson.content.length} secciones
+              Tómate tu tiempo con cada tarjeta: la lectura del día cuenta cuando las lees con calma.
             </p>
           )}
         </div>
@@ -373,14 +396,14 @@ export default function LessonView({ lesson, onBack }: LessonViewProps) {
         <QuizSection lesson={lesson} onComplete={handleCompleteQuiz} />
       )}
 
-      {/* Done - back button */}
       {phase === 'done' && (
-        <button
-          onClick={onBack}
-          className="btn-secondary w-full"
-        >
-          Volver al módulo
-        </button>
+        fromReto ? (
+          <Link href="/inicio" className="btn-primary w-full">Volver al plan de hoy</Link>
+        ) : (
+          <button type="button" onClick={onBack} className="btn-secondary w-full">
+            Volver al módulo
+          </button>
+        )
       )}
     </div>
   );

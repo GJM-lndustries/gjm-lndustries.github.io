@@ -1,145 +1,144 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "wouter";
-import { BookOpenText, Check, ChevronRight, Flame, PenLine, ShieldCheck } from "lucide-react";
+import { Check, ChevronRight, Flame, ShieldCheck } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
-import {
-  ANSWERING_GOAL_MS,
-  READING_GOAL_MS,
-  formatMs,
-  weekCalendar,
-} from "@/lib/streaks";
+import { weekCalendar, weekProgress, DEFAULT_WEEKLY_GOAL } from "@/lib/streaks";
+import { AREA_INFO } from "@/data/questions/meta";
+import { nextLesson, recommendedArea } from "@/lib/reto";
 import { motion, AnimatePresence } from "framer-motion";
 import { haptic, useCountUp } from "@/lib/feedback";
 import { useNow } from "@/hooks/useNow";
 
+const WEEKDAY = new Intl.DateTimeFormat("es-CO", { weekday: "long", timeZone: "UTC" });
+
 /**
- * Tarjeta principal del tablero: el reto diario (leer + practicar), la semana
- * de racha y el comodín semanal. Sin emoji: iconos lucide en cuadros de color.
+ * Tarjeta principal de /inicio: un solo botón para el reto de hoy, los pasos con
+ * progreso de entrada (definir la meta ya cuenta el primer día), la semana con la meta
+ * flexible de días y el comodín automático. Sin contadores en cero.
  */
 export default function DailyChallengeCard() {
-  const { progress, useStreakFreeze, acknowledgeStreakCelebration } = useProgress();
+  const { progress, acknowledgeStreakCelebration, dismissFreezeNotice } = useProgress();
   const { streakState } = progress;
   const today = streakState.today;
-  const readingPct = Math.min(100, Math.round((today.readingMs / READING_GOAL_MS) * 100));
-  const answeringPct = Math.min(100, Math.round((today.answeringMs / ANSWERING_GOAL_MS) * 100));
   const now = useNow();
   const week = weekCalendar(streakState, now);
+  const wp = now ? weekProgress(streakState, now) : { done: week.filter(d => d.done).length, goal: streakState.weeklyGoal ?? DEFAULT_WEEKLY_GOAL, met: false };
   const showCelebrate = today.completed && !today.celebrated;
-  const [freezeMsg, setFreezeMsg] = useState<string | null>(null);
   const days = streakState.current;
-  /** Aún no hay ninguna racha: mostramos un mensaje de primer día en vez de contadores en cero. */
   const firstStreak = days === 0 && streakState.longest === 0 && streakState.days.length === 0;
   const shownDay = useCountUp(streakState.current, Math.max(0, streakState.current - 1), showCelebrate);
   useEffect(() => {
     if (showCelebrate) haptic([18, 60, 18]);
   }, [showCelebrate]);
 
+  const completedIds = progress.completedLessons.map(l => l.lessonId);
+  const area = recommendedArea({ diagnostic: progress.diagnostic, areaStats: progress.areaStats, completedLessonIds: completedIds, daysDone: streakState.days.length });
+  const { module, lesson } = nextLesson(area, completedIds);
+  const areaLabel = AREA_INFO[area].label.toLowerCase();
+  const minutes = progress.plan?.dailyMinutes ?? 5;
+
+  // El primer día, haber definido la meta ya es un paso hecho (progreso real, no inflado).
+  const steps = [
+    ...(firstStreak && progress.hasCompletedOnboarding ? [{ id: "meta", label: "Definiste tu meta", sub: `${progress.targetScore} puntos`, done: true }] : []),
+    { id: "lectura", label: "Lee una lección corta", sub: `${lesson.title} · ~2 min`, done: today.readingDone },
+    { id: "practica", label: "Responde 3 preguntas", sub: `De ${areaLabel} · ~2 min`, done: today.answeringDone },
+  ];
+  const doneSteps = steps.filter(s => s.done).length;
+  const started = today.readingMs > 0 || today.answeringMs > 0 || today.questionsAnswered > 0;
+  const href = !today.readingDone ? `/${module.id}?leccion=${lesson.id}&reto=1` : "/practica?reto=1";
+  const notice = streakState.freezeNotice;
+
   return (
     <section className="card overflow-hidden" aria-labelledby="reto-hoy">
       <div className="flex items-start justify-between gap-3 p-5 pb-4">
         <div>
-          <p className="eyebrow">Reto de hoy</p>
+          <p className="eyebrow">Reto de hoy{!today.completed && ` · ${doneSteps} de ${steps.length} listo`}</p>
           <h2 id="reto-hoy" className="section-title mt-1">
-            {today.completed ? "Reto cumplido. Nos vemos mañana." : "Lee una lección y practica"}
+            {today.completed ? "Reto cumplido. Nos vemos mañana." : "Una lección corta y 3 preguntas"}
           </h2>
         </div>
         {!firstStreak && (
-          <div
+          <Link
+            href="/yo"
             className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1.5 text-sm font-semibold text-orange-700"
             aria-label={`Racha de ${days} ${days === 1 ? "día" : "días"}`}
           >
             <Flame className="h-4 w-4" aria-hidden="true" />
             {days} {days === 1 ? "día" : "días"}
-          </div>
+          </Link>
         )}
       </div>
 
-      <ul className="divide-y divide-border border-y border-border">
-        <TaskRow
-          icon={<BookOpenText className="h-5 w-5" strokeWidth={1.75} />}
-          tile="bg-amber-50 text-amber-700"
-          label="Lectura activa"
-          goal="2 minutos en una lección"
-          pct={readingPct}
-          done={today.readingDone}
-          detail={`${formatMs(today.readingMs)} de ${formatMs(READING_GOAL_MS)}`}
-          href="/matematicas"
-        />
-        <TaskRow
-          icon={<PenLine className="h-5 w-5" strokeWidth={1.75} />}
-          tile="bg-blue-50 text-blue-700"
-          label="Práctica"
-          goal="3 preguntas, mínimo 1:50"
-          pct={answeringPct}
-          done={today.answeringDone}
-          detail={`${formatMs(today.answeringMs)} de ${formatMs(ANSWERING_GOAL_MS)} · ${today.questionsAnswered} ${today.questionsAnswered === 1 ? "pregunta" : "preguntas"}`}
-          href="/practica"
-        />
-      </ul>
+      {notice && (
+        <div className="mx-5 mb-4 flex items-start gap-3 rounded-xl bg-sky-50 p-3" role="status">
+          <ShieldCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-sky-700" aria-hidden="true" />
+          <p className="flex-1 text-sm text-foreground">
+            Usamos tu comodín para cubrir el {WEEKDAY.format(new Date(`${notice}T12:00:00Z`))}. Tu racha sigue en {days}.
+          </p>
+          <button type="button" onClick={dismissFreezeNotice} className="text-sm font-semibold text-sky-800 underline-offset-2 hover:underline">
+            Entendido
+          </button>
+        </div>
+      )}
 
-      <div className="space-y-4 p-5 pt-4">
+      <ol className="space-y-1 px-5" aria-label="Pasos del reto">
+        {steps.map((s, i) => (
+          <li key={s.id} className="flex items-center gap-3 py-2">
+            <span
+              className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-semibold ${s.done ? "bg-brand text-ink" : "border-2 border-border text-muted-foreground"}`}
+              aria-hidden="true"
+            >
+              {s.done ? <Check className="h-4 w-4" strokeWidth={2.75} /> : i + 1}
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className={`block text-[15px] font-semibold ${s.done ? "text-muted-foreground line-through decoration-1" : "text-foreground"}`}>{s.label}</span>
+              <span className="block truncate text-xs text-muted-foreground">{s.sub}</span>
+            </span>
+            <span className="sr-only">{s.done ? "Hecho" : "Pendiente"}</span>
+          </li>
+        ))}
+      </ol>
+
+      <div className="px-5 pb-5 pt-3">
+        {today.completed ? (
+          <Link href="/practica" className="btn-secondary w-full">Practicar más (opcional)</Link>
+        ) : (
+          <Link href={href} className="btn-primary w-full" data-testid="reto-boton">
+            {started ? "Seguir con el reto" : "Empezar el reto de hoy"} <span className="font-normal opacity-80">· {minutes} min</span>
+            <ChevronRight className="h-5 w-5" aria-hidden="true" />
+          </Link>
+        )}
+      </div>
+
+      <div className="space-y-3 border-t border-border p-5">
+        <div className="flex items-baseline justify-between gap-3">
+          <p className="text-sm font-semibold text-foreground">Esta semana</p>
+          <p className="text-sm tabular-nums text-muted-foreground">
+            <strong className="text-foreground">{wp.done}</strong> de {wp.goal} días
+          </p>
+        </div>
         <ol className="grid grid-cols-7 gap-1" aria-label="Tu semana" data-today={week.find(d => d.isToday)?.date ?? ""}>
           {week.map(d => (
             <li key={d.date} className="flex flex-col items-center gap-1">
               <span className="text-[11px] font-medium text-muted-foreground">{d.label}</span>
               <span
                 className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${
-                  d.done
-                    ? "bg-brand text-ink"
-                    : d.isToday
-                      ? "border-2 border-navy text-navy"
-                      : "bg-muted text-muted-foreground"
+                  d.done ? "bg-brand text-ink" : d.frozen ? "bg-sky-100 text-sky-700" : d.isToday ? "border-2 border-navy text-navy" : "bg-muted text-muted-foreground"
                 }`}
                 title={d.date}
               >
-                {d.done ? <Check className="h-4 w-4" strokeWidth={2.5} aria-label="Cumplido" /> : null}
+                {d.done ? <Check className="h-4 w-4" strokeWidth={2.5} aria-label="Cumplido" /> : d.frozen ? <ShieldCheck className="h-4 w-4" aria-label="Cubierto con comodín" /> : null}
               </span>
             </li>
           ))}
         </ol>
-
-        {firstStreak ? (
-          <div className="flex items-start gap-3 rounded-xl bg-orange-50/70 p-3">
-            <span className="icon-tile h-9 w-9 flex-shrink-0 bg-white text-orange-600" aria-hidden="true">
-              <Flame className="h-4 w-4" strokeWidth={1.75} />
-            </span>
-            <p className="text-sm leading-snug text-foreground">
-              <strong className="font-semibold">Hoy puede ser el día 1 de tu racha.</strong>{" "}
-              <span className="text-muted-foreground">Completa la lectura y la práctica, y mañana vuelves por el segundo.</span>
-            </p>
-          </div>
-        ) : (
-          <>
-            <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 text-xs text-muted-foreground">
-              <span>
-                Mejor racha: <strong className="text-foreground">{streakState.longest}</strong>
-                <span className="mx-1.5" aria-hidden="true">·</span>
-                Comodines: <strong className="text-foreground">{streakState.freezesAvailable}</strong>
-              </span>
-              <button
-                type="button"
-                className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-border px-2.5 font-semibold text-navy hover:bg-muted"
-                onClick={() => {
-                  const { error } = useStreakFreeze();
-                  setFreezeMsg(error ?? "Listo: usaste el comodín y tu racha sigue.");
-                }}
-              >
-                <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" /> Usar comodín
-              </button>
-            </div>
-          </>
-        )}
-        {freezeMsg ? (
-          <p className="text-xs text-foreground" role="status">
-            {freezeMsg}
-          </p>
-        ) : (
-          <p className="text-xs leading-relaxed text-muted-foreground">
-            {firstStreak
-              ? "El día cuenta cuando completas las dos partes. El tiempo se pausa si cambias de pestaña."
-              : "El día cuenta cuando completas las dos partes. El tiempo se pausa si cambias de pestaña. Tienes un comodín por semana para no perder la racha."}
-          </p>
-        )}
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          {firstStreak
+            ? `Tu meta es de ${wp.goal} días por semana. Si un día no puedes, no pasa nada: cuenta la semana.`
+            : wp.met
+              ? "Cumpliste tu meta de la semana. Lo que hagas de más es ganancia."
+              : `Si un día no puedes, tu comodín semanal cubre ese día y la racha sigue (${streakState.freezeUsedWeek && streakState.freezesAvailable === 0 ? "ya lo usaste esta semana" : "te queda 1"}).`}
+        </p>
       </div>
 
       <AnimatePresence>
@@ -166,7 +165,7 @@ export default function DailyChallengeCard() {
                 Día <span className="tabular-nums">{shownDay}</span> cumplido
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Terminaste el reto de hoy. Vuelve mañana para mantener la racha.
+                Esta semana llevas {wp.done} de {wp.goal} días. {wp.met ? "Meta de la semana cumplida." : "Mañana sigues con otro reto corto."}
               </p>
               <button type="button" className="btn-primary mt-5 w-full" onClick={() => acknowledgeStreakCelebration()}>
                 Seguir
@@ -176,47 +175,5 @@ export default function DailyChallengeCard() {
         )}
       </AnimatePresence>
     </section>
-  );
-}
-
-function TaskRow({
-  icon,
-  tile,
-  label,
-  goal,
-  pct,
-  done,
-  detail,
-  href,
-}: {
-  icon: React.ReactNode;
-  tile: string;
-  label: string;
-  goal: string;
-  pct: number;
-  done: boolean;
-  detail: string;
-  href: string;
-}) {
-  return (
-    <li>
-      <Link href={href} className="flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-muted/50">
-        <span className={`icon-tile ${done ? "bg-brand-soft text-green-700" : tile}`} aria-hidden="true">
-          {done ? <Check className="h-5 w-5" strokeWidth={2.25} /> : icon}
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="flex items-baseline justify-between gap-2">
-            <span className="text-sm font-semibold text-foreground">{label}</span>
-            <span className="text-xs tabular-nums text-muted-foreground">{done ? "Hecho" : `${pct}%`}</span>
-          </span>
-          <span className="block text-xs text-muted-foreground">{goal}</span>
-          <span className="mt-2 block h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden="true">
-            <span className="progress-fill block h-full rounded-full bg-brand" style={{ width: `${pct}%` }} />
-          </span>
-          <span className="mt-1 block text-[11px] tabular-nums text-muted-foreground">{detail}</span>
-        </span>
-        <ChevronRight className="h-4 w-4 flex-shrink-0 text-muted-foreground" aria-hidden="true" />
-      </Link>
-    </li>
   );
 }

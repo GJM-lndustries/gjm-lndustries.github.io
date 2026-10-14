@@ -13,6 +13,7 @@ import {
   weekCalendar,
   useStreakFreeze,
   rollStreakDay,
+  completeReading,
   weekProgress,
   DEFAULT_WEEKLY_GOAL,
 } from "./streaks";
@@ -139,5 +140,14 @@ describe("semana flexible y comodín automático", () => {
     expect(weekProgress({ ...s, weeklyGoal: 2 }, at("2026-10-14")).met).toBe(true);
     // la semana siguiente empieza en cero
     expect(weekProgress(rollStreakDay(s, at("2026-10-19")), at("2026-10-19")).done).toBe(0);
+  });
+});
+
+describe("lectura por tarjetas", () => {
+  it("terminar las tarjetas cuenta como lectura si no se saltaron", () => {
+    const now = new Date("2026-10-14T12:00:00-05:00");
+    const s = defaultStreakState(now);
+    expect(completeReading(s, 10_000, now).today.readingDone).toBe(false);
+    expect(completeReading(s, 50_000, now).today.readingDone).toBe(true);
   });
 });

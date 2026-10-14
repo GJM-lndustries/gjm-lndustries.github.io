@@ -17,6 +17,7 @@ import {
 import {
   addActiveMs,
   addChallengeQuestion,
+  completeReading,
   defaultStreakState,
   rollStreakDay,
   streakBadges,
@@ -149,6 +150,8 @@ interface ProgressContextType {
   useStreakFreeze: () => { error?: string };
   acknowledgeStreakCelebration: () => void;
   savePlan: (plan: StudyPlan) => void;
+  /** Terminó las tarjetas de una lección (con `cardsMs` activos en ellas). */
+  trackReadingCards: (cardsMs: number) => void;
   saveDiagnostic: (d: DiagnosticResult) => void;
   setWeeklyGoal: (days: number) => void;
   dismissFreezeNotice: () => void;
@@ -495,6 +498,10 @@ export function ProgressProvider({
     setProgress(prev => syncStreakFields(prev, addActiveMs(prev.streakState, kind, ms)));
   }, []);
 
+  const trackReadingCards = useCallback((cardsMs: number) => {
+    setProgress(prev => syncStreakFields(prev, completeReading(prev.streakState, cardsMs)));
+  }, []);
+
   const trackChallengeQuestion = useCallback(() => {
     setProgress(prev => syncStreakFields(prev, addChallengeQuestion(prev.streakState)));
   }, []);
@@ -543,6 +550,7 @@ export function ProgressProvider({
         useStreakFreeze,
         acknowledgeStreakCelebration,
         savePlan,
+        trackReadingCards,
         saveDiagnostic,
         setWeeklyGoal,
         dismissFreezeNotice,

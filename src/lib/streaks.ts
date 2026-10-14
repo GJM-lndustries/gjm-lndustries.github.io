@@ -1,6 +1,7 @@
 /**
  * Rachas diarias (America/Bogota).
- * Un día cuenta solo si se completa el reto: lectura activa ≥ 2 min y
+ * Un día cuenta solo si se completa el reto: lectura (terminar las tarjetas de una lección
+ * con al menos 45 s, o 2 min activos leyendo) y
  * práctica/quiz con ≥ 1 min 50 s activos y al menos MIN_QUESTIONS respuestas.
  */
 export const STREAK_TZ = "America/Bogota";
@@ -153,6 +154,16 @@ export function addActiveMs(
     today.answeringMs >= ANSWERING_GOAL_MS && today.questionsAnswered >= MIN_QUESTIONS_FOR_STREAK;
   s = { ...s, today };
   return maybeCompleteDay(s, now);
+}
+
+/** Tiempo mínimo en las tarjetas para que «terminar una lección» cuente como lectura (evita saltarlas). */
+export const MIN_CARDS_MS = 45 * 1000;
+
+/** Terminó las tarjetas de una lección con un tiempo razonable: la lectura del día queda hecha. */
+export function completeReading(state: StreakState, cardsMs: number, now: Date = new Date()): StreakState {
+  const s = rollStreakDay(state, now);
+  if (s.today.completed || s.today.readingDone || cardsMs < MIN_CARDS_MS) return s;
+  return maybeCompleteDay({ ...s, today: { ...s.today, readingDone: true, readingMs: Math.max(s.today.readingMs, READING_GOAL_MS) } }, now);
 }
 
 export function addChallengeQuestion(state: StreakState, now: Date = new Date()): StreakState {

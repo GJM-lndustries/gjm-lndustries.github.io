@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useActiveTimer } from '@/hooks/useActiveTimer';
 import { Link, useSearch } from 'wouter';
 import { motion } from 'framer-motion';
-import { ChevronRight, RotateCcw, CheckCircle2, XCircle, PenLine, Flag, Home as HomeIcon, Shuffle, Trophy, TrendingUp, BookOpen } from 'lucide-react';
+import { ChevronRight, RotateCcw, CheckCircle2, Lightbulb, PenLine, Flag, Home as HomeIcon, Shuffle, Trophy, TrendingUp, BookOpen } from 'lucide-react';
 import { useProgress } from '@/contexts/ProgressContext';
 import QuestionView from '@/components/QuestionView';
 import {
@@ -11,6 +11,9 @@ import {
 } from '@/data/questions';
 import AreaIcon from '@/components/AreaIcon';
 import { withMotion } from '@/components/withMotion';
+import { recommendedArea, nextLesson } from '@/lib/reto';
+import { ANSWERING_GOAL_MS, formatMs } from '@/lib/streaks';
+import { DAILY_XP_CAP, xpToday } from '@/lib/xp';
 
 type Phase = 'setup' | 'running' | 'summary';
 type AreaFilter = AreaId | 'todas';
@@ -45,7 +48,8 @@ function Practica() {
   const params = new URLSearchParams(useSearch());
   const areaParam = params.get('area');
   const repasoParam = params.get('repaso') === '1';
-  const { progress, recordAnswer, trackChallengeTime, trackChallengeQuestion } = useProgress();
+  const retoParam = params.get('reto') === '1';
+  const { progress, loaded, recordAnswer, trackChallengeTime, trackChallengeQuestion } = useProgress();
   const missedIds = useMemo(() => new Set(Object.keys(progress.missedQuestions)), [progress.missedQuestions]);
 
   const [phase, setPhase] = useState<Phase>('setup');
@@ -75,12 +79,32 @@ function Practica() {
     window.scrollTo({ top: 0 });
   };
 
+  // Reto de hoy: 3 preguntas del área recomendada. La primera vez, fáciles; después,
+  // primero las que falló antes (repaso) y luego nuevas de nivel básico o intermedio.
+  const retoArea = recommendedArea({
+    diagnostic: progress.diagnostic,
+    areaStats: progress.areaStats,
+    completedLessonIds: progress.completedLessons.map(l => l.lessonId),
+    daysDone: progress.streakState.days.length,
+  });
+  const retoSession = (n: number, exclude: string[] = []) => {
+    const first = progress.streakState.days.length === 0;
+    const pool = questionsByArea[retoArea].filter(q => (first ? q.difficulty === 1 : q.difficulty <= 2) && !exclude.includes(q.id));
+    return buildSession(pool.length >= n ? pool : questionsByArea[retoArea].filter(q => !exclude.includes(q.id)), missedIds, n, false);
+  };
+
   // Enlace directo /practica?repaso=1: arranca el repaso de errores de una vez
+  // Espera a que cargue el progreso guardado (el HTML prerenderizado arranca vacío).
   useEffect(() => {
+    if (!loaded) return;
+    if (retoParam && phase === 'setup' && session.length === 0) {
+      start(retoSession(3));
+      return;
+    }
     if (repasoParam && missedTotal > 0 && phase === 'setup' && session.length === 0) {
       start(buildSession(allQuestions, missedIds, 0, true));
     }
-  }, []);
+  }, [loaded]);
 
   const question = session[index];
   const selected = question ? answers[question.id] ?? null : null;
@@ -117,6 +141,56 @@ function Practica() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   });
+
+  // ---------- Resumen del reto ----------
+  if (phase === 'summary' && retoParam) {
+    const done = session.filter(q => answers[q.id] !== undefined);
+    const ok = done.filter(q => answers[q.id] === q.answer).length;
+    const today = progress.streakState.today;
+    const xp = xpToday(progress.xpDay);
+    const lesson = nextLesson(retoArea, progress.completedLessons.map(l => l.lessonId));
+    const missingMs = Math.max(0, ANSWERING_GOAL_MS - today.answeringMs);
+    return (
+      <div className="max-w-xl mx-auto space-y-5" data-testid="reto-resumen">
+        <div className="text-center pt-2">
+          <span className="icon-tile anim-pop mx-auto h-14 w-14 rounded-2xl bg-brand-soft text-green-700" aria-hidden="true">
+            <CheckCircle2 className="h-7 w-7" strokeWidth={1.75} />
+          </span>
+          <h1 className="page-title mt-3">{today.completed ? 'Reto de hoy cumplido' : 'Práctica lista'}</h1>
+          <p className="mt-1 text-muted-foreground">
+            Respondiste {done.length} {done.length === 1 ? 'pregunta' : 'preguntas'} de {AREA_INFO[retoArea].label.toLowerCase()} y te fue bien en {ok}.
+          </p>
+        </div>
+        <div className="card p-4 text-sm">
+          <p className="flex items-center justify-between"><span className="text-muted-foreground">XP de hoy</span><strong className="tabular-nums text-foreground">{xp} de {DAILY_XP_CAP}</strong></p>
+          {xp >= DAILY_XP_CAP && <p className="mt-1 text-xs text-muted-foreground">Ya ganaste todo el XP de hoy. Si quieres seguir, practica tranquilo; mañana hay más.</p>}
+        </div>
+        {!today.completed && !today.answeringDone && (
+          <div className="rounded-xl border border-border bg-muted/50 p-4 text-sm">
+            <p className="font-semibold text-foreground">Para cerrar el día te falta {formatMs(missingMs)} de práctica.</p>
+            <p className="mt-1 text-muted-foreground">Una pregunta más suele bastar.</p>
+            <button type="button" className="btn-primary mt-3 w-full" onClick={() => {
+              const extra = retoSession(1, session.map(q => q.id));
+              if (extra.length) { setSession(s => [...s, ...extra]); setIndex(session.length); setPhase('running'); window.scrollTo({ top: 0 }); }
+            }}>
+              Una pregunta más <ChevronRight className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
+        )}
+        {!today.completed && today.answeringDone && !today.readingDone && (
+          <div className="rounded-xl border border-border bg-muted/50 p-4 text-sm">
+            <p className="font-semibold text-foreground">Te falta la lectura para cerrar el día.</p>
+            <Link href={`/${lesson.module.id}?leccion=${lesson.lesson.id}&reto=1`} className="btn-primary mt-3 w-full">
+              Leer «{lesson.lesson.title}» <ChevronRight className="h-5 w-5" aria-hidden="true" />
+            </Link>
+          </div>
+        )}
+        <Link href="/inicio" className={today.completed ? 'btn-primary w-full' : 'btn-secondary w-full'}>
+          <HomeIcon className="h-5 w-5" aria-hidden="true" /> Volver al plan de hoy
+        </Link>
+      </div>
+    );
+  }
 
   // ---------- Resumen ----------
   if (phase === 'summary') {
@@ -178,16 +252,16 @@ function Practica() {
               const yours = q.options.find(o => o.id === answers[q.id]);
               const right = q.options.find(o => o.id === q.answer);
               return (
-                <details key={q.id} className="rounded-xl border border-red-200 bg-red-50 p-4 group">
+                <details key={q.id} className="rounded-xl border border-amber-200 bg-amber-50/70 p-4 group">
                   <summary className="cursor-pointer list-none flex items-start gap-2">
-                    <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                    <Lightbulb className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="text-sm font-semibold text-foreground">{q.enunciado}</span>
                   </summary>
                   <div className="mt-3 space-y-2 text-sm pl-7">
-                    <p><span className="font-semibold text-red-700">Tu respuesta:</span> {yours?.id.toUpperCase()}. {yours?.text}</p>
+                    <p><span className="font-semibold text-amber-800">Tu respuesta:</span> {yours?.id.toUpperCase()}. {yours?.text}</p>
                     <p><span className="font-semibold text-green-700">Correcta:</span> {right?.id.toUpperCase()}. {right?.text}</p>
                     <p className="text-foreground">{q.explanation}</p>
-                    <p className="text-xs text-muted-foreground"><span className="font-semibold">Consejo:</span> {q.tip}</p>
+                    <p className="text-xs text-muted-foreground"><span className="font-semibold">El truco:</span> {q.tip}</p>
                   </div>
                 </details>
               );
@@ -222,11 +296,10 @@ function Practica() {
 
   // ---------- Pregunta ----------
   if (phase === 'running' && question) {
-    const correctSoFar = session.filter(q => answers[q.id] === q.answer).length;
     return (
       <div className="max-w-2xl mx-auto space-y-4">
         <div className="flex items-center justify-between gap-3">
-          <h1 className="text-lg font-bold font-['Lexend'] text-foreground">Modo práctica</h1>
+          <h1 className="text-lg font-bold font-['Lexend'] text-foreground">{retoParam ? 'Reto de hoy · práctica' : 'Modo práctica'}</h1>
           <button
             type="button"
             onClick={() => setPhase('summary')}
@@ -235,9 +308,8 @@ function Practica() {
             <Flag className="w-4 h-4" aria-hidden="true" /> Terminar
           </button>
         </div>
-        <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <span>Pregunta {index + 1} de {session.length}</span>
-          <span className="font-semibold">{correctSoFar} correctas</span>
+        <div className="text-sm font-semibold text-foreground">
+          Pregunta {index + 1} de {session.length}
         </div>
         <div className="h-2 bg-muted rounded-full overflow-hidden" role="progressbar" aria-valuemin={0} aria-valuemax={session.length} aria-valuenow={index}>
           <motion.div animate={{ width: `${(index / session.length) * 100}%` }} className="h-full bg-primary rounded-full" />

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useSearch } from 'wouter';
+import { lessonMinutes } from '@/lib/lessonTime';
 import { useProgress } from '@/contexts/ProgressContext';
 import type { Module } from '@/lib/appData';
 import LessonView from '@/components/LessonView';
@@ -14,7 +16,13 @@ interface ModulePageProps {
 }
 
 function ModulePage({ module }: ModulePageProps) {
-  const [selectedLesson, setSelectedLesson] = useState<string | null>(null);
+  const params = new URLSearchParams(useSearch());
+  const fromReto = params.get('reto') === '1';
+  // ?leccion=<id> abre una lección directamente (lo usa el botón del reto de hoy).
+  const [selectedLesson, setSelectedLesson] = useState<string | null>(() => {
+    const id = params.get('leccion');
+    return id && module.lessons.some(l => l.id === id) ? id : null;
+  });
   const [selectedTerm, setSelectedTerm] = useState<{ term: string; simple: string; technical: string } | null>(null);
   const { getModuleProgress, isLessonCompleted, getLessonProgress } = useProgress();
   
@@ -29,6 +37,7 @@ function ModulePage({ module }: ModulePageProps) {
       <LessonView 
         lesson={lesson} 
         onBack={() => setSelectedLesson(null)} 
+        fromReto={fromReto}
       />
     );
   }
@@ -195,7 +204,7 @@ function ModulePage({ module }: ModulePageProps) {
                           </span>
                           <span className="flex items-center gap-1 text-xs text-muted-foreground">
                             <Clock className="w-3 h-3" />
-                            {lesson.duration} min
+                            {lesson.content.length} tarjetas · ~{lessonMinutes(lesson)} min
                           </span>
                           <span className="flex items-center gap-1 text-xs text-yellow-600">
                             <Star className="w-3 h-3 fill-current" />

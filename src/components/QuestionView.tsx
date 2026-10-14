@@ -38,7 +38,7 @@ export default function QuestionView({
   }, [answered]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" data-qid={question.id}>
       {showMeta && (
         <div className="flex flex-wrap gap-2 text-xs">
           <span className="score-badge gap-1.5 border border-border bg-card pl-1 text-foreground">
