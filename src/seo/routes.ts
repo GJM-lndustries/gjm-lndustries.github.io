@@ -189,10 +189,11 @@ export const ROUTES: RouteMeta[] = [
     noindex: true,
   },
   {
+    // Ranking oculto (Fase 1): la ruta solo redirige a /yo. Se prerenderiza para que la hidratación coincida.
     path: "/leaderboard",
-    name: "Ranking",
-    title: "Ranking (próximamente) · ProICFES",
-    description: "El ranking entre estudiantes llegará pronto. Mientras tanto, revisa tus marcas personales.",
+    name: "Yo",
+    title: "Yo · ProICFES",
+    description: "Tu meta, tu semana y lo que llevas en ProICFES.",
     kind: "page",
     noindex: true,
   },

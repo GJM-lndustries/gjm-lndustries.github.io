@@ -9,7 +9,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { usePWA } from "./hooks/usePWA";
 import { modules } from "./lib/appData";
 import Landing from "./pages/Landing";
-import Leaderboard from "./pages/Leaderboard";
 import NotFound from "./pages/NotFound";
 import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
 import Cuenta from "./pages/Cuenta";
@@ -24,12 +23,12 @@ import { Analytics, Glosario, Inicio, Logros, ModulePage, Onboarding, Practica, 
 
 
 
-function Redirect({ to }: { to: string }) {
+function Redirect({ to, silent = false }: { to: string; silent?: boolean }) {
   const [, nav] = useLocation();
   useEffect(() => {
     nav(to, { replace: true });
   }, [nav, to]);
-  return <PageLoading />;
+  return silent ? null : <PageLoading />;
 }
 
 function useTrailingSlashFix() {
@@ -69,7 +68,11 @@ function AppContent() {
             <Route path="/terminos" component={Terminos} />
             <Route path="/cookies" component={Cookies} />
             <Route path="/creditos" component={Creditos} />
-            <Route path="/leaderboard" component={Leaderboard} />
+            <Route path="/leaderboard">
+              {/* Ranking oculto: se muestra «Yo» (igual que el prerender) y se cambia la URL a /yo. */}
+              <Yo />
+              <Redirect to="/yo" silent />
+            </Route>
             <Route path="/cuenta" component={Cuenta} />
             <Route path="/analytics" component={Analytics} />
             {modules.map(module => (

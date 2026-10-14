@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useAuth } from "@/contexts/AuthContext";
-import { Home, PenLine, ClipboardList, CircleUserRound, Star, Flame, BarChart3, Trophy, Library, Lightbulb } from "lucide-react";
+import { Home, PenLine, ClipboardList, CircleUserRound, Star, Flame, Library, Lightbulb } from "lucide-react";
 import { AREA_STYLE } from "@/components/AreaIcon";
 import { modules } from "@/lib/appData";
 import { ACCOUNTS_ENABLED, accountInitial } from "@/lib/accounts";
@@ -20,8 +20,6 @@ const mainNav = [
 const areaNav = modules.map(m => ({ path: `/${m.id}`, label: m.title, icon: AREA_STYLE[m.area].icon }));
 
 const moreNav = [
-  { path: "/analytics", label: "Mi progreso", icon: BarChart3 },
-  { path: "/logros", label: "Logros", icon: Trophy },
   { path: "/glosario", label: "Glosario", icon: Library },
   { path: "/tips", label: "Estrategias", icon: Lightbulb },
 ];
