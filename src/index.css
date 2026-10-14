@@ -263,8 +263,9 @@
   .answer-option.correct {
     @apply border-green-600 bg-green-50 text-green-900 ring-1 ring-green-600;
   }
+  /* Respuesta propia equivocada: tono cálido y suave, sin rojo fuerte (retroalimentación amable). */
   .answer-option.incorrect {
-    @apply border-red-500 bg-red-50 text-red-900 ring-1 ring-red-500;
+    @apply border-amber-400 bg-amber-50/70 text-foreground;
   }
 
   /* Score badge */

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Question } from "@/data/questions/types";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import RichText from "@/components/RichText";
 import { haptic } from "@/lib/feedback";
 
@@ -23,7 +23,7 @@ export default function SampleQuestion({ question }: { question: Question }) {
           const isWrong = answered && selected && opt.id !== question.answer;
           let cls = "border-border bg-white hover:border-navy/40";
           if (isAnswer) cls = "border-green-600 bg-green-50";
-          else if (isWrong) cls = "border-red-500 bg-red-50 anim-shake";
+          else if (isWrong) cls = "border-amber-400 bg-amber-50/70";
           else if (selected) cls = "border-navy bg-navy/5";
           return (
             <li key={opt.id}>
@@ -41,7 +41,7 @@ export default function SampleQuestion({ question }: { question: Question }) {
                 </span>
                 <span className="min-w-0 flex-1 pt-0.5"><RichText text={opt.text} inline /></span>
                 {isAnswer ? <Check className="anim-pop mt-0.5 h-5 w-5 flex-shrink-0 text-green-700" aria-label="Respuesta correcta" /> : null}
-                {isWrong ? <X className="anim-pop mt-0.5 h-5 w-5 flex-shrink-0 text-red-600" aria-label="Tu respuesta (incorrecta)" /> : null}
+                {isWrong ? <span className="mt-0.5 flex-shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-900">Tu respuesta</span> : null}
               </button>
             </li>
           );
@@ -52,7 +52,7 @@ export default function SampleQuestion({ question }: { question: Question }) {
           className={`anim-rise mt-4 rounded-xl p-4 text-sm ${correct ? "bg-green-50 text-green-900" : "bg-amber-50 text-amber-950"}`}
           role="status"
         >
-          <p className="font-semibold">{correct ? "Correcto" : "No es esa. Mira la explicación"}</p>
+          <p className="font-semibold">{correct ? "¡Bien! Esa es." : `Casi. Mira el truco: la correcta es la ${question.answer.toUpperCase()}.`}</p>
           <div className="mt-1 opacity-90">
             <RichText text={question.explanation} />
           </div>

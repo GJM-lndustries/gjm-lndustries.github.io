@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, XCircle, Lightbulb } from "lucide-react";
+import { CheckCircle2, Lightbulb } from "lucide-react";
 import {
   AREA_INFO,
   DIFFICULTY_LABEL,
@@ -104,7 +104,7 @@ export default function QuestionView({
               key={option.id}
               type="button"
               whileTap={!answered ? { scale: 0.98 } : {}}
-              className={`w-full text-left ${className}${markWrong ? " anim-shake" : ""}`}
+              className={`w-full text-left ${className}`}
               onClick={() => onSelect(option.id)}
               disabled={answered}
               aria-pressed={option.id === selected}
@@ -114,7 +114,7 @@ export default function QuestionView({
                   markCorrect
                     ? "border-green-500 bg-green-500 text-white"
                     : markWrong
-                      ? "border-red-500 bg-red-500 text-white"
+                      ? "border-amber-500 bg-amber-100 text-amber-900"
                       : "border-current"
                 }`}
               >
@@ -128,10 +128,9 @@ export default function QuestionView({
                 />
               )}
               {markWrong && (
-                <XCircle
-                  className="anim-pop w-5 h-5 text-red-500 ml-auto flex-shrink-0"
-                  aria-label="Tu respuesta (incorrecta)"
-                />
+                <span className="ml-auto flex-shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-semibold text-amber-900">
+                  Tu respuesta
+                </span>
               )}
             </motion.button>
           );
@@ -144,30 +143,32 @@ export default function QuestionView({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             role="status"
-            className={`rounded-xl p-4 border ${isCorrect ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}
+            className={`rounded-xl p-4 border ${isCorrect ? "bg-green-50 border-green-200" : selected == null ? "bg-muted/60 border-border" : "bg-amber-50/80 border-amber-200"}`}
           >
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-start gap-2 mb-2">
               {isCorrect ? (
-                <CheckCircle2 className="anim-pop w-5 h-5 text-green-600" />
+                <CheckCircle2 className="anim-pop mt-0.5 h-5 w-5 flex-shrink-0 text-green-600" aria-hidden="true" />
               ) : (
-                <XCircle className="w-5 h-5 text-red-600" />
+                <Lightbulb className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" aria-hidden="true" />
               )}
-              <span
-                className={`font-bold text-sm ${isCorrect ? "text-green-800" : "text-red-800"}`}
-              >
-                {isCorrect
-                  ? "¡Correcto!"
-                  : selected == null
-                    ? `No respondiste esta pregunta. La correcta es la ${question.answer.toUpperCase()}.`
-                    : `Respuesta incorrecta. La correcta es la ${question.answer.toUpperCase()}.`}
-              </span>
+              <p className="text-sm">
+                <span className={`font-bold ${isCorrect ? "text-green-800" : "text-foreground"}`}>
+                  {isCorrect
+                    ? "¡Bien! Esa es."
+                    : selected == null
+                      ? "No respondiste esta pregunta."
+                      : "Casi. Mira el truco:"}
+                </span>
+                {!isCorrect && (
+                  <span className="text-muted-foreground"> la correcta es la {question.answer.toUpperCase()}.</span>
+                )}
+              </p>
             </div>
             <p className="text-sm text-foreground">{question.explanation}</p>
             {question.tip && (
-              <div className="mt-3 flex items-start gap-2 bg-white/60 rounded-lg p-2">
-                <Lightbulb className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" />
+              <div className="mt-3 rounded-lg bg-white/70 p-2.5">
                 <p className="text-xs text-foreground">
-                  <span className="font-semibold">Consejo: </span>
+                  <span className="font-semibold">El truco: </span>
                   {question.tip}
                 </p>
               </div>
