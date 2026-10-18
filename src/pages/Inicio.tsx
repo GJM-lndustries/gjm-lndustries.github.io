@@ -6,7 +6,8 @@ import { modules } from '@/lib/appData';
 import { AREA_INFO } from '@/data/questions/meta';
 import { AREA_IDS } from '@/data/questions/types';
 import { ChevronDown, ChevronRight, ClipboardList, PenLine, RotateCcw, Shuffle, Sparkles, Star, CloudUpload, X } from 'lucide-react';
-import DailyChallengeCard from '@/components/DailyChallengeCard';
+import DailyChallengeCard, { WeekCard } from '@/components/DailyChallengeCard';
+import { CountdownChip } from '@/components/AppLayout';
 import AreaIcon from '@/components/AreaIcon';
 import GoalBar from '@/components/GoalBar';
 import { withMotion } from '@/components/withMotion';
@@ -130,18 +131,27 @@ function Inicio() {
   }, []);
 
   return (
-    <div className="mx-auto max-w-2xl space-y-5">
-      <header>
-        <p className="eyebrow min-h-4 first-letter:uppercase">{today}</p>
-        <h1 className="page-title mt-1">Tu plan de hoy</h1>
-        <p className="mt-1 text-[15px] text-muted-foreground">
-          {plan?.studyMoment ? intentionSentence(plan.dailyMinutes, plan.studyMoment) : 'Unos 5 minutos entre lectura y práctica.'}
-        </p>
-      </header>
+    <div className="mx-auto max-w-2xl space-y-5 lg:grid lg:max-w-none lg:grid-cols-[minmax(0,1fr)_21rem] lg:items-start lg:gap-x-6 lg:gap-y-5 lg:space-y-0 xl:grid-cols-[minmax(0,1fr)_23rem]">
+      <div className="space-y-5 lg:col-start-1">
+        <header>
+          <p className="eyebrow min-h-4 first-letter:uppercase">{today}</p>
+          <h1 className="page-title mt-1">Tu plan de hoy</h1>
+          <p className="mt-1 text-[15px] text-muted-foreground">
+            {plan?.studyMoment ? intentionSentence(plan.dailyMinutes, plan.studyMoment) : 'Unos 5 minutos entre lectura y práctica.'}
+          </p>
+          {/* En móvil la cuenta regresiva vive aquí (el encabezado móvil se queda compacto). */}
+          <div className="mt-2 min-h-9 lg:hidden"><CountdownChip className="-ml-3" /></div>
+        </header>
+        <DailyChallengeCard />
+      </div>
 
-      <DailyChallengeCard />
-      <GoalCard />
-      <AccountPrompt />
+      <aside className="space-y-5 lg:sticky lg:top-20 lg:col-start-2 lg:row-span-2 lg:row-start-1" aria-label="Tu meta y tu semana" data-testid="inicio-lateral">
+        <GoalCard />
+        <WeekCard />
+      </aside>
+
+      <div className="space-y-5 lg:col-start-1">
+        <AccountPrompt />
 
       {missedCount > 0 && (
         <Link href="/practica?repaso=1" className="card flex items-center gap-3 p-4 transition-colors hover:border-navy/30">
@@ -181,6 +191,7 @@ function Inicio() {
           </div>
         </div>
       </details>
+      </div>
     </div>
   );
 }

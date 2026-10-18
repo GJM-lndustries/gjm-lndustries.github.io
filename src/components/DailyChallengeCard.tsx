@@ -110,37 +110,6 @@ export default function DailyChallengeCard() {
         )}
       </div>
 
-      <div className="space-y-3 border-t border-border p-5">
-        <div className="flex items-baseline justify-between gap-3">
-          <p className="text-sm font-semibold text-foreground">Esta semana</p>
-          <p className="text-sm tabular-nums text-muted-foreground">
-            <strong className="text-foreground">{wp.done}</strong> de {wp.goal} días
-          </p>
-        </div>
-        <ol className="grid grid-cols-7 gap-1" aria-label="Tu semana" data-today={week.find(d => d.isToday)?.date ?? ""}>
-          {week.map(d => (
-            <li key={d.date} className="flex flex-col items-center gap-1">
-              <span className="text-[11px] font-medium text-muted-foreground">{d.label}</span>
-              <span
-                className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${
-                  d.done ? "bg-brand text-ink" : d.frozen ? "bg-sky-100 text-sky-700" : d.isToday ? "border-2 border-navy text-navy" : "bg-muted text-muted-foreground"
-                }`}
-                title={d.date}
-              >
-                {d.done ? <Check className="h-4 w-4" strokeWidth={2.5} aria-label="Cumplido" /> : d.frozen ? <ShieldCheck className="h-4 w-4" aria-label="Cubierto con comodín" /> : null}
-              </span>
-            </li>
-          ))}
-        </ol>
-        <p className="text-xs leading-relaxed text-muted-foreground">
-          {firstStreak
-            ? `Tu meta es de ${wp.goal} días por semana. Si un día no puedes, no pasa nada: cuenta la semana.`
-            : wp.met
-              ? "Cumpliste tu meta de la semana. Lo que hagas de más es ganancia."
-              : `Si un día no puedes, tu comodín semanal cubre ese día y la racha sigue (${streakState.freezeUsedWeek && streakState.freezesAvailable === 0 ? "ya lo usaste esta semana" : "te queda 1"}).`}
-        </p>
-      </div>
-
       <AnimatePresence>
         {showCelebrate && (
           <motion.div
@@ -175,5 +144,47 @@ export default function DailyChallengeCard() {
         )}
       </AnimatePresence>
     </section>
+  );
+}
+
+/** «Esta semana»: días cumplidos frente a la meta flexible, con el comodín. Tarjeta propia (columna derecha en escritorio). */
+export function WeekCard() {
+  const { progress } = useProgress();
+  const { streakState } = progress;
+  const now = useNow();
+  const week = weekCalendar(streakState, now);
+  const wp = now ? weekProgress(streakState, now) : { done: week.filter(d => d.done).length, goal: streakState.weeklyGoal ?? DEFAULT_WEEKLY_GOAL, met: false };
+  const firstStreak = streakState.current === 0 && streakState.longest === 0 && streakState.days.length === 0;
+  return (
+    <section className="card space-y-3 p-5" aria-labelledby="semana-titulo" data-testid="semana">
+        <div className="flex items-baseline justify-between gap-3">
+          <h2 id="semana-titulo" className="text-sm font-semibold text-foreground">Esta semana</h2>
+          <p className="text-sm tabular-nums text-muted-foreground">
+            <strong className="text-foreground">{wp.done}</strong> de {wp.goal} días
+          </p>
+        </div>
+        <ol className="grid grid-cols-7 gap-1" aria-label="Tu semana" data-today={week.find(d => d.isToday)?.date ?? ""}>
+          {week.map(d => (
+            <li key={d.date} className="flex flex-col items-center gap-1">
+              <span className="text-[11px] font-medium text-muted-foreground">{d.label}</span>
+              <span
+                className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${
+                  d.done ? "bg-brand text-ink" : d.frozen ? "bg-sky-100 text-sky-700" : d.isToday ? "border-2 border-navy text-navy" : "bg-muted text-muted-foreground"
+                }`}
+                title={d.date}
+              >
+                {d.done ? <Check className="h-4 w-4" strokeWidth={2.5} aria-label="Cumplido" /> : d.frozen ? <ShieldCheck className="h-4 w-4" aria-label="Cubierto con comodín" /> : null}
+              </span>
+            </li>
+          ))}
+        </ol>
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          {firstStreak
+            ? `Tu meta es de ${wp.goal} días por semana. Si un día no puedes, no pasa nada: cuenta la semana.`
+            : wp.met
+              ? "Cumpliste tu meta de la semana. Lo que hagas de más es ganancia."
+              : `Si un día no puedes, tu comodín semanal cubre ese día y la racha sigue (${streakState.freezeUsedWeek && streakState.freezesAvailable === 0 ? "ya lo usaste esta semana" : "te queda 1"}).`}
+        </p>
+      </section>
   );
 }

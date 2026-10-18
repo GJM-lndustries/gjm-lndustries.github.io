@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useAuth } from "@/contexts/AuthContext";
-import { Home, PenLine, ClipboardList, CircleUserRound, Star, Flame, Library, Lightbulb } from "lucide-react";
+import { Home, PenLine, ClipboardList, CircleUserRound, Star, Flame, Library, Lightbulb, CalendarDays } from "lucide-react";
+import { useNow } from "@/hooks/useNow";
+import { daysUntilExam, examWindowLabel } from "@/lib/plan";
 import { AREA_STYLE } from "@/components/AreaIcon";
 import { modules } from "@/lib/appData";
 import { ACCOUNTS_ENABLED, accountInitial } from "@/lib/accounts";
@@ -78,41 +80,101 @@ function SiteFooter() {
   );
 }
 
-function AccountChip() {
+function AccountChip({ desktop = false }: { desktop?: boolean }) {
   const auth = useAuth();
   if (!ACCOUNTS_ENABLED) return null;
   const signedIn = auth.status === "ready" || auth.status === "needs-profile" || auth.status === "password-recovery";
   if (signedIn) {
     return (
       <Link
-        href="/cuenta"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-navy text-sm font-semibold text-white"
-        aria-label="Mi cuenta"
+        href="/yo"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-navy text-sm font-semibold text-white hover:bg-navy/90"
+        aria-label="Mi cuenta y progreso"
         title={auth.email ?? "Mi cuenta"}
+        data-testid="header-account"
       >
         {accountInitial(auth.email)}
       </Link>
     );
   }
-  // Sin sesión no hay botón en el encabezado de la app: la cuenta se ofrece cuando tiene
-  // valor (al tener una racha que guardar) y desde «Yo». La portada sí muestra «Iniciar sesión».
-  return null;
+  // Sin sesión: una entrada discreta (no un botón llamativo). La invitación fuerte sigue siendo
+  // la tarjeta en contexto de /inicio, cuando ya hay una racha que guardar.
+  return desktop ? (
+    <Link
+      href="/cuenta"
+      className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-[13px] font-semibold text-foreground hover:border-navy/30"
+      data-testid="header-account"
+    >
+      <CircleUserRound className="h-4 w-4 text-muted-foreground" aria-hidden="true" /> Iniciar sesión
+    </Link>
+  ) : (
+    <Link
+      href="/cuenta"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-muted"
+      aria-label="Iniciar sesión"
+      data-testid="header-account"
+    >
+      <CircleUserRound className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+    </Link>
+  );
 }
 
-function StreakChip() {
+function StreakChip({ desktop = false }: { desktop?: boolean }) {
   const { progress } = useProgress();
   const n = progress.streakState?.current ?? progress.streak;
   const s = progress.streakState;
-  // Sin ninguna racha todavía no mostramos un «0»: el reto de /inicio invita a empezar el día 1.
-  if (n === 0 && (!s || (s.longest === 0 && s.days.length === 0))) return null;
+  const none = n === 0 && (!s || (s.longest === 0 && s.days.length === 0));
+  if (n === 0) {
+    // Sin racha activa no mostramos «0». En escritorio, una invitación neutra; en móvil, nada.
+    if (!desktop) return null;
+    return (
+      <Link
+        href="/inicio"
+        className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-muted px-3 text-[13px] font-semibold text-foreground hover:bg-muted/70"
+        data-testid="header-streak"
+      >
+        <Flame className="h-4 w-4 text-orange-600" aria-hidden="true" />
+        {none ? "Empieza tu racha hoy" : "Retoma tu racha hoy"}
+      </Link>
+    );
+  }
   return (
     <Link
       href="/yo"
       className="inline-flex min-h-9 items-center gap-1 rounded-full bg-orange-50 px-3 text-[13px] font-semibold text-orange-700 hover:bg-orange-100"
       aria-label={`Racha de ${n} ${n === 1 ? "día" : "días"}`}
+      data-testid="header-streak"
     >
       <Flame className="h-4 w-4" aria-hidden="true" />
       {n}
+      {desktop && <span className="font-medium">{n === 1 ? "día" : "días"}</span>}
+    </Link>
+  );
+}
+
+/** «Faltan N días para el ICFES» con la fecha de /meta. Se calcula tras montar (el prerender no sabe la fecha). */
+export function CountdownChip({ className = "" }: { className?: string }) {
+  const { progress, loaded } = useProgress();
+  const now = useNow();
+  if (!now || !loaded) return null;
+  const id = progress.plan?.examWindow;
+  const days = daysUntilExam(id, now);
+  if (days == null) {
+    return (
+      <Link href="/meta?paso=fecha" className={`inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground ${className}`} data-testid="header-countdown">
+        <CalendarDays className="h-4 w-4" aria-hidden="true" /> Pon tu fecha del examen
+      </Link>
+    );
+  }
+  return (
+    <Link
+      href="/meta?paso=fecha"
+      className={`inline-flex min-h-9 items-center gap-1.5 rounded-full bg-navy/5 px-3 text-[13px] font-semibold text-navy hover:bg-navy/10 ${className}`}
+      title={`Contado hasta el inicio de ${examWindowLabel(id)}. El ICFES publica la fecha exacta.`}
+      data-testid="header-countdown"
+    >
+      <CalendarDays className="h-4 w-4" aria-hidden="true" />
+      Faltan <span className="tabular-nums">{days.toLocaleString("es-CO")}</span> días para el ICFES
     </Link>
   );
 }
@@ -174,7 +236,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <div className="mx-3 mb-4 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-sidebar-border bg-sidebar-border">
           <div className="bg-sidebar px-3 py-2.5">
             <p className="text-[11px] text-sidebar-foreground/70">Puntaje estimado</p>
-            <p className="font-['Lexend'] text-xl font-semibold text-sidebar-foreground">{estimate.global ?? "—"}</p>
+            {estimate.global != null ? (
+              <p className="font-['Lexend'] text-xl font-semibold text-sidebar-foreground">{estimate.global}</p>
+            ) : progress.diagnostic ? (
+              <p className="font-['Lexend'] text-xl font-semibold text-sidebar-foreground" title="Punto de partida de tu mini prueba">≈{progress.diagnostic.estimate}</p>
+            ) : (
+              <Link href="/meta?paso=diagnostico" className="mt-0.5 block text-[13px] font-semibold leading-tight text-brand hover:underline" data-testid="sidebar-estimado">
+                Descúbrelo en 5 preguntas
+              </Link>
+            )}
           </div>
           <div className="bg-sidebar px-3 py-2.5">
             <p className="flex items-center gap-1 text-[11px] text-sidebar-foreground/70">
@@ -199,9 +269,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </header>
 
       <main id="contenido" className="min-h-screen min-w-0 flex-1 pb-24 pt-16 lg:ml-64 lg:pb-0 lg:pt-0">
-        <div className="sticky top-0 z-30 hidden h-14 items-center justify-end gap-2 border-b border-border bg-background/90 px-6 backdrop-blur lg:flex">
-          <StreakChip />
-          <AccountChip />
+        <div className="sticky top-0 z-30 hidden h-14 items-center justify-end gap-2 border-b border-border bg-background/90 px-6 backdrop-blur lg:flex" data-testid="barra-escritorio">
+          <CountdownChip />
+          <StreakChip desktop />
+          <AccountChip desktop />
         </div>
         <div className="mx-auto max-w-5xl px-4 py-6 lg:px-8 lg:py-8">
           {children}

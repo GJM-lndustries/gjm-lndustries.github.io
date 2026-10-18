@@ -49,7 +49,10 @@ function Onboarding() {
   const editing = progress.hasCompletedOnboarding;
   const [, setLocation] = useLocation();
   const params = new URLSearchParams(useSearch());
-  const [step, setStep] = useState<Step>(params.get("paso") === "diagnostico" ? "diagnostico" : "puntaje");
+  const [step, setStep] = useState<Step>(() => {
+    const p = params.get("paso");
+    return p && (STEPS as readonly string[]).includes(p) ? (p as Step) : "puntaje";
+  });
   const plan = progress.plan;
 
   const [presented, setPresented] = useState(progress.presentedExam);

@@ -122,3 +122,15 @@ export function diagnosticEstimate(answers: { area: AreaId; correct: boolean }[]
   const estimate = weightedGlobalScore(per) ?? 250;
   return { estimate, low: Math.max(0, estimate - 50), high: Math.min(500, estimate + 50) };
 }
+
+/**
+ * Días hasta el examen, contados hasta el primer día del mes elegido (aproximado: el ICFES
+ * publica la fecha exacta). null si no hay fecha o ya pasó.
+ */
+export function daysUntilExam(id: string | undefined, now: Date = new Date()): number | null {
+  if (!id || id === "nose") return null;
+  const [y, mm] = id.split("-").map(Number);
+  const [ty, tm, td] = bogotaDateString(now).split("-").map(Number) as [number, number, number];
+  const days = Math.round((Date.UTC(y!, mm! - 1, 1) - Date.UTC(ty, tm - 1, td)) / 86400000);
+  return days > 0 ? days : null;
+}

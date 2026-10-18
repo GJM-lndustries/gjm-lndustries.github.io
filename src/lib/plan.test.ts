@@ -33,3 +33,16 @@ describe("plan", () => {
     expect(all.high - all.low).toBe(100);
   });
 });
+
+import { daysUntilExam } from "./plan";
+describe("daysUntilExam", () => {
+  it("cuenta días calendario en Bogotá hasta el 1 del mes", () => {
+    expect(daysUntilExam("2027-08", new Date("2026-10-17T23:30:00-05:00"))).toBe(288);
+    expect(daysUntilExam("2026-11", new Date("2026-10-31T12:00:00-05:00"))).toBe(1);
+  });
+  it("null sin fecha o si ya pasó", () => {
+    expect(daysUntilExam(undefined)).toBeNull();
+    expect(daysUntilExam("nose")).toBeNull();
+    expect(daysUntilExam("2026-03", new Date("2026-10-17T12:00:00-05:00"))).toBeNull();
+  });
+});
