@@ -38,17 +38,17 @@ export const INSTITUCIONES: Institucion[] = [
     id: "univalle",
     nombre: "Universidad del Valle",
     ciudad: "Cali",
-    resumen: "Tu global solo sirve para poder inscribirte; lo que decide es tu puesto en las áreas que pondera tu programa.",
+    resumen: "Tu global solo sirve para poder inscribirte; lo que decide es tu puntaje ponderado en las áreas que pesa tu programa.",
     usos: ["minimo", "ponderado"],
     puntos: [
       "El puntaje global es un requisito mínimo para inscribirse (Resolución 080 de 2024 del Consejo Académico).",
-      "La admisión se define con los puntajes de las áreas que escoge cada programa, con pesos que suman 100 %; algunos programas suman pruebas específicas.",
-      "Se ordena a los aspirantes por su resultado en cada área ponderada y se admite por puestos según los cupos: compites área por área con los demás inscritos.",
+      "Cada programa asigna un peso a cada prueba del Saber 11; los pesos suman 100 %. Algunos programas suman pruebas específicas.",
+      "Cada puntaje de área se multiplica por su peso y se suman los resultados. Los inscritos se ordenan de mayor a menor con esa suma y entran los primeros, según los cupos (art. 20).",
+      "Si hay empate en la línea de corte, gana el mejor puntaje en el área que más pesa. Y si tu programa no le da peso a Inglés, Inglés sirve para desempatar (art. 22): nunca es inútil.",
     ],
-    consejo: "Busca en admisiones.univalle.edu.co cuánto pesa cada área en tu programa y dale más tiempo a la que más pesa.",
+    consejo: "Busca en admisiones.univalle.edu.co cuánto pesa cada área en tu programa: un punto en un área que pesa 30 % vale el triple que uno en un área de 10 %.",
     fuentes: [
-      { label: "Univalle, Resolución 080 de 2024 (reglamento de inscripción y admisión)", url: "https://registro.univalle.edu.co/wp-content/uploads/2024/05/RCA_080_Reglamento_inscripcion_y_admision-Pregrado.pdf" },
-      { label: "Univalle, proceso de admisión", url: "https://viceacademica.univalle.edu.co/es/proceso-admision" },
+      { label: "Univalle, Resolución 080 de 2024 (reglamento de inscripción y admisión, arts. 20 y 22)", url: "https://registro.univalle.edu.co/wp-content/uploads/2024/05/RCA_080_Reglamento_inscripcion_y_admision-Pregrado.pdf" },
     ],
   },
   {

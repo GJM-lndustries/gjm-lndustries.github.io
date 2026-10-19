@@ -118,6 +118,7 @@ const tests = {
     check("Javeriana 40 %", /pesa el 40 %/.test(all));
     check("Icesi 285 / 310 / 350", /285/.test(all) && /310/.test(all) && /350/.test(all));
     check("Nacional: examen propio y PEAMA/PAET/PTIUN", /examen propio/.test(all) && /PEAMA/.test(all) && /PTIUN/.test(all));
+    check("Univalle: ponderado (art. 20) y desempate por Inglés, sin «por puestos» ni cupo 7 %", /se multiplica por su peso/.test(all) && /Inglés sirve para desempatar/.test(all) && !/por puestos/.test(all) && !/7 %/.test(all));
     check("UdeA: sin mínimo", /no pide puntaje mínimo/.test(all));
     check("cada institución con fuente", (await page.locator("article").count()) === (await page.locator("article:has(a[target=_blank])").count()));
     await shot(page, "05-lo-que-mas-pesa");

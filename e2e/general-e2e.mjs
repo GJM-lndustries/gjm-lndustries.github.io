@@ -315,7 +315,7 @@ for (const [name, viewport, mobile] of [["desktop", { width: 1280, height: 800 }
   await page.waitForTimeout(300);
   check(`[${name}] /preguntas-frecuentes 200`, resp.status() === 200);
   await pageChecks("faq");
-  check(`[${name}] FAQ con 11 preguntas`, (await page.locator("main details").count()) === 11);
+  check(`[${name}] FAQ con 12 preguntas y material oficial`, (await page.locator("main details").count()) === 12 && (await page.locator("#material-oficial-icfes a[href*=\"icfes.gov.co\"]").count()) === 5);
   await page.locator("main details summary").nth(2).click();
   check(`[${name}] FAQ se despliega y muestra la fórmula`, await page.locator("text=La fórmula oficial es").isVisible());
   check(`[${name}] pie 'Hecho por GJM lndustries'`, (await page.locator("footer", { hasText: "Hecho por GJM lndustries" }).count()) === 1);
