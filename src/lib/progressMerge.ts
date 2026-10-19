@@ -155,6 +155,7 @@ export function mergeProgress(
     ...defaultProgress(),
     ...day,
     practiceXp: Math.max(local.practiceXp ?? 0, remote.practiceXp ?? 0),
+    trapStats: mergeMax(local.trapStats, remote.trapStats),
     totalXp: completedLessons.reduce((s, l) => s + l.xpEarned, 0) + Math.max(local.practiceXp ?? 0, remote.practiceXp ?? 0),
     xpDay: local.xpDay ?? remote.xpDay,
     plan: goalFrom.plan ?? local.plan ?? remote.plan,
@@ -264,4 +265,12 @@ export function parseSyncMeta(raw: string | null): SyncMeta | null {
   } catch {
     return null;
   }
+}
+
+/** Contadores por clave: se queda con el mayor de cada uno (sin duplicar). */
+function mergeMax<K extends string>(a?: Partial<Record<K, number>>, b?: Partial<Record<K, number>>): Partial<Record<K, number>> | undefined {
+  if (!a && !b) return undefined;
+  const out: Partial<Record<K, number>> = { ...a };
+  for (const [k, v] of Object.entries(b ?? {}) as [K, number][]) out[k] = Math.max(out[k] ?? 0, v);
+  return out;
 }

@@ -13,6 +13,7 @@ import GoalBar from "@/components/GoalBar";
 import { allBadges, BadgeCard, earnedBadgeIds } from "@/components/Badges";
 import { weekProgress } from "@/lib/streaks";
 import { useNow } from "@/hooks/useNow";
+import { TRAPS, type TrapType } from "@/data/questions/types";
 
 /** «Yo»: racha, meta, avance por área e insignias en una sola pantalla (antes: Yo + Mi progreso + Logros). */
 export default function Yo() {
@@ -94,6 +95,8 @@ export default function Yo() {
           })}
         </ul>
       </section>
+
+      <TrapsCard />
 
       <section aria-labelledby="yo-insignias">
         <div className="mb-2 flex items-baseline justify-between px-1">
@@ -190,5 +193,36 @@ function HubLink({ href, icon: Icon, title, subtitle }: { href: string; icon: Lu
       </span>
       <ChevronRight className="h-4 w-4 flex-shrink-0 text-muted-foreground" aria-hidden="true" />
     </Link>
+  );
+}
+
+/** «Tus trampas más comunes»: en qué tipo de opción equivocada cae más. Solo aparece con datos. */
+function TrapsCard() {
+  const { progress } = useProgress();
+  const top = (Object.entries(progress.trapStats ?? {}) as [TrapType, number][])
+    .filter(([, n]) => n > 0)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3);
+  if (top.length === 0) return null;
+  return (
+    <section aria-labelledby="yo-trampas" data-testid="yo-trampas">
+      <h2 id="yo-trampas" className="eyebrow mb-2 px-1">Tus trampas más comunes</h2>
+      <ul className="card divide-y divide-border overflow-hidden">
+        {top.map(([t, n]) => (
+          <li key={t} className="flex items-start gap-3 px-4 py-3">
+            <span className="min-w-0 flex-1">
+              <span className="flex items-baseline justify-between gap-2">
+                <span className="text-[15px] font-semibold text-foreground">{TRAPS[t].nombre}</span>
+                <span className="flex-shrink-0 text-xs tabular-nums text-muted-foreground">{n} {n === 1 ? "vez" : "veces"}</span>
+              </span>
+              <span className="mt-0.5 block text-xs text-muted-foreground">{TRAPS[t].idea}</span>
+              <Link href={`/practica?trampa=${t}`} className="mt-1.5 inline-flex min-h-9 items-center gap-1 text-sm font-semibold text-navy underline-offset-2 hover:underline">
+                Practicar 5 con esta trampa <ChevronRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

@@ -206,7 +206,7 @@ function Onboarding() {
               <div>
                 <p className="eyebrow">Paso 3 de 6</p>
                 <h1 className={title}>¿Cuándo presentas el ICFES?</h1>
-                <p className="mt-2 text-sm text-muted-foreground">Las fechas exactas las publica el ICFES en icfes.gov.co.</p>
+                <p className="mt-2 text-sm text-muted-foreground">Las fechas de 2027 aún no son oficiales: el calendario A de 2026 fue el 26 de julio, así que contamos hasta el 1 de julio. Las actualizamos cuando el ICFES las publique en icfes.gov.co.</p>
               </div>
               <div role="radiogroup" aria-label="Fecha del examen" className="grid gap-2">
                 {windows.map(w => (

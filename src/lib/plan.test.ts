@@ -5,10 +5,10 @@ import { AREA_IDS } from "@/data/questions/types";
 
 describe("plan", () => {
   it("las próximas fechas dependen de hoy", () => {
-    expect(examWindows(new Date("2026-10-14T12:00:00-05:00")).map(w => w.id)).toEqual(["2027-03", "2027-08", "nose"]);
-    expect(examWindows(new Date("2027-02-10T12:00:00-05:00")).map(w => w.id)).toEqual(["2027-03", "2027-08", "nose"]);
-    expect(examWindows(new Date("2027-05-10T12:00:00-05:00")).map(w => w.id)).toEqual(["2027-08", "2028-03", "nose"]);
-    expect(weeksUntil("2027-08", new Date("2027-07-01T12:00:00-05:00"))).toBe(4);
+    expect(examWindows(new Date("2026-10-14T12:00:00-05:00")).map(w => w.id)).toEqual(["2027-03", "2027-07", "nose"]);
+    expect(examWindows(new Date("2027-02-10T12:00:00-05:00")).map(w => w.id)).toEqual(["2027-03", "2027-07", "nose"]);
+    expect(examWindows(new Date("2027-05-10T12:00:00-05:00")).map(w => w.id)).toEqual(["2027-07", "2028-03", "nose"]);
+    expect(weeksUntil("2027-07", new Date("2027-06-03T12:00:00-05:00"))).toBe(4);
     expect(weeksUntil("nose")).toBeNull();
   });
   it("sugiere 300 salvo que ya se vea cerca o por encima", () => {
@@ -37,7 +37,9 @@ describe("plan", () => {
 import { daysUntilExam } from "./plan";
 describe("daysUntilExam", () => {
   it("cuenta días calendario en Bogotá hasta el 1 del mes", () => {
-    expect(daysUntilExam("2027-08", new Date("2026-10-17T23:30:00-05:00"))).toBe(288);
+    expect(daysUntilExam("2027-07", new Date("2026-10-17T23:30:00-05:00"))).toBe(257);
+    // Formato viejo del calendario A («-08»): también cuenta hasta el 1 de julio.
+    expect(daysUntilExam("2027-08", new Date("2026-10-17T23:30:00-05:00"))).toBe(257);
     expect(daysUntilExam("2026-11", new Date("2026-10-31T12:00:00-05:00"))).toBe(1);
   });
   it("null sin fecha o si ya pasó", () => {

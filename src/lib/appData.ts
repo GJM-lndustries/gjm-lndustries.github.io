@@ -699,7 +699,7 @@ const englishLessons: Lesson[] = [
       {
         type: 'intro',
         title: '¿Cómo es el inglés del ICFES?',
-        text: 'El ICFES evalúa inglés en 3 niveles: A1 (básico), A2 (elemental) y B1 (intermedio). La mayoría de preguntas son de A1 y A2. No necesitas hablar inglés perfecto, solo leer y entender textos sencillos. ¡Tú puedes!'
+        text: 'El ICFES clasifica tu inglés en 4 niveles: Pre A1, A1, A2 y B1. Las primeras partes del examen son de palabras y avisos muy sencillos (Pre A1 y A1) y las últimas, de lectura de nivel B1. Con 37 puntos de 100 ya pasas de Pre A1 a A1. No necesitas hablar inglés perfecto: con leer bien textos cortos ya subes de nivel.'
       },
       {
         type: 'explanation',

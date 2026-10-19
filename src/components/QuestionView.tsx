@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Lightbulb } from "lucide-react";
+import { CheckCircle2, Lightbulb, Target } from "lucide-react";
 import {
   AREA_INFO,
   DIFFICULTY_LABEL,
@@ -8,6 +8,7 @@ import {
   getStimulus,
   type Question,
 } from "@/data/questions";
+import { TRAPS } from "@/data/questions/types";
 import RichText from "./RichText";
 import AreaIcon from "@/components/AreaIcon";
 import { haptic } from "@/lib/feedback";
@@ -30,6 +31,8 @@ export default function QuestionView({
 }: QuestionViewProps) {
   const stimulus = getStimulus(question.stimulusId);
   const isCorrect = selected === question.answer;
+  const chosen = question.options.find(o => o.id === selected);
+  const trap = !isCorrect && chosen?.trampa ? TRAPS[chosen.trampa] : null;
 
   // Vibración corta al ver la retroalimentación (solo Android; nada con «reducir movimiento»).
   useEffect(() => {
@@ -99,6 +102,20 @@ export default function QuestionView({
           const markCorrect = answered && option.id === question.answer;
           const markWrong =
             answered && option.id === selected && option.id !== question.answer;
+          if (option.ejemplo) {
+            // Inglés parte 1: la palabra del ejemplo se ve, pero no se puede elegir (como en el cuadernillo).
+            return (
+              <div key={option.id} className="answer-option w-full cursor-default opacity-60" aria-disabled="true" data-ejemplo="true">
+                <span className="w-7 h-7 rounded-full border-2 border-current flex items-center justify-center text-xs font-bold flex-shrink-0">
+                  {option.id.toUpperCase()}
+                </span>
+                <span className="text-sm line-through">{option.text}</span>
+                <span className="ml-auto flex-shrink-0 rounded-full bg-muted px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">
+                  Usada en el ejemplo
+                </span>
+              </div>
+            );
+          }
           return (
             <motion.button
               key={option.id}
@@ -164,6 +181,19 @@ export default function QuestionView({
                 )}
               </p>
             </div>
+            {trap && chosen && (
+              <div className="mb-3 rounded-lg border border-amber-200 bg-white/70 p-3" data-testid="trampa">
+                <p className="text-xs font-semibold uppercase tracking-wide text-amber-800">Por qué tu opción ({chosen.id.toUpperCase()}) no es</p>
+                <p className="mt-1 text-sm text-foreground">
+                  <span className="mr-1.5 inline-flex rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-900">{trap.nombre}</span>
+                  {chosen.porQueNo}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">{trap.idea}</p>
+              </div>
+            )}
+            {!isCorrect && selected != null && (
+              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Por qué la {question.answer.toUpperCase()} sí</p>
+            )}
             <p className="text-sm text-foreground">{question.explanation}</p>
             {question.tip && (
               <div className="mt-3 rounded-lg bg-white/70 p-2.5">
@@ -173,6 +203,16 @@ export default function QuestionView({
                 </p>
               </div>
             )}
+            <p className="mt-3 flex items-start gap-1.5 border-t border-black/5 pt-2.5 text-xs text-muted-foreground" data-testid="que-evalua">
+              <Target className="mt-px h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
+              <span>
+                <span className="font-semibold text-foreground">Qué evalúa: </span>
+                {question.competencia}
+                {question.componente ? ` · componente ${question.componente.toLowerCase()}` : ""}
+                {question.tipoTexto ? ` · texto ${question.tipoTexto.toLowerCase()}` : ""}
+                {question.categoria ? ` · ${question.categoria.toLowerCase()}` : ""}. {question.afirmacion}
+              </span>
+            </p>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,4 +1,4 @@
-import { AREA_IDS, CIENCIAS_COMPONENTES, COMPETENCIAS, INGLES_PARTES, type AreaId, type InglesParte } from "./types";
+import { AREA_IDS, CATEGORIAS_MAT, CIENCIAS_COMPONENTES, COMPETENCIAS, INGLES_PARTES, TIPOS_TEXTO, TRAPS, type AreaId, type InglesParte } from "./types";
 
 export interface BankFile {
   /** Área esperada según el nombre del archivo */
@@ -77,6 +77,12 @@ export function validateBank(files: BankFile[], stimuli: unknown[]): string[] {
       if (q.componente !== undefined && (area !== "ciencias-naturales" || !CIENCIAS_COMPONENTES.includes(q.componente as never))) {
         errors.push(`${where}: "componente" inválido (${String(q.componente)})`);
       }
+      if (q.tipoTexto !== undefined && (area !== "lectura-critica" || !TIPOS_TEXTO.includes(q.tipoTexto as never))) {
+        errors.push(`${where}: "tipoTexto" inválido (${String(q.tipoTexto)})`);
+      }
+      if (q.categoria !== undefined && (area !== "matematicas" || !CATEGORIAS_MAT.includes(q.categoria as never))) {
+        errors.push(`${where}: "categoria" inválida (${String(q.categoria)})`);
+      }
       if (q.parte !== undefined) {
         const parte = INGLES_PARTES[q.parte as InglesParte];
         if (area !== "ingles" || !parte) errors.push(`${where}: "parte" inválida (${String(q.parte)})`);
@@ -100,6 +106,10 @@ export function validateBank(files: BankFile[], stimuli: unknown[]): string[] {
           errors.push(`${where}: la opción ${j} necesita "id" y "text"`);
           return;
         }
+        if (o.trampa !== undefined && !(String(o.trampa) in TRAPS)) errors.push(`${where}: trampa inválida "${String(o.trampa)}" en la opción ${String(o.id)}`);
+        if (o.trampa !== undefined && !nonEmpty(o.porQueNo)) errors.push(`${where}: la opción ${String(o.id)} tiene trampa pero no "porQueNo"`);
+        if ((o.trampa !== undefined || o.porQueNo !== undefined) && o.id === q.answer) errors.push(`${where}: la respuesta correcta no lleva trampa`);
+        if (o.ejemplo !== undefined && (o.id === q.answer || q.parte !== 1)) errors.push(`${where}: "ejemplo" solo va en distractores de la parte 1 de Inglés`);
         if (optionIds.has(o.id)) errors.push(`${where}: opción repetida "${o.id}"`);
         optionIds.add(o.id);
         const t = o.text.trim().toLowerCase();

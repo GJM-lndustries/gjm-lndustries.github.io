@@ -9,6 +9,8 @@ interface TipSection {
   title: string;
   color: string;
   tips: { title: string; content: string }[];
+  /** Fuente oficial de la sección. */
+  source?: { label: string; href: string };
 }
 
 const tipSections: TipSection[] = [
@@ -19,12 +21,12 @@ const tipSections: TipSection[] = [
     color: 'bg-navy/5 text-navy',
     tips: [
       {
-        title: 'El ICFES no penaliza respuestas incorrectas',
-        content: 'A diferencia de otros exámenes, en el ICFES NO te quitan puntos por responder mal. Esto significa que SIEMPRE debes responder todas las preguntas, aunque no estés seguro. Si no sabes, adivina: tienes 25% de probabilidad de acertar.'
+        title: 'Responde todas: una mala no resta más que una en blanco',
+        content: 'Una pregunta en blanco nunca suma, y una respuesta equivocada no te quita más que dejarla en blanco. Por eso, responde todas. Si no sabes, descarta lo que puedas y elige la opción que más te convenza (en Inglés varias partes tienen 3 opciones, no 4). El ICFES calcula el puntaje con un modelo estadístico (TRI de 3 parámetros), no sumando aciertos.'
       },
       {
-        title: 'Administra tu tiempo: 2.5 minutos por pregunta',
-        content: 'Cada sesión dura 4 horas y 30 minutos. En la primera hay 120 preguntas con puntaje y en la segunda 134, además de unos cuestionarios cortos: calcula unos 2 minutos por pregunta. Si una pregunta te toma más de 3 minutos, márcala y pasa a la siguiente. Vuelve al final si te queda tiempo.'
+        title: 'Administra tu tiempo: unos 2 minutos por pregunta',
+        content: 'Cada sesión dura 4 horas y 30 minutos. La primera tiene 143 preguntas (120 con puntaje) y la segunda 159 (134 con puntaje), contando dos cuestionarios cortos que no dan puntaje (socioeconómico y de clima escolar). Eso da unos 2 minutos por pregunta, y la segunda sesión es un poco más apretada. Si una pregunta te toma más de 3 minutos, márcala y vuelve al final.'
       },
       {
         title: 'Lee las preguntas antes del texto',
@@ -51,8 +53,8 @@ const tipSections: TipSection[] = [
         content: '"El valor que más se repite" = Moda. "El valor del medio" = Mediana. "El promedio" = Media. Lee bien la pregunta: estas palabras clave te dicen exactamente qué calcular.'
       },
       {
-        title: 'Dibuja cuando sea posible',
-        content: 'Para problemas de geometría, áreas o distancias, haz un dibujo rápido en el papel de borrador. Un dibujo puede ahorrarte mucho tiempo de cálculo.'
+        title: 'Practica sin calculadora',
+        content: 'En el examen no se permite calculadora: solo tienes la hoja de operaciones que entrega el ICFES (no se califica, pero se devuelve). Haz tus cuentas a mano desde ya y dibuja un esquema rápido en los problemas de geometría o distancias.'
       },
       {
         title: 'Verifica con el sentido común',
@@ -109,6 +111,7 @@ const tipSections: TipSection[] = [
     icon: <Clock className="w-5 h-5" strokeWidth={1.75} />,
     title: 'El día del examen',
     color: 'bg-green-50 text-green-700',
+    source: { label: 'ICFES: guía de orientación Saber 11 2026 y Resolución 103 de 2025', href: 'https://www.icfes.gov.co/wp-content/uploads/2026/03/17-marzo-guia-de-orientacion-saber-11-2026-2.pdf' },
     tips: [
       {
         title: 'La noche anterior: descansa bien',
@@ -116,11 +119,19 @@ const tipSections: TipSection[] = [
       },
       {
         title: 'Come bien antes del examen',
-        content: 'Desayuna bien: proteínas y carbohidratos (huevos, arepa, fruta). Evita el exceso de azúcar que te da energía rápida pero luego te baja. Lleva agua y algo para comer en el descanso.'
+        content: 'Desayuna bien: proteínas y carbohidratos (huevos, arepa, fruta). Evita el exceso de azúcar que te da energía rápida pero luego te baja. Entre la sesión 1 y la 2 tienes que salir del sitio y volver, así que planea dónde vas a almorzar cerca.'
       },
       {
-        title: 'Llega temprano y con todo listo',
-        content: 'Llega 30 minutos antes. Lleva: documento de identidad, lápiz y borrador (si permiten), agua. Revisa el día anterior dónde queda el lugar del examen para no estresarte el día del examen.'
+        title: 'Lleva lo obligatorio y llega temprano',
+        content: 'Obligatorio: documento de identidad original (si es digital, desde la app de la Registraduría; fotos o impresiones no sirven), lápiz de mina No. 2, borrador de nata y tajalápiz. Sin documento válido no puedes presentar. La sesión 1 empieza a las 7:00 a. m. y el ICFES pide llegar al menos 15 minutos antes. Consulta tu citación (sitio, salón y horario) en icfes.gov.co, opción Citaciones: no llega al correo.'
+      },
+      {
+        title: 'Lo que está prohibido',
+        content: 'Celular, reloj inteligente, calculadora, audífonos y cualquier aparato electrónico. Tampoco puedes hablar con otros en el salón ni tomar o subir fotos del cuadernillo a redes: si pasa, el ICFES termina tu examen en el acto y no obtienes resultados. Si llevas el celular, lo guardas en la bolsa de seguridad hasta el final.'
+      },
+      {
+        title: 'Ve a las dos sesiones',
+        content: 'Solo hay resultados para quienes asisten a todas las sesiones. No te vayas después de la mañana aunque sientas que te fue bien o estés cansado.'
       },
       {
         title: 'Mantén la calma',
@@ -193,6 +204,14 @@ function TipCard({ section }: { section: TipSection }) {
                   </AnimatePresence>
                 </div>
               ))}
+              {section.source && (
+                <p className="px-1 pt-1 text-xs text-muted-foreground">
+                  Fuente:{' '}
+                  <a href={section.source.href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground">
+                    {section.source.label}
+                  </a>
+                </p>
+              )}
             </div>
           </motion.div>
         )}

@@ -7,7 +7,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import type { AreaId } from "@/data/questions/types";
+import type { AreaId, TrapType } from "@/data/questions/types";
+import { getQuestion } from "@/data/questions";
 import {
   emptyAreaStats,
   estimateScore,
@@ -79,6 +80,14 @@ export interface SimulacroRecord {
   perArea: Partial<Record<AreaId, number>>;
 }
 
+/** Suma 1 a la trampa de la opción elegida (si la tiene). */
+function addTrap(stats: UserProgress["trapStats"], questionId: string, chosen?: string): UserProgress["trapStats"] {
+  if (!chosen) return stats;
+  const trap = getQuestion(questionId)?.options.find(o => o.id === chosen)?.trampa;
+  if (!trap) return stats;
+  return { ...stats, [trap]: (stats?.[trap] ?? 0) + 1 };
+}
+
 export interface UserProgress {
   totalXp: number;
   streak: number;
@@ -112,6 +121,8 @@ export interface UserProgress {
   diagnostic?: DiagnosticResult;
   /** Día (YYYY-MM-DD) en que el estudiante cerró la invitación a crear cuenta. */
   accountPromptDismissed?: string;
+  /** «Tus trampas más comunes»: cuántas veces cayó en cada tipo de trampa. */
+  trapStats?: Partial<Record<TrapType, number>>;
 }
 
 interface ProgressContextType {
@@ -124,13 +135,15 @@ interface ProgressContextType {
   /** Registra un simulacro terminado y las respuestas dadas (una sola actualización). */
   recordSimulacro: (
     record: SimulacroRecord,
-    answers: { question: { id: string; area: AreaId }; correct: boolean }[]
+    answers: { question: { id: string; area: AreaId }; correct: boolean; chosen?: string }[]
   ) => void;
   /** Reemplaza todo el progreso (sincronización con la cuenta). */
   replaceProgress: (next: UserProgress) => void;
   recordAnswer: (
     question: { id: string; area: AreaId },
-    correct: boolean
+    correct: boolean,
+    /** Opción elegida (para contar la trampa en la que cayó). */
+    chosen?: string
   ) => void;
   getLessonProgress: (lessonId: string) => LessonProgress | undefined;
   isLessonCompleted: (lessonId: string) => boolean;
@@ -341,7 +354,9 @@ export function ProgressProvider({
         const areaStats = { ...prev.areaStats };
         const missedQuestions = { ...prev.missedQuestions };
         const now = new Date().toISOString();
-        for (const { question, correct } of answers) {
+        let trapStats = prev.trapStats;
+        for (const { question, correct, chosen } of answers) {
+          if (!correct) trapStats = addTrap(trapStats, question.id, chosen);
           const stat = areaStats[question.area] ?? { answered: 0, correct: 0 };
           areaStats[question.area] = {
             answered: stat.answered + 1,
@@ -358,6 +373,7 @@ export function ProgressProvider({
           ...prev,
           areaStats,
           missedQuestions,
+          trapStats,
           simulacroScores: [...prev.simulacroScores, record.percent],
           simulacroHistory: [...prev.simulacroHistory, record].slice(-50),
         };
@@ -372,8 +388,9 @@ export function ProgressProvider({
   );
 
   const recordAnswer = useCallback(
-    (question: { id: string; area: AreaId }, correct: boolean) => {
+    (question: { id: string; area: AreaId }, correct: boolean, chosen?: string) => {
       setProgress(prev => {
+        const trapStats = correct ? prev.trapStats : addTrap(prev.trapStats, question.id, chosen);
         const stat = prev.areaStats[question.area] ?? {
           answered: 0,
           correct: 0,
@@ -396,6 +413,7 @@ export function ProgressProvider({
           ...prev,
           practiceXp: (prev.practiceXp ?? 0) + granted,
           totalXp,
+          trapStats,
           xpDay,
           badges,
           areaStats: {

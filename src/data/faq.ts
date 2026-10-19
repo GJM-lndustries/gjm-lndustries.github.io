@@ -15,7 +15,7 @@ export const FAQ: FaqItem[] = [
     id: "que-es-saber-11",
     question: "¿Qué es el examen Saber 11?",
     answer: [
-      "Es el examen de Estado que aplica el ICFES a quienes terminan la educación media (grado 11) en Colombia. Tiene cinco pruebas: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés, además de un cuestionario socioeconómico.",
+      "Es el examen de Estado que aplica el ICFES a quienes terminan la educación media (grado 11) en Colombia. Tiene cinco pruebas: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés, además de dos cuestionarios cortos (socioeconómico y de clima escolar) que no afectan tu puntaje.",
       "Sus resultados se usan, entre otras cosas, en los procesos de admisión a la educación superior y para acceder a becas y créditos educativos.",
     ],
   },
@@ -24,7 +24,8 @@ export const FAQ: FaqItem[] = [
     question: "¿Cómo es el examen y cuánto dura?",
     answer: [
       "Se presenta en dos sesiones de 4 horas y 30 minutos cada una. Las preguntas son de selección múltiple con única respuesta: lees una situación, un texto, una tabla o una gráfica y eliges la opción correcta.",
-      "Las respuestas incorrectas no restan puntos, así que vale la pena no dejar preguntas en blanco.",
+      "Una respuesta equivocada no te resta más que una en blanco, y una en blanco nunca suma: responde todas.",
+      "Además de las cinco pruebas hay dos cuestionarios que no se califican: uno socioeconómico y uno de clima escolar (cómo vives el ambiente de tu colegio). Ninguno afecta tu puntaje.",
     ],
   },
   {
@@ -57,14 +58,38 @@ export const FAQ: FaqItem[] = [
     question: "¿Cómo uso ProICFES para prepararme?",
     answer: [
       "Empieza por las lecciones del área que más te cuesta. Luego usa el modo práctica: eliges área, nivel y competencia, y después de cada pregunta ves la explicación y un tip.",
-      "Las preguntas que fallas se guardan y vuelven a salir en tus siguientes sesiones para que las repases. Cuando te sientas listo, haz el simulacro y revisa «Mi progreso» para ver tus aciertos por área.",
+      "Las preguntas que fallas se guardan y vuelven a salir en tus siguientes sesiones para que las repases. Cuando te sientas listo, haz el simulacro y revisa «Yo» para ver tus aciertos por área.",
     ],
   },
   {
     id: "es-gratis",
     question: "¿ProICFES es gratis? ¿Necesito crear una cuenta?",
     answer: [
-      "Sí, es gratis y no necesitas cuenta. Tu progreso se guarda solo en tu navegador, en este dispositivo: si borras los datos del navegador o cambias de celular, empezarás de cero.",
+      "Sí, es gratis y no necesitas cuenta: tu progreso se guarda en tu navegador. Si quieres no perderlo al cambiar de celular, puedes crear una cuenta gratis (es opcional).",
+    ],
+  },
+  {
+    id: "percentil-y-puesto",
+    question: "¿Qué es el percentil del ICFES? ¿Me dan un puesto?",
+    answer: [
+      "Tu reporte trae, para cada prueba y para el puntaje global, un percentil: el porcentaje de estudiantes que presentaron el examen y sacaron un puntaje más bajo que el tuyo. Por ejemplo, percentil 70 quiere decir que superaste al 70 % de quienes presentaron.",
+      "El ICFES no te da un «puesto»: la Resolución 268 de 2020 (art. 7) dice que no publica listados de mejores resultados ni incluye puestos en los resultados individuales.",
+    ],
+  },
+  {
+    id: "puntaje-se-vence",
+    question: "¿El puntaje del ICFES se vence?",
+    answer: [
+      "No. El Decreto 869 de 2010 (art. 7) dice que los resultados del Saber 11 tienen vigencia indefinida. Cada universidad sí puede decidir en su convocatoria de qué años acepta resultados, así que revisa la de la tuya.",
+      "Los resultados anteriores se consultan en icfes.gov.co, en la sección Resultados.",
+    ],
+  },
+  {
+    id: "no-puedo-presentar",
+    question: "¿Qué pasa si no puedo presentar el ICFES o falto a una sesión?",
+    answer: [
+      "Solo hay resultados para quienes asisten a todas las sesiones, así que ve a la mañana y a la tarde.",
+      "No hay aplazamiento ni devolución por no ir. Pero si no pudiste asistir por fuerza mayor o caso fortuito (por ejemplo, una incapacidad médica, una calamidad doméstica grave o la muerte de un familiar cercano), puedes pedir que lo que pagaste se abone a otro examen del mismo tipo, este año o el siguiente. Tienes 15 días hábiles desde la fecha del examen para pedirlo, con pruebas, por el canal de PQRSDF del ICFES (Resolución ICFES 675 de 2019, art. 19).",
     ],
   },
   {

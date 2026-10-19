@@ -52,31 +52,39 @@ export interface ExamWindow {
 const MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
 /**
- * Próximas aplicaciones: el calendario A presenta en el segundo semestre (agosto) y el
- * calendario B en el primero (marzo). Las fechas exactas las publica el ICFES.
+ * Próximas aplicaciones: el calendario A presenta a mitad de año (en 2026 fue el 26 de julio)
+ * y el calendario B en marzo. Las fechas exactas las publica el ICFES cada año.
+ * ACTUALIZAR cuando salgan las resoluciones oficiales de 2027 (A y B): hoy el A cuenta hasta
+ * el 1 de julio y el B hasta el 1 de marzo, como aproximación.
  */
 export function examWindows(now: Date = new Date()): ExamWindow[] {
   const [y, m] = bogotaDateString(now).split("-").map(Number) as [number, number];
   const next = (month: number) => (m < month ? y : y + 1);
-  const b = next(3), a = next(8);
+  const b = next(3), a = next(7);
   const list = [
     { id: `${b}-03`, label: `Marzo de ${b}`, note: "Calendario B" },
-    { id: `${a}-08`, label: `Agosto de ${a}`, note: "Calendario A" },
+    { id: `${a}-07`, label: `Julio/agosto de ${a}`, note: "Calendario A" },
   ].sort((p, q) => (p.id < q.id ? -1 : 1));
   return [...list, { id: "nose", label: "Todavía no sé", note: "Lo puedes cambiar después" }];
 }
 
+/** Año y mes de inicio de la ventana. «AAAA-08» es el formato viejo del calendario A: se cuenta desde julio. */
+function windowStart(id: string): [number, number] {
+  const [y, mm] = id.split("-").map(Number) as [number, number];
+  return [y, mm === 8 ? 7 : mm];
+}
+
 export function examWindowLabel(id: string | undefined): string | null {
   if (!id || id === "nose") return null;
-  const [y, mm] = id.split("-").map(Number);
-  return `${MONTHS[(mm ?? 1) - 1]} de ${y}`;
+  const [y, mm] = windowStart(id);
+  return mm === 7 ? `julio/agosto de ${y}` : `${MONTHS[mm - 1]} de ${y}`;
 }
 
 /** Semanas aproximadas hasta el inicio del mes del examen (null si no sabe). */
 export function weeksUntil(id: string | undefined, now: Date = new Date()): number | null {
   if (!id || id === "nose") return null;
-  const [y, mm] = id.split("-").map(Number);
-  const ms = Date.UTC(y!, mm! - 1, 1) - now.getTime();
+  const [y, mm] = windowStart(id);
+  const ms = Date.UTC(y, mm - 1, 1) - now.getTime();
   return ms > 0 ? Math.max(1, Math.round(ms / (7 * 86400000))) : null;
 }
 
@@ -129,8 +137,8 @@ export function diagnosticEstimate(answers: { area: AreaId; correct: boolean }[]
  */
 export function daysUntilExam(id: string | undefined, now: Date = new Date()): number | null {
   if (!id || id === "nose") return null;
-  const [y, mm] = id.split("-").map(Number);
+  const [y, mm] = windowStart(id);
   const [ty, tm, td] = bogotaDateString(now).split("-").map(Number) as [number, number, number];
-  const days = Math.round((Date.UTC(y!, mm! - 1, 1) - Date.UTC(ty, tm - 1, td)) / 86400000);
+  const days = Math.round((Date.UTC(y, mm - 1, 1) - Date.UTC(ty, tm - 1, td)) / 86400000);
   return days > 0 ? days : null;
 }

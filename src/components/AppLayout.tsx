@@ -170,7 +170,7 @@ export function CountdownChip({ className = "" }: { className?: string }) {
     <Link
       href="/meta?paso=fecha"
       className={`inline-flex min-h-9 items-center gap-1.5 rounded-full bg-navy/5 px-3 text-[13px] font-semibold text-navy hover:bg-navy/10 ${className}`}
-      title={`Contado hasta el inicio de ${examWindowLabel(id)}. El ICFES publica la fecha exacta.`}
+      title={`Contado hasta el 1.° del mes (${examWindowLabel(id)}). Es aproximado: el ICFES publica la fecha exacta de cada año.`}
       data-testid="header-countdown"
     >
       <CalendarDays className="h-4 w-4" aria-hidden="true" />

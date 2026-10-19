@@ -156,7 +156,7 @@ function QuizSection({ lesson, onComplete }: { lesson: Lesson; onComplete: (scor
     setSelected(optionId);
     setAnswered(true);
     if (correct) setCorrectCount(c => c + 1);
-    recordAnswer(question, correct);
+    recordAnswer(question, correct, optionId);
     trackChallengeQuestion();
   };
 

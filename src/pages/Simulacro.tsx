@@ -27,6 +27,7 @@ import {
   type Question,
 } from "@/data/questions";
 import QuestionView from "@/components/QuestionView";
+import EasyRecovery from "@/components/EasyRecovery";
 import {
   SIMULACRO_STORAGE_KEY,
   answerQuestion,
@@ -126,7 +127,7 @@ function Simulacro() {
       .filter(id => attempt.answers[id] !== undefined)
       .map(id => {
         const q = questionOf(id);
-        return { question: q, correct: attempt.answers[id] === q.answer };
+        return { question: q, correct: attempt.answers[id] === q.answer, chosen: attempt.answers[id] };
       });
     recordSimulacro(record, answers);
     setAttempt({ ...attempt, recorded: true });
@@ -815,6 +816,11 @@ function Results({
           puntaje oficial del ICFES.
         </p>
       </section>
+
+      <EasyRecovery
+        questions={all.map(x => questionOf(x.id)).filter(q => q.difficulty === 1 && statusOf(q.id) !== "ok")}
+        href={`/practica?recuperar=${all.map(x => questionOf(x.id)).filter(q => q.difficulty === 1 && statusOf(q.id) !== "ok").map(q => q.id).join(",")}`}
+      />
 
       {focus.length > 0 && (
         <section aria-labelledby="sim-practicar" className="card p-4" data-testid="sim-practicar">

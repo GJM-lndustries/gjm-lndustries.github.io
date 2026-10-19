@@ -6,10 +6,12 @@ import { ChevronRight, RotateCcw, CheckCircle2, Lightbulb, PenLine, Flag, Home a
 import { useProgress } from '@/contexts/ProgressContext';
 import QuestionView from '@/components/QuestionView';
 import {
-  AREA_IDS, AREA_INFO, COMPETENCIAS, DIFFICULTY_LABEL, allQuestions, questionsByArea,
+  AREA_IDS, AREA_INFO, COMPETENCIAS, DIFFICULTY_LABEL, allQuestions, getQuestions, questionsByArea,
   type AreaId, type Question,
 } from '@/data/questions';
 import AreaIcon from '@/components/AreaIcon';
+import EasyRecovery from '@/components/EasyRecovery';
+import { TRAPS } from '@/data/questions/types';
 import { withMotion } from '@/components/withMotion';
 import { recommendedArea, nextLesson } from '@/lib/reto';
 import { ANSWERING_GOAL_MS, formatMs } from '@/lib/streaks';
@@ -49,6 +51,8 @@ function Practica() {
   const areaParam = params.get('area');
   const repasoParam = params.get('repaso') === '1';
   const retoParam = params.get('reto') === '1';
+  const trampaParam = params.get('trampa');
+  const recuperarParam = params.get('recuperar');
   const { progress, loaded, recordAnswer, trackChallengeTime, trackChallengeQuestion } = useProgress();
   const missedIds = useMemo(() => new Set(Object.keys(progress.missedQuestions)), [progress.missedQuestions]);
 
@@ -61,6 +65,8 @@ function Practica() {
   const [session, setSession] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  /** Sesión de «puntos fáciles por recuperar»: cuántas había al empezar. */
+  const [recovering, setRecovering] = useState(0);
 
   const areaPool = area === 'todas' ? allQuestions : questionsByArea[area];
   const competencias = area === 'todas' ? [] : COMPETENCIAS[area].filter(c => areaPool.some(q => q.competencia === c));
@@ -70,8 +76,9 @@ function Practica() {
   const missedInPool = pool.filter(q => missedIds.has(q.id)).length;
   const missedTotal = missedIds.size;
 
-  const start = (questions: Question[]) => {
+  const start = (questions: Question[], recovery = false) => {
     if (questions.length === 0) return;
+    setRecovering(recovery ? questions.length : 0);
     setSession(questions);
     setIndex(0);
     setAnswers({});
@@ -101,6 +108,15 @@ function Practica() {
       start(retoSession(3));
       return;
     }
+    if (recuperarParam && phase === 'setup' && session.length === 0) {
+      start(getQuestions(recuperarParam.split(',').slice(0, 20)), true);
+      return;
+    }
+    if (trampaParam && trampaParam in TRAPS && phase === 'setup' && session.length === 0) {
+      const withTrap = allQuestions.filter(q => q.options.some(o => o.trampa === trampaParam));
+      start(buildSession(withTrap, missedIds, 5, false));
+      return;
+    }
     if (repasoParam && missedTotal > 0 && phase === 'setup' && session.length === 0) {
       start(buildSession(allQuestions, missedIds, 0, true));
     }
@@ -112,8 +128,9 @@ function Practica() {
 
   const select = (optionId: string) => {
     if (!question || answered) return;
+    if (question.options.find(o => o.id === optionId)?.ejemplo) return;
     setAnswers(prev => ({ ...prev, [question.id]: optionId }));
-    recordAnswer(question, optionId === question.answer);
+    recordAnswer(question, optionId === question.answer, optionId);
     trackChallengeQuestion();
   };
 
@@ -133,8 +150,8 @@ function Practica() {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
       const k = e.key.toLowerCase();
-      const byLetter = question.options.find(o => o.id === k);
-      const byNumber = /^[1-9]$/.test(k) ? question.options[Number(k) - 1] : undefined;
+      const byLetter = question.options.find(o => o.id === k && !o.ejemplo);
+      const byNumber = /^[1-9]$/.test(k) ? question.options.filter(o => !o.ejemplo)[Number(k) - 1] : undefined;
       if (!answered && (byLetter || byNumber)) select((byLetter ?? byNumber)!.id);
       else if (answered && e.key === 'Enter') next();
     };
@@ -198,6 +215,7 @@ function Practica() {
     const correct = done.filter(q => answers[q.id] === q.answer);
     const wrong = done.filter(q => answers[q.id] !== q.answer);
     const pct = done.length ? Math.round((correct.length / done.length) * 100) : 0;
+    const easyWrong = wrong.filter(q => q.difficulty === 1);
     const byComp = new Map<string, { ok: number; total: number }>();
     for (const q of done) {
       const c = byComp.get(q.competencia) ?? { ok: 0, total: 0 };
@@ -218,6 +236,20 @@ function Practica() {
             {correct.length} de {done.length} correctas{done.length < session.length ? ` (respondiste ${done.length} de ${session.length})` : ''}
           </p>
         </div>
+
+        {recovering > 0 && (
+          <section className="card p-5" data-testid="recuperadas">
+            <h2 className="section-title">Recuperaste {correct.length} de {recovering}</h2>
+            <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-muted" aria-hidden="true">
+              <div className="progress-fill h-full rounded-full bg-brand" style={{ width: `${(correct.length / recovering) * 100}%` }} />
+            </div>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {correct.length === recovering ? 'Todas recuperadas. Esos puntos ya son tuyos.' : 'Las que faltan siguen guardadas en tu repaso.'}
+            </p>
+          </section>
+        )}
+
+        {recovering === 0 && <EasyRecovery questions={easyWrong} onStart={() => start(shuffle(easyWrong), true)} />}
 
         {byComp.size > 0 && (
           <section className="card p-4">
@@ -259,6 +291,9 @@ function Practica() {
                   </summary>
                   <div className="mt-3 space-y-2 text-sm pl-7">
                     <p><span className="font-semibold text-amber-800">Tu respuesta:</span> {yours?.id.toUpperCase()}. {yours?.text}</p>
+                    {yours?.trampa && (
+                      <p><span className="mr-1 inline-flex rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-900">{TRAPS[yours.trampa].nombre}</span>{yours.porQueNo}</p>
+                    )}
                     <p><span className="font-semibold text-green-700">Correcta:</span> {right?.id.toUpperCase()}. {right?.text}</p>
                     <p className="text-foreground">{q.explanation}</p>
                     <p className="text-xs text-muted-foreground"><span className="font-semibold">El truco:</span> {q.tip}</p>

@@ -87,7 +87,8 @@
       },
       {
         "id": "d",
-        "text": "a wallet"
+        "text": "a wallet",
+        "ejemplo": true
       },
       {
         "id": "e",
@@ -136,7 +137,8 @@
       },
       {
         "id": "d",
-        "text": "a wallet"
+        "text": "a wallet",
+        "ejemplo": true
       },
       {
         "id": "e",
@@ -185,7 +187,8 @@
       },
       {
         "id": "d",
-        "text": "a wallet"
+        "text": "a wallet",
+        "ejemplo": true
       },
       {
         "id": "e",
@@ -234,7 +237,8 @@
       },
       {
         "id": "d",
-        "text": "a wallet"
+        "text": "a wallet",
+        "ejemplo": true
       },
       {
         "id": "e",
@@ -283,7 +287,8 @@
       },
       {
         "id": "d",
-        "text": "a wallet"
+        "text": "a wallet",
+        "ejemplo": true
       },
       {
         "id": "e",
