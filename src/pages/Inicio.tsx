@@ -7,6 +7,7 @@ import { AREA_INFO } from '@/data/questions/meta';
 import { AREA_IDS } from '@/data/questions/types';
 import { ChevronDown, ChevronRight, ClipboardList, PenLine, RotateCcw, Shuffle, Sparkles, Star, CloudUpload, X } from 'lucide-react';
 import DailyChallengeCard, { WeekCard } from '@/components/DailyChallengeCard';
+import CalendarReminder from '@/components/CalendarReminder';
 import { CountdownChip } from '@/components/AppLayout';
 import AreaIcon from '@/components/AreaIcon';
 import GoalBar from '@/components/GoalBar';
@@ -148,6 +149,7 @@ function Inicio() {
       <aside className="space-y-5 lg:sticky lg:top-20 lg:col-start-2 lg:row-span-2 lg:row-start-1" aria-label="Tu meta y tu semana" data-testid="inicio-lateral">
         <GoalCard />
         <WeekCard />
+        <CalendarReminder />
       </aside>
 
       <div className="space-y-5 lg:col-start-1">

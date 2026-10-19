@@ -109,6 +109,30 @@ export const ROUTES: RouteMeta[] = [
     area: "ingles",
   },
   {
+    path: "/cuando-y-cuanto-cuesta",
+    name: "Fechas y tarifas",
+    title: "¿Cuándo es el ICFES y cuánto cuesta? Fechas y tarifas | ProICFES",
+    description:
+      "Fechas oficiales del Saber 11 2026, tarifas por tipo de colegio, cuánto más cuesta la inscripción extraordinaria y qué se sabe de 2027, con fuentes del ICFES.",
+    kind: "page",
+  },
+  {
+    path: "/lo-que-mas-pesa",
+    name: "Lo que más pesa para tu carrera",
+    title: "Cómo usa tu ICFES cada universidad, SENA y Policía | ProICFES",
+    description:
+      "Qué pondera Univalle, el 40 % de la Javeriana Cali, becas de Icesi por puntaje, el examen propio de la Nacional y la UdeA, y lo que piden SENA, Policía y Ejército.",
+    kind: "page",
+  },
+  {
+    path: "/curso",
+    name: "ProICFES para tu curso",
+    title: "ProICFES para tu curso: grupos de práctica para docentes",
+    description:
+      "El docente crea un código de grupo, sus estudiantes se unen con un alias y ve en qué competencias le cuesta más al curso, sin puntajes individuales.",
+    kind: "page",
+  },
+  {
     path: "/preguntas-frecuentes",
     name: "Preguntas frecuentes",
     title: "Saber 11: cómo se calcula el puntaje y más | ProICFES",

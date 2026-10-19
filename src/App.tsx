@@ -19,7 +19,7 @@ import { ConsentProvider } from "./contexts/ConsentContext";
 import { useSeo } from "./seo/useSeo";
 import { PageLoading } from "./lib/lazyPage";
 import { Cookies, PoliticaPrivacidad, Terminos, TratamientoDatos } from "./pages/legal";
-import { Analytics, Glosario, Inicio, Logros, ModulePage, Onboarding, Practica, Simulacro, Tips } from "./pages/lazyRoutes";
+import { Analytics, CuandoCuesta, Curso, TuCarrera, Glosario, Inicio, Logros, ModulePage, Onboarding, Practica, Simulacro, Tips } from "./pages/lazyRoutes";
 
 
 
@@ -62,6 +62,9 @@ function AppContent() {
             <Route path="/logros" component={Logros} />
             <Route path="/glosario" component={Glosario} />
             <Route path="/tips" component={Tips} />
+            <Route path="/cuando-y-cuanto-cuesta" component={CuandoCuesta} />
+            <Route path="/lo-que-mas-pesa" component={TuCarrera} />
+            <Route path="/curso" component={Curso} />
             <Route path="/preguntas-frecuentes" component={PreguntasFrecuentes} />
             <Route path="/politica-de-privacidad" component={PoliticaPrivacidad} />
             <Route path="/tratamiento-de-datos" component={TratamientoDatos} />

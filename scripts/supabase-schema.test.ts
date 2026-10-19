@@ -36,6 +36,8 @@ beforeAll(async () => {
     readFileSync(path.resolve(import.meta.dirname, `../supabase/migrations/${n}`), "utf8");
   await db.exec(mig("0001_init.sql"));
   await db.exec(mig("0002_simplify_guardian.sql"));
+  await db.exec(mig("0003_streak_fields_doc.sql"));
+  await db.exec(mig("0004_cursos.sql"));
 }, 30_000);
 
 describe("migración 0001_init.sql", () => {
@@ -106,5 +108,85 @@ describe("migración 0001_init.sql", () => {
       `select ((select count(*) from public.profiles where id = '${B}') + (select count(*) from public.progress) + (select count(*) from public.attempts))::int n`
     );
     expect(left.rows[0].n).toBe(0);
+  });
+});
+
+describe("migración 0004_cursos.sql", () => {
+  const S = Array.from({ length: 6 }, (_, i) => `3333333${i}-3333-3333-3333-333333333333`);
+  const stats = (correct: number) =>
+    JSON.stringify({ competenciaStats: { "matematicas|Formulación y ejecución": { answered: 10, correct }, "ingles|Parte 1": { answered: 4, correct: 4 } } });
+  let gid = "";
+  let code = "";
+
+  it("solo un adulto crea grupos; anon no puede llamar las funciones", async () => {
+    await as("postgres");
+    await db.exec(`insert into auth.users values ${S.map(s => `('${s}')`).join(",")} on conflict do nothing`);
+    await as("anon");
+    await expect(db.query(`select public.create_group('11-A')`)).rejects.toThrow(/permission denied/);
+    await as("authenticated", B); // B es menor de edad
+    await expect(db.query(`select public.create_group('11-A')`)).rejects.toThrow(/mayor de edad/);
+    await as("authenticated", A);
+    const r = await db.query<{ id: string; code: string }>(`select id, code from public.create_group('  11-A  ')`);
+    gid = r.rows[0].id;
+    code = r.rows[0].code;
+    expect(code).toMatch(/^[A-HJ-NP-Z2-9]{6}$/);
+    await expect(db.query(`insert into public.class_groups (code, name, teacher_id) values ('ABCDEF', 'x', '${A}')`)).rejects.toThrow(/permission denied/);
+  });
+
+  it("los estudiantes se unen con alias; nadie ve a otros estudiantes salvo el docente", async () => {
+    await as("authenticated", A);
+    await expect(db.query(`select public.join_group('${code}', 'Profe')`)).rejects.toThrow(/docente de este grupo/);
+    for (const [i, s] of S.entries()) {
+      await as("authenticated", s);
+      await db.query(`select public.join_group('${code.toLowerCase()}', 'Estudiante ${i}')`);
+    }
+    await expect(db.query(`select public.join_group('ZZZZZZ', 'x')`)).rejects.toThrow(/no existe/);
+    await expect(db.query(`select public.join_group('${code}', 'x')`)).rejects.toThrow(/class_members_alias_check/);
+    const own = await db.query<{ alias: string }>("select alias from public.class_members");
+    expect(own.rows).toEqual([{ alias: "Estudiante 5" }]);
+    const g = await db.query<{ name: string }>("select name from public.class_groups");
+    expect(g.rows).toEqual([{ name: "11-A" }]);
+    await expect(db.query(`select public.group_summary('${gid}')`)).rejects.toThrow(/Solo el docente/);
+    await as("authenticated", A);
+    const all = await db.query("select alias from public.class_members");
+    expect(all.rows).toHaveLength(6);
+    // El docente no ve el progreso individual.
+    const pr = await db.query(`select * from public.progress where user_id = '${S[0]}'`);
+    expect(pr.rows).toHaveLength(0);
+  });
+
+  it("el resumen solo aparece con 5 o más estudiantes con datos, y sin datos individuales", async () => {
+    for (const [i, s] of S.slice(0, 4).entries()) {
+      await as("authenticated", s);
+      await db.query(`insert into public.progress (user_id, data) values ('${s}', '${stats(i + 2)}')`);
+    }
+    await as("authenticated", A);
+    let r = await db.query<{ group_summary: { members: number; withData: number; rows: unknown[] } }>(`select public.group_summary('${gid}')`);
+    expect(r.rows[0].group_summary).toMatchObject({ members: 6, withData: 4, rows: [] });
+    await as("authenticated", S[4]);
+    await db.query(`insert into public.progress (user_id, data) values ('${S[4]}', '${stats(6)}')`);
+    await as("authenticated", A);
+    r = await db.query(`select public.group_summary('${gid}')`);
+    const sum = r.rows[0].group_summary as unknown as { withData: number; rows: Record<string, unknown>[] };
+    expect(sum.withData).toBe(5);
+    expect(sum.rows[0]).toEqual({ area: "matematicas", competencia: "Formulación y ejecución", students: 5, answered: 50, correct: 20, pct: 40 });
+    expect(sum.rows[1]).toMatchObject({ area: "ingles", pct: 100 });
+    expect(JSON.stringify(sum)).not.toMatch(/3333|Estudiante/);
+  });
+
+  it("el estudiante se sale, el docente quita y borra el grupo", async () => {
+    await as("authenticated", S[5]);
+    const out = await db.query(`delete from public.class_members where group_id = '${gid}'`);
+    expect(out.affectedRows).toBe(1);
+    await as("authenticated", S[0]);
+    const bad = await db.query(`delete from public.class_groups where id = '${gid}'`);
+    expect(bad.affectedRows).toBe(0);
+    await as("authenticated", A);
+    const kick = await db.query(`delete from public.class_members where user_id = '${S[1]}'`);
+    expect(kick.affectedRows).toBe(1);
+    await db.query(`delete from public.class_groups where id = '${gid}'`);
+    await as("postgres");
+    const left = await db.query(`select count(*)::int as n from public.class_members`);
+    expect(left.rows).toEqual([{ n: 0 }]);
   });
 });

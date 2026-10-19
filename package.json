@@ -12,7 +12,10 @@
     "check": "tsc --noEmit",
     "validate:questions": "tsx scripts/validate-questions.ts",
     "test": "vitest run",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "e2e:serve": "node e2e/ghpages-server.mjs dist 4173",
+    "e2e": "node e2e/fase1-e2e.mjs && node e2e/contenido-e2e.mjs && node e2e/parteb-e2e.mjs && node e2e/general-e2e.mjs && node e2e/portada-e2e.mjs && node e2e/validity.mjs",
+    "scan:emoji": "node e2e/emoji-scan.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",
@@ -33,6 +36,7 @@
     "@types/react": "^19.2.1",
     "@types/react-dom": "^19.2.1",
     "@vitejs/plugin-react": "^5.0.4",
+    "playwright-core": "1.63.0",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.19.1",

@@ -10,3 +10,4 @@ dist/
 .idea/
 coverage/
 dist-ssr/
+e2e/.shots/

@@ -156,6 +156,7 @@ export function mergeProgress(
     ...day,
     practiceXp: Math.max(local.practiceXp ?? 0, remote.practiceXp ?? 0),
     trapStats: mergeMax(local.trapStats, remote.trapStats),
+    competenciaStats: mergeStatsMax(local.competenciaStats, remote.competenciaStats),
     totalXp: completedLessons.reduce((s, l) => s + l.xpEarned, 0) + Math.max(local.practiceXp ?? 0, remote.practiceXp ?? 0),
     xpDay: local.xpDay ?? remote.xpDay,
     plan: goalFrom.plan ?? local.plan ?? remote.plan,
@@ -265,6 +266,17 @@ export function parseSyncMeta(raw: string | null): SyncMeta | null {
   } catch {
     return null;
   }
+}
+
+/** Estadísticas {answered, correct} por clave: se queda con la de más respuestas. */
+function mergeStatsMax(
+  a?: Record<string, { answered: number; correct: number }>,
+  b?: Record<string, { answered: number; correct: number }>
+): Record<string, { answered: number; correct: number }> | undefined {
+  if (!a && !b) return undefined;
+  const out = { ...a };
+  for (const [k, v] of Object.entries(b ?? {})) if (!out[k] || v.answered > out[k]!.answered) out[k] = v;
+  return out;
 }
 
 /** Contadores por clave: se queda con el mayor de cada uno (sin duplicar). */

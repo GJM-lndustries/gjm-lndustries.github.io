@@ -40,7 +40,11 @@ export interface StudyPlan {
   dailyMinutes: number;
   /** Intención de implementación: en qué momento del día va a estudiar. */
   studyMoment: string;
+  /** Qué examen presenta (por defecto Saber 11). */
+  examType?: ExamType;
 }
+
+export type ExamType = "saber11" | "presaber" | "validacion";
 
 /** Resultado de la mini prueba de 5 preguntas (una por área). */
 export interface DiagnosticResult {
@@ -81,6 +85,18 @@ export interface SimulacroRecord {
 }
 
 /** Suma 1 a la trampa de la opción elegida (si la tiene). */
+/** Suma una respuesta a las estadísticas por competencia. */
+export function addCompetencia(
+  stats: UserProgress["competenciaStats"],
+  question: { area: AreaId; competencia?: string },
+  correct: boolean
+): UserProgress["competenciaStats"] {
+  if (!question.competencia) return stats;
+  const key = `${question.area}|${question.competencia}`;
+  const cur = stats?.[key] ?? { answered: 0, correct: 0 };
+  return { ...stats, [key]: { answered: cur.answered + 1, correct: cur.correct + (correct ? 1 : 0) } };
+}
+
 function addTrap(stats: UserProgress["trapStats"], questionId: string, chosen?: string): UserProgress["trapStats"] {
   if (!chosen) return stats;
   const trap = getQuestion(questionId)?.options.find(o => o.id === chosen)?.trampa;
@@ -123,6 +139,8 @@ export interface UserProgress {
   accountPromptDismissed?: string;
   /** «Tus trampas más comunes»: cuántas veces cayó en cada tipo de trampa. */
   trapStats?: Partial<Record<TrapType, number>>;
+  /** Aciertos por competencia, clave "area|competencia". Solo esto se agrega en «ProICFES para tu curso». */
+  competenciaStats?: Record<string, { answered: number; correct: number }>;
 }
 
 interface ProgressContextType {
@@ -135,12 +153,12 @@ interface ProgressContextType {
   /** Registra un simulacro terminado y las respuestas dadas (una sola actualización). */
   recordSimulacro: (
     record: SimulacroRecord,
-    answers: { question: { id: string; area: AreaId }; correct: boolean; chosen?: string }[]
+    answers: { question: { id: string; area: AreaId; competencia?: string }; correct: boolean; chosen?: string }[]
   ) => void;
   /** Reemplaza todo el progreso (sincronización con la cuenta). */
   replaceProgress: (next: UserProgress) => void;
   recordAnswer: (
-    question: { id: string; area: AreaId },
+    question: { id: string; area: AreaId; competencia?: string },
     correct: boolean,
     /** Opción elegida (para contar la trampa en la que cayó). */
     chosen?: string
@@ -355,8 +373,10 @@ export function ProgressProvider({
         const missedQuestions = { ...prev.missedQuestions };
         const now = new Date().toISOString();
         let trapStats = prev.trapStats;
+        let competenciaStats = prev.competenciaStats;
         for (const { question, correct, chosen } of answers) {
           if (!correct) trapStats = addTrap(trapStats, question.id, chosen);
+          competenciaStats = addCompetencia(competenciaStats, question, correct);
           const stat = areaStats[question.area] ?? { answered: 0, correct: 0 };
           areaStats[question.area] = {
             answered: stat.answered + 1,
@@ -374,6 +394,7 @@ export function ProgressProvider({
           areaStats,
           missedQuestions,
           trapStats,
+          competenciaStats,
           simulacroScores: [...prev.simulacroScores, record.percent],
           simulacroHistory: [...prev.simulacroHistory, record].slice(-50),
         };
@@ -388,7 +409,7 @@ export function ProgressProvider({
   );
 
   const recordAnswer = useCallback(
-    (question: { id: string; area: AreaId }, correct: boolean, chosen?: string) => {
+    (question: { id: string; area: AreaId; competencia?: string }, correct: boolean, chosen?: string) => {
       setProgress(prev => {
         const trapStats = correct ? prev.trapStats : addTrap(prev.trapStats, question.id, chosen);
         const stat = prev.areaStats[question.area] ?? {
@@ -414,6 +435,7 @@ export function ProgressProvider({
           practiceXp: (prev.practiceXp ?? 0) + granted,
           totalXp,
           trapStats,
+          competenciaStats: addCompetencia(prev.competenciaStats, question, correct),
           xpDay,
           badges,
           areaStats: {

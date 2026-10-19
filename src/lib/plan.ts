@@ -69,7 +69,7 @@ export function examWindows(now: Date = new Date()): ExamWindow[] {
 }
 
 /** Año y mes de inicio de la ventana. «AAAA-08» es el formato viejo del calendario A: se cuenta desde julio. */
-function windowStart(id: string): [number, number] {
+export function windowStart(id: string): [number, number] {
   const [y, mm] = id.split("-").map(Number) as [number, number];
   return [y, mm === 8 ? 7 : mm];
 }

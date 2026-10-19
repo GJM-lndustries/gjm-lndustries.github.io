@@ -32,6 +32,9 @@ const bottomNav = mainNav;
 const footerLinks = [
   { path: "/practica", label: "Preguntas tipo ICFES" },
   { path: "/simulacro", label: "Simulacro gratis" },
+  { path: "/cuando-y-cuanto-cuesta", label: "Fechas y tarifas" },
+  { path: "/lo-que-mas-pesa", label: "Lo que pesa para tu carrera" },
+  { path: "/curso", label: "Para docentes" },
   { path: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
   { path: "/glosario", label: "Glosario" },
   { path: "/tips", label: "Estrategias" },

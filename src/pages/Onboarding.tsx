@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
-import { useLocation, useSearch } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Clock3, ExternalLink, Sparkles, Target } from "lucide-react";
-import { useProgress } from "@/contexts/ProgressContext";
+import { useProgress, type ExamType } from "@/contexts/ProgressContext";
+import { INSTITUCIONES } from "@/data/admisiones";
 import BrandMark from "@/components/BrandMark";
 import QuestionView from "@/components/QuestionView";
 import AreaIcon from "@/components/AreaIcon";
@@ -17,7 +18,19 @@ import { DEFAULT_WEEKLY_GOAL, WEEKLY_GOAL_OPTIONS } from "@/lib/streaks";
 
 const CAREERS = [
   "Medicina", "Ingeniería", "Derecho", "Psicología", "Administración",
-  "Licenciatura / Educación", "Arquitectura", "Comunicación", "Otra / aún no sé",
+  "Licenciatura / Educación", "Arquitectura", "Comunicación",
+  "Tecnólogo SENA", "Policía (patrullero)", "Ejército (oficial)", "Otra / aún no sé",
+];
+
+/** Qué pide cada meta no universitaria (fuentes en src/data/admisiones.ts). */
+const GOAL_NOTES: Record<string, string> = Object.fromEntries(
+  INSTITUCIONES.flatMap(i => (i.metas ?? []).map(m => [m, i.id]))
+);
+
+const EXAM_TYPES: { id: ExamType; label: string; sub: string }[] = [
+  { id: "saber11", label: "Saber 11", sub: "Si estás en grado 11 o ya eres bachiller." },
+  { id: "presaber", label: "Pre Saber", sub: "Para 9.° y 10.°: es de práctica y no cuenta para entrar a la universidad." },
+  { id: "validacion", label: "Validación del bachillerato", sub: "Si tienes 18 años o más el día del examen y no estás en un colegio: con él obtienes el título de bachiller." },
 ];
 
 const STEPS = ["puntaje", "carrera", "fecha", "tiempo", "momento", "diagnostico"] as const;
@@ -62,6 +75,7 @@ function Onboarding() {
   const [customCareer, setCustomCareer] = useState(progress.career && !CAREERS.includes(progress.career) && progress.career !== "Por definir" ? progress.career : "");
   const [target, setTarget] = useState<number | null>(editing ? progress.targetScore : null);
   const [exam, setExam] = useState<string>(plan?.examWindow ?? "");
+  const [examType, setExamType] = useState<ExamType>(plan?.examType ?? "saber11");
   const [minutes, setMinutes] = useState<number>(plan?.dailyMinutes ?? 5);
   const [weekly, setWeekly] = useState<number>(progress.streakState.weeklyGoal ?? DEFAULT_WEEKLY_GOAL);
   const [moment, setMoment] = useState<string>(plan?.studyMoment ?? "");
@@ -83,7 +97,7 @@ function Onboarding() {
       careerValue || progress.career || "",
       presented
     );
-    savePlan({ scoreRange: range || "nose", examWindow: exam || "nose", dailyMinutes: minutes, studyMoment: momentValue });
+    savePlan({ scoreRange: range || "nose", examWindow: exam || "nose", dailyMinutes: minutes, studyMoment: momentValue, examType });
     setWeeklyGoal(weekly);
     if (editing && progress.diagnostic) setLocation("/inicio");
     else go("diagnostico");
@@ -170,6 +184,15 @@ function Onboarding() {
                 <input className="min-h-11 w-full rounded-xl border border-border bg-white px-3 py-2 text-[15px]" placeholder="Escribe tu carrera (opcional)"
                   value={customCareer} onChange={e => setCustomCareer(e.target.value)} maxLength={80} aria-label="Tu carrera" />
               )}
+              {GOAL_NOTES[career] && (() => {
+                const inst = INSTITUCIONES.find(i => i.id === GOAL_NOTES[career])!;
+                return (
+                  <p className="rounded-xl bg-navy/5 px-4 py-3 text-sm text-foreground" data-testid="nota-meta">
+                    {inst.resumen}{" "}
+                    <Link href={`/lo-que-mas-pesa#${inst.id}`} className="font-semibold text-navy underline underline-offset-2">Ver detalles y fuente</Link>
+                  </p>
+                );
+              })()}
 
               <div className="card p-5">
                 <div className="flex items-center gap-2 text-sm font-semibold text-navy">
@@ -185,7 +208,8 @@ function Onboarding() {
                 </div>
                 <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
                   {target == null && <><strong className="font-semibold text-foreground">Te sugerimos {suggestedGoal(range)}</strong> como punto de referencia, no como requisito. </>}
-                  No hay un puntaje único por carrera: cada universidad publica el puntaje de corte de cada programa y cambia cada semestre. Búscalo en la página de admisiones de la universidad que te interesa.
+                  Cada universidad usa el ICFES a su manera: unas piden un mínimo para inscribirte, otras ponderan tus áreas, otras dan becas desde cierto puntaje, y algunas, como la Nacional o la de Antioquia, admiten con su propio examen. Revisa la página de admisiones de la tuya.{" "}
+                  <Link href="/lo-que-mas-pesa" className="font-semibold text-navy underline underline-offset-2">Lo que más pesa para tu carrera</Link>
                 </p>
                 <p className="mt-2 text-xs text-muted-foreground">
                   {NATIONAL_AVERAGE.label}: <strong className="text-foreground">{NATIONAL_AVERAGE.value}</strong> de 500.{" "}
@@ -208,6 +232,21 @@ function Onboarding() {
                 <h1 className={title}>¿Cuándo presentas el ICFES?</h1>
                 <p className="mt-2 text-sm text-muted-foreground">Las fechas de 2027 aún no son oficiales: el calendario A de 2026 fue el 26 de julio, así que contamos hasta el 1 de julio. Las actualizamos cuando el ICFES las publique en icfes.gov.co.</p>
               </div>
+              <div role="radiogroup" aria-label="Tipo de examen" className="grid gap-2" data-testid="tipo-examen">
+                {EXAM_TYPES.map(t => (
+                  <Choice key={t.id} active={examType === t.id} onClick={() => setExamType(t.id)} sub={t.sub}>{t.label}</Choice>
+                ))}
+              </div>
+              {examType !== "saber11" && (
+                <p className="text-xs leading-relaxed text-muted-foreground" data-testid="nota-tipo">
+                  {examType === "presaber"
+                    ? "El Pre Saber se presenta el mismo día que el Saber 11, con las mismas cinco pruebas. "
+                    : "La Validación se presenta el mismo día que el Saber 11 y tiene la misma estructura: lo que practiques aquí te sirve igual. "}
+                  Tu cuadernillo tiene 221 preguntas en total, en el mismo tiempo (guía del ICFES 2026).{" "}
+                  <Link href="/cuando-y-cuanto-cuesta" className="underline underline-offset-2">Fechas y tarifas</Link>
+                </p>
+              )}
+              <p className="pt-1 text-sm font-semibold text-foreground">¿En qué fecha?</p>
               <div role="radiogroup" aria-label="Fecha del examen" className="grid gap-2">
                 {windows.map(w => (
                   <Choice key={w.id} active={exam === w.id} onClick={() => setExam(w.id)} sub={w.id === "nose" ? w.note : `${w.note} · faltan unas ${weeksUntil(w.id)} semanas`}>{w.label}</Choice>

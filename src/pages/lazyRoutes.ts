@@ -17,6 +17,9 @@ export const Logros = lazyPage(() => import("./Logros"));
 export const Glosario = lazyPage(() => import("./Glosario"));
 export const Tips = lazyPage(() => import("./Tips"));
 export const Onboarding = lazyPage(() => import("./Onboarding"));
+export const CuandoCuesta = lazyPage(() => import("./CuandoCuesta"));
+export const TuCarrera = lazyPage(() => import("./TuCarrera"));
+export const Curso = lazyPage(() => import("./Curso"));
 export const Analytics = lazyPage(() => import("./Analytics"));
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,6 +30,9 @@ export const LAZY_ROUTES: Record<string, LazyPage<any>> = {
   "/tips": Tips,
   "/meta": Onboarding,
   "/analytics": Analytics,
+  "/cuando-y-cuanto-cuesta": CuandoCuesta,
+  "/lo-que-mas-pesa": TuCarrera,
+  "/curso": Curso,
   "/practica": Practica,
   "/simulacro": Simulacro,
   ...Object.fromEntries(modules.map(m => [`/${m.id}`, ModulePage])),

@@ -54,6 +54,8 @@ interface AuthContextType {
   enabled: boolean;
   status: AuthStatus;
   email: string | null;
+  /** id del usuario con sesión (para «ProICFES para tu curso»). */
+  userId: string | null;
   error: string | null;
   sync: SyncState;
   clearError: () => void;
@@ -75,6 +77,7 @@ const DISABLED: AuthContextType = {
   enabled: false,
   status: "disabled",
   email: null,
+  userId: null,
   error: null,
   sync: { state: "idle" },
   clearError: () => {},
@@ -429,6 +432,7 @@ function EnabledAuthProvider({ children }: { children: ReactNode }) {
       enabled: true,
       status,
       email: session?.user.email ?? null,
+      userId: session?.user.id ?? null,
       error,
       sync,
       clearError: () => setError(null),
