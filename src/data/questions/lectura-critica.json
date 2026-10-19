@@ -5,6 +5,7 @@
     "competencia": "Comprender cómo se articulan las partes de un texto",
     "afirmacion": "Comprende cómo se relacionan las partes de un texto (conectores, estructura) para darle un sentido global.",
     "difficulty": 2,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-sim-3",
     "enunciado": "¿Cuál es la función de la palabra \"Sin embargo\" en el texto?",
     "options": [
@@ -43,6 +44,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 1,
+    "tipoTexto": "Continuo literario",
     "stimulusId": "lc-st-cuento-linea",
     "enunciado": "Según el fragmento, ¿por qué se separaron los abuelos del narrador hace cincuenta años?",
     "options": [
@@ -81,6 +83,7 @@
     "competencia": "Comprender cómo se articulan las partes de un texto",
     "afirmacion": "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
     "difficulty": 2,
+    "tipoTexto": "Continuo literario",
     "stimulusId": "lc-st-cuento-linea",
     "enunciado": "En el fragmento, la frase «La gente que se despide bien casi siempre vuelve» es",
     "options": [
@@ -119,6 +122,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 2,
+    "tipoTexto": "Continuo literario",
     "stimulusId": "lc-st-cuento-linea",
     "enunciado": "Al final, el narrador mira la niebla «tratando de ver lo que él veía». Esto sugiere que el narrador",
     "options": [
@@ -157,6 +161,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Reconoce las estrategias discursivas en un texto.",
     "difficulty": 3,
+    "tipoTexto": "Continuo literario",
     "stimulusId": "lc-st-cuento-linea",
     "enunciado": "¿Qué función cumple en el relato el detalle de la moneda vieja?",
     "options": [
@@ -195,6 +200,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 1,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-columna-celular",
     "enunciado": "¿Qué propone el autor de la columna?",
     "options": [
@@ -233,6 +239,7 @@
     "competencia": "Comprender cómo se articulan las partes de un texto",
     "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
     "difficulty": 2,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-columna-celular",
     "enunciado": "En la columna, la oración «Sin embargo, prohibir no es lo mismo que educar» sirve para",
     "options": [
@@ -271,6 +278,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Reconoce las estrategias discursivas en un texto.",
     "difficulty": 2,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-columna-celular",
     "enunciado": "Cuando el autor reconoce que su propuesta «es más difícil de aplicar que una prohibición total», lo que hace es",
     "options": [
@@ -309,6 +317,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
     "difficulty": 3,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-columna-celular",
     "enunciado": "¿Cuál de los siguientes enunciados, de ser cierto, debilitaría más el argumento del autor?",
     "options": [
@@ -347,6 +356,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 1,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-paramos",
     "enunciado": "Según el texto, ¿por qué los páramos son importantes para el abastecimiento de agua?",
     "options": [
@@ -385,6 +395,7 @@
     "competencia": "Comprender cómo se articulan las partes de un texto",
     "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
     "difficulty": 2,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-paramos",
     "enunciado": "¿Qué función cumple el último párrafo dentro del texto?",
     "options": [
@@ -423,6 +434,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 1,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-paramos",
     "enunciado": "En el texto, la palabra «caudal» se refiere a",
     "options": [
@@ -461,6 +473,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Contextualiza adecuadamente un texto o la información contenida en él.",
     "difficulty": 3,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-paramos",
     "enunciado": "¿Cuál de las siguientes situaciones ilustra mejor la idea de que proteger los páramos «no es solo un asunto ambiental»?",
     "options": [
@@ -499,6 +512,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 1,
+    "tipoTexto": "Discontinuo informativo",
     "stimulusId": "lc-st-encuesta-preparacion",
     "enunciado": "Según la tabla, ¿qué porcentaje de los estudiantes encuestados se prepara principalmente con plataformas o videos en internet?",
     "options": [
@@ -537,6 +551,7 @@
     "competencia": "Comprender cómo se articulan las partes de un texto",
     "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
     "difficulty": 2,
+    "tipoTexto": "Discontinuo informativo",
     "stimulusId": "lc-st-encuesta-preparacion",
     "enunciado": "¿Para qué sirve la nota que aparece debajo de la tabla?",
     "options": [
@@ -575,6 +590,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
     "difficulty": 3,
+    "tipoTexto": "Discontinuo informativo",
     "stimulusId": "lc-st-encuesta-preparacion",
     "enunciado": "Un estudiante concluye: «Los que van a preicfes presencial sacarán mejor puntaje porque estudian más horas». ¿Es válida esta conclusión a partir de la tabla?",
     "options": [
@@ -613,6 +629,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 2,
+    "tipoTexto": "Discontinuo informativo",
     "stimulusId": "lc-st-encuesta-preparacion",
     "enunciado": "¿Cuál de las siguientes afirmaciones se puede sacar directamente de la tabla?",
     "options": [
@@ -651,6 +668,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Establece relaciones entre un texto y otros textos o enunciados.",
     "difficulty": 2,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-jornada-unica",
     "enunciado": "¿En qué coinciden los autores de los dos textos?",
     "options": [
@@ -689,6 +707,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Establece relaciones entre un texto y otros textos o enunciados.",
     "difficulty": 2,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-jornada-unica",
     "enunciado": "¿Cuál es la principal diferencia entre los dos textos?",
     "options": [
@@ -727,6 +746,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
     "difficulty": 3,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-jornada-unica",
     "enunciado": "¿Qué información sería más útil para evaluar el argumento del texto B?",
     "options": [
@@ -765,6 +785,7 @@
     "competencia": "Comprender cómo se articulan las partes de un texto",
     "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
     "difficulty": 2,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-jornada-unica",
     "enunciado": "En el texto B, la oración «Nadie se opone a que los estudiantes pasen más tiempo aprendiendo» sirve para",
     "options": [
@@ -803,6 +824,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 1,
+    "tipoTexto": "Continuo literario",
     "stimulusId": "lc-st-poema-cilantro",
     "enunciado": "En el poema, la expresión «la ventana se vuelve una huerta pequeñita» significa que",
     "options": [
@@ -841,6 +863,7 @@
     "competencia": "Comprender cómo se articulan las partes de un texto",
     "afirmacion": "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
     "difficulty": 2,
+    "tipoTexto": "Continuo literario",
     "stimulusId": "lc-st-poema-cilantro",
     "enunciado": "¿Qué actitud tiene la voz poética frente a lo que dice la madre sobre la tierra?",
     "options": [
@@ -879,6 +902,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Reconoce contenidos valorativos presentes en un texto.",
     "difficulty": 3,
+    "tipoTexto": "Continuo literario",
     "stimulusId": "lc-st-poema-cilantro",
     "enunciado": "¿Qué idea sobre la relación con la naturaleza se puede inferir del poema?",
     "options": [
@@ -917,6 +941,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 1,
+    "tipoTexto": "Continuo filosófico",
     "stimulusId": "lc-st-aristoteles-amistad",
     "enunciado": "Según el texto, ¿por qué las amistades basadas en la utilidad o en el placer suelen ser frágiles?",
     "options": [
@@ -955,6 +980,7 @@
     "competencia": "Comprender cómo se articulan las partes de un texto",
     "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
     "difficulty": 2,
+    "tipoTexto": "Continuo filosófico",
     "stimulusId": "lc-st-aristoteles-amistad",
     "enunciado": "¿Cómo está organizado el texto?",
     "options": [
@@ -993,6 +1019,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Contextualiza adecuadamente un texto o la información contenida en él.",
     "difficulty": 3,
+    "tipoTexto": "Continuo filosófico",
     "stimulusId": "lc-st-aristoteles-amistad",
     "enunciado": "Dos compañeros se hacen amigos para preparar juntos el Saber 11 y dejan de hablarse cuando termina el examen. Según el texto, su relación corresponde a",
     "options": [
@@ -1031,6 +1058,7 @@
     "competencia": "Identificar y entender los contenidos locales",
     "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
     "difficulty": 2,
+    "tipoTexto": "Continuo filosófico",
     "stimulusId": "lc-st-aristoteles-amistad",
     "enunciado": "La expresión «desean el bien del otro por el otro mismo» indica que, en la amistad perfecta,",
     "options": [
@@ -1069,6 +1097,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Establece relaciones entre un texto y otros textos o enunciados.",
     "difficulty": 2,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-mercados-campesinos",
     "enunciado": "¿Qué relación hay entre los dos fragmentos?",
     "options": [
@@ -1107,6 +1136,7 @@
     "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
     "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
     "difficulty": 3,
+    "tipoTexto": "Continuo informativo",
     "stimulusId": "lc-st-mercados-campesinos",
     "enunciado": "¿Cuál de las siguientes situaciones sería un contraejemplo de lo que afirma el fragmento 1?",
     "options": [
@@ -1136,6 +1166,279 @@
     "answer": "b",
     "explanation": "Un contraejemplo es un caso en el que no se cumple la afirmación general. Si sin intermediarios el comprador paga más y el productor no gana más, falla lo que dice el fragmento 1. Las dos primeras opciones lo confirman y la última no tiene que ver con la afirmación.",
     "tip": "Un contraejemplo debe tratar el mismo asunto de la afirmación y mostrar que, en ese caso, no se cumple.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-030",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "tipoTexto": "Continuo filosófico",
+    "stimulusId": "lc-st-kant-ilustracion",
+    "enunciado": "Según el texto, ¿en qué consiste la «minoría de edad» de la que habla Kant?",
+    "options": [
+      {
+        "id": "a",
+        "text": "En no haber cumplido todavía los dieciocho años.",
+        "trampa": "lectura-literal",
+        "porQueNo": "El texto aclara que no consiste en ser joven."
+      },
+      {
+        "id": "b",
+        "text": "En no usar el propio entendimiento sin que otro lo guíe."
+      },
+      {
+        "id": "c",
+        "text": "En no tener la inteligencia suficiente para entender la filosofía.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El texto dice que el problema casi nunca es la falta de inteligencia."
+      },
+      {
+        "id": "d",
+        "text": "En no haber leído los libros que escribieron los filósofos ilustrados.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no la define por las lecturas; dice que un libro puede pensar por nosotros."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El primer párrafo lo dice de forma explícita: la minoría de edad consiste en no usar el propio entendimiento sin la guía de otro, no en ser joven.",
+    "tip": "Cuando un texto filosófico define un término, busca la frase que empieza con «consiste en» o «no es… sino…».",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-031",
+    "area": "lectura-critica",
+    "competencia": "Comprender cómo se articulan las partes de un texto",
+    "afirmacion": "Comprende cómo se relacionan formal y semánticamente los elementos locales de un texto para darle un sentido global.",
+    "difficulty": 2,
+    "tipoTexto": "Continuo filosófico",
+    "stimulusId": "lc-st-kant-ilustracion",
+    "enunciado": "¿Qué función cumple el segundo párrafo dentro del texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Explicar por qué muchas personas siguen en la minoría de edad."
+      },
+      {
+        "id": "b",
+        "text": "Presentar el lema que Kant propone para salir de la minoría de edad.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El lema aparece en el tercer párrafo, no en el segundo."
+      },
+      {
+        "id": "c",
+        "text": "Contar la vida de Kant y el contexto histórico en el que escribió.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El párrafo no habla de la vida de Kant."
+      },
+      {
+        "id": "d",
+        "text": "Refutar la idea de que la minoría de edad es culpa de cada persona.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "No refuta esa idea: la apoya, al mostrar la pereza y el miedo como causas."
+      }
+    ],
+    "answer": "a",
+    "explanation": "El segundo párrafo da las causas: es más cómodo dejar que otros piensen por nosotros, y la pereza y el miedo hacen que muchas personas prefieran seguir siendo guiadas.",
+    "tip": "Para identificar la función de un párrafo, pregúntate qué aporta al texto: una definición, una causa, un ejemplo o una conclusión.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-032",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
+    "difficulty": 3,
+    "tipoTexto": "Continuo filosófico",
+    "stimulusId": "lc-st-kant-ilustracion",
+    "enunciado": "¿Cuál de las siguientes situaciones **NO** es coherente con el lema *Sapere aude* tal como lo explica el texto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Una estudiante lee una noticia y busca otras fuentes antes de creerla.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es coherente con el lema: examina lo que lee con su propia razón."
+      },
+      {
+        "id": "b",
+        "text": "Un joven escucha a su abuelo y luego piensa si está de acuerdo con él.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es coherente: escucha a otro y luego lo examina por su cuenta."
+      },
+      {
+        "id": "c",
+        "text": "Una persona acepta lo que dice un video porque tiene muchas vistas."
+      },
+      {
+        "id": "d",
+        "text": "Un estudiante revisa un argumento del profesor antes de aceptarlo.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es coherente: no rechaza al profesor, examina su argumento."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El lema pide examinar con la propia razón lo que otros afirman antes de aceptarlo. Aceptar algo solo porque tiene muchas vistas es dejar que otros decidan por uno. Las otras tres situaciones escuchan a los demás y luego examinan.",
+    "tip": "En las preguntas con NO, tres opciones cumplen la idea del texto; busca la que la contradice.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-033",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "tipoTexto": "Continuo filosófico",
+    "stimulusId": "lc-st-epicteto-control",
+    "enunciado": "Según el texto, ¿cuál de estas cosas depende de nosotros para Epicteto?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Lo que los demás piensan de nosotros.",
+        "trampa": "lectura-literal",
+        "porQueNo": "El texto la pone entre las que no dependen de nosotros."
+      },
+      {
+        "id": "b",
+        "text": "Nuestras decisiones."
+      },
+      {
+        "id": "c",
+        "text": "La fama que tenemos entre la gente.",
+        "trampa": "lectura-literal",
+        "porQueNo": "El texto la pone entre las que no dependen de nosotros."
+      },
+      {
+        "id": "d",
+        "text": "La salud y el estado de nuestro cuerpo.",
+        "trampa": "lectura-literal",
+        "porQueNo": "El texto pone el cuerpo entre las que no dependen de nosotros."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El texto dice que de nosotros dependen las opiniones, los deseos y las decisiones; el cuerpo, la fama y lo que otros piensan no dependen de nosotros.",
+    "tip": "Ubica en el texto la lista exacta antes de mirar las opciones.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-034",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Establece la validez e implicaciones de un enunciado de un texto argumentativo o expositivo.",
+    "difficulty": 2,
+    "tipoTexto": "Continuo filosófico",
+    "stimulusId": "lc-st-epicteto-control",
+    "enunciado": "Un estudiante dice: «Si sigo a Epicteto, no vale la pena estudiar para el ICFES, porque el resultado no depende de mí». ¿Es correcta su interpretación?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sí, porque Epicteto dice que no debemos preocuparnos por el futuro.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El texto no dice eso; dice que hay que poner el esfuerzo donde puede tener efecto."
+      },
+      {
+        "id": "b",
+        "text": "No, porque estudiar es una decisión suya, y eso sí depende de él."
+      },
+      {
+        "id": "c",
+        "text": "Sí, porque el puntaje depende de lo que piensen los demás estudiantes.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El puntaje no depende de lo que otros piensen; depende en buena parte de cómo se prepare."
+      },
+      {
+        "id": "d",
+        "text": "No, porque Epicteto dice que todo depende de nosotros si nos esforzamos.",
+        "trampa": "extremo",
+        "porQueNo": "El texto distingue lo que depende de nosotros de lo que no: no dice que todo dependa."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El texto aclara que quien entiende la diferencia no deja de actuar: pone su esfuerzo donde puede tener efecto. Estudiar es una decisión propia, así que es justo donde Epicteto pediría poner el esfuerzo.",
+    "tip": "Cuando evalúes una interpretación, compárala con lo que el texto dice de forma explícita.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-035",
+    "area": "lectura-critica",
+    "competencia": "Identificar y entender los contenidos locales",
+    "afirmacion": "Identifica y entiende los eventos, ideas, afirmaciones y demás elementos locales presentes en un texto.",
+    "difficulty": 1,
+    "tipoTexto": "Discontinuo literario",
+    "stimulusId": "lc-st-tira-celular",
+    "enunciado": "¿Qué hace que la familia se mire en la segunda viñeta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que la abuela les pide que guarden el celular.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "La abuela habla en la tercera viñeta y no pide guardar el celular."
+      },
+      {
+        "id": "b",
+        "text": "Que se va la luz y se cae el internet."
+      },
+      {
+        "id": "c",
+        "text": "Que el sancocho se quema en la olla.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La tira no muestra que la comida se queme."
+      },
+      {
+        "id": "d",
+        "text": "Que el papá anuncia que va a decir algo.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Nadie habla en la segunda viñeta."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La descripción de la segunda viñeta dice que se va la luz y se cae el internet; por eso todos levantan la cabeza y se miran.",
+    "tip": "En una tira cómica, sigue el orden de las viñetas: cada una muestra un cambio.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "lc-036",
+    "area": "lectura-critica",
+    "competencia": "Reflexionar a partir de un texto y evaluar su contenido",
+    "afirmacion": "Reconoce contenidos valorativos presentes en un texto.",
+    "difficulty": 2,
+    "tipoTexto": "Discontinuo literario",
+    "stimulusId": "lc-st-tira-celular",
+    "enunciado": "¿Qué crítica hace la tira cómica con la frase de la abuela?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que los celulares son peligrosos y deberían prohibirse en las casas.",
+        "trampa": "extremo",
+        "porQueNo": "La tira se burla de una costumbre, pero no propone prohibir nada."
+      },
+      {
+        "id": "b",
+        "text": "Que las personas mayores no saben usar la tecnología.",
+        "trampa": "opinion",
+        "porQueNo": "La abuela no tiene celular, pero la crítica no va contra ella: ella es quien hace el chiste."
+      },
+      {
+        "id": "c",
+        "text": "Que el celular puede alejarnos de quienes tenemos al lado."
+      },
+      {
+        "id": "d",
+        "text": "Que los cortes de luz son un problema grave en los barrios.",
+        "trampa": "no-responde",
+        "porQueNo": "El corte de luz solo sirve para el giro de la historia; no es lo que se critica."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La familia estaba físicamente en la mesa, pero la abuela dice que «por fin llegaron»: estaban presentes en cuerpo, pero ausentes por el celular. Es una crítica con humor a esa costumbre.",
+    "tip": "En una caricatura, el remate (la última frase) suele contener la crítica.",
     "source": "original",
     "reviewed": false
   }

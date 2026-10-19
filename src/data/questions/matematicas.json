@@ -5,6 +5,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "En una heladería, cada vaso de helado cuesta $3.000. A cada vaso se le puede agregar acompañamientos por $1.000 cada uno. ¿Cuál expresión permite calcular el precio total de un vaso con varios acompañamientos?",
     "options": [
       {
@@ -42,6 +43,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Si un estudiante tiene $15.000 y quiere comprar el mayor número posible de cuadernos que cuestan $2.500 cada uno, ¿cuántos cuadernos puede comprar?",
     "options": [
       {
@@ -79,6 +81,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 1,
+    "categoria": "Estadística",
     "enunciado": "Un atleta registró los kilómetros recorridos cada día durante 5 días: 8, 12, 8, 15, 8. Si el atleta quiere saber cuál fue la distancia que más repitió, ¿qué dato debe calcular?",
     "options": [
       {
@@ -116,6 +119,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 2,
+    "categoria": "Estadística",
     "enunciado": "Los salarios mensuales de 5 empleados son: $800.000, $900.000, $850.000, $5.000.000, $750.000. ¿Cuál medida representa mejor el salario \"típico\" de estos empleados?",
     "options": [
       {
@@ -153,6 +157,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 2,
+    "categoria": "Estadística",
     "enunciado": "Una gráfica de barras muestra el número de usuarios de 4 medios de transporte: Bicicleta=225, Automóvil=300, Tren=100, Metro=275. ¿Cuáles medios de transporte tienen un número de usuarios superior a la mediana de los 4 valores?",
     "options": [
       {
@@ -190,6 +195,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 2,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Un taxi cobra $3.500 por la \"bajada de bandera\" (al subir) más $800 por cada kilómetro recorrido. ¿Cuál expresión representa el costo total de un viaje de k kilómetros?",
     "options": [
       {
@@ -227,6 +233,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "En una tienda, cada camiseta cuesta $25.000. Si compras 3 o más camisetas, obtienes un descuento de $5.000 por camiseta. ¿Cuánto pagas si compras exactamente 3 camisetas con descuento?",
     "options": [
       {
@@ -264,6 +271,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 1,
+    "categoria": "Estadística",
     "enunciado": "Las temperaturas registradas en una ciudad durante 5 días fueron: 18°C, 22°C, 18°C, 25°C, 18°C. ¿Cuál es la moda de estas temperaturas?",
     "options": [
       {
@@ -301,6 +309,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "stimulusId": "mat-st-tienda",
     "enunciado": "Julián compra en la tienda de don Jorge 2 libras de arroz, 12 huevos y 1 bolsa de leche. ¿Cuánto debe pagar?",
     "options": [
@@ -339,6 +348,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 2,
+    "categoria": "Álgebra y cálculo",
     "stimulusId": "mat-st-tienda",
     "enunciado": "Julián paga con un billete de $50.000 una compra de 3 bolsas de leche y algunos panes. Si recibe $33.400 de vueltas, ¿cuántos panes compró?",
     "options": [
@@ -377,6 +387,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 2,
+    "categoria": "Álgebra y cálculo",
     "stimulusId": "mat-st-tienda",
     "enunciado": "Don Jorge también vende la cubeta de 30 huevos a $16.500. Un cliente afirma: «Me sale más barato comprar la cubeta que comprar 30 huevos sueltos». ¿La afirmación del cliente es correcta?",
     "options": [
@@ -415,6 +426,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 1,
+    "categoria": "Estadística",
     "stimulusId": "mat-st-pasajes",
     "enunciado": "¿Cuántos viajes en bus hizo Camila en total durante esa semana?",
     "options": [
@@ -453,6 +465,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 2,
+    "categoria": "Álgebra y cálculo",
     "stimulusId": "mat-st-pasajes",
     "enunciado": "El lunes, antes de su primer viaje, Camila recargó su tarjeta y quedó con un saldo de $50.000. Si solo usó la tarjeta para los viajes de la tabla, ¿qué saldo le quedó al final de la semana?",
     "options": [
@@ -491,6 +504,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 3,
+    "categoria": "Álgebra y cálculo",
     "stimulusId": "mat-st-pasajes",
     "enunciado": "La empresa de buses ofrece un plan semanal de viajes ilimitados por $40.000. Camila afirma: «El plan me conviene si hago 13 viajes o más en la semana». ¿Es correcta su afirmación?",
     "options": [
@@ -529,6 +543,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 1,
+    "categoria": "Estadística",
     "stimulusId": "mat-st-encuesta",
     "enunciado": "¿Qué porcentaje de los estudiantes de grado 11 llega al colegio en bicicleta?",
     "options": [
@@ -567,6 +582,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 2,
+    "categoria": "Estadística",
     "stimulusId": "mat-st-encuesta",
     "enunciado": "Se quiere representar los resultados de la encuesta en un diagrama circular. ¿Cuántos grados debe medir el sector correspondiente a «A pie»?",
     "options": [
@@ -605,6 +621,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 2,
+    "categoria": "Estadística",
     "stimulusId": "mat-st-encuesta",
     "enunciado": "El rector afirma: «Más de la mitad de los estudiantes de grado 11 llega al colegio sin usar un vehículo con motor». ¿La afirmación es correcta?",
     "options": [
@@ -643,6 +660,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Un celular cuesta $900.000 y está en promoción con 20 % de descuento. ¿Cuál es su precio con el descuento?",
     "options": [
       {
@@ -680,6 +698,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 2,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "En un almacén, un pantalón costaba $50.000. En diciembre subieron su precio un 10 % y en enero lo rebajaron un 10 % sobre el nuevo precio. ¿Cuánto cuesta el pantalón en enero?",
     "options": [
       {
@@ -717,6 +736,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 3,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Un estudiante afirma: «Si a un precio se le sube el 10 % y después se le baja el 10 %, vuelve a quedar igual». ¿Por qué esta afirmación es incorrecta?",
     "options": [
       {
@@ -754,6 +774,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 2,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Para preparar 8 arepas, don Hernán usa 2 tazas de harina de maíz. Si mantiene la misma receta, ¿cuántas tazas de harina necesita para preparar 20 arepas?",
     "options": [
       {
@@ -791,6 +812,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 2,
+    "categoria": "Estadística",
     "stimulusId": "mat-st-agua",
     "enunciado": "¿Entre qué par de meses consecutivos se presentó el MAYOR AUMENTO en el consumo de agua?",
     "options": [
@@ -829,6 +851,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 1,
+    "categoria": "Estadística",
     "stimulusId": "mat-st-agua",
     "enunciado": "¿Cuál fue el consumo promedio mensual de agua de la familia en esos cinco meses?",
     "options": [
@@ -867,6 +890,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 3,
+    "categoria": "Álgebra y cálculo",
     "stimulusId": "mat-st-agua",
     "enunciado": "El acueducto cobra un cargo fijo de $12.000 al mes más $3.500 por cada metro cúbico consumido. La familia dice: «Como en mayo gastamos el doble de agua que en abril, la factura de mayo fue el doble de la de abril». ¿Tienen razón?",
     "options": [
@@ -905,6 +929,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 2,
+    "categoria": "Geometría",
     "enunciado": "En un mapa del municipio, la escala es 1 : 50.000. Si la distancia entre la plaza principal y el polideportivo en el mapa es de 4 cm, ¿cuál es la distancia real?",
     "options": [
       {
@@ -942,6 +967,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Andrés quiere comprar unos tenis de $160.000. Ya tiene ahorrados $40.000 y ahorra $15.000 cada semana. ¿En cuántas semanas completará el dinero exacto para los tenis?",
     "options": [
       {
@@ -979,6 +1005,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 3,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "En una papelería, 3 cuadernos y 2 lapiceros cuestan $13.000, mientras que 1 cuaderno y 2 lapiceros cuestan $5.800. Si todos los cuadernos tienen el mismo precio y todos los lapiceros también, ¿cuánto cuesta un cuaderno?",
     "options": [
       {
@@ -1016,6 +1043,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 2,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Un plan de celular cuesta $25.000 al mes e incluye 10 GB de datos. Cada GB adicional cuesta $3.000. Si g es el número de GB usados en el mes (con g mayor que 10), ¿cuál expresión representa el costo mensual?",
     "options": [
       {
@@ -1053,6 +1081,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 2,
+    "categoria": "Estadística",
     "enunciado": "Para la excursión del curso se rifa una bicicleta y se venden 200 boletas. Laura compró 5 boletas y Pedro compró 8. Pedro afirma: «Tengo más del doble de probabilidad de ganar que Laura». ¿Es correcta su afirmación?",
     "options": [
       {
@@ -1090,6 +1119,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 2,
+    "categoria": "Estadística",
     "enunciado": "En una bolsa hay 10 dulces del mismo tamaño: 5 de mora, 3 de limón y 2 de naranja. Si se saca un dulce al azar, ¿cuál es la probabilidad de que NO sea de limón?",
     "options": [
       {
@@ -1127,6 +1157,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "En un curso de 36 estudiantes, 24 son mujeres. ¿Qué fracción del curso representan los hombres?",
     "options": [
       {
@@ -1164,6 +1195,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 3,
+    "categoria": "Geometría",
     "enunciado": "Un patio rectangular mide 20 m de largo por 15 m de ancho. En una esquina hay un jardín cuadrado de 5 m de lado que no se va a embaldosar. Si cada baldosa es un cuadrado de 0,5 m de lado, ¿cuántas baldosas se necesitan para cubrir el resto del patio?",
     "options": [
       {
@@ -1201,6 +1233,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 3,
+    "categoria": "Estadística",
     "stimulusId": "mat-st-ventas",
     "enunciado": "Al comparar las ventas de la semana, ¿cuál de las siguientes afirmaciones es correcta?",
     "options": [
@@ -1239,6 +1272,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 2,
+    "categoria": "Estadística",
     "stimulusId": "mat-st-ventas",
     "enunciado": "¿Cuál es la mediana de las ventas diarias de la tienda B?",
     "options": [
@@ -1277,6 +1311,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 2,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Para calcular un descuento del 15 % sobre $48.000, Sofía calcula el 10 % ($4.800) y le suma la mitad de ese valor ($2.400), y obtiene $7.200. ¿Es válido su procedimiento?",
     "options": [
       {
@@ -1314,6 +1349,7 @@
     "competencia": "Interpretación y representación",
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 3,
+    "categoria": "Álgebra y cálculo",
     "stimulusId": "mat-st-parqueadero",
     "enunciado": "¿Cuál de las siguientes expresiones permite calcular el costo C (en pesos) de dejar un carro h horas en el parqueadero?",
     "options": [
@@ -1352,6 +1388,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "Luisa tiene $20.000 y quiere pagar 3 almuerzos de $6.500 cada uno. Para calcular rápido, redondea cada almuerzo a $7.000, obtiene 3 × 7.000 = $21.000 y concluye que no le alcanza. ¿Es correcta su conclusión?",
     "options": [
       {
@@ -1389,6 +1426,7 @@
     "competencia": "Argumentación",
     "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
     "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
     "enunciado": "En la tienda, una gaseosa de 1,5 litros cuesta $4.500 y una de 400 mililitros cuesta $1.600. Carlos afirma que la gaseosa grande es más económica. ¿Qué razón justifica correctamente su afirmación?",
     "options": [
       {
@@ -1426,6 +1464,7 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Plantea y ejecuta estrategias de conteo para resolver problemas en contextos cotidianos.",
     "difficulty": 3,
+    "categoria": "Estadística",
     "enunciado": "Un colegio de Tunja asigna a cada estudiante un código de acceso a la biblioteca formado por 3 letras distintas, escogidas entre A, B, C, D y E, en un orden determinado (por ejemplo, BEA). ¿Cuántos códigos diferentes se pueden formar?",
     "options": [
       {
@@ -1454,6 +1493,348 @@
     "answer": "c",
     "explanation": "El orden importa (BEA y ABE son códigos distintos) y no se pueden repetir letras. Hay 5 opciones para la primera letra, 4 para la segunda y 3 para la tercera: 5 × 4 × 3 = 60. Con 125 = 5³ se estarían permitiendo letras repetidas, y con 10 se contarían grupos sin importar el orden (combinaciones).",
     "tip": "Antes de calcular, pregúntate dos cosas: ¿importa el orden? y ¿se puede repetir? Las respuestas te dicen si multiplicas, divides o elevas a una potencia.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-032",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 1,
+    "categoria": "Geometría",
+    "enunciado": "Una electricista apoya una escalera de 5 m contra una pared. La base de la escalera queda a 3 m de la pared. ¿A qué altura de la pared llega la escalera?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Resta 5 − 3; en un triángulo rectángulo hay que usar el teorema de Pitágoras."
+      },
+      {
+        "id": "b",
+        "text": "4 m"
+      },
+      {
+        "id": "c",
+        "text": "8 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma los lados en lugar de usar Pitágoras."
+      },
+      {
+        "id": "d",
+        "text": "16 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Es 5² − 3² = 16, pero falta sacar la raíz cuadrada."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La pared, el piso y la escalera forman un triángulo rectángulo con hipotenusa 5 m. Por Pitágoras: altura² = 5² − 3² = 25 − 9 = 16, y la altura es √16 = 4 m.",
+    "tip": "Si hay un ángulo recto, piensa en Pitágoras: a² + b² = c².",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-033",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 2,
+    "categoria": "Geometría",
+    "enunciado": "Un carpintero dice: «Si un marco mide 6 dm por 8 dm y su diagonal mide 10 dm, entonces sus esquinas son ángulos rectos». ¿Es válido su razonamiento?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sí, porque 6² + 8² = 100 = 10², como en un triángulo rectángulo."
+      },
+      {
+        "id": "b",
+        "text": "No, porque para tener ángulos rectos la diagonal debería medir 14 dm.",
+        "trampa": "error-calculo",
+        "porQueNo": "14 = 6 + 8; la diagonal no es la suma de los lados."
+      },
+      {
+        "id": "c",
+        "text": "Sí, porque todos los marcos de madera tienen ángulos rectos.",
+        "trampa": "extremo",
+        "porQueNo": "Un marco puede quedar torcido; la medida de la diagonal es la prueba."
+      },
+      {
+        "id": "d",
+        "text": "No, porque Pitágoras solo funciona con medidas en metros.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El teorema vale para cualquier unidad, siempre que sea la misma."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Si los lados a, b y la diagonal c cumplen a² + b² = c², el triángulo es rectángulo (recíproco del teorema de Pitágoras): 36 + 64 = 100 = 10². Los carpinteros usan este truco (3-4-5) para cuadrar esquinas.",
+    "tip": "El recíproco de Pitágoras sirve para comprobar si un ángulo es recto.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-034",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 2,
+    "categoria": "Geometría",
+    "enunciado": "A la misma hora, una niña de 1,6 m de estatura proyecta una sombra de 2 m, y un poste proyecta una sombra de 6 m. ¿Cuánto mide el poste?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4,8 m"
+      },
+      {
+        "id": "b",
+        "text": "5,6 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma 4 a la estatura en lugar de usar la proporción."
+      },
+      {
+        "id": "c",
+        "text": "7,5 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Plantea la proporción al revés (6 × 2 ÷ 1,6)."
+      },
+      {
+        "id": "d",
+        "text": "3,2 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica la estatura por 2 en lugar de por 3."
+      }
+    ],
+    "answer": "a",
+    "explanation": "Los rayos del sol forman triángulos semejantes (teorema de Tales): 1,6 ÷ 2 = altura ÷ 6. La sombra del poste es 3 veces la de la niña, así que el poste mide 3 × 1,6 = 4,8 m.",
+    "tip": "Triángulos semejantes: los lados correspondientes están en la misma proporción.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-035",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "categoria": "Geometría",
+    "enunciado": "Una foto de 10 cm por 15 cm se amplía sin deformarla, de modo que el lado corto pasa a medir 20 cm. ¿Cuánto mide el lado largo de la foto ampliada?",
+    "options": [
+      {
+        "id": "a",
+        "text": "25 cm",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma 10 cm a cada lado; ampliar sin deformar es multiplicar, no sumar."
+      },
+      {
+        "id": "b",
+        "text": "30 cm"
+      },
+      {
+        "id": "c",
+        "text": "35 cm",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma 20 a 15."
+      },
+      {
+        "id": "d",
+        "text": "40 cm",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica 20 × 2 en lugar de 15 × 2."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El lado corto pasa de 10 a 20 cm: se multiplica por 2. Para no deformarla, el lado largo también se multiplica por 2: 15 × 2 = 30 cm.",
+    "tip": "Ampliar o reducir sin deformar = multiplicar todos los lados por el mismo número.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-036",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 2,
+    "categoria": "Geometría",
+    "enunciado": "Una ingeniera diseña un tanque con forma de caja (prisma rectangular) de 2 m de largo, 1 m de ancho y 1,5 m de alto. ¿Cuántos litros de agua le caben? (1 m³ = 1.000 litros).",
+    "options": [
+      {
+        "id": "a",
+        "text": "4,5 litros",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma las medidas en lugar de multiplicarlas, y no pasa a litros."
+      },
+      {
+        "id": "b",
+        "text": "300 litros",
+        "trampa": "error-calculo",
+        "porQueNo": "Error al pasar de metros cúbicos a litros."
+      },
+      {
+        "id": "c",
+        "text": "3.000 litros"
+      },
+      {
+        "id": "d",
+        "text": "4.500 litros",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma las medidas (2 + 1 + 1,5) en lugar de multiplicarlas."
+      }
+    ],
+    "answer": "c",
+    "explanation": "Volumen = largo × ancho × alto = 2 × 1 × 1,5 = 3 m³. Como 1 m³ = 1.000 litros, al tanque le caben 3.000 litros.",
+    "tip": "El volumen de una caja es largo × ancho × alto; luego cambia la unidad.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-037",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 3,
+    "categoria": "Geometría",
+    "enunciado": "Dos tanques cilíndricos tienen la misma altura, pero el radio del segundo es el doble que el del primero. Un estudiante afirma: «Al segundo le cabe el doble de agua». ¿Es correcta su afirmación?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Sí, porque si el radio se duplica, el volumen también se duplica.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El radio está al cuadrado en la fórmula: el volumen no crece en la misma proporción."
+      },
+      {
+        "id": "b",
+        "text": "No, le cabe cuatro veces más, porque el radio va al cuadrado."
+      },
+      {
+        "id": "c",
+        "text": "No, le cabe ocho veces más, porque el volumen es cúbico.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso pasaría si se duplicaran el radio y la altura; aquí la altura es la misma."
+      },
+      {
+        "id": "d",
+        "text": "Sí, porque los dos tanques tienen exactamente la misma altura.",
+        "trampa": "no-responde",
+        "porQueNo": "Tener la misma altura no hace que el volumen sea el doble."
+      }
+    ],
+    "answer": "b",
+    "explanation": "El volumen de un cilindro es V = π × r² × h. Si r se duplica y h queda igual, r² se multiplica por 2² = 4, así que el volumen es 4 veces mayor.",
+    "tip": "Revisa qué variable va al cuadrado en la fórmula antes de comparar.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-038",
+    "area": "matematicas",
+    "competencia": "Formulación y ejecución",
+    "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+    "difficulty": 2,
+    "categoria": "Geometría",
+    "enunciado": "En un plano cartesiano, la casa de Valentina está en el punto (1, 2) y el colegio en el punto (4, 6). Cada unidad equivale a 100 m. ¿Cuál es la distancia en línea recta entre la casa y el colegio?",
+    "options": [
+      {
+        "id": "a",
+        "text": "700 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma 3 + 4: así se recorre por las calles, no en línea recta."
+      },
+      {
+        "id": "b",
+        "text": "500 m"
+      },
+      {
+        "id": "c",
+        "text": "1.300 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma todas las coordenadas."
+      },
+      {
+        "id": "d",
+        "text": "2.500 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Es 3² + 4² = 25, pero falta sacar la raíz."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La diferencia en x es 4 − 1 = 3 y en y es 6 − 2 = 4. Por Pitágoras, la distancia es √(3² + 4²) = √25 = 5 unidades, es decir, 5 × 100 = 500 m.",
+    "tip": "La distancia entre dos puntos es la hipotenusa de un triángulo con catetos Δx y Δy.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-039",
+    "area": "matematicas",
+    "competencia": "Interpretación y representación",
+    "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+    "difficulty": 1,
+    "categoria": "Álgebra y cálculo",
+    "enunciado": "La batería de un celular empieza en 100 % y baja 10 puntos por hora mientras se usa. La función B(t) = 100 − 10t da la carga después de t horas. ¿Después de cuántas horas quedará en 30 %?",
+    "options": [
+      {
+        "id": "a",
+        "text": "3 horas",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es el 30 % tomado como horas; hay que resolver 100 − 10t = 30."
+      },
+      {
+        "id": "b",
+        "text": "7 horas"
+      },
+      {
+        "id": "c",
+        "text": "10 horas",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "A las 10 horas la batería llega a 0 %."
+      },
+      {
+        "id": "d",
+        "text": "13 horas",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma en lugar de restar: (100 + 30) ÷ 10."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Se resuelve 100 − 10t = 30: 10t = 70 y t = 7 horas.",
+    "tip": "Para saber cuándo una función vale algo, iguálala a ese valor y despeja.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "mat-040",
+    "area": "matematicas",
+    "competencia": "Argumentación",
+    "afirmacion": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+    "difficulty": 3,
+    "categoria": "Álgebra y cálculo",
+    "enunciado": "Un club de fútbol cobra según la función C(n) = 20.000n + 50.000, donde n es el número de meses y C el costo total en pesos. ¿Cuál de las siguientes afirmaciones **NO** es correcta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cada mes adicional aumenta el costo en $20.000.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es correcta: 20.000 es lo que sube el costo por cada mes. Se pide la que NO."
+      },
+      {
+        "id": "b",
+        "text": "Hay un pago inicial de $50.000 que no depende de los meses.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es correcta: es el término fijo. Se pide la que NO."
+      },
+      {
+        "id": "c",
+        "text": "Por 3 meses se pagan en total $110.000.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es correcta: 20.000 × 3 + 50.000 = 110.000. Se pide la que NO."
+      },
+      {
+        "id": "d",
+        "text": "Por 6 meses se paga el doble que por 3."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Por 6 meses: 20.000 × 6 + 50.000 = $170.000; por 3 meses: $110.000. El doble de 110.000 sería 220.000, así que no es el doble: el pago inicial no se duplica.",
+    "tip": "En una función lineal con término fijo, duplicar la variable no duplica el resultado.",
     "source": "original",
     "reviewed": false
   }

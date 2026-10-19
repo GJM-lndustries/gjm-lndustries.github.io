@@ -151,5 +151,41 @@
     "title": "Parte 7 · Bogotá by bike",
     "text": "Lee el texto y elige la palabra correcta para cada espacio.\n\n**Bogotá by bike**\n\n**(1)** ___ Sunday and on public holidays, many main roads in Bogotá are closed to cars for several hours during the Ciclovía. Thousands of people use this time to ride, walk or skate. The Ciclovía started in the 1970s, and since then **(2)** ___ cities in other countries have copied the idea. For many families, it is a free way to do exercise and **(3)** ___ time together outdoors.",
     "area": "ingles"
+  },
+  {
+    "id": "cn-st-fertilizante",
+    "area": "ciencias-naturales",
+    "title": "Experimento: abono y crecimiento",
+    "text": "Una agrónoma sembró 20 matas de fríjol iguales en cuatro grupos de 5. A cada grupo le aplicó una cantidad distinta de abono por semana y mantuvo igual el agua, la luz y el tipo de suelo. A las cuatro semanas midió la altura promedio de cada grupo.\n\n| Abono por semana (g) | Altura promedio (cm) |\n|---|---|\n| 0 | 12 |\n| 5 | 18 |\n| 10 | 23 |\n| 20 | 14 |"
+  },
+  {
+    "id": "cn-st-calentamiento",
+    "area": "ciencias-naturales",
+    "title": "Datos: calentar agua",
+    "text": "Un estudiante calentó agua en una olla abierta, a nivel del mar, con una estufa que entrega siempre el mismo calor. Cada 2 minutos midió la temperatura.\n\n| Tiempo (min) | 0 | 2 | 4 | 6 | 8 | 10 | 12 |\n|---|---|---|---|---|---|---|---|\n| Temperatura (°C) | 20 | 45 | 70 | 95 | 100 | 100 | 100 |"
+  },
+  {
+    "id": "lc-st-kant-ilustracion",
+    "area": "lectura-critica",
+    "title": "Texto filosófico: atreverse a pensar",
+    "text": "A finales del siglo XVIII, el filósofo alemán Immanuel Kant escribió que la Ilustración es la salida del ser humano de una «minoría de edad» de la que él mismo es culpable. Esa minoría de edad no consiste en ser joven, sino en no usar el propio entendimiento sin la guía de otro.\n\nPara Kant, el problema casi nunca es la falta de inteligencia. Es más cómodo dejar que un libro piense por nosotros, que alguien decida qué está bien y que otro resuelva lo que nos corresponde. Por pereza o por miedo, muchas personas prefieren seguir siendo guiadas toda la vida.\n\nPor eso propuso un lema: *Sapere aude*, «atrévete a servirte de tu propio entendimiento». Pensar por cuenta propia, según Kant, no significa ignorar a los demás, sino examinar con la propia razón lo que otros afirman antes de aceptarlo.\n\n*(Texto escrito para ProICFES a partir de las ideas de «¿Qué es la Ilustración?», de Kant, 1784).*"
+  },
+  {
+    "id": "lc-st-epicteto-control",
+    "area": "lectura-critica",
+    "title": "Texto filosófico: lo que depende de ti",
+    "text": "Epicteto, un filósofo estoico que nació esclavo en el siglo I, enseñaba que las cosas se dividen en dos grupos: las que dependen de nosotros y las que no. De nosotros dependen nuestras opiniones, nuestros deseos y nuestras decisiones. No dependen de nosotros el cuerpo, la fama, lo que otros piensan ni muchos de los sucesos del mundo.\n\nSegún Epicteto, gran parte del sufrimiento viene de confundir esos dos grupos: de querer controlar lo que no está en nuestras manos y descuidar lo que sí lo está. Quien entiende la diferencia no deja de actuar; al contrario, pone su esfuerzo donde puede tener efecto.\n\n*(Texto escrito para ProICFES a partir de las ideas del «Manual» atribuido a Epicteto).*"
+  },
+  {
+    "id": "lc-st-tira-celular",
+    "area": "lectura-critica",
+    "title": "Tira cómica (descrita en texto)",
+    "text": "Esta tira cómica original tiene tres viñetas. Te la describimos con palabras:\n\n**Viñeta 1.** Una familia está sentada a la mesa a la hora de la comida. El papá, la mamá y los dos hijos miran cada uno su celular. Nadie habla. En la mitad de la mesa hay una olla de sancocho humeando.\n\n**Viñeta 2.** Se va la luz y se cae el internet. Los cuatro levantan la cabeza al tiempo, sorprendidos, y se miran por primera vez.\n\n**Viñeta 3.** La abuela, que estaba en la cabecera y no tiene celular, sonríe y dice en un globo de diálogo: «Mijos, por fin llegaron a almorzar»."
+  },
+  {
+    "id": "ing-st-p7-cano",
+    "area": "ingles",
+    "title": "Parte 7 · The river of five colours",
+    "text": "Lee el texto y elige la palabra correcta para cada espacio.\n\n**The river of five colours**\n\nCaño Cristales is a river in the Serranía de La Macarena, in Meta. Between July and November, plants **(1)** ___ grow on the rocks turn the water red, yellow, green and blue. Visitors **(2)** ___ follow the rules of the park: for example, they cannot swim in some areas or use sunscreen in the water. If tourists respect these rules, the river **(3)** ___ stay beautiful for many years."
   }
 ]

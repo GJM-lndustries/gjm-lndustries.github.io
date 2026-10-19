@@ -1111,5 +1111,122 @@
     "tip": "Aprende colocaciones (palabras que van juntas): spend time, make a decision, do exercise, take a photo.",
     "source": "original",
     "reviewed": false
+  },
+  {
+    "id": "ing-029",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 7. Completa un texto con la palabra de significado o estructura correcta (B1).",
+    "difficulty": 2,
+    "parte": 7,
+    "stimulusId": "ing-st-p7-cano",
+    "enunciado": "Espacio (1): «…plants ___ grow on the rocks turn the water red…»",
+    "options": [
+      {
+        "id": "a",
+        "text": "who",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Who» se usa para personas, no para plantas."
+      },
+      {
+        "id": "b",
+        "text": "that"
+      },
+      {
+        "id": "c",
+        "text": "what",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«What» no introduce una oración que describe a un sustantivo."
+      },
+      {
+        "id": "d",
+        "text": "where",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Where» se usa para lugares."
+      }
+    ],
+    "answer": "b",
+    "explanation": "«That» (o «which») introduce una oración de relativo para cosas o seres no humanos: plants that grow on the rocks (plantas que crecen en las rocas).",
+    "tip": "Who para personas; which o that para cosas y animales; where para lugares.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-030",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 7. Completa un texto con la palabra de significado o estructura correcta (B1).",
+    "difficulty": 2,
+    "parte": 7,
+    "stimulusId": "ing-st-p7-cano",
+    "enunciado": "Espacio (2): «Visitors ___ follow the rules of the park…»",
+    "options": [
+      {
+        "id": "a",
+        "text": "must"
+      },
+      {
+        "id": "b",
+        "text": "can't",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Significaría que no pueden seguir las reglas, lo contrario del sentido."
+      },
+      {
+        "id": "c",
+        "text": "mustn't",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Mustn't» es prohibición: no deben seguir las reglas."
+      },
+      {
+        "id": "d",
+        "text": "needn't",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Needn't» dice que no es necesario, y las reglas son obligatorias."
+      }
+    ],
+    "answer": "a",
+    "explanation": "«Must» expresa obligación: los visitantes deben seguir las reglas. El texto da ejemplos de lo que no pueden hacer, así que se trata de normas obligatorias.",
+    "tip": "Must = obligación; mustn't = prohibición; needn't = no es necesario.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "ing-031",
+    "area": "ingles",
+    "competencia": "Gramática y léxico",
+    "afirmacion": "Parte 7. Completa un texto con la palabra de significado o estructura correcta (B1).",
+    "difficulty": 3,
+    "parte": 7,
+    "stimulusId": "ing-st-p7-cano",
+    "enunciado": "Espacio (3): «If tourists respect these rules, the river ___ stay beautiful for many years.»",
+    "options": [
+      {
+        "id": "a",
+        "text": "would",
+        "trampa": "desfase-temporal",
+        "porQueNo": "«Would» es para situaciones hipotéticas (segundo condicional); aquí es una posibilidad real."
+      },
+      {
+        "id": "b",
+        "text": "will"
+      },
+      {
+        "id": "c",
+        "text": "did",
+        "trampa": "desfase-temporal",
+        "porQueNo": "«Did» es pasado y no encaja con un resultado futuro."
+      },
+      {
+        "id": "d",
+        "text": "was",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Was» no va antes de otro verbo en forma base como «stay»."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Es un primer condicional: If + presente (respect), will + verbo (will stay). Expresa un resultado probable en el futuro.",
+    "tip": "Primer condicional: If + presente, will + verbo.",
+    "source": "original",
+    "reviewed": false
   }
 ]

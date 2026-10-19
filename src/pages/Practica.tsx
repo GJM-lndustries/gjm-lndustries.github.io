@@ -1,3 +1,4 @@
+import RichText from "@/components/RichText";
 import { useEffect, useMemo, useState } from 'react';
 import { useActiveTimer } from '@/hooks/useActiveTimer';
 import { Link, useSearch } from 'wouter';
@@ -287,7 +288,7 @@ function Practica() {
                 <details key={q.id} className="rounded-xl border border-amber-200 bg-amber-50/70 p-4 group">
                   <summary className="cursor-pointer list-none flex items-start gap-2">
                     <Lightbulb className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                    <span className="text-sm font-semibold text-foreground">{q.enunciado}</span>
+                    <span className="text-sm font-semibold text-foreground"><RichText text={q.enunciado} inline /></span>
                   </summary>
                   <div className="mt-3 space-y-2 text-sm pl-7">
                     <p><span className="font-semibold text-amber-800">Tu respuesta:</span> {yours?.id.toUpperCase()}. {yours?.text}</p>

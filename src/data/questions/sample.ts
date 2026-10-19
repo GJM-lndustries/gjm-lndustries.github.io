@@ -11,6 +11,7 @@ export const SAMPLE_QUESTION: Question = {
   "competencia": "Interpretación y representación",
   "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
   "difficulty": 1,
+  "categoria": "Álgebra y cálculo",
   "enunciado": "En una heladería, cada vaso de helado cuesta $3.000. A cada vaso se le puede agregar acompañamientos por $1.000 cada uno. ¿Cuál expresión permite calcular el precio total de un vaso con varios acompañamientos?",
   "options": [
     {

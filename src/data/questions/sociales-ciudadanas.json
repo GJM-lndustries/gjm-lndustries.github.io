@@ -1221,5 +1221,449 @@
     "tip": "Relaciona cada opinión con la actividad de quien habla: ¿qué necesita del recurso en disputa?",
     "source": "original",
     "reviewed": false
+  },
+  {
+    "id": "soc-031",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Contextualiza y evalúa usos de fuentes y argumentos.",
+    "difficulty": 2,
+    "enunciado": "En mayo de 1957 circuló en Bogotá un volante que decía: «¡Estudiantes, obreros, bancos y comercio: todos al paro! La patria no aguanta más un gobierno sin elecciones». ¿En qué contexto se ubica mejor esta fuente?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La Guerra de los Mil Días, cuando liberales y conservadores se enfrentaban.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "Esa guerra fue entre 1899 y 1902, más de cincuenta años antes."
+      },
+      {
+        "id": "b",
+        "text": "Las protestas que llevaron a la caída del gobierno de Rojas Pinilla."
+      },
+      {
+        "id": "c",
+        "text": "El Bogotazo, tras el asesinato de Jorge Eliécer Gaitán en 1948.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "El Bogotazo fue en abril de 1948; el volante es de 1957 y pide elecciones."
+      },
+      {
+        "id": "d",
+        "text": "La convocatoria a la Asamblea Constituyente impulsada por los estudiantes.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "Ese movimiento estudiantil (la séptima papeleta) fue en 1990."
+      }
+    ],
+    "answer": "b",
+    "explanation": "En mayo de 1957 hubo un paro cívico nacional de estudiantes, trabajadores, bancos y comercio contra el gobierno militar de Gustavo Rojas Pinilla, que dejó el poder el 10 de mayo de ese año. La queja por «un gobierno sin elecciones» encaja con ese momento.",
+    "tip": "Para ubicar una fuente, usa la fecha y las pistas del texto (quién habla, qué pide) y descarta las épocas que no coinciden.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-032",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Contextualiza y evalúa usos de fuentes y argumentos.",
+    "difficulty": 3,
+    "enunciado": "Un concejal quiere demostrar que «todo el municipio rechaza la nueva ciclorruta» y presenta como prueba una publicación en redes de un vecino molesto con la obra. ¿Cuál es el principal límite de esa fuente para apoyar su argumento?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que una publicación en redes nunca puede usarse como fuente en un debate.",
+        "trampa": "extremo",
+        "porQueNo": "Las redes pueden ser fuente de una opinión; el problema es usarla para hablar de todos."
+      },
+      {
+        "id": "b",
+        "text": "Que muestra la opinión de una persona, no la de todo el municipio."
+      },
+      {
+        "id": "c",
+        "text": "Que el vecino no tiene derecho a opinar sobre una obra del concejo.",
+        "trampa": "opinion",
+        "porQueNo": "Todos pueden opinar; eso no tiene que ver con el valor de la fuente."
+      },
+      {
+        "id": "d",
+        "text": "Que la publicación no dice cuánto costó la ciclorruta ni quién la construyó.",
+        "trampa": "no-responde",
+        "porQueNo": "El costo no es lo que el concejal quiere probar; él habla del rechazo."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Una sola opinión no permite generalizar a «todo el municipio». Para afirmar eso haría falta una fuente que represente a muchas personas, como una encuesta bien hecha o una consulta.",
+    "tip": "Pregúntate: ¿esta fuente alcanza para lo que se quiere probar? Una opinión individual no prueba lo que piensa un grupo.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-033",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Contextualiza y evalúa usos de fuentes y argumentos.",
+    "difficulty": 2,
+    "enunciado": "Un portal publica este titular: «Llegan más migrantes al barrio y aumentan los robos». La nota no presenta ningún dato que relacione a los migrantes con los robos. ¿Qué problema tiene el titular?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que informa sobre la migración, un tema que los medios no deberían tratar.",
+        "trampa": "opinion",
+        "porQueNo": "Los medios sí pueden informar sobre migración; el problema es cómo lo hacen."
+      },
+      {
+        "id": "b",
+        "text": "Que exagera, porque los robos en el barrio no han aumentado.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El enunciado no dice que los robos no hayan aumentado; dice que no hay datos que los relacionen con los migrantes."
+      },
+      {
+        "id": "c",
+        "text": "Que sugiere que los migrantes causan los robos, sin pruebas."
+      },
+      {
+        "id": "d",
+        "text": "Que debería decir el número exacto de migrantes que llegaron al barrio.",
+        "trampa": "no-responde",
+        "porQueNo": "Dar ese número no corregiría la relación sin pruebas que sugiere el titular."
+      }
+    ],
+    "answer": "c",
+    "explanation": "Al poner dos hechos juntos, el titular insinúa que uno causa el otro, pero no muestra ninguna prueba de esa relación. Eso refuerza un prejuicio contra un grupo.",
+    "tip": "Cuando un texto une dos hechos, revisa si muestra la relación o solo la insinúa.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-034",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Contextualiza y evalúa usos de fuentes y argumentos.",
+    "difficulty": 1,
+    "enunciado": "En un foro escolar, una estudiante dice: «Los muchachos del campo no se interesan por la tecnología». ¿Qué tipo de enunciado es este?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Una conclusión basada en una encuesta hecha en las veredas.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "Ella no menciona ninguna encuesta ni ningún dato."
+      },
+      {
+        "id": "b",
+        "text": "Una generalización sobre un grupo, sin evidencia."
+      },
+      {
+        "id": "c",
+        "text": "Un dato oficial que publicó el Ministerio de Educación.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "No cita ninguna fuente oficial."
+      },
+      {
+        "id": "d",
+        "text": "Una propuesta para llevar computadores a las escuelas rurales.",
+        "trampa": "no-responde",
+        "porQueNo": "No propone nada: afirma algo sobre un grupo."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Atribuye una misma característica a todo un grupo («los muchachos del campo») sin ofrecer pruebas. Ese tipo de afirmaciones suele expresar un prejuicio.",
+    "tip": "Palabras como «todos», «los de…» o «ellos siempre» suelen señalar una generalización.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-035",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Evalúa usos sociales de las ciencias sociales.",
+    "difficulty": 3,
+    "enunciado": "Después de una inundación, el precio del arroz se duplica en un municipio. Un economista propone que la alcaldía fije un precio máximo; otro propone no intervenir y dejar que lleguen comerciantes de otras regiones. ¿Qué supuesto tiene la segunda propuesta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que el Estado debe controlar todos los precios de la economía.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso se acerca a la primera propuesta (intervenir), no a la segunda."
+      },
+      {
+        "id": "b",
+        "text": "Que si el precio está alto, llegará más oferta y bajará solo."
+      },
+      {
+        "id": "c",
+        "text": "Que los comerciantes de otras regiones venderán el arroz a pérdida por solidaridad.",
+        "trampa": "causa-efecto",
+        "porQueNo": "El modelo de mercado supone que llegan por la ganancia, no por solidaridad."
+      },
+      {
+        "id": "d",
+        "text": "Que la inundación no afectó la cantidad de arroz disponible en el municipio.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El precio subió justamente porque hay menos arroz disponible."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La segunda propuesta usa el modelo de libre mercado: un precio alto atrae a nuevos vendedores, la oferta aumenta y el precio tiende a bajar sin que el Estado intervenga. La primera usa un modelo de intervención del Estado.",
+    "tip": "En las preguntas de modelos, identifica qué idea de fondo (mercado o Estado) sostiene cada propuesta.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-036",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Evalúa usos sociales de las ciencias sociales.",
+    "difficulty": 2,
+    "enunciado": "Un departamento quiere decidir en qué veredas construir puestos de salud. Una funcionaria propone que lo decida el ministerio en Bogotá; otra, que lo decidan los municipios con sus comunidades. ¿Qué argumento apoya mejor la segunda propuesta?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que los municipios conocen mejor las necesidades de su territorio."
+      },
+      {
+        "id": "b",
+        "text": "Que así el ministerio en Bogotá deja de tener funciones en el país.",
+        "trampa": "extremo",
+        "porQueNo": "Descentralizar reparte funciones; no elimina al Gobierno nacional."
+      },
+      {
+        "id": "c",
+        "text": "Que las decisiones centrales siempre son más justas para todas las regiones.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Ese argumento apoya la primera propuesta, no la segunda."
+      },
+      {
+        "id": "d",
+        "text": "Que la Constitución prohíbe al Gobierno nacional invertir en salud.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "La Constitución no prohíbe eso; la salud es un servicio a cargo del Estado."
+      }
+    ],
+    "answer": "a",
+    "explanation": "La descentralización se defiende porque las autoridades cercanas conocen mejor lo que necesita su territorio y la comunidad puede participar. La Constitución de 1991 organiza a Colombia como república unitaria y descentralizada.",
+    "tip": "Asocia cada propuesta con un modelo: centralismo (decide el nivel nacional) o descentralización (deciden las regiones).",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-037",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende modelos conceptuales, sus características y contextos de aplicación.",
+    "difficulty": 2,
+    "enunciado": "Un municipio pagó por completo un polideportivo, pero tres años después la obra sigue a medias. ¿Qué entidad vigila que el dinero público se haya usado bien en este caso?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La Registraduría Nacional del Estado Civil.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La Registraduría organiza elecciones e identifica a las personas."
+      },
+      {
+        "id": "b",
+        "text": "La Defensoría del Pueblo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Defensoría promueve y defiende los derechos humanos; no revisa el gasto público."
+      },
+      {
+        "id": "c",
+        "text": "La Contraloría."
+      },
+      {
+        "id": "d",
+        "text": "La Corte Constitucional.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Corte guarda la Constitución; no vigila contratos de obra."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La Contraloría General de la República (y las contralorías territoriales) ejerce el control fiscal: vigila cómo se manejan los bienes y el dinero públicos (artículo 267 de la Constitución).",
+    "tip": "Contraloría = cuentas (dinero público). Procuraduría = conducta de los servidores públicos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-038",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento social",
+    "afirmacion": "Comprende modelos conceptuales, sus características y contextos de aplicación.",
+    "difficulty": 2,
+    "enunciado": "Un funcionario de la alcaldía trata mal a los ciudadanos y se niega a cumplir sus funciones. ¿Qué entidad puede investigarlo y sancionarlo disciplinariamente?",
+    "options": [
+      {
+        "id": "a",
+        "text": "La Contraloría, porque vigila a todos los servidores públicos.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Contraloría vigila el dinero público, no la conducta de los funcionarios."
+      },
+      {
+        "id": "b",
+        "text": "La Procuraduría."
+      },
+      {
+        "id": "c",
+        "text": "La Defensoría del Pueblo, que sanciona a los funcionarios.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Defensoría acompaña y orienta sobre derechos, pero no sanciona."
+      },
+      {
+        "id": "d",
+        "text": "El personero estudiantil del colegio del municipio.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El personero estudiantil actúa en el colegio, no frente a la alcaldía."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La Procuraduría General de la Nación vigila la conducta de quienes desempeñan funciones públicas y puede adelantar investigaciones y sancionarlos disciplinariamente (artículo 277 de la Constitución). En el municipio, la personería también ejerce esa vigilancia.",
+    "tip": "Si el problema es cómo se comporta un funcionario, piensa en la Procuraduría.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-039",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Comprende que los problemas sociales y sus soluciones involucran distintas dimensiones y reconoce relaciones entre ellas.",
+    "difficulty": 3,
+    "enunciado": "Un estudio sobre la minería ilegal en un río del Chocó encontró que contamina el agua con mercurio, desplaza a familias de pescadores y deja ganancias que no pagan impuestos. ¿Cuál de las siguientes afirmaciones **NO** describe una dimensión del problema mencionada en el estudio?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hay una dimensión ambiental: el mercurio contamina el agua del río.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Esta sí está en el estudio; la pregunta pide la que NO está."
+      },
+      {
+        "id": "b",
+        "text": "Hay una dimensión social: familias de pescadores tienen que irse.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Esta sí está en el estudio; la pregunta pide la que NO está."
+      },
+      {
+        "id": "c",
+        "text": "Hay una dimensión cultural: se pierden las fiestas patronales del pueblo."
+      },
+      {
+        "id": "d",
+        "text": "Hay una dimensión económica: las ganancias no pagan impuestos.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Esta sí está en el estudio; la pregunta pide la que NO está."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El estudio menciona efectos ambientales (mercurio), sociales (desplazamiento) y económicos (ganancias sin impuestos). No dice nada sobre fiestas patronales: esa dimensión cultural no aparece en el texto.",
+    "tip": "En las preguntas con NO, marca mentalmente cuáles opciones sí se pueden afirmar; la que sobra es la respuesta.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-040",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Reconoce y compara perspectivas de actores y grupos sociales frente a una problemática.",
+    "difficulty": 2,
+    "enunciado": "En una vereda, una empresa embotelladora quiere sacar agua de un nacimiento. La empresa dice que generará 40 empleos; el acueducto comunitario teme que en verano falte agua para las casas. ¿Cuál propuesta tiene en cuenta las dos perspectivas?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Permitir la extracción sin límites, porque el empleo es lo más importante.",
+        "trampa": "extremo",
+        "porQueNo": "Solo atiende a la empresa y deja de lado el agua de las casas."
+      },
+      {
+        "id": "b",
+        "text": "Fijar un límite de extracción que garantice primero el agua de las casas."
+      },
+      {
+        "id": "c",
+        "text": "Prohibir para siempre cualquier empresa en el municipio para proteger el agua.",
+        "trampa": "extremo",
+        "porQueNo": "Solo atiende al acueducto y deja de lado los empleos."
+      },
+      {
+        "id": "d",
+        "text": "Hacer una consulta solo entre los trabajadores de la empresa embotelladora.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Consultar es bueno, pero solo a un grupo deja por fuera a la comunidad del acueducto."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Un límite que asegure primero el consumo de las casas protege lo que preocupa al acueducto y permite que la empresa opere y genere empleo. Las demás opciones favorecen a un solo actor.",
+    "tip": "Cuando piden una solución, busca la que responda a lo que le preocupa a cada actor.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-041",
+    "area": "sociales-ciudadanas",
+    "competencia": "Interpretación y análisis de perspectivas",
+    "afirmacion": "Reconoce y compara perspectivas de actores y grupos sociales frente a una problemática.",
+    "difficulty": 3,
+    "enunciado": "Una empresa quiere construir una antena en un cerro. Para la comunidad indígena del lugar, el cerro es un sitio sagrado donde viven sus ancestros; para la empresa es el punto más alto, ideal para la señal. ¿Qué explica mejor la diferencia entre las dos posiciones?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que la comunidad no conoce las ventajas de tener buena señal de celular.",
+        "trampa": "opinion",
+        "porQueNo": "Supone ignorancia en la comunidad; la diferencia viene de cómo cada uno entiende el territorio."
+      },
+      {
+        "id": "b",
+        "text": "Que cada actor da un significado distinto al mismo territorio."
+      },
+      {
+        "id": "c",
+        "text": "Que la empresa quiere dañar a la comunidad indígena a propósito.",
+        "trampa": "opinion",
+        "porQueNo": "Atribuye una intención que el caso no muestra: la empresa busca la mejor señal."
+      },
+      {
+        "id": "d",
+        "text": "Que los dos quieren lo mismo, pero no se han puesto de acuerdo en el precio.",
+        "trampa": "lectura-literal",
+        "porQueNo": "No es un desacuerdo de precio: para uno el cerro es sagrado y para el otro es un recurso técnico."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Para la comunidad, el cerro tiene un valor espiritual y cultural (su cosmovisión); para la empresa, es un lugar con ventajas técnicas. La diferencia surge de esas formas distintas de ver el territorio.",
+    "tip": "Las posiciones dependen de la cosmovisión, la ideología o el rol de cada actor.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "soc-042",
+    "area": "sociales-ciudadanas",
+    "competencia": "Pensamiento reflexivo y sistémico",
+    "afirmacion": "Evalúa decisiones, acciones u omisiones en relación con sus efectos sobre distintos actores y dimensiones.",
+    "difficulty": 2,
+    "enunciado": "Una ciudad amplía el pico y placa a todo el día. ¿Cuál de los siguientes efectos **NO** se relaciona directamente con esa medida?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que más personas usen bicicleta o transporte público.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es un efecto esperado de la medida; la pregunta pide el que NO."
+      },
+      {
+        "id": "b",
+        "text": "Que algunos conductores de domicilios ganen menos esos días.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es un efecto económico posible de la medida; la pregunta pide el que NO."
+      },
+      {
+        "id": "c",
+        "text": "Que disminuyan las emisiones de los carros en las calles.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Es un efecto ambiental esperado; la pregunta pide el que NO."
+      },
+      {
+        "id": "d",
+        "text": "Que aumente el número de estudiantes que se gradúan."
+      }
+    ],
+    "answer": "d",
+    "explanation": "Restringir los carros afecta la movilidad (más bicicleta y bus), la economía (ingresos de quien trabaja con su carro) y el ambiente (menos emisiones). La graduación escolar no depende de esa medida.",
+    "tip": "Revisa cada efecto con la pregunta: ¿esto puede pasar por la medida? El que no tiene relación es la respuesta.",
+    "source": "original",
+    "reviewed": false
   }
 ]

@@ -1,3 +1,4 @@
+import RichText from "@/components/RichText";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -1039,7 +1040,7 @@ function ReviewItem({
             )}
           </span>
           <span className="block text-xs text-muted-foreground line-clamp-2">
-            {question.enunciado}
+            <RichText text={question.enunciado} inline />
           </span>
         </span>
         <span className="shrink-0 flex items-center gap-1 text-xs">

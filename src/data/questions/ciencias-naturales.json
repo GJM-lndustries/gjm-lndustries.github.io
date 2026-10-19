@@ -208,7 +208,7 @@
       },
       {
         "id": "c",
-        "text": "La cantidad de agua de cada recipiente.",
+        "text": "El agua de cada recipiente.",
         "trampa": "confunde-conceptos",
         "porQueNo": "El agua se mantuvo igual: es una variable controlada."
       },
@@ -547,7 +547,7 @@
       },
       {
         "id": "b",
-        "text": "Las dos son ácidas, porque su pH es diferente de 0.",
+        "text": "Las dos son ácidas, porque su pH no es 0.",
         "trampa": "confunde-conceptos",
         "porQueNo": "Ser distinto de 0 no hace ácida a una sustancia; el límite es 7."
       },
@@ -557,7 +557,7 @@
       },
       {
         "id": "d",
-        "text": "Las dos son neutras, porque su pH es menor que 14.",
+        "text": "Las dos son neutras: su pH es menor de 14.",
         "trampa": "confunde-conceptos",
         "porQueNo": "Neutro es pH 7; no basta con ser menor que 14."
       }
@@ -1175,6 +1175,388 @@
     "answer": "c",
     "explanation": "El mercurio que llega al agua puede transformarse en metilmercurio, que los organismos acumulan. Al pasar de presa a depredador, su concentración aumenta (biomagnificación). Los peces grandes y las personas que los comen reciben las dosis más altas, que dañan el sistema nervioso.",
     "tip": "Bioacumulación: una sustancia se acumula en un organismo. Biomagnificación: su concentración aumenta en cada nivel de la cadena.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-029",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Físico",
+    "enunciado": "En la sala de una casa hay tres bombillos conectados en serie. Si uno de ellos se funde, ¿qué pasa con los otros dos?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Se apagan, porque se interrumpe el único camino de la corriente."
+      },
+      {
+        "id": "b",
+        "text": "Siguen encendidos igual, porque cada bombillo tiene su propio camino.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso pasa en un circuito en paralelo, no en serie."
+      },
+      {
+        "id": "c",
+        "text": "Brillan más, porque ahora la corriente se reparte entre menos bombillos.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "En serie no hay reparto: si se abre el circuito, no pasa corriente."
+      },
+      {
+        "id": "d",
+        "text": "Solo se apaga el que está más lejos del interruptor de la pared.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La posición no importa: en serie todos dependen del mismo camino."
+      }
+    ],
+    "answer": "a",
+    "explanation": "En un circuito en serie la corriente pasa por un solo camino. Si un bombillo se funde, el circuito queda abierto y ninguno recibe corriente. Por eso las casas usan circuitos en paralelo.",
+    "tip": "Serie = un solo camino. Paralelo = varios caminos independientes.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-030",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 2,
+    "componente": "Físico",
+    "enunciado": "Dos resistencias de 4 Ω y 6 Ω se conectan en serie a una batería de 10 V. ¿Qué corriente circula por el circuito?",
+    "options": [
+      {
+        "id": "a",
+        "text": "2,5 A",
+        "trampa": "error-calculo",
+        "porQueNo": "Usa solo la resistencia de 4 Ω (10 ÷ 4)."
+      },
+      {
+        "id": "b",
+        "text": "1 A"
+      },
+      {
+        "id": "c",
+        "text": "1,7 A",
+        "trampa": "error-calculo",
+        "porQueNo": "Usa solo la resistencia de 6 Ω (10 ÷ 6)."
+      },
+      {
+        "id": "d",
+        "text": "100 A",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica voltaje por resistencia en lugar de dividir."
+      }
+    ],
+    "answer": "b",
+    "explanation": "En serie las resistencias se suman: 4 Ω + 6 Ω = 10 Ω. Por la ley de Ohm, I = V ÷ R = 10 V ÷ 10 Ω = 1 A.",
+    "tip": "En serie, primero suma las resistencias y luego usa I = V ÷ R.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-031",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 2,
+    "componente": "Físico",
+    "enunciado": "El sonido viaja en el aire a unos 340 m/s. Si una cuerda de guitarra produce un sonido de 170 Hz, ¿cuál es la longitud de onda de ese sonido en el aire?",
+    "options": [
+      {
+        "id": "a",
+        "text": "0,5 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Divide la frecuencia entre la velocidad, al revés."
+      },
+      {
+        "id": "b",
+        "text": "2 m"
+      },
+      {
+        "id": "c",
+        "text": "510 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma la velocidad y la frecuencia."
+      },
+      {
+        "id": "d",
+        "text": "57.800 m",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica la velocidad por la frecuencia."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La velocidad de una onda es v = λ × f, así que λ = v ÷ f = 340 m/s ÷ 170 Hz = 2 m.",
+    "tip": "Recuerda v = λ × f. Despeja lo que te piden.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-032",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 1,
+    "componente": "Físico",
+    "enunciado": "En una tormenta, primero se ve el relámpago y unos segundos después se oye el trueno, aunque los dos se producen al mismo tiempo. ¿Por qué?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Porque el trueno se produce después, cuando el rayo toca el suelo.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El trueno y el relámpago se producen en el mismo instante."
+      },
+      {
+        "id": "b",
+        "text": "Porque la luz viaja mucho más rápido que el sonido."
+      },
+      {
+        "id": "c",
+        "text": "Porque el sonido no puede atravesar las nubes y debe rodearlas.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El sonido sí viaja a través del aire de las nubes; solo es más lento."
+      },
+      {
+        "id": "d",
+        "text": "Porque los ojos reaccionan más rápido que los oídos a cualquier estímulo.",
+        "trampa": "causa-efecto",
+        "porQueNo": "La diferencia de varios segundos se debe a las ondas, no al cuerpo."
+      }
+    ],
+    "answer": "b",
+    "explanation": "La luz viaja a unos 300.000 km/s y el sonido en el aire a unos 340 m/s. La luz llega casi al instante; el sonido tarda unos 3 segundos por cada kilómetro de distancia.",
+    "tip": "Contando los segundos entre el relámpago y el trueno puedes estimar la distancia de la tormenta.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-033",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 3,
+    "componente": "Químico",
+    "enunciado": "El hidrógeno reacciona con el oxígeno según la ecuación 2 H₂ + O₂ produce 2 H₂O. Si reaccionan por completo 4 g de hidrógeno con suficiente oxígeno, ¿cuántos gramos de agua se forman? (Masas atómicas: H = 1, O = 16).",
+    "options": [
+      {
+        "id": "a",
+        "text": "18 g",
+        "trampa": "error-calculo",
+        "porQueNo": "Calcula un solo mol de agua; 4 g de H₂ son 2 moles y forman 2 moles de agua."
+      },
+      {
+        "id": "b",
+        "text": "36 g"
+      },
+      {
+        "id": "c",
+        "text": "4 g",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La masa del agua incluye también el oxígeno que reaccionó."
+      },
+      {
+        "id": "d",
+        "text": "72 g",
+        "trampa": "error-calculo",
+        "porQueNo": "Cuenta el doble de moles de agua."
+      }
+    ],
+    "answer": "b",
+    "explanation": "Una molécula de H₂ tiene masa 2, así que 4 g son 2 moles de H₂. Según la ecuación, 2 moles de H₂ forman 2 moles de H₂O. Cada mol de agua tiene masa 2 + 16 = 18 g, así que se forman 2 × 18 = 36 g.",
+    "tip": "Pasa los gramos a moles, usa la proporción de la ecuación y vuelve a gramos.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-034",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Químico",
+    "enunciado": "En un frasco cerrado se mezclan bicarbonato y vinagre. Sale gas, pero el frasco sigue cerrado. Si antes de la reacción el frasco con todo pesaba 250 g, ¿cuánto pesará después?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Menos de 250 g, porque se formó un gas y los gases no pesan.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Los gases sí tienen masa; como el frasco está cerrado, no se escapa."
+      },
+      {
+        "id": "b",
+        "text": "Más de 250 g, porque la reacción produjo una sustancia nueva.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Se forman sustancias nuevas, pero con los mismos átomos: la masa no aumenta."
+      },
+      {
+        "id": "c",
+        "text": "250 g, porque en un sistema cerrado la masa se conserva."
+      },
+      {
+        "id": "d",
+        "text": "Depende de cuánto vinagre se haya echado al principio de la mezcla.",
+        "trampa": "no-responde",
+        "porQueNo": "Sea cual sea la cantidad, en un sistema cerrado la masa total no cambia."
+      }
+    ],
+    "answer": "c",
+    "explanation": "Según la ley de conservación de la masa, en una reacción química los átomos se reorganizan pero no se crean ni se destruyen. Como el gas no puede salir, la masa total sigue siendo 250 g.",
+    "tip": "Si el recipiente está cerrado, la masa total antes y después de una reacción es la misma.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-035",
+    "area": "ciencias-naturales",
+    "competencia": "Explicación de fenómenos",
+    "afirmacion": "Explica cómo ocurren algunos fenómenos de la naturaleza basándose en observaciones, patrones y conceptos científicos.",
+    "difficulty": 2,
+    "componente": "Químico",
+    "enunciado": "El agua pura casi no conduce la electricidad, pero el agua con sal de cocina disuelta sí la conduce. ¿Qué explica esta diferencia?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que al disolverse la sal se separa en iones con carga que se mueven."
+      },
+      {
+        "id": "b",
+        "text": "Que la sal tiene enlaces covalentes que comparten electrones con el agua.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La sal de cocina (NaCl) tiene enlace iónico, no covalente."
+      },
+      {
+        "id": "c",
+        "text": "Que la sal calienta el agua y el agua caliente conduce mejor la corriente.",
+        "trampa": "causa-efecto",
+        "porQueNo": "Disolver sal no calienta el agua de forma importante; lo que conduce son los iones."
+      },
+      {
+        "id": "d",
+        "text": "Que los átomos de sodio de la sal son metales sólidos que llevan la corriente.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El sodio es un metal, pero en la sal está como ion Na⁺, no como metal sólido."
+      }
+    ],
+    "answer": "a",
+    "explanation": "La sal de cocina (NaCl) se forma por enlace iónico. En el agua se separa en iones Na⁺ y Cl⁻, que pueden moverse y transportar la carga eléctrica.",
+    "tip": "Los compuestos iónicos disueltos conducen la electricidad porque liberan iones.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-036",
+    "area": "ciencias-naturales",
+    "competencia": "Uso comprensivo del conocimiento científico",
+    "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
+    "difficulty": 2,
+    "componente": "Químico",
+    "enunciado": "¿Cuál de las siguientes sustancias **NO** está formada por enlaces covalentes?",
+    "options": [
+      {
+        "id": "a",
+        "text": "El agua (H₂O)",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Hidrógeno y oxígeno son no metales y comparten electrones: es covalente."
+      },
+      {
+        "id": "b",
+        "text": "El metano (CH₄)",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Carbono e hidrógeno comparten electrones: es covalente."
+      },
+      {
+        "id": "c",
+        "text": "El cloruro de sodio (NaCl)"
+      },
+      {
+        "id": "d",
+        "text": "El dióxido de carbono (CO₂)",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Carbono y oxígeno comparten electrones: es covalente."
+      }
+    ],
+    "answer": "c",
+    "explanation": "El enlace covalente se da entre no metales que comparten electrones (H₂O, CH₄, CO₂). En el NaCl un metal (sodio) cede un electrón a un no metal (cloro): es un enlace iónico.",
+    "tip": "Metal + no metal suele ser iónico; no metal + no metal suele ser covalente.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-037",
+    "area": "ciencias-naturales",
+    "competencia": "Indagación",
+    "afirmacion": "Deriva conclusiones a partir de los resultados de un experimento o de un conjunto de datos.",
+    "difficulty": 2,
+    "componente": "Biológico",
+    "stimulusId": "cn-st-fertilizante",
+    "enunciado": "¿Qué conclusión apoyan los datos del experimento?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Con más abono, siempre crecen más las plantas.",
+        "trampa": "extremo",
+        "porQueNo": "Con 20 g las plantas crecieron menos que con 10 g: el «siempre» es falso."
+      },
+      {
+        "id": "b",
+        "text": "El abono no influye en el crecimiento del fríjol.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Las alturas cambian mucho entre grupos: sí influye."
+      },
+      {
+        "id": "c",
+        "text": "Hasta 10 g el abono ayudó, pero con 20 g el crecimiento bajó."
+      },
+      {
+        "id": "d",
+        "text": "Con 20 g crecieron menos porque les faltó agua.",
+        "trampa": "causa-efecto",
+        "porQueNo": "El agua fue igual para todos los grupos; esa causa no sale de los datos."
+      }
+    ],
+    "answer": "c",
+    "explanation": "La altura sube de 12 a 18 y a 23 cm entre 0 y 10 g, pero baja a 14 cm con 20 g. El agua, la luz y el suelo fueron iguales, así que la diferencia se debe al abono.",
+    "tip": "Lee toda la tabla antes de concluir: una tendencia puede cambiar al final.",
+    "source": "original",
+    "reviewed": false
+  },
+  {
+    "id": "cn-038",
+    "area": "ciencias-naturales",
+    "competencia": "Indagación",
+    "afirmacion": "Deriva conclusiones a partir de los resultados de un experimento o de un conjunto de datos.",
+    "difficulty": 3,
+    "componente": "Físico",
+    "stimulusId": "cn-st-calentamiento",
+    "enunciado": "Entre los minutos 8 y 12 la estufa siguió entregando calor, pero la temperatura no subió. ¿Qué explica mejor este resultado?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Que la estufa dejó de calentar porque el agua ya estaba caliente.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El enunciado dice que la estufa entrega siempre el mismo calor."
+      },
+      {
+        "id": "b",
+        "text": "Que el calor se usó para convertir el agua líquida en vapor."
+      },
+      {
+        "id": "c",
+        "text": "Que el termómetro se dañó al llegar a 100 °C y dejó de medir.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Nada indica que el termómetro fallara; el resultado tiene una explicación física."
+      },
+      {
+        "id": "d",
+        "text": "Que el agua perdió todo su calor por la tapa de la olla.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "La olla estaba abierta, y si perdiera todo su calor se enfriaría."
+      }
+    ],
+    "answer": "b",
+    "explanation": "A nivel del mar el agua hierve a 100 °C. Mientras hierve, la energía que recibe se usa para el cambio de estado (de líquido a gas) y no para subir la temperatura.",
+    "tip": "Durante un cambio de estado la temperatura se mantiene constante aunque se siga dando calor.",
     "source": "original",
     "reviewed": false
   }

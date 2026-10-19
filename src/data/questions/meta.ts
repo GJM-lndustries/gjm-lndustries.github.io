@@ -26,11 +26,11 @@ export const DIFFICULTY_LABEL: Record<1 | 2 | 3, string> = {
  * bank.test.ts comprueba que coincida con los JSON (actualízalo al agregar preguntas).
  */
 export const BANK_COUNTS: Record<AreaId, number> = {
-  matematicas: 39,
-  "lectura-critica": 30,
-  "ciencias-naturales": 31,
-  "sociales-ciudadanas": 33,
-  ingles: 30,
+  matematicas: 48,
+  "lectura-critica": 37,
+  "ciencias-naturales": 41,
+  "sociales-ciudadanas": 45,
+  ingles: 33,
 };
 
 export const BANK_TOTAL = Object.values(BANK_COUNTS).reduce((s, n) => s + n, 0);

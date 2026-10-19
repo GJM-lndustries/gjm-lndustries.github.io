@@ -82,7 +82,7 @@ export default function QuestionView({
 
       <div className="bg-primary/5 rounded-xl p-4 border border-primary/20">
         <p className="text-sm font-semibold text-foreground leading-relaxed">
-          {question.enunciado}
+          <RichText text={question.enunciado} inline />
         </p>
       </div>
 
