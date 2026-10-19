@@ -15,7 +15,9 @@ export const SAMPLE_QUESTION: Question = {
   "options": [
     {
       "id": "a",
-      "text": "1.000 + (1.000 × número de acompañamientos)"
+      "text": "1.000 + (1.000 × número de acompañamientos)",
+      "trampa": "confunde-conceptos",
+      "porQueNo": "Usa $1.000 como precio base; el vaso cuesta $3.000."
     },
     {
       "id": "b",
@@ -23,11 +25,15 @@ export const SAMPLE_QUESTION: Question = {
     },
     {
       "id": "c",
-      "text": "1.000 + (3.000 × número de acompañamientos)"
+      "text": "1.000 + (3.000 × número de acompañamientos)",
+      "trampa": "confunde-conceptos",
+      "porQueNo": "Intercambia los valores: el vaso es $3.000 y cada acompañamiento $1.000."
     },
     {
       "id": "d",
-      "text": "3.000 + (3.000 × número de acompañamientos)"
+      "text": "3.000 + (3.000 × número de acompañamientos)",
+      "trampa": "confunde-conceptos",
+      "porQueNo": "Cobra $3.000 por acompañamiento; cada uno vale $1.000."
     }
   ],
   "answer": "b",

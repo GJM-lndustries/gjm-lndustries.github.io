@@ -10,19 +10,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Introduce una causa de lo anterior"
+        "text": "Introduce la causa de lo que se acaba de decir",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Sin embargo» no explica por qué pasa algo; eso lo hacen «porque» o «ya que»."
       },
       {
         "id": "b",
-        "text": "Introduce una restricción o contraste con lo anterior"
+        "text": "Introduce un contraste con lo anterior"
       },
       {
         "id": "c",
-        "text": "Introduce un ejemplo de lo anterior"
+        "text": "Introduce un ejemplo que confirma lo anterior",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Para ejemplificar se usan «por ejemplo» o «como»; aquí la idea siguiente limita lo anterior."
       },
       {
         "id": "d",
-        "text": "Introduce una conclusión de lo anterior"
+        "text": "Introduce la conclusión que se deriva de lo anterior",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las conclusiones se marcan con «por lo tanto» o «en conclusión», no con «sin embargo»."
       }
     ],
     "answer": "b",
@@ -42,19 +48,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque él se fue a trabajar al Tolima y ella se quedó en la finca."
+        "text": "Porque él se fue a trabajar al Tolima y ella se quedó cuidando la finca.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Invierte los papeles: quien se fue fue ella, a estudiar a Ibagué; él se quedó con la finca."
       },
       {
         "id": "b",
-        "text": "Porque la familia de ella no aprobaba la relación."
+        "text": "Porque la familia de ella no aprobaba la relación con un caficultor.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El fragmento no menciona ninguna oposición de la familia."
       },
       {
         "id": "c",
-        "text": "Porque el bus en el que viajaban se varó en el alto de La Línea."
+        "text": "Porque el bus en el que viajaban se varó en el alto de La Línea.",
+        "trampa": "lectura-literal",
+        "porQueNo": "El alto de La Línea es donde se despidieron, pero ningún bus se varó."
       },
       {
         "id": "d",
-        "text": "Porque ella se fue a estudiar a Ibagué y él se quedó con la finca en Calarcá."
+        "text": "Porque ella se fue a estudiar a Ibagué y él se quedó en Calarcá."
       }
     ],
     "answer": "d",
@@ -74,19 +86,25 @@
     "options": [
       {
         "id": "a",
-        "text": "una advertencia del conductor a los pasajeros del bus."
+        "text": "una advertencia que el conductor les hace a los pasajeros del bus.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La frase la dice el abuelo, no el conductor."
       },
       {
         "id": "b",
-        "text": "una crítica del narrador a la actitud de su abuelo."
+        "text": "una crítica del narrador a la manera de despedirse de su abuelo.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La dice el abuelo, y no critica a nadie: saca una enseñanza."
       },
       {
         "id": "c",
-        "text": "una idea general que el abuelo saca de su propia experiencia."
+        "text": "una idea general que el abuelo saca de su experiencia."
       },
       {
         "id": "d",
-        "text": "una cita de un libro que el abuelo había leído."
+        "text": "una cita de un libro que el abuelo había leído.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Nada indica que venga de un libro; el abuelo la saca de lo que vivió."
       }
     ],
     "answer": "c",
@@ -106,19 +124,25 @@
     "options": [
       {
         "id": "a",
-        "text": "quiere comprobar si desde allí se ve realmente el Tolima."
+        "text": "quiere comprobar si desde ese mirador se ve realmente el Tolima.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Toma «ver» en sentido literal; con la niebla nadie ve nada: lo que el abuelo «ve» es un recuerdo."
       },
       {
         "id": "b",
-        "text": "intenta comprender el significado que ese lugar tiene para su abuelo."
+        "text": "intenta comprender lo que ese lugar significa para su abuelo."
       },
       {
         "id": "c",
-        "text": "está preocupado porque la niebla hace peligrosa la carretera."
+        "text": "está preocupado porque la niebla hace más peligrosa la carretera.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no habla de peligro en la vía."
       },
       {
         "id": "d",
-        "text": "busca un lugar donde el celular tenga señal."
+        "text": "busca un lugar del mirador donde el celular tenga señal.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "No hay nada sobre celulares en el fragmento."
       }
     ],
     "answer": "b",
@@ -138,19 +162,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Sugiere, sin explicarlo, que el abuelo guarda un objeto ligado a ese recuerdo y deja parte de la historia sin contar."
+        "text": "Sugiere un recuerdo que el abuelo guarda y no termina de contar."
       },
       {
         "id": "b",
-        "text": "Demuestra que el abuelo tenía dificultades económicas."
+        "text": "Demuestra que el abuelo pasaba por dificultades económicas en ese viaje.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Nada en el texto habla de su situación económica; la moneda tiene valor de recuerdo."
       },
       {
         "id": "c",
-        "text": "Explica por qué el conductor pitó dos veces."
+        "text": "Explica por qué el conductor del bus pitó dos veces al arrancar.",
+        "trampa": "causa-efecto",
+        "porQueNo": "Une dos detalles del relato que no tienen relación de causa."
       },
       {
         "id": "d",
-        "text": "Indica que el abuelo pagaba el pasaje con monedas antiguas."
+        "text": "Indica que el abuelo todavía paga sus pasajes con monedas antiguas.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Lee el objeto solo como dinero y no como el recuerdo que representa."
       }
     ],
     "answer": "a",
@@ -170,19 +200,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Prohibir por completo el celular en el colegio."
+        "text": "Prohibir por completo el celular en todas las clases del colegio.",
+        "trampa": "extremo",
+        "porQueNo": "El autor dice que «prohibir no es lo mismo que educar»: no quiere prohibición total."
       },
       {
         "id": "b",
-        "text": "Guardar los celulares durante las clases y usarlos en espacios dedicados a aprender."
+        "text": "Guardarlos en clase y usarlos en espacios para aprender."
       },
       {
         "id": "c",
-        "text": "Permitir el celular libremente en todas las clases."
+        "text": "Permitir el celular libremente en todas las clases del colegio.",
+        "trampa": "extremo",
+        "porQueNo": "Propone guardarlos durante las clases, no el uso libre."
       },
       {
         "id": "d",
-        "text": "Dejar que cada estudiante decida cuándo usar el celular."
+        "text": "Dejar que cada estudiante decida cuándo usa el celular en clase.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El autor quiere enseñar autocontrol, pero con reglas y acompañamiento, no a criterio de cada uno."
       }
     ],
     "answer": "b",
@@ -202,19 +238,25 @@
     "options": [
       {
         "id": "a",
-        "text": "introducir la objeción del autor al argumento de quienes defienden la prohibición."
+        "text": "plantear la objeción del autor a quienes defienden la prohibición."
       },
       {
         "id": "b",
-        "text": "resumir la conclusión de quienes defienden la prohibición."
+        "text": "resumir la conclusión a la que llegan quienes defienden la prohibición.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Sin embargo» marca un giro en contra, no un resumen."
       },
       {
         "id": "c",
-        "text": "dar un ejemplo de cómo se aplica la prohibición."
+        "text": "dar un ejemplo concreto de cómo se aplica la prohibición en el aula.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "No es un ejemplo: es el paso a la postura del autor."
       },
       {
         "id": "d",
-        "text": "presentar un dato que confirma lo dicho antes."
+        "text": "presentar un dato que confirma el argumento que se expuso antes.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "No hay dato y no confirma: introduce un contraste."
       }
     ],
     "answer": "a",
@@ -234,19 +276,25 @@
     "options": [
       {
         "id": "a",
-        "text": "abandonar su propuesta y aceptar la prohibición."
+        "text": "abandonar su propuesta y aceptar que es mejor la prohibición total.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Reconoce la dificultad, pero enseguida dice que vale la pena: no abandona su idea."
       },
       {
         "id": "b",
-        "text": "demostrar con datos que su propuesta es más eficaz."
+        "text": "demostrar con datos que su propuesta es más eficaz que la prohibición.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "En esa parte no hay datos; es una concesión."
       },
       {
         "id": "c",
-        "text": "criticar a los docentes por no querer esforzarse."
+        "text": "criticar a los docentes por no querer esforzarse con sus estudiantes.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no critica a los docentes."
       },
       {
         "id": "d",
-        "text": "admitir una debilidad de su propuesta para luego defender que vale la pena."
+        "text": "admitir una debilidad de su propuesta y luego defenderla."
       }
     ],
     "answer": "d",
@@ -266,19 +314,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Muchos colegios del país ya han discutido si deben prohibir el celular."
+        "text": "Muchos colegios del país ya han discutido si deben prohibir el celular en clase.",
+        "trampa": "no-responde",
+        "porQueNo": "Que el tema se discuta no dice nada sobre si la propuesta funciona."
       },
       {
         "id": "b",
-        "text": "En la universidad los estudiantes también usan el celular para estudiar."
+        "text": "En la universidad los estudiantes también usan el celular para estudiar y consultar.",
+        "trampa": "no-responde",
+        "porQueNo": "No toca la idea central del autor; si acaso, la apoya."
       },
       {
         "id": "c",
-        "text": "Los estudiantes que usan el celular con fines académicos en clase se distraen igual que antes y su autocontrol no mejora con el tiempo."
+        "text": "Usar el celular en clase con fines académicos no mejora el autocontrol."
       },
       {
         "id": "d",
-        "text": "Algunas notificaciones que reciben los estudiantes son mensajes de sus padres."
+        "text": "Algunas notificaciones que reciben los estudiantes son mensajes de sus padres.",
+        "trampa": "no-responde",
+        "porQueNo": "No afecta la razón principal: que el uso guiado enseña a administrar el celular."
       }
     ],
     "answer": "c",
@@ -298,19 +352,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque allí llueve más que en cualquier otro lugar del país."
+        "text": "Porque allí llueve más que en cualquier otro lugar del país.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El texto no compara cuánto llueve; habla de cómo el páramo retiene el agua."
       },
       {
         "id": "b",
-        "text": "Porque sus nieves permanentes se derriten durante las temporadas secas."
+        "text": "Porque sus nieves permanentes se derriten durante las temporadas secas del año.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El texto aclara que los páramos están por debajo de las nieves."
       },
       {
         "id": "c",
-        "text": "Porque los frailejones producen agua a partir de la radiación solar."
+        "text": "Porque los frailejones fabrican agua nueva a partir de la radiación solar.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Los frailejones captan la humedad de la neblina; no crean agua de la luz."
       },
       {
         "id": "d",
-        "text": "Porque retienen el agua de la lluvia y de la neblina y la liberan poco a poco a los ríos."
+        "text": "Porque retienen el agua de la lluvia y la neblina y la liberan poco a poco."
       }
     ],
     "answer": "d",
@@ -330,19 +390,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Presentar las amenazas de los páramos y concluir por qué protegerlos afecta a la población."
+        "text": "Presentar las amenazas y concluir por qué protegerlos importa a todos."
       },
       {
         "id": "b",
-        "text": "Describir las características físicas de los frailejones."
+        "text": "Describir las características físicas de los frailejones y su papel en el agua.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Eso lo hace el segundo párrafo, no el último."
       },
       {
         "id": "c",
-        "text": "Narrar cómo se formaron los páramos hace millones de años."
+        "text": "Narrar cómo se formaron los páramos hace millones de años en los Andes.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no cuenta el origen de los páramos."
       },
       {
         "id": "d",
-        "text": "Contradecir la idea de que los páramos almacenan agua."
+        "text": "Contradecir la idea, presentada al inicio, de que los páramos almacenan agua.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El último párrafo no contradice: concluye a partir de lo anterior."
       }
     ],
     "answer": "a",
@@ -362,7 +428,9 @@
     "options": [
       {
         "id": "a",
-        "text": "la riqueza económica de una ciudad."
+        "text": "la riqueza económica de una ciudad.",
+        "trampa": "palabra-parecida",
+        "porQueNo": "Es otro significado de «caudal», pero no encaja con un río en temporada seca."
       },
       {
         "id": "b",
@@ -370,11 +438,15 @@
       },
       {
         "id": "c",
-        "text": "la velocidad del viento en la montaña."
+        "text": "la velocidad del viento en la montaña.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "En la frase no se habla del viento."
       },
       {
         "id": "d",
-        "text": "la altura a la que nace un río."
+        "text": "la altura a la que nace un río.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La altura donde nace un río no es lo que «mantiene» en temporadas secas."
       }
     ],
     "answer": "b",
@@ -394,19 +466,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Un turista fotografía frailejones durante una caminata."
+        "text": "Un turista fotografía los frailejones durante una caminata por el páramo.",
+        "trampa": "no-responde",
+        "porQueNo": "Es una actividad en el páramo, pero no muestra un efecto en la vida de la población."
       },
       {
         "id": "b",
-        "text": "Un grupo de científicos clasifica nuevas especies de musgo."
+        "text": "Un grupo de científicos clasifica nuevas especies de musgo del páramo.",
+        "trampa": "no-responde",
+        "porQueNo": "Es un asunto científico y ambiental, justo lo que el texto dice que no es lo único."
       },
       {
         "id": "c",
-        "text": "Un municipio que cuida el páramo donde nace su río evita racionamientos de agua en la temporada seca."
+        "text": "Un municipio cuida su páramo y evita racionamientos de agua."
       },
       {
         "id": "d",
-        "text": "Un estudiante dibuja un páramo para una exposición."
+        "text": "Un estudiante dibuja un páramo con frailejones para una exposición.",
+        "trampa": "no-responde",
+        "porQueNo": "No muestra ninguna consecuencia social de proteger el páramo."
       }
     ],
     "answer": "c",
@@ -426,11 +504,15 @@
     "options": [
       {
         "id": "a",
-        "text": "20 %"
+        "text": "20 %",
+        "trampa": "error-calculo",
+        "porQueNo": "40 ÷ 200 es 20 %, pero 40 son los de libros, no los de internet."
       },
       {
         "id": "b",
-        "text": "25 %"
+        "text": "25 %",
+        "trampa": "error-calculo",
+        "porQueNo": "Es el porcentaje del preicfes presencial (50 de 200)."
       },
       {
         "id": "c",
@@ -438,7 +520,9 @@
       },
       {
         "id": "d",
-        "text": "80 %"
+        "text": "80 %",
+        "trampa": "lectura-literal",
+        "porQueNo": "80 es el número de estudiantes, no el porcentaje."
       }
     ],
     "answer": "c",
@@ -458,19 +542,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Para aclarar que cada estudiante está en un solo grupo y que por eso la suma da 200."
+        "text": "Para aclarar que cada estudiante está en un solo grupo."
       },
       {
         "id": "b",
-        "text": "Para indicar que los datos se tomaron en todo el país."
+        "text": "Para indicar que los datos se tomaron en colegios de todo el país.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La nota no habla de dónde se hizo la encuesta."
       },
       {
         "id": "c",
-        "text": "Para explicar por qué el preicfes presencial es la mejor opción."
+        "text": "Para explicar por qué el preicfes presencial es la mejor opción.",
+        "trampa": "opinion",
+        "porQueNo": "La nota aclara cómo se contó; no juzga cuál opción es mejor."
       },
       {
         "id": "d",
-        "text": "Para mostrar que todos los grupos estudian las mismas horas."
+        "text": "Para mostrar que todos los grupos estudian las mismas horas.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "La tabla muestra horas distintas por grupo."
       }
     ],
     "answer": "a",
@@ -490,19 +580,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Sí, porque el preicfes presencial tiene el mayor promedio de horas semanales."
+        "text": "Sí, porque el preicfes presencial tiene el mayor promedio de horas semanales.",
+        "trampa": "causa-efecto",
+        "porQueNo": "Más horas no prueban mejor puntaje: la tabla no trae resultados."
       },
       {
         "id": "b",
-        "text": "No, porque la tabla muestra horas de preparación, pero no muestra resultados del examen."
+        "text": "No, porque la tabla no muestra resultados del examen."
       },
       {
         "id": "c",
-        "text": "Sí, porque los estudiantes de preicfes presencial son la mayoría."
+        "text": "Sí, porque los estudiantes de preicfes presencial son la mayoría del curso.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El grupo más grande es el de internet (80), no el presencial (50)."
       },
       {
         "id": "d",
-        "text": "No, porque los estudiantes que usan internet estudian más horas."
+        "text": "No, porque los estudiantes que usan internet estudian más horas por semana.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "Llega a «no», pero con un dato falso: internet promedia 4 horas, menos que el presencial."
       }
     ],
     "answer": "b",
@@ -522,19 +618,25 @@
     "options": [
       {
         "id": "a",
-        "text": "La mitad de los estudiantes no se prepara para el examen."
+        "text": "La mitad de los estudiantes encuestados no se prepara para el examen.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "Solo 30 de 200 no se preparan."
       },
       {
         "id": "b",
-        "text": "El grupo de internet es el que más horas estudia por semana."
+        "text": "El grupo de internet es el que más horas estudia por semana.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "Internet promedia 4 horas, menos que los otros grupos que se preparan."
       },
       {
         "id": "c",
-        "text": "El grupo de libros y guías es el más numeroso."
+        "text": "El grupo de libros y guías es el más numeroso de la encuesta.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El más numeroso es el de internet."
       },
       {
         "id": "d",
-        "text": "Uno de cada cuatro estudiantes se prepara principalmente en un preicfes presencial."
+        "text": "Uno de cada cuatro estudiantes va a un preicfes presencial."
       }
     ],
     "answer": "d",
@@ -558,15 +660,21 @@
       },
       {
         "id": "b",
-        "text": "En que la jornada única debe aplicarse de inmediato en todos los colegios."
+        "text": "En que la jornada única debe aplicarse de inmediato en todos los colegios.",
+        "trampa": "extremo",
+        "porQueNo": "El texto B pide garantizar primero la infraestructura: no apoya aplicarla de inmediato."
       },
       {
         "id": "c",
-        "text": "En que los colegios ya tienen la infraestructura necesaria."
+        "text": "En que los colegios públicos ya tienen la infraestructura necesaria.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El texto B dice justo lo contrario."
       },
       {
         "id": "d",
-        "text": "En que el deporte y el arte deberían salir del horario."
+        "text": "En que el deporte y el arte deberían salir del horario escolar.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Ninguno de los dos propone eso."
       }
     ],
     "answer": "a",
@@ -586,19 +694,25 @@
     "options": [
       {
         "id": "a",
-        "text": "El texto A rechaza la jornada única y el B la defiende."
+        "text": "El texto A rechaza la jornada única y el texto B la defiende.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Invierte las posturas, y además el B no la rechaza."
       },
       {
         "id": "b",
-        "text": "El texto A propone extender ya la jornada única; el B pide garantizar primero la infraestructura."
+        "text": "El A propone extenderla ya; el B, garantizar antes la infraestructura."
       },
       {
         "id": "c",
-        "text": "El texto A habla de colegios privados y el B de colegios públicos."
+        "text": "El texto A habla de los colegios privados y el B de los colegios públicos.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Los dos hablan de colegios públicos."
       },
       {
         "id": "d",
-        "text": "El texto B considera que los estudiantes deben pasar menos tiempo en el colegio."
+        "text": "El texto B considera que los estudiantes deben pasar menos tiempo en el colegio.",
+        "trampa": "lectura-literal",
+        "porQueNo": "El B dice que «nadie se opone» a más tiempo de aprendizaje."
       }
     ],
     "answer": "b",
@@ -618,19 +732,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Cuántas horas de deporte tienen los colegios privados."
+        "text": "Cuántas horas de deporte tienen a la semana los colegios privados del país.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El argumento del B trata de la infraestructura de los colegios públicos."
       },
       {
         "id": "b",
-        "text": "Qué opinan los estudiantes sobre el color de los uniformes."
+        "text": "Qué opinan los estudiantes de esos colegios sobre el color de los uniformes.",
+        "trampa": "no-responde",
+        "porQueNo": "No tiene relación con el argumento."
       },
       {
         "id": "c",
-        "text": "Cuántos colegios públicos tienen comedor, salones y docentes suficientes para una jornada más larga."
+        "text": "Cuántos colegios públicos tienen comedor, salones y docentes suficientes."
       },
       {
         "id": "d",
-        "text": "Cuántos años lleva funcionando el colegio del autor."
+        "text": "Cuántos años lleva funcionando el colegio en el que trabaja el autor del texto.",
+        "trampa": "no-responde",
+        "porQueNo": "La antigüedad de un colegio no comprueba si faltan comedores o docentes."
       }
     ],
     "answer": "c",
@@ -650,19 +770,25 @@
     "options": [
       {
         "id": "a",
-        "text": "demostrar que la jornada única ya se aplica en todo el país."
+        "text": "demostrar que la jornada única ya se aplica en todos los colegios del país.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La oración no da información sobre dónde se aplica."
       },
       {
         "id": "b",
-        "text": "resumir la propuesta del texto A sin criticarla."
+        "text": "resumir la propuesta del texto A sin hacerle ninguna crítica.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Reconoce un punto del A, pero enseguida viene el «pero» con la objeción."
       },
       {
         "id": "c",
-        "text": "presentar la conclusión final del autor."
+        "text": "presentar la conclusión final a la que llega el autor del texto.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es una concesión al inicio del argumento, no la conclusión."
       },
       {
         "id": "d",
-        "text": "aceptar un punto de quienes defienden la jornada única antes de plantear una objeción."
+        "text": "conceder un punto a la otra postura antes de objetarla."
       }
     ],
     "answer": "d",
@@ -682,19 +808,25 @@
     "options": [
       {
         "id": "a",
-        "text": "las plantas sembradas en los tarros convierten la ventana en un pequeño cultivo."
+        "text": "los tarros sembrados convierten la ventana en un pequeño cultivo."
       },
       {
         "id": "b",
-        "text": "la madre construyó una huerta en el patio de la casa."
+        "text": "la madre construyó una huerta grande en el patio de la casa.",
+        "trampa": "lectura-literal",
+        "porQueNo": "La huerta es una imagen: está en la ventana, en tarros."
       },
       {
         "id": "c",
-        "text": "la ventana está rota y por ella entra tierra."
+        "text": "la ventana está rota y por ella entra tierra a la casa.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Lee la metáfora de forma literal y agrega algo que no dice."
       },
       {
         "id": "d",
-        "text": "la familia vende cilantro desde la ventana."
+        "text": "la familia vende cilantro a los vecinos desde la ventana.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El poema no habla de vender."
       }
     ],
     "answer": "a",
@@ -714,19 +846,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Lo rechaza por completo por considerarlo una superstición."
+        "text": "Lo rechaza por completo por considerarlo una superstición.",
+        "trampa": "extremo",
+        "porQueNo": "Dice «no sé si sea cierto»: duda, no rechaza por completo."
       },
       {
         "id": "b",
-        "text": "Lo acepta sin dudar porque la madre siempre tiene razón."
+        "text": "Lo acepta sin dudar porque la madre siempre tiene razón.",
+        "trampa": "extremo",
+        "porQueNo": "Dice «no sé si sea cierto»: no lo acepta sin dudar."
       },
       {
         "id": "c",
-        "text": "Lo ignora y solo se dedica a describir la ventana."
+        "text": "Lo ignora y solo se dedica a describir la ventana.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Sí se refiere a lo que dice la madre en los versos finales."
       },
       {
         "id": "d",
-        "text": "Duda de que sea cierto, pero reconoce un hecho que parece darle la razón."
+        "text": "Duda de que sea cierto, pero reconoce algo que le da la razón."
       }
     ],
     "answer": "d",
@@ -746,19 +884,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Que solo en el campo es posible cultivar alimentos."
+        "text": "Que solo en el campo es posible cultivar los alimentos que se comen.",
+        "trampa": "extremo",
+        "porQueNo": "El poema muestra lo contrario: se cultiva en tarros en una ventana."
       },
       {
         "id": "b",
-        "text": "Que el cuidado y el afecto con que se tratan las plantas influyen en cómo crecen."
+        "text": "Que el cuidado con que se tratan las plantas influye en cómo crecen."
       },
       {
         "id": "c",
-        "text": "Que el cilantro es la planta más resistente que existe."
+        "text": "Que el cilantro es la planta más resistente que existe en la naturaleza.",
+        "trampa": "extremo",
+        "porQueNo": "Generaliza un caso: el poema habla del cilantro de la madre, no de todas las plantas."
       },
       {
         "id": "d",
-        "text": "Que los tarros de galleta son mejores que las materas."
+        "text": "Que los tarros de galleta son mejores que las materas para sembrar.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El poema no compara recipientes."
       }
     ],
     "answer": "b",
@@ -778,19 +922,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque solo se dan entre socios de un negocio."
+        "text": "Porque solo se dan entre socios que tienen un negocio juntos.",
+        "trampa": "extremo",
+        "porQueNo": "La utilidad no se limita a negocios, y el placer no tiene que ver con ellos."
       },
       {
         "id": "b",
-        "text": "Porque Aristóteles consideraba que estaban prohibidas."
+        "text": "Porque Aristóteles consideraba que eran amistades prohibidas.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no dice que estén prohibidas; dice que son frágiles."
       },
       {
         "id": "c",
-        "text": "Porque terminan cuando desaparece el beneficio o el placer que las unía."
+        "text": "Porque terminan cuando desaparece lo que las unía."
       },
       {
         "id": "d",
-        "text": "Porque exigen mucho tiempo y trato."
+        "text": "Porque exigen mucho tiempo y mucho trato entre los amigos.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El tiempo y el trato los exige la amistad perfecta, no las otras."
       }
     ],
     "answer": "c",
@@ -810,19 +960,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Presenta una clasificación y describe cada tipo con su característica principal."
+        "text": "Presenta una clasificación y describe cada tipo."
       },
       {
         "id": "b",
-        "text": "Narra en orden cronológico la vida de Aristóteles."
+        "text": "Narra en orden cronológico la vida y las obras de Aristóteles.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no es una biografía."
       },
       {
         "id": "c",
-        "text": "Compara las ideas de Aristóteles con las de otros filósofos."
+        "text": "Compara las ideas de Aristóteles con las de otros filósofos.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "No menciona a otros filósofos."
       },
       {
         "id": "d",
-        "text": "Plantea un problema y propone varias soluciones prácticas."
+        "text": "Plantea un problema y luego propone varias soluciones prácticas.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es una clasificación, no una estructura problema-solución."
       }
     ],
     "answer": "a",
@@ -842,7 +998,9 @@
     "options": [
       {
         "id": "a",
-        "text": "una amistad perfecta, porque compartieron mucho tiempo."
+        "text": "una amistad perfecta, porque compartieron mucho tiempo.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Compartieron tiempo, pero la relación acabó con el beneficio: no era amistad perfecta."
       },
       {
         "id": "b",
@@ -850,11 +1008,15 @@
       },
       {
         "id": "c",
-        "text": "una amistad por placer, porque les gustaba estudiar juntos."
+        "text": "una amistad por placer, porque les gustaba estudiar juntos.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Les servía estudiar juntos, pero lo que los unía era prepararse, un beneficio."
       },
       {
         "id": "d",
-        "text": "un tipo de amistad que Aristóteles no contempla."
+        "text": "un tipo de amistad que Aristóteles no contempla.",
+        "trampa": "no-responde",
+        "porQueNo": "El caso encaja en una de las tres clases del texto."
       }
     ],
     "answer": "b",
@@ -874,11 +1036,15 @@
     "options": [
       {
         "id": "a",
-        "text": "los amigos deben parecerse físicamente."
+        "text": "los amigos deben parecerse físicamente.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El parecido físico no aparece en el texto."
       },
       {
         "id": "b",
-        "text": "cada persona se quiere más a sí misma que al amigo."
+        "text": "cada persona se quiere más a sí misma que al amigo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es lo contrario: se busca el bien del otro, no el propio."
       },
       {
         "id": "c",
@@ -886,7 +1052,9 @@
       },
       {
         "id": "d",
-        "text": "el amigo está obligado a devolver los favores recibidos."
+        "text": "el amigo está obligado a devolver los favores recibidos.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Devolver favores es propio de la amistad por utilidad."
       }
     ],
     "answer": "c",
@@ -906,15 +1074,21 @@
     "options": [
       {
         "id": "a",
-        "text": "El fragmento 2 es un contraejemplo que refuta lo que afirma el fragmento 1."
+        "text": "El fragmento 2 es un contraejemplo que refuta lo que afirma el fragmento 1.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Un contraejemplo contradice la afirmación; el caso de doña Rosa la confirma."
       },
       {
         "id": "b",
-        "text": "El fragmento 1 es un caso particular de lo que cuenta el fragmento 2."
+        "text": "El fragmento 1 es un caso particular de lo que cuenta el fragmento 2.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Invierte la relación: el general es el 1 y el caso particular es el 2."
       },
       {
         "id": "c",
-        "text": "Los fragmentos tratan temas que no tienen relación."
+        "text": "Los dos fragmentos tratan temas que no tienen relación entre sí.",
+        "trampa": "no-responde",
+        "porQueNo": "Los dos hablan de vender sin intermediarios."
       },
       {
         "id": "d",
@@ -938,19 +1112,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Un campesino vende sus fresas directamente en la plaza y gana más que antes."
+        "text": "Un campesino vende sus fresas directamente en la plaza y gana más que antes.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Ese caso confirma la afirmación; no es un contraejemplo."
       },
       {
         "id": "b",
-        "text": "En un mercado campesino los productos cuestan más que en la tienda del barrio, y el campesino gana lo mismo que con el intermediario."
+        "text": "En un mercado campesino los precios son más altos y el campesino no gana más."
       },
       {
         "id": "c",
-        "text": "Una familia compra en el mercado campesino porque los precios son bajos."
+        "text": "Una familia compra en el mercado campesino porque los precios son más bajos.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Confirma lo que dice el fragmento 1."
       },
       {
         "id": "d",
-        "text": "Un mercado campesino se realiza los domingos en lugar de los sábados."
+        "text": "Un mercado campesino se realiza los domingos en lugar de los sábados.",
+        "trampa": "no-responde",
+        "porQueNo": "El día del mercado no tiene que ver con la afirmación."
       }
     ],
     "answer": "b",

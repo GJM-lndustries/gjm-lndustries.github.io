@@ -9,7 +9,9 @@
     "options": [
       {
         "id": "a",
-        "text": "1.000 + (1.000 × número de acompañamientos)"
+        "text": "1.000 + (1.000 × número de acompañamientos)",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Usa $1.000 como precio base; el vaso cuesta $3.000."
       },
       {
         "id": "b",
@@ -17,11 +19,15 @@
       },
       {
         "id": "c",
-        "text": "1.000 + (3.000 × número de acompañamientos)"
+        "text": "1.000 + (3.000 × número de acompañamientos)",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Intercambia los valores: el vaso es $3.000 y cada acompañamiento $1.000."
       },
       {
         "id": "d",
-        "text": "3.000 + (3.000 × número de acompañamientos)"
+        "text": "3.000 + (3.000 × número de acompañamientos)",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Cobra $3.000 por acompañamiento; cada uno vale $1.000."
       }
     ],
     "answer": "b",
@@ -40,7 +46,9 @@
     "options": [
       {
         "id": "a",
-        "text": "5 cuadernos"
+        "text": "5 cuadernos",
+        "trampa": "error-calculo",
+        "porQueNo": "Con 5 cuadernos sobran $2.500: alcanza para uno más."
       },
       {
         "id": "b",
@@ -48,11 +56,15 @@
       },
       {
         "id": "c",
-        "text": "7 cuadernos"
+        "text": "7 cuadernos",
+        "trampa": "error-calculo",
+        "porQueNo": "7 × 2.500 = 17.500, más de lo que tiene."
       },
       {
         "id": "d",
-        "text": "4 cuadernos"
+        "text": "4 cuadernos",
+        "trampa": "error-calculo",
+        "porQueNo": "Con 4 sobran $5.000: alcanza para dos más."
       }
     ],
     "answer": "b",
@@ -71,11 +83,15 @@
     "options": [
       {
         "id": "a",
-        "text": "El promedio de kilómetros"
+        "text": "El promedio de kilómetros",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El promedio no dice cuál dato se repite más."
       },
       {
         "id": "b",
-        "text": "La mediana de los kilómetros"
+        "text": "La mediana de los kilómetros",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La mediana es el dato del centro, no el más repetido."
       },
       {
         "id": "c",
@@ -83,7 +99,9 @@
       },
       {
         "id": "d",
-        "text": "El total de kilómetros"
+        "text": "El total de kilómetros",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El total suma todo; no indica el dato más repetido."
       }
     ],
     "answer": "c",
@@ -102,19 +120,25 @@
     "options": [
       {
         "id": "a",
-        "text": "El promedio, porque usa todos los datos"
+        "text": "El promedio, porque usa todos los datos de la lista",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Usa todos los datos, pero el salario de $5.000.000 lo infla."
       },
       {
         "id": "b",
-        "text": "La moda, porque es el más frecuente"
+        "text": "La moda, porque es el salario que más se repite",
+        "trampa": "dato-equivocado",
+        "porQueNo": "Ningún salario se repite: no hay moda útil."
       },
       {
         "id": "c",
-        "text": "La mediana, porque no se afecta por el salario muy alto"
+        "text": "La mediana, porque no la afecta el salario alto"
       },
       {
         "id": "d",
-        "text": "El mayor salario, porque es el más representativo"
+        "text": "El mayor salario, porque es el más representativo",
+        "trampa": "extremo",
+        "porQueNo": "Un solo dato extremo no representa al grupo."
       }
     ],
     "answer": "c",
@@ -133,11 +157,15 @@
     "options": [
       {
         "id": "a",
-        "text": "Bicicleta, Automóvil, Tren y Metro"
+        "text": "Bicicleta, Automóvil, Tren y Metro",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Incluye todos; la pregunta pide solo los que superan la mediana (250)."
       },
       {
         "id": "b",
-        "text": "Bicicleta, Automóvil y Metro"
+        "text": "Bicicleta, Automóvil y Metro",
+        "trampa": "error-calculo",
+        "porQueNo": "La bicicleta (225) está por debajo de la mediana (250)."
       },
       {
         "id": "c",
@@ -145,7 +173,9 @@
       },
       {
         "id": "d",
-        "text": "Solo Automóvil"
+        "text": "Solo Automóvil",
+        "trampa": "error-calculo",
+        "porQueNo": "El metro (275) también supera 250."
       }
     ],
     "answer": "c",
@@ -164,7 +194,9 @@
     "options": [
       {
         "id": "a",
-        "text": "800 + 3.500k"
+        "text": "800 + 3.500k",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Intercambia el costo fijo y el costo por kilómetro."
       },
       {
         "id": "b",
@@ -172,11 +204,15 @@
       },
       {
         "id": "c",
-        "text": "(3.500 + 800) × k"
+        "text": "(3.500 + 800) × k",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Multiplica también el cobro fijo por los kilómetros."
       },
       {
         "id": "d",
-        "text": "3.500 × 800k"
+        "text": "3.500 × 800k",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Multiplica los dos costos en lugar de sumar el fijo."
       }
     ],
     "answer": "b",
@@ -195,7 +231,9 @@
     "options": [
       {
         "id": "a",
-        "text": "$75.000"
+        "text": "$75.000",
+        "trampa": "error-calculo",
+        "porQueNo": "No aplica el descuento."
       },
       {
         "id": "b",
@@ -203,11 +241,15 @@
       },
       {
         "id": "c",
-        "text": "$70.000"
+        "text": "$70.000",
+        "trampa": "error-calculo",
+        "porQueNo": "Descuenta $5.000 una sola vez, no por camiseta."
       },
       {
         "id": "d",
-        "text": "$65.000"
+        "text": "$65.000",
+        "trampa": "error-calculo",
+        "porQueNo": "Descuenta $10.000 en total, no $5.000 por camiseta."
       }
     ],
     "answer": "b",
@@ -226,11 +268,15 @@
     "options": [
       {
         "id": "a",
-        "text": "22 °C"
+        "text": "22 °C",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "22 °C aparece una sola vez."
       },
       {
         "id": "b",
-        "text": "25 °C"
+        "text": "25 °C",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "25 °C es el máximo, no el más repetido."
       },
       {
         "id": "c",
@@ -238,7 +284,9 @@
       },
       {
         "id": "d",
-        "text": "20,2 °C"
+        "text": "20,2 °C",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "20,2 °C es el promedio, no la moda."
       }
     ],
     "answer": "c",
@@ -254,15 +302,19 @@
     "afirmacion": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
     "difficulty": 1,
     "stimulusId": "mat-st-tienda",
-    "enunciado": "Marta compra en la tienda de don Jorge 2 libras de arroz, 12 huevos y 1 bolsa de leche. ¿Cuánto debe pagar?",
+    "enunciado": "Julián compra en la tienda de don Jorge 2 libras de arroz, 12 huevos y 1 bolsa de leche. ¿Cuánto debe pagar?",
     "options": [
       {
         "id": "a",
-        "text": "$7.600"
+        "text": "$7.600",
+        "trampa": "error-calculo",
+        "porQueNo": "Solo suma un precio de cada producto, sin multiplicar por la cantidad."
       },
       {
         "id": "b",
-        "text": "$16.400"
+        "text": "$16.400",
+        "trampa": "error-calculo",
+        "porQueNo": "Error en la suma de los productos."
       },
       {
         "id": "c",
@@ -270,7 +322,9 @@
       },
       {
         "id": "d",
-        "text": "$18.200"
+        "text": "$18.200",
+        "trampa": "error-calculo",
+        "porQueNo": "Usa un precio equivocado para alguno de los productos."
       }
     ],
     "answer": "c",
@@ -286,11 +340,13 @@
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 2,
     "stimulusId": "mat-st-tienda",
-    "enunciado": "Marta paga con un billete de $50.000 una compra de 3 bolsas de leche y algunos panes. Si recibe $33.400 de vueltas, ¿cuántos panes compró?",
+    "enunciado": "Julián paga con un billete de $50.000 una compra de 3 bolsas de leche y algunos panes. Si recibe $33.400 de vueltas, ¿cuántos panes compró?",
     "options": [
       {
         "id": "a",
-        "text": "4"
+        "text": "4",
+        "trampa": "error-calculo",
+        "porQueNo": "Divide mal lo que queda para los panes."
       },
       {
         "id": "b",
@@ -298,11 +354,15 @@
       },
       {
         "id": "c",
-        "text": "12"
+        "text": "12",
+        "trampa": "error-calculo",
+        "porQueNo": "No resta bien el valor de la leche."
       },
       {
         "id": "d",
-        "text": "33"
+        "text": "33",
+        "trampa": "lectura-literal",
+        "porQueNo": "Toma un número del enunciado ($33.400) como respuesta."
       }
     ],
     "answer": "b",
@@ -322,19 +382,25 @@
     "options": [
       {
         "id": "a",
-        "text": "No, porque la cubeta cuesta $16.500 y un huevo suelto solo $600."
+        "text": "No, porque la cubeta cuesta $16.500 y un huevo suelto solo $600.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Compara la cubeta con un solo huevo, no con 30."
       },
       {
         "id": "b",
-        "text": "Sí, porque en la cubeta cada huevo cuesta $500."
+        "text": "Sí, porque en la cubeta cada huevo le cuesta solo $500.",
+        "trampa": "error-calculo",
+        "porQueNo": "16.500 ÷ 30 = 550, no 500."
       },
       {
         "id": "c",
-        "text": "No, porque las dos opciones cuestan lo mismo."
+        "text": "No, porque las dos opciones le cuestan exactamente lo mismo.",
+        "trampa": "error-calculo",
+        "porQueNo": "30 sueltos cuestan $18.000, más que la cubeta."
       },
       {
         "id": "d",
-        "text": "Sí, porque 30 huevos sueltos cuestan $18.000, es decir, $1.500 más que la cubeta."
+        "text": "Sí: 30 sueltos cuestan $18.000, $1.500 más que la cubeta."
       }
     ],
     "answer": "d",
@@ -354,11 +420,15 @@
     "options": [
       {
         "id": "a",
-        "text": "6"
+        "text": "6",
+        "trampa": "error-calculo",
+        "porQueNo": "Cuenta los días, no los viajes."
       },
       {
         "id": "b",
-        "text": "12"
+        "text": "12",
+        "trampa": "error-calculo",
+        "porQueNo": "Faltan viajes en la suma."
       },
       {
         "id": "c",
@@ -366,7 +436,9 @@
       },
       {
         "id": "d",
-        "text": "16"
+        "text": "16",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma de más."
       }
     ],
     "answer": "c",
@@ -390,15 +462,21 @@
       },
       {
         "id": "b",
-        "text": "$8.400"
+        "text": "$8.400",
+        "trampa": "error-calculo",
+        "porQueNo": "Calcula mal el costo total de los viajes."
       },
       {
         "id": "c",
-        "text": "$44.800"
+        "text": "$44.800",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es lo que gastó, no lo que le quedó."
       },
       {
         "id": "d",
-        "text": "$1.600"
+        "text": "$1.600",
+        "trampa": "error-calculo",
+        "porQueNo": "Usa un número de viajes equivocado."
       }
     ],
     "answer": "a",
@@ -418,19 +496,25 @@
     "options": [
       {
         "id": "a",
-        "text": "No, porque con 12 viajes ya le conviene el plan, pues 12 × $3.200 = $40.000."
+        "text": "No, porque con 12 viajes ya le conviene, pues 12 × $3.200 = $40.000.",
+        "trampa": "error-calculo",
+        "porQueNo": "12 × 3.200 = 38.400, no 40.000."
       },
       {
         "id": "b",
-        "text": "No, porque necesita hacer por lo menos 15 viajes para que el plan sea más barato."
+        "text": "No, porque necesita por lo menos 15 viajes para que el plan sea más barato.",
+        "trampa": "error-calculo",
+        "porQueNo": "Con 13 viajes ya paga $41.600, más que el plan."
       },
       {
         "id": "c",
-        "text": "Sí, porque 40.000 ÷ 3.200 = 13 exactamente."
+        "text": "Sí, porque 40.000 ÷ 3.200 = 13 exactamente, sin sobrante.",
+        "trampa": "error-calculo",
+        "porQueNo": "40.000 ÷ 3.200 = 12,5, no 13."
       },
       {
         "id": "d",
-        "text": "Sí, porque 12 viajes cuestan $38.400 (menos que el plan) y 13 viajes cuestan $41.600 (más que el plan)."
+        "text": "Sí: 12 viajes cuestan $38.400 y 13 cuestan $41.600."
       }
     ],
     "answer": "d",
@@ -450,7 +534,9 @@
     "options": [
       {
         "id": "a",
-        "text": "6 %"
+        "text": "6 %",
+        "trampa": "lectura-literal",
+        "porQueNo": "6 es el número de estudiantes, no el porcentaje."
       },
       {
         "id": "b",
@@ -458,11 +544,15 @@
       },
       {
         "id": "c",
-        "text": "20 %"
+        "text": "20 %",
+        "trampa": "error-calculo",
+        "porQueNo": "Error al dividir 6 entre 40."
       },
       {
         "id": "d",
-        "text": "25 %"
+        "text": "25 %",
+        "trampa": "error-calculo",
+        "porQueNo": "Error al dividir 6 entre 40."
       }
     ],
     "answer": "b",
@@ -482,11 +572,15 @@
     "options": [
       {
         "id": "a",
-        "text": "14°"
+        "text": "14°",
+        "trampa": "lectura-literal",
+        "porQueNo": "14 es el número de estudiantes, no los grados."
       },
       {
         "id": "b",
-        "text": "35°"
+        "text": "35°",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "35 es el porcentaje, no los grados."
       },
       {
         "id": "c",
@@ -494,7 +588,9 @@
       },
       {
         "id": "d",
-        "text": "140°"
+        "text": "140°",
+        "trampa": "error-calculo",
+        "porQueNo": "Usa 14 × 10 en lugar de 0,35 × 360."
       }
     ],
     "answer": "c",
@@ -514,19 +610,25 @@
     "options": [
       {
         "id": "a",
-        "text": "No, porque los que van a pie o en bicicleta son 20 de 40, que es exactamente la mitad, no más de la mitad."
+        "text": "No: a pie o en bicicleta van 20 de 40, justo la mitad."
       },
       {
         "id": "b",
-        "text": "Sí, porque 14 + 6 + 8 = 28 estudiantes no usan bus."
+        "text": "Sí, porque 14 + 6 + 8 = 28 estudiantes no usan el bus del colegio.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Suma un grupo que sí usa vehículo con motor."
       },
       {
         "id": "c",
-        "text": "Sí, porque el grupo más grande es el de los que van a pie."
+        "text": "Sí, porque el grupo más grande es el de los que van a pie.",
+        "trampa": "causa-efecto",
+        "porQueNo": "Ser el grupo más grande no lo hace más de la mitad."
       },
       {
         "id": "d",
-        "text": "No, porque solo 14 estudiantes van a pie, y eso es menos de la mitad."
+        "text": "No, porque solo 14 van a pie, y eso es menos de la mitad.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Olvida a los 6 que van en bicicleta."
       }
     ],
     "answer": "a",
@@ -545,11 +647,15 @@
     "options": [
       {
         "id": "a",
-        "text": "$180.000"
+        "text": "$180.000",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es el descuento, no el precio final."
       },
       {
         "id": "b",
-        "text": "$700.000"
+        "text": "$700.000",
+        "trampa": "error-calculo",
+        "porQueNo": "Error al restar el descuento."
       },
       {
         "id": "c",
@@ -557,7 +663,9 @@
       },
       {
         "id": "d",
-        "text": "$880.000"
+        "text": "$880.000",
+        "trampa": "error-calculo",
+        "porQueNo": "Resta $20.000 en lugar del 20 %."
       }
     ],
     "answer": "c",
@@ -576,7 +684,9 @@
     "options": [
       {
         "id": "a",
-        "text": "$45.000"
+        "text": "$45.000",
+        "trampa": "error-calculo",
+        "porQueNo": "Baja el 10 % sobre el precio original, no sobre el nuevo."
       },
       {
         "id": "b",
@@ -584,11 +694,15 @@
       },
       {
         "id": "c",
-        "text": "$50.000"
+        "text": "$50.000",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Supone que subir y bajar 10 % se cancelan."
       },
       {
         "id": "d",
-        "text": "$55.000"
+        "text": "$55.000",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es el precio de diciembre, antes de la rebaja."
       }
     ],
     "answer": "b",
@@ -607,19 +721,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque un porcentaje solo se puede aplicar una vez a un mismo precio."
+        "text": "Porque un porcentaje solo se puede aplicar una vez a un mismo precio.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Se pueden aplicar varios porcentajes seguidos; el punto es sobre qué valor."
       },
       {
         "id": "b",
-        "text": "Porque el descuento del 10 % se calcula sobre el precio original, así que el precio final queda mayor."
+        "text": "Porque el 10 % se calcula sobre el precio original y el final queda mayor.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El descuento se calcula sobre el precio subido, y el final queda menor."
       },
       {
         "id": "c",
-        "text": "Porque después de los dos cambios el precio siempre queda por debajo del 90 % del original."
+        "text": "Porque tras los dos cambios el precio queda por debajo del 90 % del original.",
+        "trampa": "error-calculo",
+        "porQueNo": "Queda en el 99 %, no por debajo del 90 %."
       },
       {
         "id": "d",
-        "text": "Porque el descuento del 10 % se calcula sobre un valor mayor que el original, así que se resta más de lo que se había sumado."
+        "text": "Porque el 10 % se resta de un valor mayor que el original."
       }
     ],
     "answer": "d",
@@ -634,11 +754,13 @@
     "competencia": "Formulación y ejecución",
     "afirmacion": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
     "difficulty": 2,
-    "enunciado": "Para preparar 8 arepas, doña Rosa usa 2 tazas de harina de maíz. Si mantiene la misma receta, ¿cuántas tazas de harina necesita para preparar 20 arepas?",
+    "enunciado": "Para preparar 8 arepas, don Hernán usa 2 tazas de harina de maíz. Si mantiene la misma receta, ¿cuántas tazas de harina necesita para preparar 20 arepas?",
     "options": [
       {
         "id": "a",
-        "text": "4"
+        "text": "4",
+        "trampa": "error-calculo",
+        "porQueNo": "Duplica la harina, pero las arepas no se duplicaron."
       },
       {
         "id": "b",
@@ -646,11 +768,15 @@
       },
       {
         "id": "c",
-        "text": "6"
+        "text": "6",
+        "trampa": "error-calculo",
+        "porQueNo": "Error en la regla de tres."
       },
       {
         "id": "d",
-        "text": "10"
+        "text": "10",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica 2 × 20 ÷ 4 mal."
       }
     ],
     "answer": "b",
@@ -670,15 +796,21 @@
     "options": [
       {
         "id": "a",
-        "text": "Entre enero y febrero."
+        "text": "Entre enero y febrero.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Ahí el consumo bajó."
       },
       {
         "id": "b",
-        "text": "Entre febrero y marzo."
+        "text": "Entre febrero y marzo.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Hay aumento (+6), pero no es el mayor."
       },
       {
         "id": "c",
-        "text": "Entre marzo y abril."
+        "text": "Entre marzo y abril.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Ahí el consumo bajó (−9)."
       },
       {
         "id": "d",
@@ -702,7 +834,9 @@
     "options": [
       {
         "id": "a",
-        "text": "15 m³"
+        "text": "15 m³",
+        "trampa": "error-calculo",
+        "porQueNo": "Error en la suma o en la división."
       },
       {
         "id": "b",
@@ -710,11 +844,15 @@
       },
       {
         "id": "c",
-        "text": "21 m³"
+        "text": "21 m³",
+        "trampa": "error-calculo",
+        "porQueNo": "Error en la suma o en la división."
       },
       {
         "id": "d",
-        "text": "24 m³"
+        "text": "24 m³",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "24 es el mayor consumo, no el promedio."
       }
     ],
     "answer": "b",
@@ -734,19 +872,25 @@
     "options": [
       {
         "id": "a",
-        "text": "No, porque el cargo fijo no se duplica: la factura de abril fue $54.000 y la de mayo $96.000, que no es el doble."
+        "text": "No: el cargo fijo no se duplica; abril fue $54.000 y mayo $96.000."
       },
       {
         "id": "b",
-        "text": "Sí, porque 24 m³ es el doble de 12 m³."
+        "text": "Sí, porque 24 m³ es el doble de 12 m³ y el precio por m³ es igual.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El consumo sí es el doble, pero el cargo fijo no se duplica."
       },
       {
         "id": "c",
-        "text": "Sí, porque $96.000 es el doble de $48.000."
+        "text": "Sí, porque $96.000 es exactamente el doble de $48.000.",
+        "trampa": "error-calculo",
+        "porQueNo": "La factura de abril fue $54.000, no $48.000."
       },
       {
         "id": "d",
-        "text": "No, porque la factura de mayo fue más del doble que la de abril."
+        "text": "No, porque la factura de mayo fue más del doble que la de abril.",
+        "trampa": "error-calculo",
+        "porQueNo": "$96.000 es menos del doble de $54.000."
       }
     ],
     "answer": "a",
@@ -765,7 +909,9 @@
     "options": [
       {
         "id": "a",
-        "text": "0,2 km"
+        "text": "0,2 km",
+        "trampa": "error-calculo",
+        "porQueNo": "Error al pasar de centímetros a kilómetros."
       },
       {
         "id": "b",
@@ -773,11 +919,15 @@
       },
       {
         "id": "c",
-        "text": "20 km"
+        "text": "20 km",
+        "trampa": "error-calculo",
+        "porQueNo": "Error al pasar de centímetros a kilómetros."
       },
       {
         "id": "d",
-        "text": "200 km"
+        "text": "200 km",
+        "trampa": "error-calculo",
+        "porQueNo": "Toma 200.000 cm como si fueran metros."
       }
     ],
     "answer": "b",
@@ -800,15 +950,21 @@
       },
       {
         "id": "b",
-        "text": "10"
+        "text": "10",
+        "trampa": "error-calculo",
+        "porQueNo": "Olvida restar lo que ya tenía ahorrado y redondea."
       },
       {
         "id": "c",
-        "text": "11"
+        "text": "11",
+        "trampa": "error-calculo",
+        "porQueNo": "Error en la división."
       },
       {
         "id": "d",
-        "text": "12"
+        "text": "12",
+        "trampa": "error-calculo",
+        "porQueNo": "Error en la división."
       }
     ],
     "answer": "a",
@@ -827,11 +983,15 @@
     "options": [
       {
         "id": "a",
-        "text": "$1.100"
+        "text": "$1.100",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es el precio de un lapicero, no de un cuaderno."
       },
       {
         "id": "b",
-        "text": "$3.000"
+        "text": "$3.000",
+        "trampa": "error-calculo",
+        "porQueNo": "Error al restar las compras."
       },
       {
         "id": "c",
@@ -839,7 +999,9 @@
       },
       {
         "id": "d",
-        "text": "$4.200"
+        "text": "$4.200",
+        "trampa": "error-calculo",
+        "porQueNo": "Error al dividir la diferencia."
       }
     ],
     "answer": "c",
@@ -858,15 +1020,21 @@
     "options": [
       {
         "id": "a",
-        "text": "25.000 + 3.000g"
+        "text": "25.000 + 3.000g",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Cobra todos los GB, incluidos los 10 que ya trae el plan."
       },
       {
         "id": "b",
-        "text": "3.000(g − 10)"
+        "text": "3.000(g − 10)",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Calcula los GB extra, pero olvida los $25.000 del plan."
       },
       {
         "id": "c",
-        "text": "25.000 − 3.000(g − 10)"
+        "text": "25.000 − 3.000(g − 10)",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Resta el cobro extra en lugar de sumarlo."
       },
       {
         "id": "d",
@@ -889,19 +1057,25 @@
     "options": [
       {
         "id": "a",
-        "text": "No, porque su probabilidad es 8/200 = 4 % y la de Laura es 5/200 = 2,5 %, y 4 % no alcanza a ser el doble de 2,5 %."
+        "text": "No: tiene 4 % y Laura 2,5 %; el doble sería 5 %."
       },
       {
         "id": "b",
-        "text": "Sí, porque compró 3 boletas más que Laura."
+        "text": "Sí, porque compró 3 boletas más que Laura en la rifa.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Tener más boletas no dice cuántas veces más probabilidad."
       },
       {
         "id": "c",
-        "text": "Sí, porque 8/200 es mayor que 5/200."
+        "text": "Sí, porque 8/200 es mayor que 5/200, y eso basta.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Es mayor, pero no más del doble."
       },
       {
         "id": "d",
-        "text": "No, porque como solo hay un ganador, los dos tienen la misma probabilidad."
+        "text": "No, porque como solo hay un ganador, los dos tienen la misma probabilidad.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La probabilidad depende de cuántas boletas tiene cada uno."
       }
     ],
     "answer": "a",
@@ -920,11 +1094,15 @@
     "options": [
       {
         "id": "a",
-        "text": "3/10"
+        "text": "3/10",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es la probabilidad de que SÍ sea de limón."
       },
       {
         "id": "b",
-        "text": "3/7"
+        "text": "3/7",
+        "trampa": "error-calculo",
+        "porQueNo": "Divide entre 7 en lugar de entre el total."
       },
       {
         "id": "c",
@@ -932,7 +1110,9 @@
       },
       {
         "id": "d",
-        "text": "1/3"
+        "text": "1/3",
+        "trampa": "error-calculo",
+        "porQueNo": "Usa un total equivocado."
       }
     ],
     "answer": "c",
@@ -955,15 +1135,21 @@
       },
       {
         "id": "b",
-        "text": "1/2"
+        "text": "1/2",
+        "trampa": "error-calculo",
+        "porQueNo": "Los hombres son 12 de 36, no la mitad."
       },
       {
         "id": "c",
-        "text": "2/3"
+        "text": "2/3",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es la fracción de mujeres."
       },
       {
         "id": "d",
-        "text": "12/24"
+        "text": "12/24",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Compara hombres con mujeres, no con el total."
       }
     ],
     "answer": "a",
@@ -982,11 +1168,15 @@
     "options": [
       {
         "id": "a",
-        "text": "275"
+        "text": "275",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es el área en m², no el número de baldosas."
       },
       {
         "id": "b",
-        "text": "550"
+        "text": "550",
+        "trampa": "error-calculo",
+        "porQueNo": "Divide entre 0,5 en lugar de entre 0,25 m²."
       },
       {
         "id": "c",
@@ -994,7 +1184,9 @@
       },
       {
         "id": "d",
-        "text": "1.200"
+        "text": "1.200",
+        "trampa": "error-calculo",
+        "porQueNo": "No resta el jardín."
       }
     ],
     "answer": "c",
@@ -1014,19 +1206,25 @@
     "options": [
       {
         "id": "a",
-        "text": "La tienda B vendió más en la semana porque tuvo el día de mayor venta."
+        "text": "La tienda B vendió más en la semana porque tuvo el día de mayor venta.",
+        "trampa": "causa-efecto",
+        "porQueNo": "Un día alto no significa más ventas totales."
       },
       {
         "id": "b",
-        "text": "La tienda A vendió más en la semana porque nunca bajó de 190 mil pesos."
+        "text": "La tienda A vendió más en la semana porque nunca bajó de 190 mil pesos.",
+        "trampa": "causa-efecto",
+        "porQueNo": "Las dos suman lo mismo en la semana."
       },
       {
         "id": "c",
-        "text": "Las dos tiendas se comportan igual porque tienen el mismo promedio."
+        "text": "Las dos tiendas se comportan igual porque tienen el mismo promedio diario.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El promedio es igual, pero B varía mucho más."
       },
       {
         "id": "d",
-        "text": "Las dos tiendas tienen el mismo promedio diario, pero las ventas de la tienda A son mucho más estables."
+        "text": "Tienen el mismo promedio, pero las ventas de A son más estables."
       }
     ],
     "answer": "d",
@@ -1046,7 +1244,9 @@
     "options": [
       {
         "id": "a",
-        "text": "100 mil pesos"
+        "text": "100 mil pesos",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "100 es el mínimo, no el dato central."
       },
       {
         "id": "b",
@@ -1054,11 +1254,15 @@
       },
       {
         "id": "c",
-        "text": "200 mil pesos"
+        "text": "200 mil pesos",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "200 es el promedio, no la mediana."
       },
       {
         "id": "d",
-        "text": "300 mil pesos"
+        "text": "300 mil pesos",
+        "trampa": "error-calculo",
+        "porQueNo": "No ordena los datos antes de buscar el centro."
       }
     ],
     "answer": "b",
@@ -1077,19 +1281,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Sí, porque el 5 % es la mitad del 10 %, entonces 4.800 + 2.400 = 7.200 es el 15 % de 48.000."
+        "text": "Sí: el 5 % es la mitad del 10 %, y 4.800 + 2.400 = 7.200."
       },
       {
         "id": "b",
-        "text": "No, porque el 15 % se calcula dividiendo 48.000 entre 15."
+        "text": "No, porque el 15 % se calcula dividiendo 48.000 entre 15.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Dividir entre 15 no da el 15 %."
       },
       {
         "id": "c",
-        "text": "No, porque debería sumar el 10 % y el 15 %."
+        "text": "No, porque debería sumar el 10 % y el 15 % del precio.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso daría el 25 %."
       },
       {
         "id": "d",
-        "text": "Sí, porque la mitad de 48.000 es 24.000 y el 15 % es su décima parte."
+        "text": "Sí, porque la mitad de 48.000 es 24.000 y el 15 % es su décima parte.",
+        "trampa": "error-calculo",
+        "porQueNo": "La décima parte de 24.000 es el 5 %, no el 15 %."
       }
     ],
     "answer": "a",
@@ -1109,15 +1319,21 @@
     "options": [
       {
         "id": "a",
-        "text": "C = 2.500h"
+        "text": "C = 2.500h",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Sin cobro fijo: con 2 horas daría 5.000, no 4.000."
       },
       {
         "id": "b",
-        "text": "C = 1.500h"
+        "text": "C = 1.500h",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El aumento por hora es 1.500, pero falta el valor fijo."
       },
       {
         "id": "c",
-        "text": "C = 2.500 + 1.500h"
+        "text": "C = 2.500 + 1.500h",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Con h = 1 daría 4.000, no 2.500."
       },
       {
         "id": "d",
@@ -1140,19 +1356,25 @@
     "options": [
       {
         "id": "a",
-        "text": "No, porque al redondear hacia arriba aumentó el gasto: el costo real es 3 × $6.500 = $19.500, que sí alcanza."
+        "text": "No: redondear aumentó el gasto; el real es $19.500."
       },
       {
         "id": "b",
-        "text": "Sí, porque $21.000 es mayor que $20.000."
+        "text": "Sí, porque $21.000 es mayor que los $20.000 que tiene.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Compara con el valor redondeado, no con el real."
       },
       {
         "id": "c",
-        "text": "Sí, porque con dinero siempre se debe redondear hacia arriba."
+        "text": "Sí, porque con dinero siempre se debe redondear hacia arriba.",
+        "trampa": "extremo",
+        "porQueNo": "«Siempre» es falso: para decidir hay que calcular el valor real."
       },
       {
         "id": "d",
-        "text": "No, porque debió redondear a $6.000 y así le sobrarían $2.000."
+        "text": "No, porque debió redondear a $6.000 y así le sobrarían $2.000.",
+        "trampa": "error-calculo",
+        "porQueNo": "Redondear hacia abajo tampoco da el costo real."
       }
     ],
     "answer": "a",
@@ -1171,19 +1393,25 @@
     "options": [
       {
         "id": "a",
-        "text": "La gaseosa pequeña cuesta menos dinero."
+        "text": "La gaseosa pequeña cuesta menos dinero.",
+        "trampa": "no-responde",
+        "porQueNo": "Cuesta menos, pero trae menos gaseosa: no compara el precio por litro."
       },
       {
         "id": "b",
-        "text": "El litro en la presentación grande sale a $3.000 y en la pequeña a $4.000."
+        "text": "El litro sale a $3.000 en la grande y a $4.000 en la pequeña."
       },
       {
         "id": "c",
-        "text": "La gaseosa grande trae más mililitros."
+        "text": "La gaseosa grande trae más mililitros.",
+        "trampa": "no-responde",
+        "porQueNo": "Trae más, pero eso solo no dice si es más económica."
       },
       {
         "id": "d",
-        "text": "Tres gaseosas pequeñas cuestan $4.800, que es más que $4.500, y traen la misma cantidad."
+        "text": "Tres gaseosas pequeñas cuestan $4.800, que es más que $4.500, y traen la misma cantidad.",
+        "trampa": "error-calculo",
+        "porQueNo": "Tres pequeñas traen 1,2 L, no 1,5 L: no es la misma cantidad."
       }
     ],
     "answer": "b",
@@ -1202,11 +1430,15 @@
     "options": [
       {
         "id": "a",
-        "text": "10"
+        "text": "10",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Cuenta grupos sin importar el orden."
       },
       {
         "id": "b",
-        "text": "15"
+        "text": "15",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica 5 × 3."
       },
       {
         "id": "c",
@@ -1214,7 +1446,9 @@
       },
       {
         "id": "d",
-        "text": "125"
+        "text": "125",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Permite repetir letras (5 × 5 × 5)."
       }
     ],
     "answer": "c",

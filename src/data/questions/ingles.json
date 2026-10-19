@@ -10,19 +10,25 @@
     "options": [
       {
         "id": "a",
-        "text": "De los problemas de tecnología en Colombia"
+        "text": "De los problemas de tecnología en los colegios",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El texto menciona el acceso, pero su tema es la educación en general: mejoras y desafíos."
       },
       {
         "id": "b",
-        "text": "De las mejoras y desafíos del sistema educativo colombiano"
+        "text": "De los avances y retos de la educación en Colombia"
       },
       {
         "id": "c",
-        "text": "De la calidad de los profesores rurales"
+        "text": "De la calidad de los profesores en las zonas rurales",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Las zonas rurales son solo uno de los desafíos que menciona."
       },
       {
         "id": "d",
-        "text": "Del acceso a internet en las ciudades"
+        "text": "Del acceso a internet en las grandes ciudades del país",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no se centra en internet en las ciudades."
       }
     ],
     "answer": "b",
@@ -42,11 +48,15 @@
     "options": [
       {
         "id": "a",
-        "text": "study"
+        "text": "study",
+        "trampa": "desfase-temporal",
+        "porQueNo": "«Yesterday» pide pasado; «study» es presente."
       },
       {
         "id": "b",
-        "text": "studies"
+        "text": "studies",
+        "trampa": "desfase-temporal",
+        "porQueNo": "«Studies» es presente (tercera persona); «yesterday» pide pasado."
       },
       {
         "id": "c",
@@ -54,7 +64,9 @@
       },
       {
         "id": "d",
-        "text": "have studied"
+        "text": "have studied",
+        "trampa": "desfase-temporal",
+        "porQueNo": "El present perfect no se usa con un tiempo terminado como «yesterday»."
       }
     ],
     "answer": "c",
@@ -324,11 +336,15 @@
     "options": [
       {
         "id": "a",
-        "text": "In a library."
+        "text": "In a library.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "En una biblioteca no hay cinturones de seguridad."
       },
       {
         "id": "b",
-        "text": "In a supermarket."
+        "text": "In a supermarket.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "En un supermercado no hay cinturones de seguridad."
       },
       {
         "id": "c",
@@ -352,7 +368,9 @@
     "options": [
       {
         "id": "a",
-        "text": "At a bank."
+        "text": "At a bank.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Un banco no presta libros."
       },
       {
         "id": "b",
@@ -360,7 +378,9 @@
       },
       {
         "id": "c",
-        "text": "In a bookshop."
+        "text": "In a bookshop.",
+        "trampa": "palabra-parecida",
+        "porQueNo": "«Bookshop» se parece, pero allí los libros se compran, no se devuelven."
       }
     ],
     "answer": "b",
@@ -384,11 +404,15 @@
       },
       {
         "id": "b",
-        "text": "In a restaurant."
+        "text": "In a restaurant.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "En un restaurante no hay animales detrás de una cerca."
       },
       {
         "id": "c",
-        "text": "At a hospital."
+        "text": "At a hospital.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Un hospital no tiene animales para alimentar."
       }
     ],
     "answer": "a",
@@ -408,7 +432,9 @@
     "options": [
       {
         "id": "a",
-        "text": "At a cinema."
+        "text": "At a cinema.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Un cine no tiene rutas cada 15 minutos."
       },
       {
         "id": "b",
@@ -416,7 +442,9 @@
       },
       {
         "id": "c",
-        "text": "In a classroom."
+        "text": "In a classroom.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "En un salón de clase no hay rutas ni tarjetas de transporte."
       }
     ],
     "answer": "b",
@@ -436,15 +464,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Sure, here you are."
+        "text": "Sure, here it is."
       },
       {
         "id": "b",
-        "text": "Yes, I can."
+        "text": "Yes, I can do it.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Responde si uno es capaz, no presta el lápiz."
       },
       {
         "id": "c",
-        "text": "I'm fine, thanks."
+        "text": "I'm fine, thanks.",
+        "trampa": "no-responde",
+        "porQueNo": "Responde a «How are you?», no a una petición."
       }
     ],
     "answer": "a",
@@ -464,11 +496,15 @@
     "options": [
       {
         "id": "a",
-        "text": "For two hours."
+        "text": "For about two hours.",
+        "trampa": "no-responde",
+        "porQueNo": "Responde cuánto dura, no a qué hora empieza."
       },
       {
         "id": "b",
-        "text": "In room 204."
+        "text": "In room 204, upstairs.",
+        "trampa": "no-responde",
+        "porQueNo": "Responde dónde es, no a qué hora."
       },
       {
         "id": "c",
@@ -492,15 +528,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Don't worry, we haven't started yet."
+        "text": "Don't worry, we haven't started."
       },
       {
         "id": "b",
-        "text": "You're welcome."
+        "text": "You're welcome, it was nothing at all.",
+        "trampa": "no-responde",
+        "porQueNo": "Responde a un «thank you», no a una disculpa."
       },
       {
         "id": "c",
-        "text": "Nice to meet you too."
+        "text": "Nice to meet you too, come in.",
+        "trampa": "no-responde",
+        "porQueNo": "Es para cuando te presentan a alguien."
       }
     ],
     "answer": "a",
@@ -520,11 +560,15 @@
     "options": [
       {
         "id": "a",
-        "text": "Yes, I do."
+        "text": "Yes, I do. I like it a lot.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La pregunta es «Would you like…?»; no se responde con «do»."
       },
       {
         "id": "b",
-        "text": "It's very hot today."
+        "text": "It's very hot today, isn't it?",
+        "trampa": "no-responde",
+        "porQueNo": "Habla del clima, no responde al ofrecimiento."
       },
       {
         "id": "c",
@@ -549,7 +593,9 @@
     "options": [
       {
         "id": "a",
-        "text": "take"
+        "text": "take",
+        "trampa": "desfase-temporal",
+        "porQueNo": "«Last month» pide pasado."
       },
       {
         "id": "b",
@@ -557,7 +603,9 @@
       },
       {
         "id": "c",
-        "text": "taking"
+        "text": "taking",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Taking» necesita un auxiliar (was taking)."
       }
     ],
     "answer": "b",
@@ -578,11 +626,15 @@
     "options": [
       {
         "id": "a",
-        "text": "staying"
+        "text": "staying",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Staying» necesita un auxiliar (were staying)."
       },
       {
         "id": "b",
-        "text": "stay"
+        "text": "stay",
+        "trampa": "desfase-temporal",
+        "porQueNo": "El relato está en pasado."
       },
       {
         "id": "c",
@@ -611,11 +663,15 @@
       },
       {
         "id": "b",
-        "text": "are"
+        "text": "are",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Coffee» es incontable: va en singular."
       },
       {
         "id": "c",
-        "text": "be"
+        "text": "be",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Be» no se conjuga con el sujeto."
       }
     ],
     "answer": "a",
@@ -640,11 +696,15 @@
       },
       {
         "id": "b",
-        "text": "a"
+        "text": "a",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Antes de sonido vocal («interesting») se usa «an»."
       },
       {
         "id": "c",
-        "text": "the"
+        "text": "the",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es la primera mención: va el artículo indefinido."
       }
     ],
     "answer": "a",
@@ -665,11 +725,15 @@
     "options": [
       {
         "id": "a",
-        "text": "is"
+        "text": "is",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Many places» es plural: «there are»."
       },
       {
         "id": "b",
-        "text": "be"
+        "text": "be",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Be» no se conjuga."
       },
       {
         "id": "c",
@@ -694,15 +758,19 @@
     "options": [
       {
         "id": "a",
-        "text": "In the south of Colombia."
+        "text": "In the south of Colombia, near Ecuador.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El texto dice que viven en el norte."
       },
       {
         "id": "b",
-        "text": "In La Guajira and in part of Venezuela."
+        "text": "In La Guajira and part of Venezuela."
       },
       {
         "id": "c",
-        "text": "Only in Venezuela."
+        "text": "Only in Venezuela, near the sea.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Viven en parte de Venezuela, pero también en La Guajira."
       }
     ],
     "answer": "b",
@@ -723,7 +791,9 @@
     "options": [
       {
         "id": "a",
-        "text": "The visitors."
+        "text": "The visitors.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Los visitantes compran; no tejen."
       },
       {
         "id": "b",
@@ -731,7 +801,9 @@
       },
       {
         "id": "c",
-        "text": "Factory workers."
+        "text": "Factory workers.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Las fábricas hacen copias, no las mochilas tradicionales."
       }
     ],
     "answer": "b",
@@ -752,15 +824,19 @@
     "options": [
       {
         "id": "a",
-        "text": "often represent nature or daily life."
+        "text": "often show nature or daily life."
       },
       {
         "id": "b",
-        "text": "are all the same."
+        "text": "are all the same in every bag.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Cada diseño tiene un significado propio."
       },
       {
         "id": "c",
-        "text": "are chosen by the visitors."
+        "text": "are chosen by the visitors who buy.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no dice que los elijan los compradores."
       }
     ],
     "answer": "a",
@@ -781,15 +857,19 @@
     "options": [
       {
         "id": "a",
-        "text": "The copies are more expensive."
+        "text": "The copies are much more expensive.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "Las copias son baratas."
       },
       {
         "id": "b",
-        "text": "The copies take weeks to make."
+        "text": "The copies take weeks to make by hand.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las que tardan semanas son las tejidas a mano."
       },
       {
         "id": "c",
-        "text": "Buyers may not know if a bag is authentic."
+        "text": "Buyers may not know which is authentic."
       }
     ],
     "answer": "c",
@@ -810,19 +890,25 @@
     "options": [
       {
         "id": "a",
-        "text": "He did not like English at all."
+        "text": "He did not like English at all.",
+        "trampa": "extremo",
+        "porQueNo": "El texto no dice que odiara el inglés."
       },
       {
         "id": "b",
-        "text": "He felt that his daily trip was not useful."
+        "text": "He felt his daily trip was useless."
       },
       {
         "id": "c",
-        "text": "He wanted to move to the city."
+        "text": "He wanted to move to the city to study.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "No se menciona que quisiera mudarse."
       },
       {
         "id": "d",
-        "text": "He did not enjoy music or football."
+        "text": "He did not enjoy music or football much.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eran sus dos pasiones."
       }
     ],
     "answer": "b",
@@ -843,19 +929,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Because his teacher did not allow other topics."
+        "text": "Because his teacher did not allow other topics.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no menciona esa regla."
       },
       {
         "id": "b",
-        "text": "Because they were the only podcasts in English."
+        "text": "Because they were the only podcasts in English.",
+        "trampa": "extremo",
+        "porQueNo": "Nada dice que fueran los únicos."
       },
       {
         "id": "c",
-        "text": "Because they did not have any difficult words."
+        "text": "Because they did not have any difficult words.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Sí tenían palabras difíciles: las buscaba en casa."
       },
       {
         "id": "d",
-        "text": "Because they were about topics he loved, which made listening easier."
+        "text": "Because they were about topics he loved."
       }
     ],
     "answer": "d",
@@ -876,19 +968,25 @@
     "options": [
       {
         "id": "a",
-        "text": "The bus started to go faster."
+        "text": "The bus started to go much faster.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Él dice que el bus no va más rápido."
       },
       {
         "id": "b",
-        "text": "He moved to a town closer to the city."
+        "text": "He moved to a town closer to the city.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "No se mudó."
       },
       {
         "id": "c",
-        "text": "Using the time to learn made the trip more enjoyable."
+        "text": "Learning made the trip more enjoyable."
       },
       {
         "id": "d",
-        "text": "He stopped taking the bus to study."
+        "text": "He stopped taking the bus to study.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Sigue tomando el bus."
       }
     ],
     "answer": "c",
@@ -909,15 +1007,21 @@
     "options": [
       {
         "id": "a",
-        "text": "All"
+        "text": "All",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«All Sunday» significaría «todo el domingo»."
       },
       {
         "id": "b",
-        "text": "Many"
+        "text": "Many",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Many» pide plural."
       },
       {
         "id": "c",
-        "text": "Some"
+        "text": "Some",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Some» pide plural y no significa «cada»."
       },
       {
         "id": "d",
@@ -942,11 +1046,15 @@
     "options": [
       {
         "id": "a",
-        "text": "much"
+        "text": "much",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Much» es para incontables."
       },
       {
         "id": "b",
-        "text": "a lot"
+        "text": "a lot",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«A lot» necesita «of»."
       },
       {
         "id": "c",
@@ -954,7 +1062,9 @@
       },
       {
         "id": "d",
-        "text": "any"
+        "text": "any",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "«Any» no va así en oraciones afirmativas."
       }
     ],
     "answer": "c",
@@ -979,15 +1089,21 @@
       },
       {
         "id": "b",
-        "text": "pass"
+        "text": "pass",
+        "trampa": "palabra-parecida",
+        "porQueNo": "«Pass time» no se usa así; lo natural es «spend time»."
       },
       {
         "id": "c",
-        "text": "waste"
+        "text": "waste",
+        "trampa": "palabra-parecida",
+        "porQueNo": "«Waste time» es perder el tiempo, lo contrario."
       },
       {
         "id": "d",
-        "text": "take"
+        "text": "take",
+        "trampa": "palabra-parecida",
+        "porQueNo": "«Take time together» no es la combinación natural."
       }
     ],
     "answer": "a",

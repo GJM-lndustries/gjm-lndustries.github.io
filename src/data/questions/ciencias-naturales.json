@@ -5,23 +5,29 @@
     "competencia": "Uso comprensivo del conocimiento científico",
     "afirmacion": "Asocia fenómenos naturales con conceptos propios del conocimiento científico.",
     "difficulty": 1,
-    "enunciado": "Un científico observa que una célula tiene cloroplastos, pared celular y una vacuola grande. ¿De qué tipo de organismo proviene esta célula?",
+    "enunciado": "Una bióloga observa que una célula tiene cloroplastos, pared celular y una vacuola grande. ¿De qué tipo de organismo proviene esta célula?",
     "options": [
       {
         "id": "a",
-        "text": "De un animal, porque tiene vacuola"
+        "text": "De un animal, porque tiene una vacuola grande",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las células animales no tienen cloroplastos ni pared celular."
       },
       {
         "id": "b",
-        "text": "De una planta, porque tiene cloroplastos y pared celular"
+        "text": "De una planta, por los cloroplastos y la pared"
       },
       {
         "id": "c",
-        "text": "De un hongo, porque tiene pared celular"
+        "text": "De un hongo, porque tiene una pared celular",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Los hongos tienen pared, pero no cloroplastos."
       },
       {
         "id": "d",
-        "text": "De una bacteria, porque es muy simple"
+        "text": "De una bacteria, porque es una célula muy simple",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las bacterias no tienen cloroplastos ni vacuola grande."
       }
     ],
     "answer": "b",
@@ -40,19 +46,25 @@
     "options": [
       {
         "id": "a",
-        "text": "La tercera ley: el bus ejerce una fuerza sobre el pasajero"
+        "text": "La tercera ley: el bus ejerce una fuerza sobre el pasajero",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La tercera ley habla de pares de fuerzas; el «lanzarse hacia adelante» es inercia."
       },
       {
         "id": "b",
-        "text": "La segunda ley: la aceleración del pasajero es proporcional a la fuerza"
+        "text": "La segunda ley: la aceleración del pasajero es proporcional a la fuerza",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Al frenar no hay una fuerza que empuje al pasajero hacia adelante: su cuerpo sigue en movimiento."
       },
       {
         "id": "c",
-        "text": "La primera ley: el cuerpo del pasajero tiende a seguir en movimiento"
+        "text": "La primera ley: el cuerpo tiende a seguir en movimiento"
       },
       {
         "id": "d",
-        "text": "La ley de gravitación: la gravedad jala al pasajero hacia adelante"
+        "text": "La ley de gravitación: la gravedad jala al pasajero hacia adelante",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La gravedad actúa hacia abajo, no hacia adelante."
       }
     ],
     "answer": "c",
@@ -71,19 +83,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Las plantas necesitan agua para producir clorofila"
+        "text": "Las plantas necesitan más agua para producir su clorofila",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El experimento cambió la luz, no el agua."
       },
       {
         "id": "b",
-        "text": "Las plantas necesitan luz para realizar fotosíntesis y sobrevivir"
+        "text": "Las plantas necesitan luz para hacer fotosíntesis"
       },
       {
         "id": "c",
-        "text": "Las plantas mueren porque el suelo no tiene nutrientes"
+        "text": "Las plantas mueren porque el suelo no tiene nutrientes",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El suelo no se varió; lo que cambió fue la luz."
       },
       {
         "id": "d",
-        "text": "La oscuridad produce una sustancia tóxica para las plantas"
+        "text": "La oscuridad produce una sustancia tóxica para las plantas",
+        "trampa": "causa-efecto",
+        "porQueNo": "Inventa una causa que el experimento no muestra."
       }
     ],
     "answer": "b",
@@ -103,19 +121,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Defender al cuerpo de las infecciones."
+        "text": "Defender al cuerpo de las infecciones y los virus.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso lo hacen los glóbulos blancos."
       },
       {
         "id": "b",
-        "text": "Transportar oxígeno desde los pulmones hacia los tejidos."
+        "text": "Llevar oxígeno de los pulmones a los tejidos."
       },
       {
         "id": "c",
-        "text": "Formar coágulos para detener las hemorragias."
+        "text": "Formar coágulos para detener las hemorragias.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso lo hacen las plaquetas."
       },
       {
         "id": "d",
-        "text": "Producir las hormonas que regulan el crecimiento."
+        "text": "Producir las hormonas que regulan el crecimiento.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las hormonas las producen las glándulas endocrinas."
       }
     ],
     "answer": "b",
@@ -135,7 +159,9 @@
     "options": [
       {
         "id": "a",
-        "text": "0"
+        "text": "0",
+        "trampa": "error-calculo",
+        "porQueNo": "Aa × Aa sí puede dar aa: cada padre puede aportar un alelo a."
       },
       {
         "id": "b",
@@ -143,11 +169,15 @@
       },
       {
         "id": "c",
-        "text": "1/2"
+        "text": "1/2",
+        "trampa": "error-calculo",
+        "porQueNo": "1/2 es la proporción de heterocigotos (Aa), no de blancas."
       },
       {
         "id": "d",
-        "text": "3/4"
+        "text": "3/4",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "3/4 es la proporción de flores moradas."
       }
     ],
     "answer": "b",
@@ -172,15 +202,21 @@
       },
       {
         "id": "b",
-        "text": "El número de semillas germinadas."
+        "text": "El número de semillas germinadas.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es la variable dependiente: lo que se mide."
       },
       {
         "id": "c",
-        "text": "La cantidad de agua de cada recipiente."
+        "text": "La cantidad de agua de cada recipiente.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El agua se mantuvo igual: es una variable controlada."
       },
       {
         "id": "d",
-        "text": "El tipo de tierra utilizada."
+        "text": "El tipo de tierra utilizada.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La tierra fue la misma: es una variable controlada."
       }
     ],
     "answer": "a",
@@ -201,19 +237,25 @@
     "options": [
       {
         "id": "a",
-        "text": "A mayor temperatura siempre germinan más semillas."
+        "text": "A mayor temperatura, siempre germinan más semillas de fríjol.",
+        "trampa": "extremo",
+        "porQueNo": "A 40 °C la germinación bajó a 2: el «siempre» es falso."
       },
       {
         "id": "b",
-        "text": "La temperatura no influye en la germinación del fríjol."
+        "text": "La temperatura no influye en la germinación del fríjol.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Los resultados cambian mucho con la temperatura."
       },
       {
         "id": "c",
-        "text": "Las semillas germinan mejor cuando reciben más agua."
+        "text": "Las semillas germinan mejor cuando reciben más agua cada día.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El agua no se varió; no se puede concluir sobre ella."
       },
       {
         "id": "d",
-        "text": "En estas condiciones, la germinación aumentó de 10 °C a 30 °C y disminuyó mucho a 40 °C."
+        "text": "La germinación subió de 10 °C a 30 °C y cayó a 40 °C."
       }
     ],
     "answer": "d",
@@ -233,19 +275,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Que disminuya la población de chigüiros y aumenten los pastos."
+        "text": "Que disminuya la población de chigüiros y aumenten los pastos.",
+        "trampa": "causa-efecto",
+        "porQueNo": "Sin depredadores mueren menos chigüiros: su población crece."
       },
       {
         "id": "b",
-        "text": "Que las poblaciones de chigüiros y de pastos no cambien."
+        "text": "Que las poblaciones de chigüiros y de pastos se mantengan iguales.",
+        "trampa": "no-responde",
+        "porQueNo": "Quitar un eslabón de la cadena alimentaria sí produce cambios."
       },
       {
         "id": "c",
-        "text": "Que aumente la población de chigüiros y disminuyan los pastos de los que se alimentan."
+        "text": "Que aumenten los chigüiros y disminuyan los pastos."
       },
       {
         "id": "d",
-        "text": "Que los chigüiros empiecen a cazar a otros animales para alimentarse."
+        "text": "Que los chigüiros empiecen a cazar a otros animales para alimentarse.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Los chigüiros son herbívoros; no cambian su dieta por falta de depredadores."
       }
     ],
     "answer": "c",
@@ -265,15 +313,21 @@
     "options": [
       {
         "id": "a",
-        "text": "dióxido de carbono y agua."
+        "text": "dióxido de carbono y agua.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Esos son los reactivos de la fotosíntesis, no los productos."
       },
       {
         "id": "b",
-        "text": "proteínas y nitrógeno."
+        "text": "proteínas y nitrógeno.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La fotosíntesis no produce nitrógeno."
       },
       {
         "id": "c",
-        "text": "oxígeno y dióxido de carbono."
+        "text": "oxígeno y dióxido de carbono.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Produce oxígeno, pero el dióxido de carbono se consume."
       },
       {
         "id": "d",
@@ -297,19 +351,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque pueden sobrevivir las bacterias menos sensibles al antibiótico, que se reproducen y transmiten esa característica."
+        "text": "Porque sobreviven las bacterias más resistentes y se multiplican."
       },
       {
         "id": "b",
-        "text": "Porque el antibiótico se transforma en nuevas bacterias dentro del cuerpo."
+        "text": "Porque el antibiótico se transforma en nuevas bacterias dentro del cuerpo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Un medicamento no se convierte en seres vivos."
       },
       {
         "id": "c",
-        "text": "Porque las bacterias aprenden a reconocer el medicamento, como lo haría una persona."
+        "text": "Porque las bacterias aprenden a reconocer el medicamento, como lo haría una persona.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las bacterias no aprenden: sobreviven las que ya eran más resistentes."
       },
       {
         "id": "d",
-        "text": "Porque los antibióticos destruyen los glóbulos blancos que combaten la infección."
+        "text": "Porque los antibióticos destruyen los glóbulos blancos que combaten la infección.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Los antibióticos atacan bacterias, no glóbulos blancos."
       }
     ],
     "answer": "a",
@@ -329,19 +389,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Destruye directamente todos los virus y bacterias que hay en el cuerpo."
+        "text": "Destruye directamente todos los virus y bacterias que hay en el cuerpo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La vacuna no ataca microbios; prepara al sistema inmunitario."
       },
       {
         "id": "b",
-        "text": "Reemplaza los glóbulos rojos que el microorganismo daña."
+        "text": "Reemplaza los glóbulos rojos que el microorganismo ha dañado en la sangre.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La vacuna no tiene que ver con los glóbulos rojos."
       },
       {
         "id": "c",
-        "text": "Estimula al sistema inmunitario para que produzca defensas y memoria contra el agente, sin causar la enfermedad grave."
+        "text": "Estimula al sistema inmunitario para que cree defensas y memoria."
       },
       {
         "id": "d",
-        "text": "Actúa como un antibiótico que elimina los virus."
+        "text": "Actúa como un antibiótico que elimina los virus que causan la enfermedad.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Los antibióticos no sirven contra virus, y la vacuna no es un antibiótico."
       }
     ],
     "answer": "c",
@@ -361,19 +427,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque el agua sale de las células hacia el medio con más sal, por ósmosis."
+        "text": "Porque el agua sale de las células por ósmosis."
       },
       {
         "id": "b",
-        "text": "Porque la sal entra a las células y las hace crecer."
+        "text": "Porque la sal entra a las células y las hace crecer más.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es al revés: el agua sale de las células y estas se encogen."
       },
       {
         "id": "c",
-        "text": "Porque el agua salada le aporta más nutrientes a la lechuga."
+        "text": "Porque el agua salada le aporta más nutrientes a la lechuga.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La sal no es un nutriente que haga crecer la lechuga."
       },
       {
         "id": "d",
-        "text": "Porque la sal acelera la fotosíntesis de las hojas."
+        "text": "Porque la sal acelera la fotosíntesis que hacen las hojas.",
+        "trampa": "causa-efecto",
+        "porQueNo": "La fotosíntesis no explica que la hoja pierda agua."
       }
     ],
     "answer": "a",
@@ -389,23 +461,29 @@
     "afirmacion": "Utiliza habilidades de pensamiento y procedimiento para diseñar experimentos y evaluar predicciones.",
     "difficulty": 2,
     "componente": "Biológico",
-    "enunciado": "Un estudiante quiere saber si la luz influye en el crecimiento de las plantas de fríjol. ¿Cuál es el diseño experimental más adecuado?",
+    "enunciado": "Una estudiante quiere saber si la luz influye en el crecimiento de las plantas de fríjol. ¿Cuál es el diseño experimental más adecuado?",
     "options": [
       {
         "id": "a",
-        "text": "Sembrar una planta con luz y otra en oscuridad, y regar más la que está en oscuridad."
+        "text": "Sembrar una planta con luz y otra en oscuridad, y regar más la de la oscuridad.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Compara luz y oscuridad, pero cambia también el agua: ya no se sabe qué causó el efecto."
       },
       {
         "id": "b",
-        "text": "Sembrar plantas iguales con la misma agua y tierra, unas con luz y otras en oscuridad, y medir su crecimiento."
+        "text": "Sembrar plantas iguales, unas con luz y otras sin luz, y lo demás igual."
       },
       {
         "id": "c",
-        "text": "Sembrar una sola planta con luz y medir su crecimiento durante un mes."
+        "text": "Sembrar una sola planta con luz y medir su crecimiento durante todo un mes.",
+        "trampa": "no-responde",
+        "porQueNo": "Sin un grupo en oscuridad no hay con qué comparar."
       },
       {
         "id": "d",
-        "text": "Sembrar plantas de diferentes especies en lugares distintos de la casa."
+        "text": "Sembrar plantas de diferentes especies en lugares distintos de la casa.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Cambia muchas variables a la vez; no aísla la luz."
       }
     ],
     "answer": "b",
@@ -425,19 +503,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Un cubo de hielo que se derrite."
+        "text": "Un cubo de hielo que se derrite en un vaso.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es un cambio de estado: sigue siendo agua."
       },
       {
         "id": "b",
-        "text": "El azúcar que se disuelve en el tinto."
+        "text": "El azúcar que se disuelve en el tinto.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Disolver no crea una sustancia nueva: el azúcar sigue ahí."
       },
       {
         "id": "c",
-        "text": "Un vaso de vidrio que se rompe."
+        "text": "Un vaso de vidrio que se rompe contra el piso.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Cambia la forma, no la sustancia."
       },
       {
         "id": "d",
-        "text": "Una puntilla de hierro que se oxida a la intemperie."
+        "text": "Una puntilla de hierro que se oxida."
       }
     ],
     "answer": "d",
@@ -457,11 +541,15 @@
     "options": [
       {
         "id": "a",
-        "text": "La de pH 3 es básica y la de pH 9 es ácida."
+        "text": "La de pH 3 es básica y la de pH 9 es ácida.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Invierte la escala: menos de 7 es ácido y más de 7 es básico."
       },
       {
         "id": "b",
-        "text": "Las dos son ácidas, porque su pH es diferente de 0."
+        "text": "Las dos son ácidas, porque su pH es diferente de 0.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Ser distinto de 0 no hace ácida a una sustancia; el límite es 7."
       },
       {
         "id": "c",
@@ -469,7 +557,9 @@
       },
       {
         "id": "d",
-        "text": "Las dos son neutras, porque su pH es menor que 14."
+        "text": "Las dos son neutras, porque su pH es menor que 14.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Neutro es pH 7; no basta con ser menor que 14."
       }
     ],
     "answer": "c",
@@ -489,7 +579,9 @@
     "options": [
       {
         "id": "a",
-        "text": "La filtración."
+        "text": "La filtración con papel.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La sal disuelta pasa por el filtro junto con el agua."
       },
       {
         "id": "b",
@@ -497,11 +589,15 @@
       },
       {
         "id": "c",
-        "text": "La imantación."
+        "text": "La imantación del agua.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La sal no es atraída por un imán."
       },
       {
         "id": "d",
-        "text": "La decantación."
+        "text": "La decantación en reposo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La sal disuelta no se va al fondo."
       }
     ],
     "answer": "b",
@@ -521,19 +617,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Al aumentar la temperatura, las partículas del gas se mueven más rápido y el gas ocupa más volumen."
+        "text": "Con el calor, las partículas del gas se mueven más rápido y ocupan más."
       },
       {
         "id": "b",
-        "text": "El calor crea nuevas partículas de gas dentro del globo."
+        "text": "El calor crea nuevas partículas de gas dentro del globo y lo llenan más.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El número de partículas no cambia: cambia su movimiento."
       },
       {
         "id": "c",
-        "text": "La luz del sol convierte en gas el material del globo."
+        "text": "La luz del sol convierte en gas el material del que está hecho el globo.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El material del globo no se vuelve gas."
       },
       {
         "id": "d",
-        "text": "Cada partícula del gas aumenta de tamaño con el calor."
+        "text": "Cada partícula del gas aumenta de tamaño con el calor y empuja la pared.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las partículas no crecen; se mueven más rápido."
       }
     ],
     "answer": "a",
@@ -553,19 +655,25 @@
     "options": [
       {
         "id": "a",
-        "text": "tienen la misma masa atómica."
+        "text": "tienen la misma masa atómica y el mismo tamaño.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "La masa cambia mucho dentro de un grupo."
       },
       {
         "id": "b",
-        "text": "tienen el mismo número de protones en el núcleo."
+        "text": "tienen el mismo número de protones en el núcleo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Cada elemento tiene un número de protones distinto."
       },
       {
         "id": "c",
-        "text": "se descubrieron en la misma época."
+        "text": "se descubrieron en la misma época de la historia.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La época de descubrimiento no define propiedades."
       },
       {
         "id": "d",
-        "text": "tienen el mismo número de electrones en su último nivel de energía."
+        "text": "tienen igual número de electrones de valencia."
       }
     ],
     "answer": "d",
@@ -586,11 +694,15 @@
     "options": [
       {
         "id": "a",
-        "text": "A mayor temperatura del agua, la reacción tarda más tiempo."
+        "text": "A mayor temperatura del agua, la reacción tarda más tiempo en terminar.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Invierte la tendencia: el tiempo baja al subir la temperatura."
       },
       {
         "id": "b",
-        "text": "La temperatura del agua no afecta el tiempo de reacción."
+        "text": "La temperatura del agua no afecta el tiempo que tarda la reacción.",
+        "trampa": "lectura-literal",
+        "porQueNo": "El tiempo baja de 90 s a 18 s: sí la afecta."
       },
       {
         "id": "c",
@@ -598,7 +710,9 @@
       },
       {
         "id": "d",
-        "text": "El tiempo de reacción depende solo del tamaño de la tableta."
+        "text": "El tiempo de reacción depende solo del tamaño de cada tableta.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El tamaño no se varió; no se puede concluir sobre él."
       }
     ],
     "answer": "c",
@@ -618,19 +732,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque el vidrio enfría la vela hasta congelar la cera."
+        "text": "Porque el vidrio enfría la vela hasta congelar la cera de la mecha.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El vaso no enfría tanto; el problema es que se acaba el oxígeno."
       },
       {
         "id": "b",
-        "text": "Porque se acaba toda la cera de la vela."
+        "text": "Porque se acaba toda la cera de la vela dentro del vaso.",
+        "trampa": "lectura-literal",
+        "porQueNo": "La llama se apaga aunque quede cera."
       },
       {
         "id": "c",
-        "text": "Porque dentro del vaso disminuye el oxígeno, que es necesario para la combustión."
+        "text": "Porque dentro del vaso se agota el oxígeno."
       },
       {
         "id": "d",
-        "text": "Porque el dióxido de carbono se transforma en agua y moja la mecha."
+        "text": "Porque el dióxido de carbono se transforma en agua y moja la mecha.",
+        "trampa": "causa-efecto",
+        "porQueNo": "El dióxido de carbono no se convierte en agua ni moja la mecha."
       }
     ],
     "answer": "c",
@@ -650,11 +770,15 @@
     "options": [
       {
         "id": "a",
-        "text": "0,1 g/L"
+        "text": "0,1 g/L",
+        "trampa": "error-calculo",
+        "porQueNo": "Divide al revés: volumen entre masa."
       },
       {
         "id": "b",
-        "text": "10 g/L"
+        "text": "10 g/L",
+        "trampa": "error-calculo",
+        "porQueNo": "Usa 200 mL como si fueran 2 L."
       },
       {
         "id": "c",
@@ -662,7 +786,9 @@
       },
       {
         "id": "d",
-        "text": "4.000 g/L"
+        "text": "4.000 g/L",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica en vez de dividir (20 × 200)."
       }
     ],
     "answer": "c",
@@ -682,7 +808,9 @@
     "options": [
       {
         "id": "a",
-        "text": "15 km/h"
+        "text": "15 km/h",
+        "trampa": "error-calculo",
+        "porQueNo": "Divide 30 entre 2 en lugar de 1,5."
       },
       {
         "id": "b",
@@ -690,11 +818,15 @@
       },
       {
         "id": "c",
-        "text": "31,5 km/h"
+        "text": "31,5 km/h",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma distancia y tiempo, que no tiene sentido físico."
       },
       {
         "id": "d",
-        "text": "45 km/h"
+        "text": "45 km/h",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica distancia por tiempo en lugar de dividir."
       }
     ],
     "answer": "b",
@@ -714,19 +846,25 @@
     "options": [
       {
         "id": "a",
-        "text": "La pared ejerce sobre ella una fuerza de igual magnitud y sentido contrario al de su empujón."
+        "text": "La pared la empuja a ella con una fuerza igual y contraria."
       },
       {
         "id": "b",
-        "text": "La pared se mueve hacia adelante y la empuja con su movimiento."
+        "text": "La pared se mueve un poco hacia adelante y la empuja con su movimiento.",
+        "trampa": "lectura-literal",
+        "porQueNo": "La pared no se mueve; ejerce una fuerza de reacción."
       },
       {
         "id": "c",
-        "text": "La fuerza que ella hace desaparece al tocar la pared."
+        "text": "La fuerza que ella hace desaparece en el momento en que toca la pared.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las fuerzas no desaparecen: aparece una reacción igual y contraria."
       },
       {
         "id": "d",
-        "text": "La gravedad la empuja hacia atrás cuando deja de tocar la pared."
+        "text": "La gravedad la empuja hacia atrás cuando deja de tocar la pared.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La gravedad actúa hacia abajo, no hacia atrás."
       }
     ],
     "answer": "a",
@@ -746,19 +884,25 @@
     "options": [
       {
         "id": "a",
-        "text": "El martillo llega primero, porque los objetos más pesados caen más rápido."
+        "text": "El martillo llega primero, porque los objetos más pesados caen más rápido.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Sin aire, todos caen con la misma aceleración."
       },
       {
         "id": "b",
-        "text": "La pluma queda flotando, porque en el vacío no hay gravedad."
+        "text": "La pluma queda flotando, porque en el vacío no hay gravedad que la atraiga.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "En la cámara de vacío sí hay gravedad; lo que no hay es aire."
       },
       {
         "id": "c",
-        "text": "La pluma llega primero, porque tiene menos masa."
+        "text": "La pluma llega primero, porque tiene mucha menos masa que el martillo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La masa no cambia la aceleración de caída en el vacío."
       },
       {
         "id": "d",
-        "text": "Llegan al suelo al mismo tiempo, porque sin aire ambos caen con la misma aceleración."
+        "text": "Llegan al mismo tiempo: sin aire caen con igual aceleración."
       }
     ],
     "answer": "d",
@@ -782,15 +926,21 @@
       },
       {
         "id": "b",
-        "text": "2 A"
+        "text": "2 A",
+        "trampa": "error-calculo",
+        "porQueNo": "Divide R entre V (10 ÷ 5)."
       },
       {
         "id": "c",
-        "text": "15 A"
+        "text": "15 A",
+        "trampa": "error-calculo",
+        "porQueNo": "Suma V y R, que no es la ley de Ohm."
       },
       {
         "id": "d",
-        "text": "50 A"
+        "text": "50 A",
+        "trampa": "error-calculo",
+        "porQueNo": "Multiplica V por R en lugar de dividir."
       }
     ],
     "answer": "a",
@@ -810,19 +960,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque conducen el calor mejor que el metal."
+        "text": "Porque conducen el calor mejor que el metal de la olla.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es al revés: el metal conduce mejor."
       },
       {
         "id": "b",
-        "text": "Porque esos materiales conducen mal el calor y así evitan quemaduras."
+        "text": "Porque conducen mal el calor y evitan quemaduras."
       },
       {
         "id": "c",
-        "text": "Porque hacen que la comida se cocine más rápido."
+        "text": "Porque hacen que la comida se cocine más rápido.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El mango no influye en la cocción."
       },
       {
         "id": "d",
-        "text": "Porque reflejan el calor del fogón hacia la comida."
+        "text": "Porque reflejan el calor del fogón hacia la comida.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El mango no refleja calor; aísla la mano."
       }
     ],
     "answer": "b",
@@ -843,19 +999,25 @@
     "options": [
       {
         "id": "a",
-        "text": "El período depende de la masa y no de la longitud."
+        "text": "El período depende de la masa de la esfera y no de la longitud.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Invierte la conclusión: cambiar la masa no cambió el período."
       },
       {
         "id": "b",
-        "text": "El período depende tanto de la masa como de la longitud."
+        "text": "El período depende tanto de la masa como de la longitud de la cuerda.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Depende de la longitud, pero no de la masa."
       },
       {
         "id": "c",
-        "text": "El período no depende ni de la masa ni de la longitud."
+        "text": "El período no depende ni de la masa ni de la longitud de la cuerda.",
+        "trampa": "lectura-literal",
+        "porQueNo": "Al cuadruplicar la longitud, el período se duplicó."
       },
       {
         "id": "d",
-        "text": "El período depende de la longitud de la cuerda y no de la masa."
+        "text": "El período depende de la longitud y no de la masa."
       }
     ],
     "answer": "d",
@@ -875,19 +1037,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque en el espacio el sonido viaja más rápido que la luz."
+        "text": "Porque en el espacio el sonido viaja más rápido que la luz y no se alcanza a oír.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El sonido es mucho más lento que la luz, y en el vacío no se propaga."
       },
       {
         "id": "b",
-        "text": "Porque el sonido necesita un medio material para propagarse y el espacio está casi vacío."
+        "text": "Porque el sonido necesita un medio material para propagarse."
       },
       {
         "id": "c",
-        "text": "Porque el frío del espacio congela las ondas sonoras."
+        "text": "Porque el frío del espacio congela las ondas sonoras antes de llegar.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las ondas no se congelan: lo que falta es un medio."
       },
       {
         "id": "d",
-        "text": "Porque en el espacio no existe la gravedad."
+        "text": "Porque en el espacio no existe la gravedad que lleva el sonido.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La gravedad no transmite el sonido."
       }
     ],
     "answer": "b",
@@ -907,19 +1075,25 @@
     "options": [
       {
         "id": "a",
-        "text": "La energía química del agua se transforma en energía nuclear."
+        "text": "La energía química del agua se transforma en energía nuclear en la turbina.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Allí no hay reacciones químicas ni nucleares."
       },
       {
         "id": "b",
-        "text": "La energía eléctrica se transforma en energía potencial del agua."
+        "text": "La energía eléctrica se transforma en energía potencial del agua almacenada.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es el proceso al revés."
       },
       {
         "id": "c",
-        "text": "La energía térmica del sol se transforma directamente en electricidad."
+        "text": "La energía térmica del sol se transforma directamente en electricidad.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Eso describe otra tecnología, no una hidroeléctrica."
       },
       {
         "id": "d",
-        "text": "La energía potencial del agua almacenada se transforma en energía cinética y luego en energía eléctrica."
+        "text": "La energía potencial del agua pasa a cinética y luego a eléctrica."
       }
     ],
     "answer": "d",
@@ -939,19 +1113,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Que llegue menos basura al relleno sanitario y que los residuos orgánicos se aprovechen como abono."
+        "text": "Que llegue menos basura al relleno y se aproveche como abono."
       },
       {
         "id": "b",
-        "text": "Que ya no sea necesario tener ningún relleno sanitario."
+        "text": "Que ya no sea necesario tener ningún relleno sanitario en el municipio.",
+        "trampa": "extremo",
+        "porQueNo": "Siguen existiendo residuos que no se compostan."
       },
       {
         "id": "c",
-        "text": "Que aumente la cantidad de plástico que se puede producir."
+        "text": "Que aumente la cantidad de plástico que se puede producir en la región.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El compost no tiene que ver con producir plástico."
       },
       {
         "id": "d",
-        "text": "Que deje de llover sobre el relleno sanitario."
+        "text": "Que deje de llover sobre el relleno sanitario y se reduzcan los olores.",
+        "trampa": "causa-efecto",
+        "porQueNo": "Separar residuos no cambia la lluvia."
       }
     ],
     "answer": "a",
@@ -971,19 +1151,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Porque el mercurio se evapora por completo y contamina solo el aire."
+        "text": "Porque el mercurio se evapora por completo y contamina solo el aire.",
+        "trampa": "extremo",
+        "porQueNo": "Parte del mercurio llega al agua y a los peces."
       },
       {
         "id": "b",
-        "text": "Porque los peces transforman el mercurio en oro."
+        "text": "Porque los peces transforman el mercurio en oro dentro de su cuerpo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Ningún ser vivo convierte mercurio en oro."
       },
       {
         "id": "c",
-        "text": "Porque el mercurio se acumula en los organismos y su concentración aumenta a lo largo de la cadena alimentaria."
+        "text": "Porque se acumula en los organismos y aumenta en la cadena alimentaria."
       },
       {
         "id": "d",
-        "text": "Porque el mercurio afecta solo a las plantas acuáticas."
+        "text": "Porque el mercurio afecta solo a las plantas acuáticas del río.",
+        "trampa": "extremo",
+        "porQueNo": "Se acumula en peces y en quienes los comen."
       }
     ],
     "answer": "c",
