@@ -60,7 +60,7 @@ export const TRAPS: Record<TrapType, { nombre: string; idea: string }> = {
   opinion: { nombre: "Opinión o «deber ser»", idea: "Suena bien o correcto, pero es una opinión, no lo que muestran el texto o los datos." },
   "confunde-conceptos": { nombre: "Confunde conceptos", idea: "Cambia un concepto por otro parecido (por ejemplo, tutela por acción popular)." },
   "error-calculo": { nombre: "Error de cálculo", idea: "Sale de una cuenta mal hecha o de un paso que se saltó." },
-  "dato-equivocado": { nombre: "Dato equivocado", idea: "La cuenta está bien hecha, pero con el dato que no era." },
+  "dato-equivocado": { nombre: "Dato equivocado", idea: "Usa un dato que no corresponde (una cifra, una fecha o un hecho distinto), aunque el razonamiento parezca bien." },
   "desfase-temporal": { nombre: "Desfase en el tiempo", idea: "Mezcla hechos o ideas de épocas distintas." },
   "palabra-parecida": { nombre: "Palabra parecida", idea: "Se parece en forma o en tema a la correcta, pero no significa lo que se necesita." },
 };

@@ -9,7 +9,9 @@
     "options": [
       {
         "id": "a",
-        "text": "Una demanda civil por daños y perjuicios"
+        "text": "Una demanda civil por daños y perjuicios",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Una demanda civil busca una indemnización en dinero; no protege de inmediato el derecho a defenderse."
       },
       {
         "id": "b",
@@ -17,11 +19,15 @@
       },
       {
         "id": "c",
-        "text": "Una queja ante la Defensoría del Pueblo"
+        "text": "Una queja ante la Defensoría del Pueblo para que sancione al colegio",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Defensoría orienta y acompaña, pero no sanciona al colegio ni ordena que se respete el debido proceso."
       },
       {
         "id": "d",
-        "text": "Un recurso de apelación ante el Ministerio de Educación"
+        "text": "Un recurso de apelación ante el Ministerio",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La apelación es un recurso dentro de un proceso; el Ministerio no es la vía para proteger de inmediato un derecho fundamental."
       }
     ],
     "answer": "b",
@@ -40,7 +46,9 @@
     "options": [
       {
         "id": "a",
-        "text": "La Regeneración"
+        "text": "La Regeneración y la Constitución de 1886",
+        "trampa": "desfase-temporal",
+        "porQueNo": "La Regeneración es de finales del siglo XIX, décadas antes de 1948."
       },
       {
         "id": "b",
@@ -48,11 +56,15 @@
       },
       {
         "id": "c",
-        "text": "La Guerra de los Mil Días"
+        "text": "La Guerra de los Mil Días entre liberales y conservadores",
+        "trampa": "desfase-temporal",
+        "porQueNo": "La Guerra de los Mil Días fue entre 1899 y 1902."
       },
       {
         "id": "d",
-        "text": "El Frente Nacional"
+        "text": "El Frente Nacional y la alternancia de partidos",
+        "trampa": "desfase-temporal",
+        "porQueNo": "El Frente Nacional empezó en 1958, como salida a La Violencia, no como su comienzo."
       }
     ],
     "answer": "b",
@@ -71,19 +83,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Que el Estado puede hacer lo que quiera sin restricciones"
+        "text": "Que el Estado puede limitar los derechos cuando lo considere conveniente para el orden",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "En un Estado de Derecho las autoridades están sometidas a la ley; no limitan derechos a su conveniencia."
       },
       {
         "id": "b",
-        "text": "Que el Estado debe respetar las leyes y garantizar el bienestar de los ciudadanos"
+        "text": "Que el Estado se somete a la ley y debe garantizar condiciones dignas de vida"
       },
       {
         "id": "c",
-        "text": "Que solo los ciudadanos ricos tienen derechos"
+        "text": "Que los derechos sociales solo se garantizan a quienes pueden pagar por ellos",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Lo «social» obliga al Estado a garantizar derechos como salud y educación a todos, no solo a quien paga."
       },
       {
         "id": "d",
-        "text": "Que el Estado controla todos los negocios del país"
+        "text": "Que el Estado debe administrar directamente las empresas y los negocios del país",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso describe una economía centralizada; la Constitución protege la libre empresa, con límites."
       }
     ],
     "answer": "b",
@@ -102,11 +120,15 @@
     "options": [
       {
         "id": "a",
-        "text": "El hábeas corpus."
+        "text": "El hábeas corpus.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El hábeas corpus protege la libertad de quien está detenido ilegalmente, no derechos colectivos."
       },
       {
         "id": "b",
-        "text": "La acción de cumplimiento."
+        "text": "La acción de cumplimiento.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La acción de cumplimiento pide que una autoridad cumpla una ley; no protege directamente el ambiente de la comunidad."
       },
       {
         "id": "c",
@@ -114,7 +136,9 @@
       },
       {
         "id": "d",
-        "text": "El derecho al voto."
+        "text": "El derecho de petición.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Sirve para pedir información o una actuación a una autoridad, pero no hace que un juez ordene frenar la contaminación."
       }
     ],
     "answer": "c",
@@ -133,15 +157,21 @@
     "options": [
       {
         "id": "a",
-        "text": "La acción popular."
+        "text": "La acción popular.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La acción popular protege derechos colectivos (ambiente, espacio público), no la libertad de una persona."
       },
       {
         "id": "b",
-        "text": "La revocatoria del mandato."
+        "text": "La revocatoria del mandato.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La revocatoria sirve para terminar el mandato de un alcalde o un gobernador."
       },
       {
         "id": "c",
-        "text": "El cabildo abierto."
+        "text": "El cabildo abierto.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El cabildo abierto es una reunión pública del concejo para discutir asuntos de la comunidad."
       },
       {
         "id": "d",
@@ -168,15 +198,21 @@
       },
       {
         "id": "b",
-        "text": "La acción de tutela."
+        "text": "La acción de tutela.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La tutela protege derechos fundamentales vulnerados; para pedir información se usa primero el derecho de petición."
       },
       {
         "id": "c",
-        "text": "El hábeas corpus."
+        "text": "La acción de cumplimiento.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La acción de cumplimiento exige cumplir una ley ya existente; no es la vía para pedir información."
       },
       {
         "id": "d",
-        "text": "El plebiscito."
+        "text": "La consulta popular.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La consulta popular somete una pregunta de interés general al voto de los ciudadanos."
       }
     ],
     "answer": "a",
@@ -195,7 +231,9 @@
     "options": [
       {
         "id": "a",
-        "text": "El plebiscito."
+        "text": "El plebiscito municipal.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El plebiscito pregunta si se apoya una decisión del gobernante; no termina su mandato."
       },
       {
         "id": "b",
@@ -203,11 +241,15 @@
       },
       {
         "id": "c",
-        "text": "El cabildo abierto."
+        "text": "El cabildo abierto del concejo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "El cabildo abierto permite discutir asuntos con el concejo, pero no quita del cargo al alcalde."
       },
       {
         "id": "d",
-        "text": "La acción de tutela."
+        "text": "La acción de cumplimiento.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La acción de cumplimiento pide que se cumpla una ley; incumplir el programa de gobierno se resuelve con la revocatoria."
       }
     ],
     "answer": "b",
@@ -226,7 +268,9 @@
     "options": [
       {
         "id": "a",
-        "text": "La Corte Constitucional."
+        "text": "La Corte Constitucional.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Corte Constitucional revisa que las leyes respeten la Constitución, pero no las hace."
       },
       {
         "id": "b",
@@ -234,11 +278,15 @@
       },
       {
         "id": "c",
-        "text": "La Presidencia de la República."
+        "text": "La Presidencia de la República.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El presidente puede presentar proyectos de ley y sancionarlos, pero quien las aprueba es el Congreso."
       },
       {
         "id": "d",
-        "text": "La Procuraduría General de la Nación."
+        "text": "La Procuraduría General de la Nación.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Procuraduría vigila la conducta de los servidores públicos; no hace leyes."
       }
     ],
     "answer": "b",
@@ -257,15 +305,21 @@
     "options": [
       {
         "id": "a",
-        "text": "La Registraduría Nacional."
+        "text": "La Registraduría Nacional.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La Registraduría organiza las elecciones e identifica a las personas."
       },
       {
         "id": "b",
-        "text": "La Contraloría General de la República."
+        "text": "La Contraloría General de la República.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Contraloría vigila el uso del dinero público, no la constitucionalidad de las leyes."
       },
       {
         "id": "c",
-        "text": "La Defensoría del Pueblo."
+        "text": "La Defensoría del Pueblo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Defensoría promueve y defiende los derechos humanos, pero no puede anular una ley."
       },
       {
         "id": "d",
@@ -288,19 +342,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Que departamentos y municipios tienen competencias y recursos propios para manejar asuntos de su territorio."
+        "text": "Que departamentos y municipios manejan asuntos y recursos propios."
       },
       {
         "id": "b",
-        "text": "Que cada departamento puede expedir su propia Constitución."
+        "text": "Que cada departamento puede expedir su propia Constitución y sus propias leyes penales.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso describe un Estado federal; en una república unitaria hay una sola Constitución."
       },
       {
         "id": "c",
-        "text": "Que el presidente nombra directamente a todos los alcaldes."
+        "text": "Que el presidente nombra a los alcaldes y gobernadores para coordinar el territorio.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "Antes de 1986 se nombraban alcaldes; hoy alcaldes y gobernadores se eligen por voto popular."
       },
       {
         "id": "d",
-        "text": "Que no existe un gobierno nacional."
+        "text": "Que el gobierno nacional desaparece y cada región decide sola todos sus asuntos.",
+        "trampa": "extremo",
+        "porQueNo": "Descentralizar reparte funciones; no elimina el gobierno nacional."
       }
     ],
     "answer": "a",
@@ -319,19 +379,25 @@
     "options": [
       {
         "id": "a",
-        "text": "La prohibición de enseñar en lenguas distintas al español."
+        "text": "La prohibición de enseñar en lenguas distintas al español en escuelas públicas.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Constitución dice lo contrario: las lenguas de los grupos étnicos son oficiales en sus territorios (art. 10)."
       },
       {
         "id": "b",
-        "text": "La libertad de empresa y de iniciativa privada."
+        "text": "La libertad de empresa y de iniciativa privada en la educación.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La libertad de empresa trata de la actividad económica, no de la lengua en que se enseña."
       },
       {
         "id": "c",
-        "text": "El reconocimiento y la protección de la diversidad étnica y cultural de la Nación."
+        "text": "La protección de la diversidad étnica y cultural de la Nación."
       },
       {
         "id": "d",
-        "text": "La obligación de que todos los colombianos aprendan inglés."
+        "text": "La obligación de que toda escuela enseñe una segunda lengua extranjera.",
+        "trampa": "no-responde",
+        "porQueNo": "Aprender otra lengua puede ser útil, pero no explica por qué se enseña en nasa yuwe."
       }
     ],
     "answer": "c",
@@ -350,19 +416,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Redujo la violencia entre los dos partidos, pero limitó la participación de otras fuerzas políticas."
+        "text": "Redujo la violencia bipartidista, pero excluyó a otras fuerzas políticas."
       },
       {
         "id": "b",
-        "text": "Permitió que muchos partidos accedieran al poder en igualdad de condiciones."
+        "text": "Permitió que muchos partidos accedieran al poder en igualdad de condiciones.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Fue lo contrario: el poder quedó reservado a liberales y conservadores."
       },
       {
         "id": "c",
-        "text": "Puso fin de manera definitiva a todos los conflictos armados del país."
+        "text": "Puso fin de manera definitiva a todos los conflictos armados del país.",
+        "trampa": "extremo",
+        "porQueNo": "El conflicto armado continuó; en esos años nacieron varias guerrillas."
       },
       {
         "id": "d",
-        "text": "Reemplazó la república por una monarquía constitucional."
+        "text": "Fortaleció a los partidos de izquierda, que ganaron espacio en el Congreso.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La izquierda quedó por fuera del reparto; esa exclusión es una de las críticas al acuerdo."
       }
     ],
     "answer": "a",
@@ -381,19 +453,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Elegir por primera vez a los alcaldes por voto popular."
+        "text": "Elegir por primera vez a los alcaldes por voto popular en todo el país.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "La elección popular de alcaldes se aprobó en 1986 y se usó desde 1988."
       },
       {
         "id": "b",
-        "text": "Aprobar la separación de Panamá del territorio colombiano."
+        "text": "Aprobar el acuerdo de paz con la guerrilla del M-19 mediante un referendo.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El acuerdo con el M-19 se firmó en 1990, pero no fue lo que se votó con la séptima papeleta."
       },
       {
         "id": "c",
-        "text": "Autorizar la reelección presidencial inmediata."
+        "text": "Autorizar la reelección presidencial inmediata por una sola vez.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "La reelección inmediata se aprobó en 2004, con otra reforma."
       },
       {
         "id": "d",
-        "text": "Convocar una Asamblea Nacional Constituyente que reformara la Constitución de 1886."
+        "text": "Convocar una Asamblea Constituyente para cambiar la Constitución."
       }
     ],
     "answer": "d",
@@ -412,19 +490,25 @@
     "options": [
       {
         "id": "a",
-        "text": "La invasión de Panamá por parte de tropas venezolanas."
+        "text": "La presión del Reino Unido para controlar el comercio del Caribe.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "En 1903 el actor decisivo fue Estados Unidos; el Reino Unido no intervino en la separación."
       },
       {
         "id": "b",
-        "text": "El interés de Estados Unidos en construir y controlar un canal interoceánico en el istmo."
+        "text": "El interés de Estados Unidos en construir y controlar un canal."
       },
       {
         "id": "c",
-        "text": "La decisión de España de recuperar sus antiguas colonias."
+        "text": "La intervención de Francia para cobrar las deudas de la compañía del canal.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "La compañía francesa del canal había fracasado y vendió sus derechos a Estados Unidos; Francia no intervino."
       },
       {
         "id": "d",
-        "text": "La firma de un acuerdo de paz con las FARC."
+        "text": "El apoyo de Venezuela a los comerciantes que pedían la independencia del istmo.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Venezuela no tuvo papel en la separación de Panamá."
       }
     ],
     "answer": "b",
@@ -443,11 +527,15 @@
     "options": [
       {
         "id": "a",
-        "text": "El río Cauca."
+        "text": "El río Cauca.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El Cauca también nace en el Macizo, pero desemboca en el Magdalena, no en el mar."
       },
       {
         "id": "b",
-        "text": "El río Atrato."
+        "text": "El río Atrato.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El Atrato nace en el Chocó y desemboca en el golfo de Urabá."
       },
       {
         "id": "c",
@@ -455,11 +543,13 @@
       },
       {
         "id": "d",
-        "text": "El río Meta."
+        "text": "El río Catatumbo.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El Catatumbo corre hacia el lago de Maracaibo, en Venezuela."
       }
     ],
     "answer": "c",
-    "explanation": "El Magdalena nace en el Macizo Colombiano y desemboca en el Caribe, en Bocas de Ceniza. El Cauca también nace en el Macizo, pero desemboca en el Magdalena; el Atrato nace en el Chocó y el Meta pertenece a la cuenca del Orinoco.",
+    "explanation": "El Magdalena nace en el Macizo Colombiano y desemboca en el Caribe, en Bocas de Ceniza. El Cauca también nace en el Macizo, pero desemboca en el Magdalena; el Atrato nace en el Chocó y el Catatumbo corre hacia el lago de Maracaibo.",
     "tip": "Aprende la geografía con pares: Magdalena–Cauca (andinos), Atrato (Pacífico biogeográfico, desemboca en el golfo de Urabá) y Meta (Orinoquía).",
     "source": "original",
     "reviewed": false
@@ -474,19 +564,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Que suba, porque disminuye la oferta mientras la demanda se mantiene."
+        "text": "Que suba, porque baja la oferta y la demanda se mantiene."
       },
       {
         "id": "b",
-        "text": "Que baje, porque los compradores tendrán menos dinero."
+        "text": "Que baje, porque los compradores tendrán menos dinero para gastar.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "Nada en el caso indica que bajen los ingresos de los compradores."
       },
       {
         "id": "c",
-        "text": "Que se mantenga igual, porque el precio no depende de las cosechas."
+        "text": "Que se mantenga igual, porque el precio no depende de las cosechas.",
+        "trampa": "extremo",
+        "porQueNo": "El precio sí depende de cuánta papa llegue: con menos oferta tiende a subir."
       },
       {
         "id": "d",
-        "text": "Que baje, porque habrá más papa disponible."
+        "text": "Que baje, porque habrá más papa disponible en los mercados.",
+        "trampa": "causa-efecto",
+        "porQueNo": "La helada reduce la papa disponible; no la aumenta."
       }
     ],
     "answer": "a",
@@ -505,15 +601,21 @@
     "options": [
       {
         "id": "a",
-        "text": "Aumentó, porque su salario subió."
+        "text": "Aumentó, porque su salario subió.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "El salario subió, pero menos que los precios: con él se compra menos."
       },
       {
         "id": "b",
-        "text": "Se mantuvo igual, porque ambos subieron."
+        "text": "Se mantuvo igual, porque ambos subieron.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Subieron en porcentajes distintos (5 % y 10 %), así que no se mantuvo."
       },
       {
         "id": "c",
-        "text": "Aumentó al doble, porque la inflación fue el doble del aumento."
+        "text": "Aumentó al doble, porque la inflación fue el doble.",
+        "trampa": "error-calculo",
+        "porQueNo": "Que la inflación sea el doble del aumento reduce el poder adquisitivo; no lo duplica."
       },
       {
         "id": "d",
@@ -537,19 +639,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Los campesinos, la conservación del bosque; la asociación ambiental, el comercio de productos."
+        "text": "Los campesinos, la conservación del bosque; la asociación ambiental, el comercio de productos.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Invierte los intereses: los campesinos piden la vía y la asociación protege el bosque."
       },
       {
         "id": "b",
-        "text": "Los campesinos, el acceso a los mercados; la asociación ambiental, la conservación de las fuentes de agua."
+        "text": "Los campesinos, el acceso a los mercados; la asociación, las fuentes de agua."
       },
       {
         "id": "c",
-        "text": "Los dos grupos defienden únicamente intereses económicos."
+        "text": "Los dos grupos defienden únicamente intereses económicos sobre la vereda.",
+        "trampa": "extremo",
+        "porQueNo": "La asociación defiende el agua y el bosque, que no es solo un interés económico."
       },
       {
         "id": "d",
-        "text": "Los campesinos buscan turismo y la asociación ambiental busca empleo."
+        "text": "Los campesinos buscan turismo y la asociación ambiental busca empleo.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El texto no habla de turismo ni de empleo."
       }
     ],
     "answer": "b",
@@ -569,19 +677,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Construir la carretera por el trazado propuesto, porque los campesinos son más."
+        "text": "Construir la carretera por el trazado propuesto, porque los campesinos son más.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Favorece solo a los campesinos y deja de lado el agua; ser más no resuelve el conflicto."
       },
       {
         "id": "b",
-        "text": "Prohibir para siempre cualquier vía en la vereda."
+        "text": "Prohibir para siempre cualquier vía en la vereda para proteger el agua.",
+        "trampa": "extremo",
+        "porQueNo": "Protege el agua, pero ignora la necesidad de sacar los productos."
       },
       {
         "id": "c",
-        "text": "Estudiar un trazado alternativo que no cruce el bosque y, mientras tanto, mejorar los caminos existentes."
+        "text": "Buscar otro trazado que no cruce el bosque y mejorar ya los caminos."
       },
       {
         "id": "d",
-        "text": "Dejar que cada grupo actúe por su cuenta sin dialogar."
+        "text": "Dejar que cada grupo actúe por su cuenta y que gane el que tenga más apoyo.",
+        "trampa": "no-responde",
+        "porQueNo": "No concilia los intereses de los dos grupos; evita el diálogo."
       }
     ],
     "answer": "c",
@@ -600,19 +714,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Imponer las sanciones disciplinarias a los estudiantes."
+        "text": "Imponer las sanciones disciplinarias a los estudiantes que incumplen.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Las sanciones las decide el colegio según el manual de convivencia, no el personero."
       },
       {
         "id": "b",
-        "text": "Administrar el presupuesto del colegio."
+        "text": "Administrar el presupuesto del colegio con el rector.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El presupuesto lo maneja la rectoría con el consejo directivo."
       },
       {
         "id": "c",
-        "text": "Promover que se respeten los derechos y deberes de los estudiantes."
+        "text": "Promover los derechos y deberes de los estudiantes."
       },
       {
         "id": "d",
-        "text": "Nombrar a los profesores de cada área."
+        "text": "Representar a los estudiantes en el consejo directivo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Eso lo hace el representante de los estudiantes, que es otro cargo elegido."
       }
     ],
     "answer": "c",
@@ -631,19 +751,25 @@
     "options": [
       {
         "id": "a",
-        "text": "El primero se basa en datos estadísticos; el segundo es solo una opinión."
+        "text": "El primero se basa en datos estadísticos; el segundo es solo una opinión.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es al revés: el primero no muestra datos y el segundo matiza."
       },
       {
         "id": "b",
-        "text": "Los dos dicen lo mismo con palabras diferentes."
+        "text": "El segundo apoya al primero, porque también habla de empleo.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Menciona la competencia, pero también efectos positivos: no respalda la generalización."
       },
       {
         "id": "c",
-        "text": "El segundo niega que la migración tenga algún efecto en el empleo."
+        "text": "El segundo niega que la migración tenga algún efecto en el empleo.",
+        "trampa": "lectura-literal",
+        "porQueNo": "El segundo sí reconoce un efecto en el empleo en algunos sectores."
       },
       {
         "id": "d",
-        "text": "El primero generaliza sin presentar evidencia; el segundo considera varios efectos posibles."
+        "text": "El primero generaliza sin evidencia; el segundo considera varios efectos posibles."
       }
     ],
     "answer": "d",
@@ -662,19 +788,25 @@
     "options": [
       {
         "id": "a",
-        "text": "El derecho fundamental a la salud, relacionado con su vida y su dignidad."
+        "text": "El derecho fundamental a la salud, ligado a su vida."
       },
       {
         "id": "b",
-        "text": "El derecho a la libre competencia entre empresas."
+        "text": "El derecho a la libre competencia entre las empresas de salud.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "La libre competencia es un principio económico; aquí se trata de la atención de una paciente."
       },
       {
         "id": "c",
-        "text": "El derecho de propiedad sobre el medicamento."
+        "text": "El derecho de propiedad sobre el medicamento que le formularon.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "No reclama la propiedad de un objeto, sino que le garanticen el tratamiento."
       },
       {
         "id": "d",
-        "text": "El derecho al voto en las elecciones de salud."
+        "text": "El derecho de petición ante la Superintendencia de Salud.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La petición sirve para pedir información o respuestas; lo que la tutela protege aquí es la salud."
       }
     ],
     "answer": "a",
@@ -693,19 +825,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Aumento de la biodiversidad, porque llegan nuevas especies de ganado."
+        "text": "Más biodiversidad, porque el ganado y los pastos traen nuevas especies a la zona.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Cambiar selva por pasto reduce las especies; el ganado no es biodiversidad nativa."
       },
       {
         "id": "b",
-        "text": "Pérdida de biodiversidad, cambios en el ciclo del agua de la región y más emisiones de gases de efecto invernadero."
+        "text": "Menos biodiversidad, cambios en las lluvias y más gases de efecto invernadero."
       },
       {
         "id": "c",
-        "text": "Más lluvias, porque los potreros retienen más agua que el bosque."
+        "text": "Más lluvias en la región, porque los potreros retienen más agua que la selva.",
+        "trampa": "causa-efecto",
+        "porQueNo": "La selva aporta humedad a la atmósfera; al quitarla, las lluvias tienden a bajar o cambiar."
       },
       {
         "id": "d",
-        "text": "Ningún efecto fuera de la zona talada, porque el bosque es muy grande."
+        "text": "Efectos solo en la zona talada, porque el resto del bosque compensa la pérdida.",
+        "trampa": "extremo",
+        "porQueNo": "La selva influye en las lluvias de regiones lejanas y en el clima: el efecto no se queda en la zona."
       }
     ],
     "answer": "b",
@@ -724,19 +862,25 @@
     "options": [
       {
         "id": "a",
-        "text": "El crecimiento de barrios en las periferias, a menudo sin servicios públicos suficientes al principio."
+        "text": "El crecimiento de barrios periféricos, muchos sin servicios al principio."
       },
       {
         "id": "b",
-        "text": "La disminución de la población urbana."
+        "text": "La disminución de la población urbana y el regreso masivo al campo.",
+        "trampa": "causa-efecto",
+        "porQueNo": "La migración aumentó la población de las ciudades; no la redujo."
       },
       {
         "id": "c",
-        "text": "La desaparición del trabajo informal."
+        "text": "La desaparición del trabajo informal porque la industria absorbió a todos.",
+        "trampa": "extremo",
+        "porQueNo": "El trabajo informal creció: la industria no alcanzó a emplear a todos."
       },
       {
         "id": "d",
-        "text": "El abandono de las zonas periféricas de las ciudades."
+        "text": "El abandono de las periferias, porque las familias se ubicaron en el centro.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Fue lo contrario: las familias se asentaron en las periferias, que crecieron rápido."
       }
     ],
     "answer": "a",
@@ -755,19 +899,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Ganó el «Sí» con amplia mayoría y el acuerdo no tuvo cambios."
+        "text": "Ganó el «Sí» con amplia mayoría y el acuerdo se firmó sin cambios.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "Ganó el «No», con algo más del 50 % de los votos."
       },
       {
         "id": "b",
-        "text": "No se realizó, porque la Constitución prohíbe los plebiscitos."
+        "text": "No se realizó, porque la Corte Constitucional prohibió hacer la votación.",
+        "trampa": "dato-equivocado",
+        "porQueNo": "El plebiscito sí se hizo, el 2 de octubre de 2016."
       },
       {
         "id": "c",
-        "text": "Ganó el «No» por un margen estrecho; se renegociaron algunos puntos y luego se firmó un nuevo acuerdo."
+        "text": "Ganó el «No» por poco; se renegoció y se firmó un nuevo acuerdo."
       },
       {
         "id": "d",
-        "text": "Ganó el «No» y el proceso de paz terminó definitivamente."
+        "text": "Ganó el «No» y el proceso de paz se suspendió de manera definitiva.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Ganó el «No», pero el proceso siguió: se renegoció y en noviembre se firmó un nuevo acuerdo."
       }
     ],
     "answer": "c",
@@ -786,19 +936,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Un libro de historia escrito en 2010."
+        "text": "Un libro de historia escrito en 2010.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Un libro de 2010 es posterior a los hechos: es una fuente secundaria."
       },
       {
         "id": "b",
-        "text": "Una fotografía o un periódico publicados en esos días."
+        "text": "Una fotografía o un periódico publicados en esos mismos días."
       },
       {
         "id": "c",
-        "text": "Un artículo de una enciclopedia en internet."
+        "text": "Un artículo de una enciclopedia en internet.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Una enciclopedia resume lo que otros investigaron: es secundaria."
       },
       {
         "id": "d",
-        "text": "Un video de resumen hecho por un creador de contenido."
+        "text": "Un video de resumen hecho por un creador de contenido.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Aunque use imágenes de la época, el video es una interpretación posterior: es secundaria."
       }
     ],
     "answer": "b",
@@ -817,15 +973,21 @@
     "options": [
       {
         "id": "a",
-        "text": "El Grito de Independencia del 20 de julio."
+        "text": "El Grito de Independencia del 20 de julio.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "El 20 de julio fue en 1810, el inicio del proceso de independencia."
       },
       {
         "id": "b",
-        "text": "La Guerra de los Mil Días."
+        "text": "La Guerra de los Mil Días.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "La Guerra de los Mil Días fue entre 1899 y 1902."
       },
       {
         "id": "c",
-        "text": "La firma de la Constitución de 1886."
+        "text": "La firma de la Constitución de 1886.",
+        "trampa": "desfase-temporal",
+        "porQueNo": "La Constitución de 1886 es de casi setenta años después."
       },
       {
         "id": "d",
@@ -848,19 +1010,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Que disminuya el plástico que llega a los ríos."
+        "text": "Que disminuya el plástico que llega a los ríos y quebradas del municipio.",
+        "trampa": "no-responde",
+        "porQueNo": "Es un efecto que la medida busca, no uno no deseado."
       },
       {
         "id": "b",
-        "text": "Que más personas usen bolsas reutilizables."
+        "text": "Que más personas lleven bolsas reutilizables cuando van a mercar.",
+        "trampa": "no-responde",
+        "porQueNo": "Es un efecto que la medida busca, no uno no deseado."
       },
       {
         "id": "c",
-        "text": "Que llegue menos plástico al relleno sanitario."
+        "text": "Que llegue menos plástico al relleno sanitario cada mes.",
+        "trampa": "no-responde",
+        "porQueNo": "Es un efecto que la medida busca, no uno no deseado."
       },
       {
         "id": "d",
-        "text": "Que algunos pequeños comerciantes tengan costos más altos mientras consiguen alternativas."
+        "text": "Que algunos tenderos tengan más costos mientras consiguen alternativas."
       }
     ],
     "answer": "d",
@@ -879,19 +1047,25 @@
     "options": [
       {
         "id": "a",
-        "text": "El interés superior del niño."
+        "text": "El interés superior del niño, que prevalece."
       },
       {
         "id": "b",
-        "text": "Las ganancias de la empresa."
+        "text": "Las ganancias de la empresa.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "La Constitución pone primero los derechos del niño, no las ganancias de una empresa."
       },
       {
         "id": "c",
-        "text": "La opinión de la mayoría de los vecinos."
+        "text": "La opinión de la mayoría de los vecinos.",
+        "trampa": "opinion",
+        "porQueNo": "Los derechos de los niños prevalecen aunque la mayoría opine distinto."
       },
       {
         "id": "d",
-        "text": "El número de empleados de la empresa."
+        "text": "El número de empleados de la empresa.",
+        "trampa": "fuera-de-contexto",
+        "porQueNo": "El número de empleados no cambia la prioridad que da el artículo 44."
       }
     ],
     "answer": "a",
@@ -910,23 +1084,29 @@
     "options": [
       {
         "id": "a",
-        "text": "«Con menos carros en la calle habrá menos contaminación del aire»."
+        "text": "«Con menos carros en la calle habrá menos contaminación del aire en la ciudad».",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es una preocupación ambiental, no económica."
       },
       {
         "id": "b",
-        "text": "«El transporte público ya va muy lleno en las horas pico»."
+        "text": "«El transporte público ya va muy lleno en las horas pico de la mañana».",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Habla de movilidad y comodidad, no de ingresos."
       },
       {
         "id": "c",
-        "text": "«Si no puedo usar mi carro dos días a la semana, perderé clientes en mi trabajo de domicilios»."
+        "text": "«Sin mi carro dos días a la semana perderé clientes de domicilios»."
       },
       {
         "id": "d",
-        "text": "«Las medidas de movilidad deben respetar el derecho a circular libremente»."
+        "text": "«Las medidas de movilidad deben respetar el derecho a circular libremente».",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es un argumento jurídico, sobre el derecho a circular."
       }
     ],
     "answer": "c",
-    "explanation": "La primera opinión se centra en el ingreso: la medida afectaría el trabajo de quien hace domicilios. Las otras expresan preocupaciones ambientales, de movilidad y jurídicas.",
+    "explanation": "La opinión sobre los domicilios se centra en el ingreso: la medida afectaría el trabajo de quien hace domicilios. Las otras expresan preocupaciones ambientales, de movilidad y jurídicas.",
     "tip": "Clasifica los argumentos por dimensión: económica, ambiental, social, política o jurídica.",
     "source": "original",
     "reviewed": false
@@ -941,19 +1121,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Que todo lo que dice es falso, porque lo escribió el gerente."
+        "text": "Que todo lo que dice es falso, porque lo escribió el gerente de la empresa.",
+        "trampa": "extremo",
+        "porQueNo": "Tener un interés no vuelve falso todo lo que dice; obliga a contrastarlo."
       },
       {
         "id": "b",
-        "text": "Que el autor tiene un interés directo en el tema, así que conviene contrastar lo que dice con otras fuentes."
+        "text": "Que el autor tiene interés en el tema; conviene contrastarlo con otras fuentes."
       },
       {
         "id": "c",
-        "text": "Que es la fuente más confiable, porque el autor conoce la empresa por dentro."
+        "text": "Que es la fuente más confiable de todas, porque el autor conoce la empresa por dentro.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Conoce la empresa, pero su interés en el proyecto es razón para contrastar, no para creerle sin más."
       },
       {
         "id": "d",
-        "text": "Que quién escribió el artículo no importa; solo cuenta su extensión."
+        "text": "Que si el artículo trae cifras, ya no hace falta consultar otras fuentes.",
+        "trampa": "extremo",
+        "porQueNo": "Las cifras también se pueden escoger a conveniencia; igual hay que contrastar."
       }
     ],
     "answer": "b",
@@ -972,19 +1158,25 @@
     "options": [
       {
         "id": "a",
-        "text": "Las dos posturas defienden únicamente los beneficios económicos de la obra."
+        "text": "Las dos posturas defienden únicamente los beneficios económicos de la obra.",
+        "trampa": "verdad-a-medias",
+        "porQueNo": "Solo el funcionario habla de beneficios económicos; la comunidad defiende su derecho a ser consultada."
       },
       {
         "id": "b",
-        "text": "La comunidad rechaza cualquier forma de empleo y el funcionario rechaza la obra."
+        "text": "La comunidad rechaza cualquier forma de empleo y el funcionario rechaza la obra.",
+        "trampa": "extremo",
+        "porQueNo": "La comunidad pide ser consultada, no rechaza todo empleo; y el funcionario defiende la obra."
       },
       {
         "id": "c",
-        "text": "El funcionario defiende la consulta previa y la comunidad defiende el empleo."
+        "text": "El funcionario defiende la consulta previa y la comunidad defiende el empleo.",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Invierte las posturas: la comunidad pide la consulta y el funcionario habla del empleo."
       },
       {
         "id": "d",
-        "text": "La comunidad prioriza su derecho a decidir sobre su territorio y su cultura; el funcionario, los beneficios económicos de la obra."
+        "text": "La comunidad prioriza decidir sobre su territorio y su cultura; el funcionario, el empleo."
       }
     ],
     "answer": "d",
@@ -1003,19 +1195,25 @@
     "options": [
       {
         "id": "a",
-        "text": "«Si el río baja demasiado, los peces desaparecen y me quedo sin sustento»."
+        "text": "«Si el río baja mucho, se van los peces y me quedo sin sustento»."
       },
       {
         "id": "b",
-        "text": "«Sin agua para regar, perderé la cosecha de este semestre»."
+        "text": "«Sin agua para regar, perderé la cosecha de arroz de este semestre».",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es el interés del cultivador de arroz."
       },
       {
         "id": "c",
-        "text": "«Primero hay que garantizar el agua potable de las casas»."
+        "text": "«Primero hay que garantizar el agua potable de las casas del pueblo».",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Es la prioridad de la empresa de acueducto."
       },
       {
         "id": "d",
-        "text": "«El precio del arroz debe subir para compensar la sequía»."
+        "text": "«El precio del arroz debe subir para compensar la sequía».",
+        "trampa": "confunde-conceptos",
+        "porQueNo": "Habla del precio del arroz: es el interés del cultivador."
       }
     ],
     "answer": "a",
